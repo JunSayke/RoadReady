@@ -13,8 +13,8 @@
         android:theme="@style/Theme.RoadReady"
         tools:targetApi="31">
         <activity
-            android:name=".opening"
-            android:exported="false" />
+            android:name=".Opening_Activity"
+            android:exported="true" />
     </application>
 
 </manifest>
