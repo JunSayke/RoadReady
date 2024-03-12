@@ -4,75 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".opening">
+    tools:context=".Opening_Activity">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="219dp"
-        android:layout_height="128dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.334"
-        app:srcCompat="@drawable/roadready" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="373dp"
-        android:layout_height="269dp"
-        app:srcCompat="@drawable/shape_circle"
-        tools:layout_editor_absoluteX="210dp"
-        tools:layout_editor_absoluteY="-82dp" />
-
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.172"
-        tools:layout_editor_absoluteX="55dp">
-
-        <EditText
-            android:id="@+id/editTextTextEmailAddress2"
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/op_roadReady_logo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:shadowColor="#000000" />
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="248dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginBottom="376dp"
+            android:contentDescription="@string/roadreadylogo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/roadready"
+            tools:srcCompat="@drawable/roadready" />
 
-        <EditText
-            android:id="@+id/editTextTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:ems="10"
-            android:inputType="textPassword" />
+        <ImageView
+            android:id="@+id/op_red_circle"
+            android:layout_width="264dp"
+            android:layout_height="264dp"
+            android:layout_marginStart="350dp"
+            android:layout_marginBottom="220dp"
+            android:contentDescription="@string/redcircle"
+            app:layout_constraintBottom_toTopOf="@+id/op_roadReady_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/red_circle"
+            tools:srcCompat="@drawable/red_circle" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:id="@+id/op_paragraph"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="TextView" />
+            android:layout_marginStart="178dp"
+            android:layout_marginTop="225dp"
+            android:layout_marginEnd="175dp"
+            android:layout_marginBottom="4dp"
+            android:defaultFocusHighlightEnabled="false"
+            android:editable="false"
+            android:focusedByDefault="false"
+            android:text="@string/vehicle_documents_processing"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/op_roadReady_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="Deprecated,TextSizeCheck" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/op_cyan_circle_left"
+            android:layout_width="264dp"
+            android:layout_height="264dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="680dp"
+            android:layout_marginEnd="250dp"
+            android:contentDescription="@string/cyan_circle_left"
+            android:src="@drawable/cyan80_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/cyan80_circle"
+            tools:ignore="ImageContrastCheck"
+            tools:srcCompat="@drawable/cyan80_circle" />
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Button" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
-    </LinearLayout>
-
+        <ImageView
+            android:id="@+id/op_cyan_circle_right"
+            android:layout_width="264dp"
+            android:layout_height="264dp"
+            android:layout_marginTop="250dp"
+            android:contentDescription="@string/cyan_circle_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/op_cyan_circle_left"
+            app:layout_constraintTop_toBottomOf="@+id/op_roadReady_logo"
+            app:srcCompat="@drawable/cyan80_circle"
+            tools:ignore="ImageContrastCheck"
+            tools:srcCompat="@drawable/cyan80_circle" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
