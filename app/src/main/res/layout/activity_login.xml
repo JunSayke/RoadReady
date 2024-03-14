@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login_Activity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/op_red_circle"
+            android:layout_width="264dp"
+            android:layout_height="264dp"
+            android:layout_marginStart="350dp"
+            android:layout_marginBottom="120dp"
+            android:contentDescription="@string/redcircle"
+            app:layout_constraintBottom_toTopOf="@+id/op_roadReady_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/red_circle"
+            tools:srcCompat="@drawable/red_circle" />
+
+        <ImageView
+            android:id="@+id/op_roadReady_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginBottom="376dp"
+            android:contentDescription="@string/roadreadylogo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/roadready"
+            tools:srcCompat="@drawable/roadready" />
+
+        <EditText
+            android:id="@+id/login_tv_email"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="99dp"
+            android:layout_marginEnd="102dp"
+            android:background="@drawable/rounded_corner_rectangle"
+            android:drawableStart="@drawable/mail"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/login_tv_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/op_roadReady_logo" />
+
+        <EditText
+            android:id="@+id/login_tv_password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="101dp"
+            android:layout_marginBottom="281dp"
+            android:background="@drawable/rounded_corner_rectangle"
+            android:drawableStart="@drawable/lock"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_tv_email" />
+
+        <TextView
+            android:id="@+id/login_tv_forgotPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="288dp"
+            android:layout_marginEnd="120dp"
+            android:layout_marginBottom="241dp"
+            android:text="Forgot your password?"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.542"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_tv_password"
+            app:layout_constraintVertical_bias="0.241" />
+
+        <Button
+            android:id="@+id/login_btn_login"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="157dp"
+            android:layout_marginBottom="178dp"
+            android:backgroundTint="#0EB2F8"
+            android:text="Login"
+            android:textColor="#332F2F"
+            app:cornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_tv_forgotPass" />
+
+        <ImageView
+            android:id="@+id/login_misc_or"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_btn_login"
+            app:srcCompat="@drawable/login_grp_or"
+            tools:srcCompat="@drawable/login_grp_or" />
+
+        <ImageButton
+            android:id="@+id/login_btn_google"
+            android:contentDescription="Google Login Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="85dp"
+            android:layout_marginBottom="84dp"
+            android:backgroundTint="#00FFFFFF"
+            android:foreground="@drawable/google"
+            android:foregroundGravity="left"
+            android:src="@drawable/login_grp_btn_googlelogin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_misc_or"
+            tools:src="@drawable/login_grp_btn_googlelogin" />
+
+        <TextView
+            android:id="@+id/login_tv_noaccountmsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="89dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginBottom="46dp"
+            android:text="Don't have an account?"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_btn_google"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/login_tv_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="121dp"
+            android:layout_marginBottom="46dp"
+            android:text="Sign up"
+            android:textColor="#67AAE9"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/login_tv_noaccountmsg"
+            app:layout_constraintTop_toBottomOf="@+id/login_btn_google" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
