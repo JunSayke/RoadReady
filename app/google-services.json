@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "554777352222",
+    "project_id": "roadready-42839",
+    "storage_bucket": "roadready-42839.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554777352222:android:29d5a8ad47248b09f0f60f",
+        "android_client_info": {
+          "package_name": "com.example.roadready"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZYFebt20nAu2XxsfPFYZF6-RdtdzID_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
