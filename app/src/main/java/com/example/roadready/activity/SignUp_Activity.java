@@ -9,7 +9,7 @@ import com.example.roadready.databinding.ActivitySignUpBinding;
 
 public class SignUp_Activity extends AppCompatActivity {
 
-    private final String TAG = "SignUp_Activity"; // declare TAG for each class for debuging purposes using Log.d()
+    private final String TAG = "SignUp_Activity"; // declare TAG for each class for debugging purposes using Log.d()
     private ActivitySignUpBinding binding; // use View binding to avoid using too much findViewById
 
     @Override

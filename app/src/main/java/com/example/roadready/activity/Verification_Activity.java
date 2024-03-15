@@ -9,7 +9,7 @@ import com.example.roadready.databinding.ActivityVerificationBinding;
 
 public class Verification_Activity extends AppCompatActivity {
 
-    private final String TAG = "Verification_Activity"; // declare TAG for each class for debuging purposes using Log.d()
+    private final String TAG = "Verification_Activity"; // declare TAG for each class for debugging purposes using Log.d()
     private ActivityVerificationBinding binding; // use View binding to avoid using too much findViewById
 
     @Override
