@@ -22,13 +22,13 @@
             android:layout_marginTop="248dp"
             android:layout_marginEnd="100dp"
             android:layout_marginBottom="376dp"
-            android:contentDescription="@string/roadreadylogo"
+            android:contentDescription="@string/road_ready_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/roadready"
-            tools:srcCompat="@drawable/roadready" />
+            app:srcCompat="@drawable/road_ready"
+            tools:srcCompat="@drawable/road_ready" />
 
         <ImageView
             android:id="@+id/op_red_circle"
@@ -36,7 +36,7 @@
             android:layout_height="264dp"
             android:layout_marginStart="350dp"
             android:layout_marginBottom="220dp"
-            android:contentDescription="@string/redcircle"
+            android:contentDescription="@string/red_circle"
             app:layout_constraintBottom_toTopOf="@+id/op_roadReady_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,8 +1,21 @@
 <resources>
     <string name="app_name">RoadReady</string>
-    <string name="roadreadylogo">roadReadyLogo</string>
-    <string name="redcircle">redcircle</string>
+    <string name="road_ready_logo">roadReadyLogo</string>
+    <string name="red_circle">redcircle</string>
     <string name="vehicle_documents_processing">Vehicle documents processing</string>
     <string name="cyan_circle_left">cyan_circle_left</string>
     <string name="cyan_circle_right">cyan_circle_right</string>
+
+    <!-- ACTIVITY LOGIN -->
+    <!-- STRINGS -->
+    <string name="placeholder_email_address">Email Address</string>
+    <string name="placeholder_password">Password</string>
+    <string name="text_forgot_your_password">Forgot your password?</string>
+    <string name="text_btn_login">Login</string>
+    <string name="text_btn_loginGoogle">Login with Google</string>
+    <string name="text_no_have_account">Don\'t have an account?</string>
+    <string name="text_signup">Sign up</string>
+
+    <!-- CONTENT DESCRIPTION -->
+    <string name="vector_or">vector_or</string>
 </resources>
