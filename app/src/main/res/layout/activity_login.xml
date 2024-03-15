@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login_Activity">
+    tools:context="activity.Login_Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -20,13 +20,15 @@
             android:layout_height="264dp"
             android:layout_marginStart="350dp"
             android:layout_marginBottom="120dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#FA5C5C"
             android:contentDescription="@string/red_circle"
             app:layout_constraintBottom_toTopOf="@+id/op_roadReady_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/red_circle"
-            tools:srcCompat="@drawable/red_circle" />
+            app:srcCompat="@drawable/circle"
+            tools:srcCompat="@drawable/circle" />
 
         <ImageView
             android:id="@+id/op_roadReady_logo"
@@ -41,8 +43,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/road_ready"
-            tools:srcCompat="@drawable/road_ready" />
+            app:srcCompat="@drawable/roadready"
+            tools:srcCompat="@drawable/roadready" />
 
         <EditText
             android:id="@+id/login_ipt_email"

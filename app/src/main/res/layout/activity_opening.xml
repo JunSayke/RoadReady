@@ -27,8 +27,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/road_ready"
-            tools:srcCompat="@drawable/road_ready" />
+            app:srcCompat="@drawable/roadready"
+            tools:srcCompat="@drawable/roadready" />
 
         <ImageView
             android:id="@+id/op_red_circle"
@@ -36,13 +36,13 @@
             android:layout_height="264dp"
             android:layout_marginStart="350dp"
             android:layout_marginBottom="220dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#FA5C5C"
             android:contentDescription="@string/red_circle"
             app:layout_constraintBottom_toTopOf="@+id/op_roadReady_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/red_circle"
-            tools:srcCompat="@drawable/red_circle" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/op_paragraph"
@@ -70,31 +70,34 @@
             android:id="@+id/op_cyan_circle_left"
             android:layout_width="264dp"
             android:layout_height="264dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="680dp"
-            android:layout_marginEnd="250dp"
+            android:layout_marginTop="380dp"
+            android:layout_marginEnd="230dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#B303A9F4"
             android:contentDescription="@string/cyan_circle_left"
-            android:src="@drawable/cyan80_circle"
+            android:src="@drawable/circle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/cyan80_circle"
+            app:layout_constraintTop_toBottomOf="@+id/op_roadReady_logo"
+            app:srcCompat="@drawable/circle"
             tools:ignore="ImageContrastCheck"
-            tools:srcCompat="@drawable/cyan80_circle" />
+            tools:srcCompat="@drawable/circle" />
 
         <ImageView
             android:id="@+id/op_cyan_circle_right"
             android:layout_width="264dp"
             android:layout_height="264dp"
-            android:layout_marginTop="250dp"
+            android:layout_marginTop="300dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#B303A9F4"
             android:contentDescription="@string/cyan_circle_right"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/op_cyan_circle_left"
             app:layout_constraintTop_toBottomOf="@+id/op_roadReady_logo"
-            app:srcCompat="@drawable/cyan80_circle"
+            app:srcCompat="@drawable/circle"
             tools:ignore="ImageContrastCheck"
-            tools:srcCompat="@drawable/cyan80_circle" />
+            tools:srcCompat="@drawable/circle" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

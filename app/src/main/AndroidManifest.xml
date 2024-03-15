@@ -13,20 +13,26 @@
         android:theme="@style/Theme.RoadReady"
         tools:targetApi="31">
         <activity
-            android:name=".Verification_Activity"
+            android:name=".activity.Verification_Activity"
             android:exported="true" />
         <activity
-            android:name=".SignUp_Activity"
+            android:name=".activity.SignUp_Activity"
             android:exported="true" />
         <activity
-            android:name=".SignUpAs_Activity"
+            android:name=".activity.SignUpAs_Activity"
             android:exported="true" />
         <activity
-            android:name=".Login_Activity"
+            android:name=".activity.Login_Activity"
             android:exported="true" />
         <activity
-            android:name=".Opening_Activity"
-            android:exported="true" />
+            android:name=".activity.Opening_Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
