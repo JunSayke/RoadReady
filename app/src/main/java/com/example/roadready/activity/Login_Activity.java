@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import com.example.roadready.R;
 import com.example.roadready.databinding.ActivityLoginBinding;
-import com.example.roadready.databinding.ActivityOpeningBinding;
 
 public class Login_Activity extends AppCompatActivity {
     private final String TAG = "Login_Activity"; // declare TAG for each class for debuging purposes using Log.d()
