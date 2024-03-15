@@ -45,7 +45,7 @@
             tools:srcCompat="@drawable/road_ready" />
 
         <EditText
-            android:id="@+id/login_tv_email"
+            android:id="@+id/login_ipt_email"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="99dp"
@@ -58,13 +58,13 @@
             android:hint="@string/placeholder_email_address"
             android:inputType="textEmailAddress"
             android:padding="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/login_tv_password"
+            app:layout_constraintBottom_toTopOf="@+id/login_ipt_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/op_roadReady_logo" />
 
         <EditText
-            android:id="@+id/login_tv_password"
+            android:id="@+id/login_ipt_password"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -81,7 +81,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_tv_email" />
+            app:layout_constraintTop_toBottomOf="@+id/login_ipt_email" />
 
         <TextView
             android:id="@+id/login_tv_forgotPass"
@@ -95,7 +95,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.542"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_tv_password"
+            app:layout_constraintTop_toBottomOf="@+id/login_ipt_password"
             app:layout_constraintVertical_bias="0.241" />
 
         <Button
@@ -131,7 +131,7 @@
             tools:srcCompat="@drawable/login_grp_or" />
 
         <Button
-            android:id="@+id/login_btn_googleLogin"
+            android:id="@+id/signupas_btn_googleLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="155dp"
@@ -172,7 +172,7 @@
             android:layout_marginBottom="46dp"
             android:linksClickable="true"
             android:text="@string/text_signup"
-            android:textColor="#67AAE9"
+            android:textColor="#3670A8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/login_tv_no_account_msg" />
