@@ -24,7 +24,6 @@
         <activity
             android:name=".activity.Login_Activity"
             android:exported="true" />
-        <activity
             android:name=".activity.Opening_Activity"
             android:exported="true">
             <intent-filter>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Opening_Activity">
+    tools:context=".activity.Opening_Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,8 +25,10 @@
             android:contentDescription="@string/road_ready_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/roadready"
             tools:srcCompat="@drawable/roadready" />
 
@@ -37,8 +39,8 @@
             android:layout_marginStart="350dp"
             android:layout_marginBottom="220dp"
             android:background="@drawable/circle"
-            android:backgroundTint="#FA5C5C"
-            android:contentDescription="@string/red_circle"
+            android:backgroundTint="#B3F44336"
+            android:contentDescription="@string/design_material"
             app:layout_constraintBottom_toTopOf="@+id/op_roadReady_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,42 +64,35 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/op_roadReady_logo"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.521"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             tools:ignore="Deprecated,TextSizeCheck" />
 
         <ImageView
-            android:id="@+id/op_cyan_circle_left"
+            android:id="@+id/imageView"
             android:layout_width="264dp"
             android:layout_height="264dp"
-            android:layout_marginTop="380dp"
-            android:layout_marginEnd="230dp"
+            android:layout_marginTop="208dp"
             android:background="@drawable/circle"
-            android:backgroundTint="#B303A9F4"
-            android:contentDescription="@string/cyan_circle_left"
-            android:src="@drawable/circle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTint="#B30EB2F8"
+            android:contentDescription="@string/design_material"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.223"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/op_roadReady_logo"
-            app:srcCompat="@drawable/circle"
-            tools:ignore="ImageContrastCheck"
-            tools:srcCompat="@drawable/circle" />
+            app:layout_constraintTop_toBottomOf="@+id/op_roadReady_logo" />
 
         <ImageView
-            android:id="@+id/op_cyan_circle_right"
+            android:id="@+id/imageView2"
             android:layout_width="264dp"
             android:layout_height="264dp"
-            android:layout_marginTop="300dp"
+            android:layout_marginStart="192dp"
+            android:layout_marginTop="168dp"
             android:background="@drawable/circle"
-            android:backgroundTint="#B303A9F4"
-            android:contentDescription="@string/cyan_circle_right"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/op_cyan_circle_left"
-            app:layout_constraintTop_toBottomOf="@+id/op_roadReady_logo"
-            app:srcCompat="@drawable/circle"
-            tools:ignore="ImageContrastCheck"
-            tools:srcCompat="@drawable/circle" />
+            android:backgroundTint="#B30EB2F8"
+            android:contentDescription="@string/design_material"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/op_roadReady_logo" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
