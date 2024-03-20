@@ -45,6 +45,11 @@ dependencies {
     implementation("com.google.firebase:firebase-storage")
     // END_OF[Firebase Dependencies]
 
+    // START_OF[OkHttp]
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
+    implementation("com.squareup.okhttp3:okhttp")
+    // END_OF[OkHttp]
+
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
