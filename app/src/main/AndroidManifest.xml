@@ -21,7 +21,7 @@
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.SignUp_Activity"
+            android:name=".activity.Login_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
@@ -29,7 +29,7 @@
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.Login_Activity"
+            android:name=".activity.SignUp_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity

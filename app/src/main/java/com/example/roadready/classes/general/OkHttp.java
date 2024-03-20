@@ -20,9 +20,9 @@ public class OkHttp {
     private static final String TAG = "NetworkUtils";
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     private static final OkHttpClient client = new OkHttpClient.Builder()
-            .connectTimeout(120, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
-            .writeTimeout(120, TimeUnit.SECONDS).build();
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .writeTimeout(60, TimeUnit.SECONDS).build();
 
     public static void addRequest(Context context, String method, String url, Map<String, String> headers, JSONObject data,
                                   Callback callback) {

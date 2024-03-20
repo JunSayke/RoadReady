@@ -1,5 +1,6 @@
 package com.example.roadready.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -44,9 +45,11 @@ public class SignUp_Activity extends AppCompatActivity {
         params.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID;
         params.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
         params.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
-
         binding.getRoot().addView(progressBar, params);
+
+        // Initially hide the progress bar
         progressBar.setVisibility(View.GONE);
+
         binding.signupBtnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +70,6 @@ public class SignUp_Activity extends AppCompatActivity {
                 // Create JSON object with user data
                 JSONObject data = new JSONObject();
                 try {
-                    data.put("username", "test");
                     data.put("firstName", firstName);
                     data.put("lastName", lastName);
                     data.put("email", email);
@@ -75,7 +77,6 @@ public class SignUp_Activity extends AppCompatActivity {
                     data.put("gender", sex);
                     data.put("phoneNumber", phone);
                     data.put("address", address);
-                    data.put("loginType", "buyer");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -89,8 +90,8 @@ public class SignUp_Activity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        binding.signupBtnSubmit.setEnabled(true);
                                         progressBar.setVisibility(View.GONE);
+                                        binding.signupBtnSubmit.setEnabled(true);
                                     }
                                 });
                                 Log.e(TAG, "Error occurred during registration: " + e.getMessage());
@@ -102,8 +103,8 @@ public class SignUp_Activity extends AppCompatActivity {
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        binding.signupBtnSubmit.setEnabled(true);
                                         progressBar.setVisibility(View.GONE);
+                                        binding.signupBtnSubmit.setEnabled(true);
                                     }
                                 });
                                 if (response.isSuccessful()) {
@@ -111,7 +112,16 @@ public class SignUp_Activity extends AppCompatActivity {
                                     Log.d(TAG, responseBody);
                                     try {
                                         JSONObject data = new JSONObject(responseBody);
-                                        Toast.makeText(getApplicationContext(), (CharSequence) data.get("message"), Toast.LENGTH_LONG).show();
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(SignUp_Activity.this, "Registered Successfully!", Toast.LENGTH_LONG).show();
+                                            }
+                                        });
+                                        Intent intent = new Intent(SignUp_Activity.this, BuyerHomepage_Activity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                        finish();
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
