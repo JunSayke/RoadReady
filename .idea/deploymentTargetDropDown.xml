@@ -2,20 +2,59 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="Login_Activity">
+      <entry key="BuyerHomepage_Activity">
         <State />
       </entry>
+      <entry key="Login_Activity">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_27.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-16T01:01:53.499962300Z" />
+        </State>
+      </entry>
       <entry key="Opening_Activity">
-        <State />
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-19T15:00:29.337266700Z" />
+        </State>
       </entry>
       <entry key="SignUpAs_Activity">
         <State />
       </entry>
       <entry key="SignUp_Activity">
-        <State />
-      </entry>
-      <entry key="Verification_Activity">
-        <State />
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-19T10:28:03.772227700Z" />
+        </State>
       </entry>
       <entry key="app">
         <State />

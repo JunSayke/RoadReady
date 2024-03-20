@@ -2,7 +2,6 @@
     <!-- ACTIVITY OPENING -->
     <!-- STRINGS -->
     <string name="text_opening_tagline">Vehicle documents processing</string>
-
     <!-- CONTENT DESCRIPTION -->
     <string name="app_name">RoadReady</string>
     <string name="road_ready_logo">roadReadyLogo</string>
@@ -19,7 +18,6 @@
     <string name="text_btn_loginGoogle">Login with Google</string>
     <string name="text_no_have_account">Don\'t have an account?</string>
     <string name="text_signup">Sign up</string>
-
     <!-- CONTENT DESCRIPTION -->
     <string name="vector_or">vector_or</string>
 
@@ -44,14 +42,20 @@
     <string name="text_female">Female</string>
     <string name="text_other">Other</string>
     <string name="text_btn_submit">Submit</string>
-
     <!-- CONTENT DESCRIPTION -->
 
     <!-- ACTIVITY VERIFICATION -->
     <!-- STRINGS -->
     <string name="text_enter_verification_code">Please enter your 6 digit verification code</string>
     <string name="text_resend_code">Resend code</string>
-
     <!-- CONTENT DESCRIPTION -->
     <string name="pinv_otp">pinv_otp</string>
+
+    <!-- ACTIVITY BUYER HOMEPAGE -->
+    <!-- STRINGS -->
+    <string name="text_welcome_user">Welcome Gail!</string>
+    <string name="text_search_vehicle">Search vehicle</string>
+    <!-- CONTENT DESCRIPTION -->
+
+
 </resources>
