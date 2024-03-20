@@ -56,7 +56,4 @@ dependencies {
 
     // [PinView Dependency]
     implementation("io.github.chaosleung:pinview:1.4.4")
-
-    // [SplashScreen Dependency]
-    implementation("androidx.core:core-splashscreen:1.0.1")
 }
