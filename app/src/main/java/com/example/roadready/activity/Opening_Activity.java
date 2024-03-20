@@ -19,5 +19,18 @@ public class Opening_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityOpeningBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //  Splash Screen code
+        Thread thread = new Thread(() -> {
+            try {
+                Thread.sleep(3000); //  Duration
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                startActivity(new Intent(Opening_Activity.this, Login_Activity.class));
+            }
+        });
+
+        thread.start();
     }
 }

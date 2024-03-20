@@ -6,24 +6,36 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/roadready"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/roadready"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoadReady"
         tools:targetApi="31">
         <activity
+            android:name=".activity.BuyerHomepage_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
+        <activity
             android:name=".activity.Verification_Activity"
-            android:exported="true" />
-        <activity
-            android:name=".activity.Login_Activity"
-            android:exported="true" />
-        <activity
-            android:name=".activity.SignUpAs_Activity"
-            android:exported="true" />
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".activity.SignUp_Activity"
-            android:exported="true">
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".activity.SignUpAs_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".activity.Login_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".activity.Opening_Activity"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

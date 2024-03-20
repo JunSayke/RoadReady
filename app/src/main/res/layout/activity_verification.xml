@@ -9,7 +9,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/verif_tv_header"
@@ -27,7 +31,6 @@
 
         <com.chaos.view.PinView
             android:id="@+id/verif_pinv_otp"
-            android:hint="@string/pinv_otp"
             style="@style/PinWidget.PinView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,6 +38,7 @@
             android:layout_marginTop="32dp"
             android:cursorVisible="true"
             android:gravity="center"
+            android:hint="@string/pinv_otp"
             android:inputType="number"
             android:itemBackground="@color/white"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
