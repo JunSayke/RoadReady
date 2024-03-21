@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.example.roadready.R;
 import com.example.roadready.databinding.ActivitySearchDealershipBinding;
+import com.example.roadready.databinding.ActivitySelectingCarBinding;
 
 public class SearchDealership_Activity extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class SearchDealership_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_dealership);
+        binding = ActivitySearchDealershipBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 }
