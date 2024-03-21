@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.roadready.R;
+import com.example.roadready.databinding.ActivityBuyerHomepageBinding;
 import com.example.roadready.databinding.ActivitySelectingCarBinding;
 
 public class SelectingCar_Activity extends AppCompatActivity {
@@ -15,6 +16,7 @@ public class SelectingCar_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_selecting_car);
+        binding = ActivitySelectingCarBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 }

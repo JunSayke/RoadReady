@@ -90,4 +90,21 @@
     <string name="img_dealer_logo">Dealer Logo</string>
     <string name="img_vehicle_item">Dealer Logo</string>
 
+    <!-- ACTIVITY CASH PAYMENT FORM -->
+    <!-- STRINGS -->
+    <string name="text_cash_payment_form">Cash Payment Form</string>
+    <string name="text_fname">First Name:</string>
+    <string name="text_lname">Last Name:</string>
+    <string name="text_address">Address:</string>
+    <string name="text_phone_number">Phone #:</string>
+    <string name="text_valid_id">Valid ID:</string>
+    <string name="text_upload">upload</string>
+    <string name="text_mode_of_payment">Mode of Payment:</string>
+    <string name="text_over_the_counter">Over the counter</string>
+    <string name="text_cheque_on_delivery">Cheque on delivery</string>
+    <string name="text_signature">Signature</string>
+    <string name="back_btn">back button</string>
+
+    <!-- CONTENT DESCRIPTION -->
+
 </resources>

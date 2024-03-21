@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/buyer_header"
+            android:id="@+id/form_header"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="#888484"
@@ -56,7 +56,7 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <ImageView
-                android:id="@+id/sd_iv_red_circle"
+                android:id="@+id/cpf_iv_red_circle"
                 android:layout_width="264dp"
                 android:layout_height="264dp"
                 android:layout_marginStart="10dp"
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buyer_header">
+            app:layout_constraintTop_toBottomOf="@+id/form_header">
 
             <EditText
                 android:id="@+id/sd_pt_search"
