@@ -116,5 +116,13 @@ public class Login_Activity extends AppCompatActivity {
                 );
             }
         });
+
+        binding.loginTvSignup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login_Activity.this, SignUp_Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

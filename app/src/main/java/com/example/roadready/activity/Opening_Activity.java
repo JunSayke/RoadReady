@@ -23,7 +23,7 @@ public class Opening_Activity extends AppCompatActivity {
 
     private void makeSplashScreen() {
         int SplashScreenDuration = 3000; // Duration in milliseconds
-        Intent IntentLoginActivity = new Intent(Opening_Activity.this, Login_Activity.class);
+        Intent IntentLoginActivity = new Intent(Opening_Activity.this, SignUpAs_Activity.class);
 
         Thread thread = new Thread(() -> {
             try {
