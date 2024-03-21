@@ -55,7 +55,13 @@
     <!-- STRINGS -->
     <string name="text_welcome_user">Welcome Gail!</string>
     <string name="text_search_vehicle">Search vehicle</string>
+    <string name="text_view_now">View now</string>
+    <string name="text_recommended_for_you">Recommended for you</string>
+    <string name="text_select">Select</string>
     <!-- CONTENT DESCRIPTION -->
-
+    <string name="recommended_item">Recommended item</string>
+    <string name="vehicle_item">Vehicle item</string>
+    <string name="vector_user_icon">User icon</string>
+    <string name="vector_filter_icon">Filter icon</string>
     <string name="design_material">Design Material</string>
 </resources>
