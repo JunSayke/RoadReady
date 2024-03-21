@@ -228,6 +228,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="108dp"
+            android:clickable="true"
             android:text="@string/text_login"
             android:textColor="#3670A8"
             app:layout_constraintEnd_toEndOf="parent"
@@ -265,7 +266,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_vector_or" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_vector_or"
+            app:rippleColor="#F3F3F3F3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,5 +63,12 @@
     <string name="vehicle_item">Vehicle item</string>
     <string name="vector_user_icon">User icon</string>
     <string name="vector_filter_icon">Filter icon</string>
-    <string name="design_material">Design Material</string>
+
+    <!-- ACTIVITY SEARCH DEALERSHIP -->
+    <!-- STRINGS -->
+    <string name="text_search_dealership">Search dealership</string>
+    <string name="text_view">View</string>
+
+    <!-- CONTENT DESCRIPTION -->
+
 </resources>
