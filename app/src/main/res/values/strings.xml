@@ -63,5 +63,31 @@
     <string name="vehicle_item">Vehicle item</string>
     <string name="vector_user_icon">User icon</string>
     <string name="vector_filter_icon">Filter icon</string>
-    <string name="design_material">Design Material</string>
+
+    <!-- ACTIVITY SEARCH DEALERSHIP -->
+    <!-- STRINGS -->
+    <string name="text_search_dealership">Search dealership</string>
+    <string name="text_view">View</string>
+
+    <!-- CONTENT DESCRIPTION -->
+
+    <!-- ACTIVITY SELECTING CAR -->
+    <!-- STRINGS -->
+    <string name="text_specifications">Specifications</string>
+    <string name="text_make">Make:</string>
+    <string name="text_fuel_type">Fuel Type:</string>
+    <string name="text_transmission">Transmission:</string>
+    <string name="text_fuel_tank_capacity">Fuel Tank Capacity(litres):</string>
+    <string name="text_seating_capacity">Seating Capacity:</string>
+    <string name="text_price">Price:</string>
+    <string name="text_power">Power:</string>
+    <string name="text_engine">Engine:</string>
+    <string name="text_buy_now">Buy now!</string>
+    <string name="text_cash">Cash</string>
+    <string name="text_installment">Installment</string>
+
+    <!-- CONTENT DESCRIPTION -->
+    <string name="img_dealer_logo">Dealer Logo</string>
+    <string name="img_vehicle_item">Dealer Logo</string>
+
 </resources>

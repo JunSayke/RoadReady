@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SelectingCar_Activity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#3FBB54"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/buyer_header"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#888484"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/sgc_iv_user_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/circle"
+                android:backgroundTint="#8DDEF0"
+                android:contentDescription="@string/vector_user_icon"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/default_user_icon"
+                tools:ignore="ImageContrastCheck"
+                tools:srcCompat="@drawable/default_user_icon" />
+
+            <TextView
+                android:id="@+id/sgc_tv_user_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="54dp"
+                android:layout_marginBottom="27dp"
+                android:text="@string/text_welcome_user"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sgc_iv_user_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/sgc_iv_red_circle"
+                android:layout_width="264dp"
+                android:layout_height="264dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/circle"
+                android:backgroundTint="#FE4949"
+                android:contentDescription="@string/red_circle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sgc_tv_user_welcome"
+                tools:ignore="ImageContrastCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sgc_dealer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buyer_header">
+
+            <LinearLayout
+                android:id="@+id/sgc_dealer_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/sgc_dealer_logo"
+                    android:contentDescription="@string/img_dealer_logo"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/srcd_iv_cardistrictmandaue"
+                    tools:srcCompat="@drawable/srcd_iv_cardistrictmandaue" />
+
+                <TextView
+                    android:id="@+id/sgc_dealer_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="2dp"
+                    android:text="Car District Mandaue"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sgc_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sgc_dealer">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sgc_item"
+                android:layout_width="380dp"
+                android:layout_height="460dp"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/rectangle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/sgc_item_container"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <ImageView
+                        android:id="@+id/sgc_iv_item_img"
+                        android:layout_width="250dp"
+                        android:layout_height="120dp"
+                        android:contentDescription="@string/img_vehicle_item"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/sgd_iv_conquest"
+                        tools:srcCompat="@drawable/sgd_iv_conquest" />
+
+                    <TextView
+                        android:id="@+id/sgc_tv_item_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HIILUX Conquest 2023"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/sgc_iv_item_img"
+                        tools:ignore="HardcodedText" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/sgc_item_specs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/rectangle"
+                        android:paddingBottom="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/sgc_tv_item_name">
+
+                        <TextView
+                            android:id="@+id/sgc_tv_specifications"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/text_specifications"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_make_key"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/text_make"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_specifications" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_make_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Toyota"
+                            app:layout_constraintStart_toEndOf="@+id/sgc_tv_make_key"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_specifications"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_fueltype_key"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/text_fuel_type"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_make_key" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_fueltype_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Diesel"
+                            app:layout_constraintStart_toEndOf="@+id/sgc_tv_fueltype_key"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_make_value"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_power_key"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/text_power"
+                            app:layout_constraintEnd_toStartOf="@+id/sgc_tv_power_value"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_specifications" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_power_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="148 Hp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_specifications"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_engine_key"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:text="@string/text_engine"
+                            app:layout_constraintEnd_toStartOf="@+id/sgc_tv_engine_value"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_power_key" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_engine_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:text="2393cc"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_power_value"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_transmission_key"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/text_transmission"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_fueltype_key" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_transmission_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Automatic"
+                            app:layout_constraintStart_toEndOf="@+id/sgc_tv_transmission_key"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_fueltype_value"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_ftc_key"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/text_fuel_tank_capacity"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_transmission_key" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_ftc_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="80 Liters"
+                            app:layout_constraintStart_toEndOf="@+id/sgc_tv_ftc_key"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_transmission_value"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_sc_key"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/text_seating_capacity"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_ftc_key" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_sc_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:text="5 Seats"
+                            app:layout_constraintStart_toEndOf="@+id/sgc_tv_sc_key"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_ftc_value"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_tp_key"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/text_price"
+                            android:textSize="20sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sgc_tv_sc_key" />
+
+                        <TextView
+                            android:id="@+id/sgc_tv_price_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginBottom="1dp"
+                            android:text="1.699.000.00"
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/sgc_tv_tp_key"
+                            tools:ignore="HardcodedText" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/sgc_btn_cash"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="#3FBB54"
+                    android:text="@string/text_cash"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/sgn_btn_installment"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sgc_tv_buynow" />
+
+                <Button
+                    android:id="@+id/sgn_btn_installment"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="#FE4949"
+                    android:text="@string/text_installment"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/sgc_btn_cash"
+                    app:layout_constraintTop_toBottomOf="@+id/sgc_tv_buynow" />
+
+                <TextView
+                    android:id="@+id/sgc_tv_buynow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="165dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="165dp"
+                    android:text="@string/text_buy_now"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sgc_item_container" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/sgc_iv_cyan_circle"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:background="@drawable/circle"
+                android:backgroundTint="#8DDEF0"
+                android:contentDescription="@string/cyan_circle_left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/sgc_item"
+                tools:ignore="ImageContrastCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -136,6 +136,7 @@
             android:layout_marginEnd="162dp"
             android:layout_marginBottom="23dp"
             android:backgroundTint="#FFFFFF"
+            android:clickable="true"
             android:foreground="@drawable/google"
             android:foregroundGravity="left"
             android:paddingStart="70dp"
@@ -147,7 +148,8 @@
             app:layout_constraintBottom_toTopOf="@+id/login_tv_no_account_msg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_misc_or" />
+            app:layout_constraintTop_toBottomOf="@+id/login_misc_or"
+            app:rippleColor="#F3F3F3F3" />
 
         <TextView
             android:id="@+id/login_tv_no_account_msg"
@@ -169,6 +171,7 @@
             android:layout_marginBottom="46dp"
             android:linksClickable="true"
             android:text="@string/text_signup"
+            android:clickable="true"
             android:textColor="#3670A8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

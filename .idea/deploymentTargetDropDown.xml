@@ -2,40 +2,14 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="BuyerHomepage_Activity">
+      <entry key="Login_Activity">
         <State />
       </entry>
-      <entry key="Login_Activity">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_27.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-16T01:01:53.499962300Z" />
-        </State>
+      <entry key="SelectingCar_Activity">
+        <State />
       </entry>
-      <entry key="Opening_Activity">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_34.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-21T06:35:08.336632200Z" />
-        </State>
+      <entry key="SelectingDealership_Activity">
+        <State />
       </entry>
       <entry key="SignUpAs_Activity">
         <State />

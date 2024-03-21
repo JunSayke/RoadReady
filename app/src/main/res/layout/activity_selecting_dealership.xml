@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.SelectingDealership_Activity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/buyer_header"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#888484"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/sgd_iv_user_icon"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/circle"
+                android:backgroundTint="#8DDEF0"
+                android:contentDescription="@string/vector_user_icon"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/default_user_icon"
+                tools:ignore="ImageContrastCheck"
+                tools:srcCompat="@drawable/default_user_icon" />
+
+            <TextView
+                android:id="@+id/sgd_tv_user_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="54dp"
+                android:layout_marginBottom="27dp"
+                android:text="@string/text_welcome_user"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sgd_iv_user_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/sgd_iv_red_circle"
+                android:layout_width="264dp"
+                android:layout_height="264dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/circle"
+                android:backgroundTint="#FE4949"
+                android:contentDescription="@string/red_circle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sgd_tv_user_welcome"
+                tools:ignore="ImageContrastCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sgd_search_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buyer_header">
+
+            <LinearLayout
+                android:id="@+id/sgd_dealer_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/sgd_dealer_logo"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/srcd_iv_cardistrictmandaue"
+                    tools:srcCompat="@drawable/srcd_iv_cardistrictmandaue" />
+
+                <TextView
+                    android:id="@+id/sgd_dealer_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="2dp"
+                    android:text="Car District Mandaue"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sgd_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sgd_search_container">
+
+            <ScrollView
+                android:id="@+id/sgd_sv_items"
+                android:layout_width="380dp"
+                android:layout_height="460dp"
+                android:layout_marginVertical="20dp"
+                android:background="@drawable/rectangle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/sgd_items_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:id="@+id/sgd_item_container_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/rounded_corner_rectangle40"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/sgd_iv_item_1"
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="5dp"
+                            android:contentDescription="@string/vehicle_item"
+                            app:srcCompat="@drawable/sgd_iv_conquest"
+                            tools:srcCompat="@drawable/sgd_iv_conquest" />
+
+                        <LinearLayout
+                            android:id="@+id/sgd_desc_container_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="20dp"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:id="@+id/sgd_tv_name_item_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="HIILUX Conquest 2023"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                tools:ignore="HardcodedText" />
+
+                            <Button
+                                android:id="@+id/sgd_btn_select_item_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="36dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="#3FBB54"
+                                android:text="@string/text_select"
+                                android:textColor="#000000"
+                                android:textSize="12sp"
+                                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/sgd_item_container_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/rounded_corner_rectangle40"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/sgd_iv_item_2"
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="5dp"
+                            android:contentDescription="@string/vehicle_item"
+                            app:srcCompat="@drawable/sgd_iv_lexus"
+                            tools:srcCompat="@drawable/sgd_iv_lexus" />
+
+                        <LinearLayout
+                            android:id="@+id/sgd_desc_container_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="20dp"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:id="@+id/sgd_tv_name_item_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Lexus RX350"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                tools:ignore="HardcodedText" />
+
+                            <Button
+                                android:id="@+id/sgd_btn_select_item_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="36dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="#3FBB54"
+                                android:text="@string/text_select"
+                                android:textColor="#000000"
+                                android:textSize="12sp"
+                                tools:ignore="TouchTargetSizeCheck" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/sgd_item_container_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/rounded_corner_rectangle40"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/sgd_iv_item_3"
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="5dp"
+                            android:contentDescription="@string/vehicle_item"
+                            app:srcCompat="@drawable/sgd_iv_fortuner"
+                            tools:srcCompat="@drawable/sgd_iv_fortuner" />
+
+                        <LinearLayout
+                            android:id="@+id/sgd_desc_container_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="20dp"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:id="@+id/sgd_tv_name_item_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Toyota Fortuner"
+                                android:textAlignment="center"
+                                android:textSize="16sp"
+                                tools:ignore="HardcodedText" />
+
+                            <Button
+                                android:id="@+id/sgd_btn_select_item_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="36dp"
+                                android:layout_weight="1"
+                                android:backgroundTint="#3FBB54"
+                                android:text="@string/text_select"
+                                android:textColor="#000000"
+                                android:textSize="12sp"
+                                tools:ignore="TouchTargetSizeCheck" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </ScrollView>
+
+            <ImageView
+                android:id="@+id/sgd_iv_cyan_circle"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:background="@drawable/circle"
+                android:backgroundTint="#8DDEF0"
+                android:contentDescription="@string/cyan_circle_left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/sgd_sv_items"
+                tools:ignore="ImageContrastCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
