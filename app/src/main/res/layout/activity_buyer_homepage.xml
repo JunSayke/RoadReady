@@ -264,7 +264,7 @@
 
             <ScrollView
                 android:id="@+id/bh_sv_items"
-                android:layout_width="wrap_content"
+                android:layout_width="380dp"
                 android:layout_height="420dp"
                 android:layout_marginVertical="20dp"
                 android:background="@drawable/rectangle"
