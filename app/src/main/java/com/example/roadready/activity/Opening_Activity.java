@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.roadready.R;
-import com.example.roadready.classes.general.FirebaseManager;
 import com.example.roadready.databinding.ActivityOpeningBinding;
 
 public class Opening_Activity extends AppCompatActivity {
@@ -20,14 +18,22 @@ public class Opening_Activity extends AppCompatActivity {
         binding = ActivityOpeningBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        //  Splash Screen code
+        makeSplashScreen();
+    }
+
+    private void makeSplashScreen() {
+        int SplashScreenDuration = 3000; // Duration in milliseconds
+        Intent IntentLoginActivity = new Intent(Opening_Activity.this, Login_Activity.class);
+
         Thread thread = new Thread(() -> {
             try {
-                Thread.sleep(3000); //  Duration
+                Thread.sleep(SplashScreenDuration);
+            } catch (InterruptedException e) {
+                Log.e("Opening_Activity", "InterruptedException occurred: " + e.getMessage(), e);
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.e("Opening_Activity", "Exception occurred: " + e.getMessage(), e);
             } finally {
-                startActivity(new Intent(Opening_Activity.this, Login_Activity.class));
+                startActivity(IntentLoginActivity);
             }
         });
 

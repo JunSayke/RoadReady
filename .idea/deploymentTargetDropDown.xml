@@ -34,7 +34,7 @@
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-19T15:00:29.337266700Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-03-21T06:35:08.336632200Z" />
         </State>
       </entry>
       <entry key="SignUpAs_Activity">
@@ -57,7 +57,20 @@
         </State>
       </entry>
       <entry key="app">
-        <State />
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-21T07:24:12.422286600Z" />
+        </State>
       </entry>
     </value>
   </component>
