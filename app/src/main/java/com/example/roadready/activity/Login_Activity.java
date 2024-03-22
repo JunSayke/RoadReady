@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.roadready.classes.general.OkHttp;
+import com.example.roadready.classes.general.SessionManager;
 import com.example.roadready.databinding.ActivityLoginBinding;
 
 import org.json.JSONException;
@@ -34,6 +35,7 @@ public class Login_Activity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         // Initialize the ProgressBar
         progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
 
@@ -54,8 +56,8 @@ public class Login_Activity extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 binding.loginBtnLogin.setEnabled(false);
 
-                String email = String.valueOf(binding.loginIptEmail.getText());
-                String password = String.valueOf(binding.loginIptPassword.getText());
+                String email = binding.loginIptEmail.getText().toString();
+                String password = binding.loginIptPassword.getText().toString();
 
                 JSONObject data = new JSONObject();
                 try {
@@ -100,6 +102,8 @@ public class Login_Activity extends AppCompatActivity {
                                                 Toast.makeText(Login_Activity.this, "Login successfully!", Toast.LENGTH_LONG).show();
                                             }
                                         });
+                                        JSONObject user = data.getJSONObject("user");
+                                        new SessionManager(Login_Activity.this).startSession(user.get("userid").toString(), user.get("firstname").toString(), user.get("lastname").toString());
                                         Intent intent = new Intent(Login_Activity.this, BuyerHomepage_Activity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);

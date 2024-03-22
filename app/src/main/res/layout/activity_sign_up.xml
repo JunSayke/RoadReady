@@ -178,6 +178,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
+                android:contentDescription="male"
                 android:hint="@string/text_male" />
 
             <RadioButton
@@ -185,6 +186,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
+                android:contentDescription="female"
                 android:hint="@string/text_female" />
 
             <RadioButton
@@ -193,6 +195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_weight="1"
+                android:contentDescription="others"
                 android:hint="@string/text_other" />
         </RadioGroup>
 

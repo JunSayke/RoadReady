@@ -65,7 +65,7 @@ public class SignUp_Activity extends AppCompatActivity {
                 String password = binding.signupIptPassword.getText().toString();
                 String address = binding.signupIptAddress.getText().toString();
                 String longitudeAndLatitude = binding.signupIptCoordinates.getText().toString();
-                String sex = ((RadioButton) findViewById(binding.signupRgSexOptions.getCheckedRadioButtonId())).getHint().toString();
+                String sex = findViewById(binding.signupRgSexOptions.getCheckedRadioButtonId()).getContentDescription().toString();
 
                 // Create JSON object with user data
                 JSONObject data = new JSONObject();
@@ -118,7 +118,7 @@ public class SignUp_Activity extends AppCompatActivity {
                                                 Toast.makeText(SignUp_Activity.this, "Registered Successfully!", Toast.LENGTH_LONG).show();
                                             }
                                         });
-                                        Intent intent = new Intent(SignUp_Activity.this, BuyerHomepage_Activity.class);
+                                        Intent intent = new Intent(SignUp_Activity.this, Login_Activity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                         finish();
