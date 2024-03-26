@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activity.SelectingCar_Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -93,9 +94,9 @@
 
                 <ImageView
                     android:id="@+id/sgc_dealer_logo"
-                    android:contentDescription="@string/img_dealer_logo"
                     android:layout_width="150dp"
                     android:layout_height="120dp"
+                    android:contentDescription="@string/img_dealer_logo"
                     android:src="@drawable/srcd_iv_cardistrictmandaue"
                     tools:srcCompat="@drawable/srcd_iv_cardistrictmandaue" />
 

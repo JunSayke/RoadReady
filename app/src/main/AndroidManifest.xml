@@ -13,10 +13,35 @@
         android:theme="@style/Theme.RoadReady"
         tools:targetApi="31">
         <activity
+            android:name=".activity.RenewalRegistration_Activity"
+            android:exported="true"
+            android:screenOrientation="sensorPortrait"/>
+        <activity
+            android:name=".activity.MyVehicle_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".activity.VehicleApplicationProgress_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".activity.VehicleRegistrationProgress_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".activity.ApplicationProgress_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".activity.InstallmentForm_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".activity.CashPaymentForm_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.SelectingCar_Activity"
             android:exported="false"

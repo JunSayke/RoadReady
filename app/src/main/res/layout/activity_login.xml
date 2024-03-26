@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="activity.Login_Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -115,13 +116,13 @@
 
         <ImageView
             android:id="@+id/login_misc_or"
-            android:contentDescription="@string/vector_or"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="55dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="56dp"
             android:background="@drawable/login_grp_or"
+            android:contentDescription="@string/vector_or"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -169,9 +170,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="121dp"
             android:layout_marginBottom="46dp"
+            android:clickable="true"
             android:linksClickable="true"
             android:text="@string/text_signup"
-            android:clickable="true"
             android:textColor="#3670A8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
