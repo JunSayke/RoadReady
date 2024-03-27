@@ -50,14 +50,14 @@ public class Login_Activity extends AppCompatActivity {
         // Initially hide the progress bar
         progressBar.setVisibility(View.GONE);
 
-        binding.loginBtnLogin.setOnClickListener(new View.OnClickListener() {
+        binding.lgnBtnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
-                binding.loginBtnLogin.setEnabled(false);
+                binding.lgnBtnLogin.setEnabled(false);
 
-                String email = binding.loginIptEmail.getText().toString();
-                String password = binding.loginIptPassword.getText().toString();
+                String email = binding.lgnInptEmail.getText().toString();
+                String password = binding.lgnInptPassword.getText().toString();
 
                 JSONObject data = new JSONObject();
                 try {
@@ -76,7 +76,7 @@ public class Login_Activity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         progressBar.setVisibility(View.GONE);
-                                        binding.loginBtnLogin.setEnabled(true);
+                                        binding.lgnBtnLogin.setEnabled(true);
                                     }
                                 });
                                 Log.e(TAG, "Error occurred during GET request: " + e.getMessage());
@@ -88,7 +88,7 @@ public class Login_Activity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         progressBar.setVisibility(View.GONE);
-                                        binding.loginBtnLogin.setEnabled(true);
+                                        binding.lgnBtnLogin.setEnabled(true);
                                     }
                                 });
                                 if (response.isSuccessful()) {
@@ -121,7 +121,7 @@ public class Login_Activity extends AppCompatActivity {
             }
         });
 
-        binding.loginTvSignup.setOnClickListener(new View.OnClickListener() {
+        binding.lgnTextSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Login_Activity.this, SignUp_Activity.class);

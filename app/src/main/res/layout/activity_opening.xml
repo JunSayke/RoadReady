@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activity.Opening_Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/op_roadReady_logo"
+            android:id="@+id/opLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -33,7 +34,7 @@
             tools:srcCompat="@drawable/roadready" />
 
         <ImageView
-            android:id="@+id/op_red_circle"
+            android:id="@+id/opImageRedCircle"
             android:layout_width="264dp"
             android:layout_height="264dp"
             android:layout_marginStart="350dp"
@@ -42,13 +43,13 @@
             android:background="@drawable/circle"
             android:backgroundTint="#FA5C5C"
             android:contentDescription="@string/red_circle"
-            app:layout_constraintBottom_toTopOf="@+id/op_paragraph"
+            app:layout_constraintBottom_toTopOf="@+id/opTextParagraph"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/op_paragraph"
+            android:id="@+id/opTextParagraph"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="178dp"
@@ -63,7 +64,7 @@
             android:textColor="#000000"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/op_roadReady_logo"
+            app:layout_constraintBottom_toTopOf="@+id/lgnLogo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.521"
             app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +73,7 @@
             tools:ignore="Deprecated,TextSizeCheck" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/opImageCyanLeft"
             android:layout_width="264dp"
             android:layout_height="264dp"
             android:layout_marginBottom="-80dp"
@@ -80,12 +81,12 @@
             android:backgroundTint="#B30EB2F8"
             android:contentDescription="@string/cyan_circle_left"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintEnd_toStartOf="@+id/opImageCyanRight"
             app:layout_constraintHorizontal_bias="0.223"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/opImageCyanRight"
             android:layout_width="264dp"
             android:layout_height="264dp"
             android:layout_marginStart="192dp"

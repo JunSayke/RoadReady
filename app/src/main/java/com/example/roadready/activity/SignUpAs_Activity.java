@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.roadready.R;
 import com.example.roadready.databinding.ActivitySignUpAsBinding;
 
 public class SignUpAs_Activity extends AppCompatActivity {
@@ -20,7 +19,7 @@ public class SignUpAs_Activity extends AppCompatActivity {
         binding = ActivitySignUpAsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.signupasTvLogin.setOnClickListener(new View.OnClickListener() {
+        binding.spasTextLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignUpAs_Activity.this, Login_Activity.class);
@@ -28,7 +27,7 @@ public class SignUpAs_Activity extends AppCompatActivity {
             }
         });
 
-        binding.signupasBtnVbuyer.setOnClickListener(new View.OnClickListener() {
+        binding.spasBtnVehicleBuyer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignUpAs_Activity.this, SignUp_Activity.class);

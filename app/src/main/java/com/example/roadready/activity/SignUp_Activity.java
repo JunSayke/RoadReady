@@ -50,22 +50,22 @@ public class SignUp_Activity extends AppCompatActivity {
         // Initially hide the progress bar
         progressBar.setVisibility(View.GONE);
 
-        binding.signupBtnSubmit.setOnClickListener(new View.OnClickListener() {
+        binding.sgnupBtnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Show the progress bar when the button is clicked
                 progressBar.setVisibility(View.VISIBLE);
-                binding.signupBtnSubmit.setEnabled(false);
+                binding.sgnupBtnSubmit.setEnabled(false);
 
                 // Retrieve user input data
-                String firstName = binding.signupIptFname.getText().toString();
-                String lastName = binding.signupIptLname.getText().toString();
-                String email = binding.signupIptEmail.getText().toString();
-                String phone = binding.signupIptPhone.getText().toString();
-                String password = binding.signupIptPassword.getText().toString();
-                String address = binding.signupIptAddress.getText().toString();
-                String longitudeAndLatitude = binding.signupIptCoordinates.getText().toString();
-                String sex = findViewById(binding.signupRgSexOptions.getCheckedRadioButtonId()).getContentDescription().toString();
+                String firstName = binding.sgnupInptFname.getText().toString();
+                String lastName = binding.sgnupInptLname.getText().toString();
+                String email = binding.sgnupInptEmail.getText().toString();
+                String phone = binding.sgnupInptPhoneNumber.getText().toString();
+                String password = binding.sgnupInptPassword.getText().toString();
+                String address = binding.sgnupInptAddress.getText().toString();
+                String longitudeAndLatitude = binding.sgnupInptCoordinates.getText().toString();
+                String sex = findViewById(binding.sgnupRgSexOptions.getCheckedRadioButtonId()).getContentDescription().toString();
 
                 // Create JSON object with user data
                 JSONObject data = new JSONObject();
@@ -91,7 +91,7 @@ public class SignUp_Activity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         progressBar.setVisibility(View.GONE);
-                                        binding.signupBtnSubmit.setEnabled(true);
+                                        binding.sgnupBtnSubmit.setEnabled(true);
                                     }
                                 });
                                 Log.e(TAG, "Error occurred during registration: " + e.getMessage());
@@ -104,7 +104,7 @@ public class SignUp_Activity extends AppCompatActivity {
                                     @Override
                                     public void run() {
                                         progressBar.setVisibility(View.GONE);
-                                        binding.signupBtnSubmit.setEnabled(true);
+                                        binding.sgnupBtnSubmit.setEnabled(true);
                                     }
                                 });
                                 if (response.isSuccessful()) {
@@ -134,7 +134,7 @@ public class SignUp_Activity extends AppCompatActivity {
             }
         });
 
-        binding.signupTextLogin.setOnClickListener(new View.OnClickListener() {
+        binding.sgnupTextLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignUp_Activity.this, Login_Activity.class);

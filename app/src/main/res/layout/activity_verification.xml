@@ -10,13 +10,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/verif_tv_header"
+            android:id="@+id/vrfTextHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="118dp"
@@ -30,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.chaos.view.PinView
-            android:id="@+id/verif_pinv_otp"
+            android:id="@+id/vrfInptOtp"
             style="@style/PinWidget.PinView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,31 +45,32 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#6B6868"
             app:hideLineWhenFilled="false"
-            app:itemCount="6"
-            app:itemHeight="50dp"
+            app:itemCount="4"
+            app:itemHeight="80dp"
             app:itemRadius="10dp"
-            app:itemWidth="50dp"
+            app:itemSpacing="16dp"
+            app:itemWidth="80dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/verif_tv_header" />
+            app:layout_constraintTop_toBottomOf="@+id/vrfTextHeader" />
 
         <TextView
-            android:id="@+id/verif_tv_resendcode"
+            android:id="@+id/vrfTextResendCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="176dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="177dp"
+            android:clickable="true"
             android:text="@string/text_resend_code"
             android:textColor="#3670A8"
             android:textSize="20sp"
-            android:clickable="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/verif_pinv_otp" />
+            app:layout_constraintTop_toBottomOf="@+id/vrfInptOtp" />
 
         <Button
-            android:id="@+id/verif_btn_submit"
+            android:id="@+id/vrfBtnSubmit"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -81,7 +83,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/verif_tv_resendcode" />
+            app:layout_constraintTop_toBottomOf="@+id/vrfTextResendCode" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

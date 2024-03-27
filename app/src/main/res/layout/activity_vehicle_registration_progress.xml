@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".activity.VehicleRegistrationProgress_Activity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/formHeader"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/rpImageRedCircle"
+            android:layout_width="264dp"
+            android:layout_height="264dp"
+            android:layout_marginEnd="-120dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#FE4949"
+            android:contentDescription="@string/red_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/rpBtnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="19dp"
+            android:backgroundTint="#00FFFFFF"
+            android:contentDescription="@string/back_btn"
+            android:scaleType="center"
+            android:src="@drawable/left_arrow"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/formHeader">
+
+        <TextView
+            android:id="@+id/rpTitleContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_registration_progress"
+            android:textAlignment="center"
+            android:textSize="34sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/rpNameItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HILUX Conquest 2023"
+                android:textAlignment="center"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:id="@+id/rpImageItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/sgd_iv_conquest" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rpContainerStatuses"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteY="166dp">
+
+            <LinearLayout
+                android:id="@+id/rpContainerStatus1"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/rpTextProgress1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_your_documents_is_on_review"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/rpStatusProgress1"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rpContainerStatus2"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/rpTextProgress2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_registration_on_progress"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/rpStatusProgress2"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rpContainerStatus3"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/rpTextProgress3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_releasing_of_registration"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/rpStatusProgress3"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/rpTextFilename"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="30dp"
+            android:layout_weight="1"
+            android:text="file. Abing_Registered.pdf"
+            android:textAlignment="center"
+            android:textColor="#9A9696"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

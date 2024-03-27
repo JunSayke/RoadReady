@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.roadready.R;
 import com.example.roadready.databinding.ActivityVerificationBinding;
 
 public class Verification_Activity extends AppCompatActivity {
