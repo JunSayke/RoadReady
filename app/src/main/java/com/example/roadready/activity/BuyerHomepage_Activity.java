@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.SessionManager;
 import com.example.roadready.databinding.ActivityBuyerHomepageBinding;
-import com.example.roadready.databinding.ActivityCashPaymentFormBinding;
 
 import java.util.Map;
 
@@ -28,7 +26,7 @@ public class BuyerHomepage_Activity extends AppCompatActivity {
         Map<String, String> userData = sessionManager.getUserData();
 
         assert userData != null;
-        binding.bhTvUserWelcome.setText("Welcome " + userData.get("firstname"));
+        binding.bhTextWelcomeUser.setText("Welcome " + userData.get("firstname"));
         sessionManager.stopSession();
     }
 }

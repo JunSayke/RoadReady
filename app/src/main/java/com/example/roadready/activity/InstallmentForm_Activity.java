@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.roadready.R;
 import com.example.roadready.databinding.ActivityInstallmentFormBinding;
-import com.example.roadready.databinding.ActivityVerificationBinding;
 
 public class InstallmentForm_Activity extends AppCompatActivity {
 

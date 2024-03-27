@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/signup_text_signup"
+            android:id="@+id/sgnupTextSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="152dp"
@@ -33,124 +33,124 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/signup_ipt_fname"
+            android:id="@+id/sgnupInptFname"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
             android:layout_marginTop="8dp"
             android:autofillHints="First Name"
-            android:background="@drawable/rounded_corner_rectangle20"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
             android:ems="10"
             android:hint="@string/placeholder_first_name"
             android:inputType="text"
             android:padding="12dp"
-            app:layout_constraintEnd_toStartOf="@+id/signup_ipt_lname"
+            app:layout_constraintEnd_toStartOf="@+id/sgnupInptLname"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_text_signup" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupTextSignup" />
 
         <EditText
-            android:id="@+id/signup_ipt_lname"
+            android:id="@+id/sgnupInptLname"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="17dp"
             android:autofillHints="Last Name"
-            android:background="@drawable/rounded_corner_rectangle20"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
             android:ems="10"
             android:hint="@string/placeholder_last_name"
             android:inputType="text"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/signup_ipt_fname"
-            app:layout_constraintTop_toBottomOf="@+id/signup_text_signup" />
+            app:layout_constraintStart_toEndOf="@+id/sgnupInptFname"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupTextSignup" />
 
         <EditText
-            android:id="@+id/signup_ipt_email"
+            android:id="@+id/sgnupInptEmail"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="103dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="103dp"
             android:autofillHints="Email Address"
-            android:background="@drawable/rounded_corner_rectangle20"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
             android:ems="10"
             android:hint="@string/placeholder_email_address"
             android:inputType="textEmailAddress"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_ipt_fname" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptFname" />
 
         <EditText
-            android:id="@+id/signup_ipt_phone"
+            android:id="@+id/sgnupInptPhoneNumber"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="99dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="103dp"
             android:autofillHints="Phone Number"
-            android:background="@drawable/rounded_corner_rectangle20"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
             android:ems="10"
             android:hint="@string/placeholder_phone_number"
             android:inputType="phone"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_ipt_email" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptEmail" />
 
         <EditText
-            android:id="@+id/signup_ipt_password"
+            android:id="@+id/sgnupInptPassword"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="101dp"
             android:autofillHints="Password"
-            android:background="@drawable/rounded_corner_rectangle20"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
             android:ems="10"
             android:hint="@string/placeholder_password"
             android:inputType="textPassword"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_ipt_phone" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptPhoneNumber" />
 
         <EditText
-            android:id="@+id/signup_ipt_address"
+            android:id="@+id/sgnupInptAddress"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="101dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="101dp"
             android:autofillHints="Current Address"
-            android:background="@drawable/rounded_corner_rectangle20"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
             android:ems="10"
             android:hint="@string/placeholder_current_address"
             android:inputType="text"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_ipt_password" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptPassword" />
 
         <EditText
-            android:id="@+id/signup_ipt_coordinates"
+            android:id="@+id/sgnupInptCoordinates"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="101dp"
             android:autofillHints="@string/placeholder_longitude_latitude"
-            android:background="@drawable/rounded_corner_rectangle20"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
             android:ems="10"
             android:hint="@string/placeholder_longitude_latitude"
             android:inputType="text"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_ipt_address" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptAddress" />
 
         <TextView
-            android:id="@+id/signup_tv_sex"
+            android:id="@+id/sgnupLblSex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -160,10 +160,10 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/signup_ipt_coordinates" />
+            app:layout_constraintTop_toBottomOf="@id/sgnupInptCoordinates" />
 
         <RadioGroup
-            android:id="@+id/signup_rg_sex_options"
+            android:id="@+id/sgnupRgSexOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="101dp"
@@ -171,10 +171,10 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_tv_sex">
+            app:layout_constraintTop_toBottomOf="@+id/sgnupLblSex">
 
             <RadioButton
-                android:id="@+id/signup_radio_male"
+                android:id="@+id/sgnupRbMale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
@@ -182,7 +182,7 @@
                 android:hint="@string/text_male" />
 
             <RadioButton
-                android:id="@+id/signup_radio_female"
+                android:id="@+id/sgnupRbFemale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
@@ -190,7 +190,7 @@
                 android:hint="@string/text_female" />
 
             <RadioButton
-                android:id="@+id/signup_radio_other"
+                android:id="@+id/sgnupRadioOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
@@ -200,7 +200,7 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/signup_btn_submit"
+            android:id="@+id/sgnupBtnSubmit"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="150dp"
@@ -213,20 +213,20 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_rg_sex_options" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupRgSexOptions" />
 
         <TextView
-            android:id="@+id/signup_text_already_have_account"
+            android:id="@+id/sgnupTextAlreadyHaveAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="105dp"
             android:layout_marginTop="32dp"
             android:text="@string/text_already_have_account"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_btn_submit" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupBtnSubmit" />
 
         <TextView
-            android:id="@+id/signup_text_login"
+            android:id="@+id/sgnupTextLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
@@ -235,10 +235,10 @@
             android:text="@string/text_login"
             android:textColor="#3670A8"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_btn_submit" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupBtnSubmit" />
 
         <ImageView
-            android:id="@+id/signup_vector_or"
+            android:id="@+id/sgnupImageOr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
@@ -247,11 +247,11 @@
             android:contentDescription="@string/vector_or"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_text_already_have_account"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupTextAlreadyHaveAccount"
             app:srcCompat="@drawable/login_grp_or" />
 
         <Button
-            android:id="@+id/signup_btn_loginGoogle"
+            android:id="@+id/sgnupBtnGoogleLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="111dp"
@@ -269,7 +269,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signup_vector_or"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupImageOr"
             app:rippleColor="#F3F3F3F3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

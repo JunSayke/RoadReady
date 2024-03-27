@@ -7,7 +7,7 @@
     tools:context=".activity.InstallmentForm_Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/form_header"
+        android:id="@+id/formHeader"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="#FFFFFF"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/inst_iv_red_circle"
+            android:id="@+id/instImageRedCircle"
             android:layout_width="264dp"
             android:layout_height="264dp"
             android:layout_marginEnd="-120dp"
@@ -30,7 +30,7 @@
             tools:ignore="ImageContrastCheck" />
 
         <ImageButton
-            android:id="@+id/inst_btn_back"
+            android:id="@+id/instBtnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -45,7 +45,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/inst_tv_content_title"
+        android:id="@+id/instTitleContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="165dp"
@@ -56,10 +56,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/form_header" />
+        app:layout_constraintTop_toBottomOf="@+id/formHeader" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/inst_content"
+        android:id="@+id/instContainerContent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="20dp"
@@ -68,10 +68,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inst_tv_content_title">
+        app:layout_constraintTop_toBottomOf="@+id/instTitleContent">
 
         <LinearLayout
-            android:id="@+id/inst_inpt_container"
+            android:id="@+id/instContainerInpt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -81,56 +81,57 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/inst_fname_container"
+                android:id="@+id/instContainerFname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/inst_lbl_fname"
+                    android:id="@+id/instLblFname"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/inst_inpt_fname"
+                    android:labelFor="@id/instInptFname"
                     android:text="@string/text_fname"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/inst_inpt_fname"
+                    android:id="@+id/instInptFname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:autofillHints="@string/placeholder_first_name"
-                    android:background="@drawable/rounded_corner_rectangle20"
+                    android:background="@drawable/rounded_corner_rectangle20_solid"
+                    android:backgroundTint="#FFFFFF"
                     android:ems="10"
                     android:inputType="text"
                     android:padding="12dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/inst_lname_container"
+                android:id="@+id/instContainerLname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/inst_lbl_lname"
+                    android:id="@+id/instLblLname"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/inst_inpt_lname"
+                    android:labelFor="@id/instInptLname"
                     android:text="@string/text_lname"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/inst_inpt_lname"
+                    android:id="@+id/instInptLname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:autofillHints="@string/placeholder_last_name"
-                    android:background="@drawable/rounded_corner_rectangle20"
+                    android:background="@drawable/rounded_corner_rectangle20_solid"
                     android:ems="10"
                     android:inputType="text"
                     android:padding="12dp" />
@@ -138,91 +139,91 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/inst_address_container"
+                android:id="@+id/instContainerAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/inst_lbl_address"
+                    android:id="@+id/instLblAddress"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/inst_inpt_address"
+                    android:labelFor="@id/instInptAddress"
                     android:text="@string/text_address"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/inst_inpt_address"
+                    android:id="@+id/instInptAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:autofillHints="@string/placeholder_last_name"
-                    android:background="@drawable/rounded_corner_rectangle20"
+                    android:background="@drawable/rounded_corner_rectangle20_solid"
                     android:ems="10"
                     android:inputType="text"
                     android:padding="12dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/inst_phonenum_container"
+                android:id="@+id/instContainerPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/inst_lbl_phonenum"
+                    android:id="@+id/instLblPhoneNumber"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/inst_inpt_phonenum"
+                    android:labelFor="@id/instInptPhoneNumber"
                     android:text="@string/text_phone_number"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/inst_inpt_phonenum"
+                    android:id="@+id/instInptPhoneNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:autofillHints="@string/placeholder_phone_number"
-                    android:background="@drawable/rounded_corner_rectangle20"
+                    android:background="@drawable/rounded_corner_rectangle20_solid"
                     android:ems="10"
                     android:inputType="phone|number"
                     android:padding="12dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/inst_validid_container"
+                android:id="@+id/instContainerValidId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/inst_lbl_validid"
+                    android:id="@+id/instLblValidId"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/inst_inpt_validid"
+                    android:labelFor="@id/instInptValidId"
                     android:text="@string/text_valid_id"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/inst_inpt_validid"
+                    android:id="@+id/instInptValidId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:autofillHints="@string/placeholder_phone_number"
-                    android:background="@drawable/rounded_corner_rectangle20"
+                    android:background="@drawable/rounded_corner_rectangle20_solid"
                     android:ems="10"
                     android:enabled="false"
                     android:inputType="text"
                     android:padding="12dp" />
 
                 <ImageButton
-                    android:id="@+id/inst_btn_upload_validid"
+                    android:id="@+id/instBtnUploadValidId"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -232,28 +233,28 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/inst_comakerName_container"
+                android:id="@+id/instContainerComakerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/inst_lbl_comakerName"
+                    android:id="@+id/instLblComakerName"
                     android:layout_width="156dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/inst_inpt_validid"
+                    android:labelFor="@id/instInptValidId"
                     android:text="@string/text_comaker_name"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/inst_inpt_comakerName"
+                    android:id="@+id/instInptComakerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:autofillHints="@string/placeholder_phone_number"
-                    android:background="@drawable/rounded_corner_rectangle20"
+                    android:background="@drawable/rounded_corner_rectangle20_solid"
                     android:ems="10"
                     android:inputType="text"
                     android:padding="12dp" />
@@ -261,34 +262,34 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/inst_comakerValidId_container"
+                android:id="@+id/instContainerComakerValidId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/inst_lbl_comakerValidId"
-                    android:layout_width="192dp"
+                    android:id="@+id/instLblComakerValidId"
+                    android:layout_width="168dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/inst_inpt_validid"
+                    android:labelFor="@id/instInptValidId"
                     android:text="@string/text_comaker_name"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/inst_inpt_comakerValidId"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/instInptComakerValidId"
+                    android:layout_width="169dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:autofillHints="@string/placeholder_phone_number"
-                    android:background="@drawable/rounded_corner_rectangle20"
+                    android:background="@drawable/rounded_corner_rectangle20_solid"
                     android:ems="10"
                     android:inputType="text"
                     android:padding="12dp" />
 
                 <ImageButton
-                    android:id="@+id/inst_btn_upload_comakerValidId"
+                    android:id="@+id/instBtnUploadComakerValidId"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -303,12 +304,12 @@
                 android:layout_height="match_parent">
 
                 <com.github.gcacace.signaturepad.views.SignaturePad
-                    android:id="@+id/inst_signature_pad"
+                    android:id="@+id/instInptSignature"
                     android:layout_width="200dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="32dp"
                     android:background="@drawable/rectangle"
-                    app:layout_constraintBottom_toTopOf="@+id/inst_tv_signature"
+                    app:layout_constraintBottom_toTopOf="@+id/instLblSignature"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.496"
                     app:layout_constraintStart_toStartOf="parent"
@@ -316,7 +317,7 @@
                     app:penColor="@android:color/black" />
 
                 <TextView
-                    android:id="@+id/inst_tv_signature"
+                    android:id="@+id/instLblSignature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="165dp"
@@ -324,13 +325,13 @@
                     android:layout_marginEnd="165dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/text_signature"
-                    app:layout_constraintBottom_toTopOf="@+id/inst_btn_container"
+                    app:layout_constraintBottom_toTopOf="@+id/instContainerBtn"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inst_signature_pad" />
+                    app:layout_constraintTop_toBottomOf="@+id/instInptSignature" />
 
                 <LinearLayout
-                    android:id="@+id/inst_btn_container"
+                    android:id="@+id/instContainerBtn"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="152dp"
@@ -341,10 +342,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/inst_tv_signature">
+                    app:layout_constraintTop_toBottomOf="@+id/instLblSignature">
 
                     <Button
-                        android:id="@+id/inst_btn_submit"
+                        android:id="@+id/instBtnSubmit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
@@ -354,7 +355,7 @@
                         android:textColor="#000000" />
 
                     <Button
-                        android:id="@+id/inst_btn_cancel"
+                        android:id="@+id/instBtnCancel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"

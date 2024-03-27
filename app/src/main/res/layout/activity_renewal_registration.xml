@@ -8,7 +8,7 @@
     tools:context=".activity.RenewalRegistration_Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/form_header"
+        android:id="@+id/formHeader"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="#FFFFFF"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/ror_iv_red_circle"
+            android:id="@+id/rorImageRedCircle"
             android:layout_width="264dp"
             android:layout_height="264dp"
             android:layout_marginEnd="-120dp"
@@ -31,7 +31,7 @@
             tools:ignore="ImageContrastCheck" />
 
         <ImageButton
-            android:id="@+id/ror_btn_back"
+            android:id="@+id/rorBtnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -46,6 +46,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
+        android:id="@+id/rorContainerContent"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center_horizontal"
@@ -54,10 +55,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/form_header">
+        app:layout_constraintTop_toBottomOf="@+id/formHeader">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/rorTitleContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="30dp"
@@ -66,7 +67,7 @@
             android:textSize="34sp" />
 
         <LinearLayout
-            android:id="@+id/ror_mvis_container"
+            android:id="@+id/rorContainerMvis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -74,27 +75,27 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/ror_lbl_mvis"
+                android:id="@+id/rorLblMvis"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:labelFor="@id/ror_inpt_mvis"
+                android:labelFor="@id/rorInptMvis"
                 android:text="@string/text_1_mvis"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/ror_inpt_mvis"
+                android:id="@+id/rorInptMvis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_corner_rectangle20"
+                android:background="@drawable/rounded_corner_rectangle20_solid"
                 android:ems="10"
                 android:enabled="false"
                 android:inputType="text"
                 android:padding="12dp" />
 
             <ImageButton
-                android:id="@+id/ror_btn_upload_mvis"
+                android:id="@+id/rorBtnUploadMvis"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -105,7 +106,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ror_insurance_container"
+            android:id="@+id/rorContainerInsurance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -113,27 +114,27 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/ror_lbl_insurance"
+                android:id="@+id/rorLblInsurance"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:labelFor="@id/ror_inpt_insurance"
+                android:labelFor="@+id/rorInptInsurance"
                 android:text="@string/text_2_insurance"
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/ror_inpt_insurance"
+                android:id="@+id/rorInptInsurance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_corner_rectangle20"
+                android:background="@drawable/rounded_corner_rectangle20_solid"
                 android:ems="10"
                 android:enabled="false"
                 android:inputType="text"
                 android:padding="12dp" />
 
             <ImageButton
-                android:id="@+id/ror_btn_upload_insurance"
+                android:id="@+id/rorBtnUploadInsurance"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -144,7 +145,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ror_certificationRegistration_container"
+            android:id="@+id/rorContainerRegisterCert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -152,27 +153,27 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/ror_lbl_certificationRegistration"
+                android:id="@+id/rorLblRegisterCert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:labelFor="@id/ror_inpt_certificationRegistration"
+                android:labelFor="@id/rorInptRegisterCert"
                 android:text="@string/text_3_certification_of_registration"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/ror_inpt_certificationRegistration"
+                android:id="@+id/rorInptRegisterCert"
                 android:layout_width="131dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_corner_rectangle20"
+                android:background="@drawable/rounded_corner_rectangle20_solid"
                 android:ems="10"
                 android:enabled="false"
                 android:inputType="text"
                 android:padding="12dp" />
 
             <ImageButton
-                android:id="@+id/ror_btn_upload_certificationRegistration"
+                android:id="@+id/rorBtnUploadRegisterCert"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -183,7 +184,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ror_originalReceipt_container"
+            android:id="@+id/rorContainerOrigReceipt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -191,27 +192,27 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/ror_lbl_originalReceipt"
-                android:layout_width="100dp"
+                android:id="@+id/rorLblOrigReceipt"
+                android:layout_width="127dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:labelFor="@id/ror_inpt_originalReceipt"
+                android:labelFor="@id/rorInptOrigReceipt"
                 android:text="@string/text_4_original_receipt"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/ror_inpt_originalReceipt"
-                android:layout_width="wrap_content"
+                android:id="@+id/rorInptOrigReceipt"
+                android:layout_width="183dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_corner_rectangle20"
+                android:background="@drawable/rounded_corner_rectangle20_solid"
                 android:ems="10"
                 android:enabled="false"
                 android:inputType="text"
                 android:padding="12dp" />
 
             <ImageButton
-                android:id="@+id/ror_btn_upload_originalReceipt"
+                android:id="@+id/rorBtnUploadOrigReceipt"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -222,7 +223,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ror_proofPayment_container"
+            android:id="@+id/rorContainerProofPayment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="5dp"
@@ -230,27 +231,27 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/ror_lbl_proofPayment"
+                android:id="@+id/rorLblProofPayment"
                 android:layout_width="143dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:labelFor="@id/ror_inpt_proofPayment"
+                android:labelFor="@id/rorInptProofPayment"
                 android:text="@string/text_5_proof_of_payment"
                 android:textSize="14sp" />
 
             <EditText
-                android:id="@+id/ror_inpt_proofPayment"
+                android:id="@+id/rorInptProofPayment"
                 android:layout_width="159dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_corner_rectangle20"
+                android:background="@drawable/rounded_corner_rectangle20_solid"
                 android:ems="10"
                 android:enabled="false"
                 android:inputType="text"
                 android:padding="12dp" />
 
             <ImageButton
-                android:id="@+id/ror_btn_upload_proofPayment"
+                android:id="@+id/rorBtnUploadProofPayment"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -261,7 +262,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ror_lto_container"
+            android:id="@+id/rorContainerSubmitLto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="50dp"
@@ -270,7 +271,7 @@
             android:textAlignment="center">
 
             <TextView
-                android:id="@+id/ror_lbl_lto"
+                android:id="@+id/rorLblLto"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -278,7 +279,7 @@
                 android:textAlignment="center" />
 
             <Spinner
-                android:id="@+id/ror_spinner_lto"
+                android:id="@+id/rorSpinnerLto"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginHorizontal="20dp"
@@ -288,7 +289,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/ror_btn_submit"
+            android:id="@+id/rorBtnSubmit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#3FBB54"

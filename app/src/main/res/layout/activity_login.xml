@@ -16,19 +16,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/lgnImageRedCircle"
             android:layout_width="264dp"
             android:layout_height="264dp"
             android:layout_marginStart="350dp"
             android:layout_marginBottom="220dp"
             android:background="@drawable/circle"
             android:backgroundTint="#FA5C5C"
-            app:layout_constraintBottom_toTopOf="@+id/op_roadReady_logo"
+            app:layout_constraintBottom_toTopOf="@+id/lgnLogo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/op_roadReady_logo"
+            android:id="@+id/lgnLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -44,33 +45,33 @@
             tools:srcCompat="@drawable/roadready" />
 
         <EditText
-            android:id="@+id/login_ipt_email"
+            android:id="@+id/lgnInptEmail"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="99dp"
             android:layout_marginEnd="102dp"
             android:autofillHints="@string/placeholder_email_address"
-            android:background="@drawable/rounded_corner_rectangle20"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
             android:drawableStart="@drawable/mail"
             android:drawablePadding="5dp"
             android:ems="10"
             android:hint="@string/placeholder_email_address"
             android:inputType="textEmailAddress"
             android:padding="12dp"
-            app:layout_constraintBottom_toTopOf="@+id/login_ipt_password"
+            app:layout_constraintBottom_toTopOf="@+id/lgnInptPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/op_roadReady_logo" />
+            app:layout_constraintTop_toBottomOf="@+id/lgnLogo" />
 
         <EditText
-            android:id="@+id/login_ipt_password"
+            android:id="@+id/lgnInptPassword"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
             android:layout_marginEnd="101dp"
             android:layout_marginBottom="281dp"
             android:autofillHints="@string/placeholder_password"
-            android:background="@drawable/rounded_corner_rectangle20"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
             android:drawableStart="@drawable/lock"
             android:drawablePadding="5dp"
             android:ems="10"
@@ -80,10 +81,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_ipt_email" />
+            app:layout_constraintTop_toBottomOf="@+id/lgnInptEmail" />
 
         <TextView
-            android:id="@+id/login_tv_forgotPass"
+            android:id="@+id/lgnTextForgetPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="288dp"
@@ -94,11 +95,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.542"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_ipt_password"
+            app:layout_constraintTop_toBottomOf="@+id/lgnInptPassword"
             app:layout_constraintVertical_bias="0.241" />
 
         <Button
-            android:id="@+id/login_btn_login"
+            android:id="@+id/lgnBtnLogin"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
@@ -112,10 +113,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_tv_forgotPass" />
+            app:layout_constraintTop_toBottomOf="@+id/lgnTextForgetPassword" />
 
         <ImageView
-            android:id="@+id/login_misc_or"
+            android:id="@+id/lgnImageOr"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="55dp"
@@ -126,10 +127,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_btn_login" />
+            app:layout_constraintTop_toBottomOf="@+id/lgnBtnLogin" />
 
         <Button
-            android:id="@+id/signupas_btn_googleLogin"
+            android:id="@+id/lgnBtnSignupGoogle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="155dp"
@@ -146,14 +147,14 @@
             android:textColor="#747070"
             android:textSize="12sp"
             app:cornerRadius="28dp"
-            app:layout_constraintBottom_toTopOf="@+id/login_tv_no_account_msg"
+            app:layout_constraintBottom_toTopOf="@+id/lgnTextNoAccount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_misc_or"
+            app:layout_constraintTop_toBottomOf="@+id/lgnImageOr"
             app:rippleColor="#F3F3F3F3" />
 
         <TextView
-            android:id="@+id/login_tv_no_account_msg"
+            android:id="@+id/lgnTextNoAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="89dp"
@@ -165,7 +166,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/login_tv_signup"
+            android:id="@+id/lgnTextSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="121dp"
@@ -176,7 +177,7 @@
             android:textColor="#3670A8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/login_tv_no_account_msg" />
+            app:layout_constraintStart_toEndOf="@+id/lgnTextNoAccount" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="InstallmentForm_Activity">
+      <entry key="BuyerProfile_Activity">
         <State>
           <targetSelectedWithDropDown>
             <Target>
@@ -15,7 +15,7 @@
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-26T12:17:30.388017900Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-03-27T07:22:32.543504200Z" />
         </State>
       </entry>
       <entry key="MyVehicle_Activity">
@@ -51,7 +51,20 @@
         </State>
       </entry>
       <entry key="RenewalRegistration_Activity">
-        <State />
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-27T04:06:22.219947300Z" />
+        </State>
       </entry>
       <entry key="VehicleApplicationProgress_Activity">
         <State />

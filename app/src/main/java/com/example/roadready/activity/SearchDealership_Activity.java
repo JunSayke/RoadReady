@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.roadready.R;
 import com.example.roadready.databinding.ActivitySearchDealershipBinding;
-import com.example.roadready.databinding.ActivitySelectingCarBinding;
 
 public class SearchDealership_Activity extends AppCompatActivity {
 

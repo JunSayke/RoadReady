@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.roadready.R;
 import com.example.roadready.databinding.ActivityApplicationProgressBinding;
-import com.example.roadready.databinding.ActivityCashPaymentFormBinding;
 
 public class ApplicationProgress_Activity extends AppCompatActivity {
 

@@ -110,6 +110,14 @@
     <string name="text_2_insurance">2. Insurance:</string>
     <string name="text_1_mvis">1. MVIS:</string>
     <string name="text_renewal_of_registration">Renewal of Registration</string>
+    <string name="text_profile">Profile</string>
+    <string name="text_edit_profile">Edit Profile</string>
+    <string name="text_name">Name:</string>
+    <string name="text_email">Email:</string>
+    <string name="text_longitude_latitude_id"><![CDATA[Longitude & Latitude ID:]]></string>
+    <string name="text_sexColon">Sex:</string>
+    <string name="design_material">design_material</string>
+    <string name="text_cancel">Cancel</string>
 
 
 </resources>

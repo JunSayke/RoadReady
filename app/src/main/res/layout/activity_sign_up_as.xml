@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/signupas_tv_signupas"
+            android:id="@+id/spasTitleContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="145dp"
@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/signupas_btn_vbuyer"
+            android:id="@+id/spasBtnVehicleBuyer"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
@@ -47,13 +47,13 @@
             android:textColor="#332F2F"
             android:textStyle="bold"
             app:cornerRadius="5dp"
-            app:layout_constraintBottom_toTopOf="@+id/signupas_btn_dealer"
+            app:layout_constraintBottom_toTopOf="@+id/spasBtnDealer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signupas_tv_signupas" />
+            app:layout_constraintTop_toBottomOf="@+id/spasTitleContent" />
 
         <Button
-            android:id="@+id/signupas_btn_dealer"
+            android:id="@+id/spasBtnDealer"
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
@@ -66,10 +66,10 @@
             app:cornerRadius="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signupas_btn_vbuyer" />
+            app:layout_constraintTop_toBottomOf="@+id/spasBtnVehicleBuyer" />
 
         <TextView
-            android:id="@+id/signupas_tv_already_have_account"
+            android:id="@+id/spasTextAlreadyHasAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="101dp"
@@ -77,12 +77,12 @@
             android:layout_marginBottom="270dp"
             android:text="@string/text_already_have_account"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/signupas_tv_login"
+            app:layout_constraintEnd_toStartOf="@+id/spasTextLogin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signupas_btn_dealer" />
+            app:layout_constraintTop_toBottomOf="@+id/spasBtnDealer" />
 
         <TextView
-            android:id="@+id/signupas_tv_login"
+            android:id="@+id/spasTextLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
@@ -94,11 +94,11 @@
             android:textColor="#3B76AF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/signupas_tv_already_have_account"
-            app:layout_constraintTop_toBottomOf="@+id/signupas_btn_dealer" />
+            app:layout_constraintStart_toEndOf="@+id/spasTextAlreadyHasAccount"
+            app:layout_constraintTop_toBottomOf="@+id/spasBtnDealer" />
 
         <ImageView
-            android:id="@+id/signupas_iv_or"
+            android:id="@+id/spasImageOr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
@@ -107,12 +107,12 @@
             android:contentDescription="@string/vector_or"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signupas_tv_already_have_account"
+            app:layout_constraintTop_toBottomOf="@+id/spasTextAlreadyHasAccount"
             app:srcCompat="@drawable/login_grp_or"
             tools:srcCompat="@drawable/login_grp_or" />
 
         <Button
-            android:id="@+id/signupas_btn_googleLogin"
+            android:id="@+id/spasBtnSignupGoogle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="87dp"
@@ -131,7 +131,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signupas_iv_or"
+            app:layout_constraintTop_toBottomOf="@+id/spasImageOr"
             app:rippleColor="#F3F3F3F3" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
