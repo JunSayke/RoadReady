@@ -28,7 +28,7 @@
 
         <activity
             android:name=".activity.BuyerEditProfile_Activity"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
 
