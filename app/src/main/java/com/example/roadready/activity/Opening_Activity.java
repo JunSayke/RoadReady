@@ -23,18 +23,18 @@ public class Opening_Activity extends AppCompatActivity {
     }
 
     private void makeSplashScreen() {
-        int SplashScreenDuration = 3000; // Duration in milliseconds
+        int SplashScreenDuration = 1000; // Duration in milliseconds
         SessionManager sessionManager = new SessionManager(Opening_Activity.this);
         Intent intent = new Intent(Opening_Activity.this,
-                sessionManager.getUserData() == null ? SignUpAs_Activity.class : BuyerHomepage_Activity.class);
+                sessionManager.getUserGson() == null ? Login_Activity.class : BuyerHomepage_Activity.class);
 
         Thread thread = new Thread(() -> {
             try {
                 Thread.sleep(SplashScreenDuration);
             } catch (InterruptedException e) {
-                Log.e("Opening_Activity", "InterruptedException occurred: " + e.getMessage(), e);
+                Log.e(TAG, "InterruptedException occurred: " + e.getMessage());
             } catch (Exception e) {
-                Log.e("Opening_Activity", "Exception occurred: " + e.getMessage(), e);
+                Log.e(TAG, "Exception occurred: " + e.getMessage());
             } finally {
                 startActivity(intent);
             }
