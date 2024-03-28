@@ -2,6 +2,9 @@ package com.example.roadready.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +26,7 @@ import com.example.roadready.classes.ui.adapter.MyVehicleRecyclerViewAdapter;
 import com.example.roadready.databinding.ActivityBuyerHomepageBinding;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -53,6 +57,23 @@ public class BuyerHomepage_Activity extends AppCompatActivity {
 
         Log.d(TAG, sessionManager.getUserGson().toString());
         sessionManager.stopSession();
+        populateFilterSpinner();
+        initOnClicks();
+    }
+
+    private void initOnClicks() {
+        binding.bhBtnFilterSearch.setOnClickListener(v -> {
+            int isSpinnerVisible = binding.bhSpinnerFilter.getVisibility();
+            int visibility;
+
+            //4 = INVISIBLE; 0 = VISIBLE
+            if(isSpinnerVisible == 4) {
+                binding.bhSpinnerFilter.setVisibility(View.VISIBLE);
+            } else {
+                binding.bhSpinnerFilter.setVisibility(View.INVISIBLE);
+            }
+
+        });
     }
 
     private final Callback< SuccessGson<ListingsDataGson> > getListingsCallback = new Callback< SuccessGson<ListingsDataGson> >() {
@@ -98,5 +119,18 @@ public class BuyerHomepage_Activity extends AppCompatActivity {
     private void updateWelcomeText(String displayName) {
         String welcomeUser = "Welcome " + displayName;
         binding.bhTextWelcomeUser.setText(welcomeUser);
+    }
+
+    private void populateFilterSpinner() {
+        List<String> spinnerArray = new ArrayList<String>();
+        spinnerArray.add("Vehicle");
+        spinnerArray.add("Dealership");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, spinnerArray);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinnerFilter = binding.bhSpinnerFilter;
+        spinnerFilter.setAdapter(adapter);
     }
 }
