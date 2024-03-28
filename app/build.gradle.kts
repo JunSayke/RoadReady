@@ -59,6 +59,25 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
     // END_OF[Picasso Dependencies]
 
+    // START_OF[View Dependencies]
+    implementation("io.github.chaosleung:pinview:1.4.4")
+    implementation("com.github.gcacace:signature-pad:1.3.1")
+    // END_OF[View Dependencies]
+
+    // START_OF[Google Maps Dependencies]
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:21.2.0")
+    // END_OF[Google Maps Dependencies]
+
+    // START_OF[Google Auth Dependencies]
+    implementation("androidx.credentials:credentials:1.3.0-alpha01")
+
+    // optional - needed for credentials support from play services, for devices running
+    // Android 13 and below.
+    implementation("androidx.credentials:credentials-play-services-auth:1.3.0-alpha01")
+    // END_OF[Google Auth Dependencies]
+
+    // OTHERS
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
@@ -72,14 +91,4 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    // START_OF[View Dependencies]
-    implementation("io.github.chaosleung:pinview:1.4.4")
-    implementation("com.github.gcacace:signature-pad:1.3.1")
-    // END_OF[View Dependencies]
-
-    // START_OF[Google Maps Dependencies]
-    implementation("com.google.android.gms:play-services-maps:18.2.0")
-    implementation("com.google.android.gms:play-services-location:21.2.0")
-    // END_OF[Google Maps Dependencies]
 }

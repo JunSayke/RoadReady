@@ -12,8 +12,8 @@ import com.example.roadready.databinding.ActivityBuyerEditProfileBinding;
 
 public class BuyerEditProfile_Activity extends AppCompatActivity {
 
-    private final String TAG = "BuyerEditProfile_Activity"; // declare TAG for each class for debugging purposes using Log.d()
-    private ActivityBuyerEditProfileBinding binding; // use View binding to avoid using too much findViewById
+    private final String TAG = "BuyerEditProfile_Activity"; // Declare TAG for each class for debugging purposes using Log.d()
+    private ActivityBuyerEditProfileBinding binding; // Use View binding to avoid using too much findViewById
 
     private static final int REQUEST_CODE = 1;
     private ActivityResultLauncher<Intent> mapResultLauncher;

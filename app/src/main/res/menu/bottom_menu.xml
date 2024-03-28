@@ -2,9 +2,24 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Item" />
-    <item android:title="Item" />
-    <item android:title="Item" />
-    <item android:title="Item" />
-    <item android:title="Item" />
+    <item
+        android:id="@+id/mnHome"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Home" />
+    <item
+        android:id="@+id/mnProgress"
+        android:icon="@drawable/baseline_inbox_24"
+        android:title="Progress" />
+    <item
+        android:id="@+id/mnMyVehicle"
+        android:icon="@drawable/baseline_directions_car_24"
+        android:title="My Vehicle" />
+    <item
+        android:id="@+id/mnNotification"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Notification" />
+    <item
+        android:id="@+id/mnProfile"
+        android:icon="@drawable/baseline_person_outline_24"
+        android:title="Profile" />
 </menu>
