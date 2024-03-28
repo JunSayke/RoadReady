@@ -14,28 +14,39 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.roadready.classes.general.OkHttp;
+import com.example.roadready.classes.general.SessionManager;
+import com.example.roadready.classes.model.gson.LoginDataGson;
+import com.example.roadready.classes.model.gson.data.BuyerGson;
+import com.example.roadready.classes.model.gson.response.ErrorGson;
+import com.example.roadready.classes.model.gson.response.ResponseGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
+import com.example.roadready.classes.model.livedata.UserGsonViewModel;
+import com.example.roadready.classes.retrofit.RetrofitFacade;
 import com.example.roadready.databinding.ActivitySignUpBinding;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Objects;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.http.Field;
 
 public class SignUp_Activity extends AppCompatActivity {
-
-    private final String TAG = "SignUp_Activity";
-    private ActivitySignUpBinding binding;
-    private ProgressBar progressBar; // Declare ProgressBar
     private static final int REQUEST_CODE = 1;
     private ActivityResultLauncher<Intent> mapResultLauncher;
+    private final String TAG = "SignUp_Activity"; // Declare TAG for each class for debugging purposes using Log.d()
+    private ActivitySignUpBinding binding; // Use View binding to avoid using too much findViewById
+    private final RetrofitFacade retrofitFacade = new RetrofitFacade("https://road-ready-black.vercel.app"); // Declare this if HTTP operations are needed
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,115 +56,24 @@ public class SignUp_Activity extends AppCompatActivity {
 
         // Initialize Map Result Launcher
         initMapResultLauncher();
+        initActions();
+    }
 
-        // Initialize the ProgressBar
-        progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
-
-        // Add the progress bar to the ConstraintLayout
-        ConstraintLayout.LayoutParams params = new ConstraintLayout.LayoutParams(ConstraintLayout.LayoutParams.WRAP_CONTENT, ConstraintLayout.LayoutParams.WRAP_CONTENT);
-        params.topToTop = ConstraintLayout.LayoutParams.PARENT_ID;
-        params.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID;
-        params.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
-        params.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
-        binding.getRoot().addView(progressBar, params);
-
-        // Initially hide the progress bar
-        progressBar.setVisibility(View.GONE);
-
-        binding.sgnupBtnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Show the progress bar when the button is clicked
-                progressBar.setVisibility(View.VISIBLE);
-                binding.sgnupBtnSubmit.setEnabled(false);
-
-                // Retrieve user input data
-                String firstName = binding.sgnupInptFname.getText().toString();
-                String lastName = binding.sgnupInptLname.getText().toString();
-                String email = binding.sgnupInptEmail.getText().toString();
-                String phone = binding.sgnupInptPhoneNumber.getText().toString();
-                String password = binding.sgnupInptPassword.getText().toString();
-                String address = binding.sgnupInptAddress.getText().toString();
-                String longitudeAndLatitude = binding.sgnupInptCoordinates.getText().toString();
-                String sex = findViewById(binding.sgnupRgSexOptions.getCheckedRadioButtonId()).getContentDescription().toString();
-
-                // Create JSON object with user data
-                JSONObject data = new JSONObject();
-                try {
-                    data.put("firstName", firstName);
-                    data.put("lastName", lastName);
-                    data.put("email", email);
-                    data.put("password", password);
-                    data.put("gender", sex);
-                    data.put("phoneNumber", phone);
-                    data.put("address", address);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                // Perform registration request using OkHttp
-                OkHttp.post(SignUp_Activity.this, "https://road-ready-black.vercel.app/buyer/register", data,
-                        new Callback() {
-                            @Override
-                            public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                                // Hide the progress bar if there's an error
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        progressBar.setVisibility(View.GONE);
-                                        binding.sgnupBtnSubmit.setEnabled(true);
-                                    }
-                                });
-                                Log.e(TAG, "Error occurred during registration: " + e.getMessage());
-                            }
-
-                            @Override
-                            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                                // Hide the progress bar when the response is received
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        progressBar.setVisibility(View.GONE);
-                                        binding.sgnupBtnSubmit.setEnabled(true);
-                                    }
-                                });
-                                if (response.isSuccessful()) {
-                                    String responseBody = response.body().string();
-                                    Log.d(TAG, responseBody);
-                                    try {
-                                        JSONObject data = new JSONObject(responseBody);
-                                        runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                Toast.makeText(SignUp_Activity.this, "Registered Successfully!", Toast.LENGTH_LONG).show();
-                                            }
-                                        });
-                                        Intent intent = new Intent(SignUp_Activity.this, Login_Activity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
-                                        finish();
-                                    } catch (JSONException e) {
-                                        e.printStackTrace();
-                                    }
-                                } else {
-                                    Log.e(TAG, "Error response code: " + response.code());
-                                    Log.e(TAG, "Error response body: " + response.body().string());
-                                }
-                            }
-                        });
-            }
+    private void initActions() {
+        binding.sgnupBtnSubmit.setOnClickListener(v -> {
+            processRegistration();
         });
 
-        binding.sgnupTextLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SignUp_Activity.this, Login_Activity.class);
-                startActivity(intent);
-            }
+        binding.sgnupTextLogin.setOnClickListener(v -> {
+            startActivity(new Intent(SignUp_Activity.this, Login_Activity.class));
         });
 
         binding.sgnupBtnOpenMaps.setOnClickListener(v -> {
             startGoogleMaps();
+        });
+      
+        binding.sgnupBtnGoogleLogin.setOnClickListener(v -> {
+            Toast.makeText(SignUp_Activity.this, "Login with google is not yet available", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -164,7 +84,6 @@ public class SignUp_Activity extends AppCompatActivity {
 
     private void initMapResultLauncher() {
         mapResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-
             if (result.getResultCode() == Activity.RESULT_OK) {
                 Intent data = result.getData();
                 if (data != null) {
@@ -176,5 +95,68 @@ public class SignUp_Activity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void processRegistration() {
+        showProgressBar();
+
+        String email = String.valueOf(binding.sgnupInptEmail.getText());
+        String password = String.valueOf(binding.sgnupInptPassword.getText());
+        String firstName = String.valueOf(binding.sgnupInptFname.getText());
+        String lastName = String.valueOf(binding.sgnupInptLname.getText());
+        String phoneNumber = String.valueOf(binding.sgnupInptPhoneNumber.getText());
+        String gender = String.valueOf(findViewById(binding.sgnupRgSexOptions.getCheckedRadioButtonId()).getContentDescription());
+        String address = String.valueOf(binding.sgnupInptAddress.getText());
+
+        retrofitFacade.getRetrofitService().register(email, password, firstName, lastName, phoneNumber, gender, address)
+                .enqueue(registerCallback);
+    }
+
+    private final Callback< SuccessGson<Nullable> > registerCallback = new Callback< SuccessGson<Nullable> >() {
+        @Override
+        public void onResponse(@NonNull Call<SuccessGson<Nullable>> call, @NonNull Response<SuccessGson<Nullable>> response) {
+            ResponseGson body = null;
+            try {
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+                    body = response.body();
+                    Log.d(TAG, String.valueOf(body));
+                    movingToVerification();
+                } else {
+                    assert response.errorBody() != null;
+                    body = new Gson().fromJson(response.errorBody().string(), ErrorGson.class);
+                    Log.e(TAG, String.valueOf(body));
+                }
+            } catch (Exception e) {
+                Log.e(TAG, Objects.requireNonNull(e.getMessage()));
+            } finally {
+                if (body != null) {
+                    Toast.makeText(getApplicationContext(), String.valueOf(body.getMessage()), Toast.LENGTH_SHORT).show();
+                }
+                hideProgressBar();
+            }
+        }
+
+        @Override
+        public void onFailure(@NonNull Call<SuccessGson<Nullable>> call, @NonNull Throwable t) {
+            Log.e(TAG, "Registration Failed!" + t.getMessage());
+            Toast.makeText(getApplicationContext(), "Network Error!", Toast.LENGTH_SHORT).show();
+            hideProgressBar();
+        }
+    };
+
+    private void movingToVerification() {
+        finish();
+        startActivity(new Intent(SignUp_Activity.this, Verification_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+    }
+
+    private void showProgressBar() {
+        binding.sgnupBtnSubmit.setEnabled(false);
+        binding.pbLoadingBar.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        binding.sgnupBtnSubmit.setEnabled(true);
+        binding.pbLoadingBar.setVisibility(View.GONE);
     }
 }

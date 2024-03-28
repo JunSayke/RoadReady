@@ -3,8 +3,8 @@ package com.example.roadready.classes.general;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.example.roadready.classes.model.gson.data.BuyerGson;
+import com.google.gson.Gson;
 
 public class SessionManager {
     private final SharedPreferences sharedpreferences;
@@ -15,10 +15,8 @@ public class SessionManager {
         editor = sharedpreferences.edit();
     }
 
-    public void startSession(String userid, String firstname, String lastname) {
-        editor.putString("userid", userid);
-        editor.putString("firstname", firstname);
-        editor.putString("lastname", lastname);
+    public void startSession(BuyerGson buyerGson) {
+        editor.putString("usergson", new Gson().toJson(buyerGson));
         editor.apply();
     }
 
@@ -27,17 +25,7 @@ public class SessionManager {
         editor.apply();
     }
 
-    public Map<String, String> getUserData() {
-        final Map<String, String> userData;
-        userData = new HashMap<>();
-        userData.put("userid", sharedpreferences.getString("userid", null));
-
-        if (userData.get("userid") == null) {
-            return null;
-        }
-
-        userData.put("firstname", sharedpreferences.getString("firstname", null));
-        userData.put("lastname", sharedpreferences.getString("lastname", null));
-        return userData;
+    public BuyerGson getUserGson() {
+        return new Gson().fromJson(sharedpreferences.getString("usergson", null), BuyerGson.class);
     }
 }
