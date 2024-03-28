@@ -1,0 +1,491 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	<!--
+    /*
+     *	This content is generated from the API File Info.
+     *	(Alt+Shift+Ctrl+I).
+     *
+     *	@desc
+     *	@file 		add
+     *	@date 		Wednesday 27th of March 2024 02:13:04 PM
+     *	@title 		Page 1
+     *	@author
+     *	@keywords
+     *	@generator 	Export Kit v1.3.figma
+     *
+     */
+    -->
+	<LinearLayout
+		android:id="@+id/add"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/dealershipFormHeader"
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:background="#888484">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/btnOpenSidebar"
+				android:layout_width="28dp"
+				android:layout_height="28dp"
+				android:background="@color/white"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+
+				<ImageView
+					android:id="@+id/union"
+					android:layout_width="5.33dp"
+					android:layout_height="9.33dp"
+					android:contentDescription="union"
+					android:src="@drawable/sb_iv_union"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<ImageView
+				android:id="@+id/ivRedCircle"
+				android:layout_width="264dp"
+				android:layout_height="264dp"
+				android:layout_marginStart="250dp"
+				android:layout_marginTop="-180dp"
+				android:background="@drawable/circle"
+				android:backgroundTint="#FE4949"
+				android:contentDescription="@string/red_circle"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:ignore="ImageContrastCheck" />
+
+			<TextView
+				android:id="@+id/ivHeader"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:text="@string/text_header_my_vehicles"
+				android:textSize="20sp"
+				android:textStyle="bold"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<TextView
+			android:id="@+id/add_tv_title"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_horizontal|center"
+			android:layout_marginVertical="20dp"
+			android:gravity="center"
+			android:text="@string/text_vehicle_add_title"
+			android:textSize="24sp"
+			android:textStyle="bold" />
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/addContainerVehicleSpecs"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="#D9D9D9">
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainAddVehicle"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginBottom="12dp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent">
+
+				<TextView
+					android:id="@+id/addTxtAddVehicle"
+					android:layout_width="101.6dp"
+					android:layout_height="23.6dp"
+					android:layout_marginBottom="10dp"
+					android:gravity="center"
+					android:text="@string/text_add_vehicle"
+					android:textSize="16sp"
+					android:textStyle="bold"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent" />
+
+				<ImageView
+					android:id="@+id/addBtnAddVehicle"
+					android:layout_width="51dp"
+					android:layout_height="59dp"
+					android:contentDescription="add button"
+					app:layout_constraintBottom_toTopOf="@+id/addTxtAddVehicle"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:srcCompat="@drawable/mv_iv_addvehicle"
+					tools:srcCompat="@drawable/mv_iv_addvehicle" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainerPrice"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toTopOf="@+id/addContainAddVehicle"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/addContainerUpload">
+
+				<TextView
+					android:id="@+id/addLabelPrice"
+					android:layout_width="43.2dp"
+					android:layout_height="17.2dp"
+					android:text="@string/text_vehicle_add_price"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/addInptPrice"
+					android:layout_width="203dp"
+					android:layout_height="27dp"
+					android:layout_marginStart="120dp"
+					android:background="@drawable/border"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainerUpload"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toTopOf="@+id/addContainerPrice"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/addContainerSeatingCap">
+
+				<ImageView
+					android:id="@+id/addBtnUpload"
+					android:layout_width="18dp"
+					android:layout_height="19dp"
+					android:layout_marginStart="10dp"
+					android:contentDescription="upload button"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toEndOf="@+id/addInptUpload"
+					app:layout_constraintTop_toTopOf="parent"
+					app:srcCompat="@drawable/iv_upload"
+					tools:srcCompat="@drawable/iv_upload" />
+
+				<TextView
+					android:id="@+id/addLabelUpload"
+					android:layout_width="100.2dp"
+					android:layout_height="17.2dp"
+					android:text="@string/text_vehicle_add_upload_picture"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/addInptUpload"
+					android:layout_width="150dp"
+					android:layout_height="27dp"
+					android:layout_marginStart="120dp"
+					android:background="@drawable/border_rounded"
+					android:gravity="left|center_vertical"
+					android:paddingStart="10dp"
+					android:text="toyotaconquest.pdf"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainerSeatingCap"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toTopOf="@+id/addContainerUpload"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/addContainerFuelCap">
+
+				<TextView
+					android:id="@+id/addLabelSeatingCap"
+					android:layout_width="105.2dp"
+					android:layout_height="17.2dp"
+					android:text="@string/text_vehicle_add_seating_cap"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/addInptSeatingCap"
+					android:layout_width="203dp"
+					android:layout_height="27dp"
+					android:layout_marginStart="120dp"
+					android:background="@drawable/border"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainerFuelCap"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toTopOf="@+id/addContainerSeatingCap"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/addContainerEngine">
+
+				<TextView
+					android:id="@+id/addLabelFuelCap"
+					android:layout_width="116.2dp"
+					android:layout_height="17.2dp"
+					android:text="@string/text_vehicle_add_fuel_cap"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/addInptFuelCap"
+					android:layout_width="203dp"
+					android:layout_height="27dp"
+					android:layout_marginStart="120dp"
+					android:background="@drawable/border"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainerEngine"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toTopOf="@+id/addContainerFuelCap"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/addContainerTransmission">
+
+				<TextView
+					android:id="@+id/addLabelEngine"
+					android:layout_width="52.2dp"
+					android:layout_height="17.2dp"
+					android:text="@string/text_vehicle_add_engine"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/addInptEngine"
+					android:layout_width="203dp"
+					android:layout_height="27dp"
+					android:layout_marginStart="120dp"
+					android:background="@drawable/border"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainerTransmission"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toTopOf="@+id/addContainerEngine"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/addContainerPower">
+
+				<TextView
+					android:id="@+id/addLabelTransmission"
+					android:layout_width="88.2dp"
+					android:layout_height="17.2dp"
+					android:text="@string/text_vehicle_add_transmission"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/addInptTransmission"
+					android:layout_width="203dp"
+					android:layout_height="27dp"
+					android:layout_marginStart="120dp"
+					android:background="@drawable/border"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainerPower"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toTopOf="@+id/addContainerTransmission"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/addContainerFuelType">
+
+				<TextView
+					android:id="@+id/addLabelPower"
+					android:layout_width="49.2dp"
+					android:layout_height="17.2dp"
+					android:layout_marginTop="6dp"
+					android:text="@string/text_vehicle_add_power"
+					android:textSize="12sp"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/addInptPower"
+					android:layout_width="203dp"
+					android:layout_height="27dp"
+					android:layout_marginStart="120dp"
+					android:background="@drawable/border"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainerFuelType"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toTopOf="@+id/addContainerPower"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/addContainerMake">
+
+				<TextView
+					android:id="@+id/addLabelFuelType"
+					android:layout_width="66.2dp"
+					android:layout_height="17.2dp"
+					android:layout_marginTop="7dp"
+					android:text="@string/text_vehicle_add_fuel_type"
+					android:textSize="12sp"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/addInptFuelType"
+					android:layout_width="203dp"
+					android:layout_height="27dp"
+					android:layout_marginStart="120dp"
+					android:background="@drawable/border"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainerMake"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toTopOf="@+id/addContainerFuelType"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/addContainerModelName">
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/addInptMake"
+					android:layout_width="203dp"
+					android:layout_height="27dp"
+					android:layout_marginStart="120dp"
+					android:background="@drawable/border"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/addLabelMake"
+					android:layout_width="45.2dp"
+					android:layout_height="17.2dp"
+					android:text="@string/text_make"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:text="@string/text_make" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainerModelName"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="12dp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<TextView
+					android:id="@+id/addLabelModelName"
+					android:layout_width="94.2dp"
+					android:layout_height="17.2dp"
+					android:text="@string/text_vehicle_add_model_name"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<com.google.android.material.textfield.TextInputEditText
+					android:id="@+id/addInptModelName"
+					android:layout_width="203dp"
+					android:layout_height="27dp"
+					android:layout_marginStart="120dp"
+					android:background="@drawable/border"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

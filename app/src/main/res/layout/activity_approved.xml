@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.dealership.Approved_Activity">
+
+    <LinearLayout
+        android:id="@+id/approved"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dealershipFormHeader"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#888484">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btnOpenSidebar"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:id="@+id/union"
+                    android:layout_width="5.33dp"
+                    android:layout_height="9.33dp"
+                    android:contentDescription="union"
+                    android:src="@drawable/sb_iv_union"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/ivRedCircle"
+                android:layout_width="264dp"
+                android:layout_height="264dp"
+                android:layout_marginStart="250dp"
+                android:layout_marginTop="-180dp"
+                android:background="@drawable/circle"
+                android:backgroundTint="#FE4949"
+                android:contentDescription="@string/red_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/ivHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center"
+                android:gravity="center"
+                android:text="@string/text_header_approved"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/aSVApprovedList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp">
+
+            <TableLayout
+                android:id="@+id/aTblApproved"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TableRow
+                    android:id="@+id/aTblRow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/aLabelName"
+                        android:layout_width="59.6dp"
+                        android:layout_height="23.6dp"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="@string/text_tbl_name"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/aLabelDateApproved"
+                        android:layout_width="111.6dp"
+                        android:layout_height="23.6dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="@string/text_tbl_date_approved"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/aLabelFile"
+                        android:layout_width="59.6dp"
+                        android:layout_height="23.6dp"
+                        android:layout_marginTop="0dp"
+                        android:gravity="center"
+                        android:text="@string/text_tbl_file"
+                        android:textSize="16sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/aTblRow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+
+                    <TextView
+                        android:id="@+id/aTxtName"
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border"
+                        android:gravity="start|center_vertical"
+                        android:text="Name"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/aTxtDateApproved"
+                        android:layout_width="90dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/border"
+                        android:gravity="center|center_vertical"
+                        android:text="12/12/2024"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/aImageView"
+                        android:layout_width="31dp"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="0dp"
+                        android:background="@drawable/border"
+                        android:contentDescription="fa_ib_view"
+                        android:src="@drawable/fa_ib_view" />
+
+                </TableRow>
+
+
+            </TableLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

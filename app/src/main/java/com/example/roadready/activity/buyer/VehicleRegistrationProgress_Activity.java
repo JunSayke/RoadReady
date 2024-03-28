@@ -1,4 +1,4 @@
-package com.example.roadready.activity;
+package com.example.roadready.activity.buyer;
 
 import androidx.appcompat.app.AppCompatActivity;
 

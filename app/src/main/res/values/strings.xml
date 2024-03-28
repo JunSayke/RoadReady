@@ -120,4 +120,85 @@
     <string name="text_cancel">Cancel</string>
 
     <string name="text_set_location">Set Location</string>
+    <!-- DEALERSHIP SIDE -->
+    <!-- HEADER TITLES -->
+    <string name="text_header_my_vehicles">My Vehicles</string>
+    <string name="text_header_for_approval">For Approval</string>
+    <string name="text_header_approved">Approved</string>
+    <string name="text_header_documents_progress">Documents Progress</string>
+    <string name="text_header_registration_documents">Registration Documents</string>
+    <string name="text_header_notifications">Notifications</string>
+
+    <!-- ACTIVITY MY VEHICLES -->
+    <string name="text_my_vehicle_title">CAR DISTRICT</string>
+    <string name="text_add_vehicle">Add Vehicle</string>
+    <string name="text_remove_vehicle">Remove Vehicle</string>
+
+    <!-- ACTIVITY VEHICLE ADD -->
+    <string name="text_vehicle_add_title">ADD VEHICLE</string>
+    <string name="text_vehicle_add_price">Price:</string>
+    <string name="text_vehicle_add_upload_picture">Upload a picture</string>
+    <string name="text_vehicle_add_seating_cap">Seating Capacity:</string>
+    <string name="text_vehicle_add_fuel_cap">Fuel Tank Capacity:</string>
+    <string name="text_vehicle_add_engine">Engine:</string>
+    <string name="text_vehicle_add_transmission">Transmission:</string>
+    <string name="text_vehicle_add_power">Power:</string>
+    <string name="text_vehicle_add_fuel_type">Fuel Type:</string>
+    <string name="text_vehicle_add_make">Make:</string>
+    <string name="text_vehicle_add_model_name">Model &amp; Name:</string>
+
+    <!-- ACTIVITY FOR APPROVAL -->
+    <string name="text_tbl_name">NAME</string>
+    <string name="text_tbl_file">File</string>
+    <string name="text_tbl_action">Action</string>
+
+    <!-- ACTIVITY APPROVED -->
+    <string name="text_tbl_date_approved">Date Approved</string>
+
+    <!-- ACTIVITY APPLICANTS -->
+    <string name="text_applicants_documents_review">Documents review</string>
+    <string name="text_applicants_registration">Registration on process</string>
+    <string name="text_applicants_releasing_document">Releasing of document</string>
+    <string name="text_applicants_bank_approval">Bank approval</string>
+    <string name="text_applicants_releasing_unit">Releasing of unit</string>
+
+    <!-- ACTIVITY REGISTRATION DOCS -->
+    <string name="text_registration_docs_sales_invoice">1. Original Sales Invoice</string>
+    <string name="text_registration_docs_coc">2. Appropriate insurance Certificate of Cover (COC)</string>
+    <string name="text_registration_docs_csr">3. Original copy of Certificate of Stock Reported (CSR)</string>
+    <string name="text_registration_clearance_cert">4. Original copy of PNP-HPG MV Clearance Certificate</string>
+    <string name="text_registration_docs_tin">5. Taxpayers Identification Number (TIN ID)</string>
+    <string name="text_registration_submit_lto">Submit to LTO:</string>
+
+    <!-- ACTIVITY BANK -->
+    <string name="text_bank_autoLoan">1. Vehicle Auto Loan Form</string>
+    <string name="text_bank_agreementForm">2. Agreement Form</string>
+    <string name="text_bank_applicantID">3. Applicant Valid ID</string>
+    <string name="text_bank_comakerID">4. Co-maker Valid ID</string>
+    <string name="text_bank_tin">5. Taxpayers Identification Number (TIN ID)</string>
+
+    <!-- POPUP REVIEW FILE -->
+    <string name="text_review_file_title">Abing.pdf</string>
+    <string name="text_review_file_comaker_id">Co-maker Valid ID:</string>
+    <string name="text_review_file_comaker_name">Co-maker Name: Jumio, Marie</string>
+    <string name="text_review_file_id">Valid ID:</string>
+    <string name="text_review_file_phone_no">Phone#: 09398600917</string>
+    <string name="text_review_file_address">Address: Canduman Housing Mandaue</string>
+    <string name="text_review_file_lastname">Last Name: Abing</string>
+    <string name="text_review_file_firstname">First name: Rey Daniel</string>
+    <string name="text_review_file_vehicle_title">TOYOTA HILUX CONQUEST 2023</string>
+
+    <!-- NAVIGATION SIDEBAR -->
+    <string name="text_sidebar_sales_representative">SALES REPRESENTATIVE</string>
+    <string name="text_sidebar_my_vehicles">My Vehicles</string>
+    <string name="text_sidebar_vehicle_applicants">Vehicle Applicants</string>
+    <string name="text_sidebar_for_approval">For Approval</string>
+    <string name="text_sidebar_approved_name_list">Approved Name List</string>
+    <string name="text_sidebar_registration_process">Registration Progress</string>
+    <string name="text_sidebar_lto">Land Transportation Office</string>
+    <string name="text_sidebar_bank">Bank</string>
+    <string name="text_sidebar_notifications">Notifications</string>
+    <string name="text_sidebar_view_profile">View Profile</string>
+
+
 </resources>

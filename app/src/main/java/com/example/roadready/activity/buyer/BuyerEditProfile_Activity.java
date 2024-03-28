@@ -1,4 +1,4 @@
-package com.example.roadready.activity;
+package com.example.roadready.activity.buyer;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.roadready.activity.GoogleMaps_Activity;
 import com.example.roadready.databinding.ActivityBuyerEditProfileBinding;
 
 public class BuyerEditProfile_Activity extends AppCompatActivity {

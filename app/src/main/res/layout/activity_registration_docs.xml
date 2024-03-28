@@ -1,0 +1,346 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<LinearLayout
+		android:id="@+id/registration_docs"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical"
+		app:layout_constraintBottom_toTopOf="parent"
+		app:layout_constraintEnd_toStartOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/dealershipFormHeader"
+			android:layout_width="match_parent"
+			android:layout_height="100dp"
+			android:background="#888484">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/btnOpenSidebar"
+				android:layout_width="28dp"
+				android:layout_height="28dp"
+				android:background="@color/white"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+
+				<ImageView
+					android:id="@+id/union"
+					android:layout_width="5.33dp"
+					android:layout_height="9.33dp"
+					android:contentDescription="union"
+					android:src="@drawable/sb_iv_union"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<ImageView
+				android:id="@+id/ivRedCircle"
+				android:layout_width="264dp"
+				android:layout_height="264dp"
+				android:layout_marginStart="250dp"
+				android:layout_marginTop="-180dp"
+				android:background="@drawable/circle"
+				android:backgroundTint="#FE4949"
+				android:contentDescription="@string/red_circle"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				tools:ignore="ImageContrastCheck" />
+
+			<TextView
+				android:id="@+id/ivHeader"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:text="@string/text_header_registration_documents"
+				android:textSize="20sp"
+				android:textStyle="bold"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+		<TextView
+			android:id="@+id/rdTxtTitle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:gravity="center"
+			android:text="@string/text_header_registration_documents"
+			android:textSize="24sp"
+			android:textStyle="bold" />
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+			android:id="@+id/rdContainerList"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="#D9D9D9">
+
+
+			<LinearLayout
+				android:id="@+id/rdContainerSalesInvoice"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="20dp"
+				android:layout_marginTop="20dp"
+				android:layout_marginEnd="20dp"
+				app:layout_constraintBottom_toTopOf="@+id/rdContainerCoc"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+
+				<TextView
+					android:id="@+id/rdLabelSalesInvoice"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_gravity="center_horizontal|center"
+					android:gravity="center"
+					android:text="@string/text_registration_docs_sales_invoice"
+					android:textSize="11sp" />
+
+				<TextView
+					android:id="@+id/rdInptSalesInvoice"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginStart="10dp"
+					android:layout_weight="1"
+					android:background="@drawable/border_rounded"
+					android:contentDescription="rd_te_salesinvoice" />
+
+				<ImageView
+					android:id="@+id/rdBtnSalesInvoice"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginStart="10dp"
+					android:contentDescription="rd_iv_salesinvoice"
+					app:srcCompat="@drawable/iv_upload"
+					tools:srcCompat="@drawable/iv_upload" />
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/rdContainerCoc"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="20dp"
+				android:layout_marginEnd="20dp"
+				app:layout_constraintBottom_toTopOf="@+id/rdContainerCsr"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/rdContainerSalesInvoice">
+
+				<TextView
+					android:id="@+id/rdLabelCoc"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_gravity="center_horizontal|center"
+					android:gravity="center"
+					android:text="@string/text_registration_docs_coc"
+					android:textSize="11sp" />
+
+				<TextView
+					android:id="@+id/rdInptCoc"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginStart="10dp"
+					android:layout_weight="1"
+					android:background="@drawable/border_rounded"
+					android:contentDescription="rd_te_coc" />
+
+				<ImageView
+					android:id="@+id/rdBtnCoc"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginStart="10dp"
+					android:contentDescription="rd_iv_coc"
+					app:srcCompat="@drawable/iv_upload"
+					tools:srcCompat="@drawable/iv_upload" />
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/rdContainerCsr"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="20dp"
+				android:layout_marginEnd="20dp"
+				app:layout_constraintBottom_toTopOf="@+id/rdContainerClearanceCert"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/rdContainerCoc">
+
+				<TextView
+					android:id="@+id/rdLabelCsr"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_gravity="center_horizontal|center"
+					android:gravity="center"
+					android:text="@string/text_registration_docs_csr"
+					android:textSize="11sp" />
+
+				<TextView
+					android:id="@+id/rdInptCsr"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginStart="10dp"
+					android:layout_weight="1"
+					android:background="@drawable/border_rounded"
+					android:contentDescription="rd_te_csr" />
+
+				<ImageView
+					android:id="@+id/rdBtnCsr"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginStart="10dp"
+					android:contentDescription="rd_iv_csr"
+					app:srcCompat="@drawable/iv_upload"
+					tools:srcCompat="@drawable/iv_upload" />
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/rdContainerClearanceCert"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="20dp"
+				android:layout_marginEnd="20dp"
+				app:layout_constraintBottom_toTopOf="@+id/rd_ContainerTin"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/rdContainerCsr">
+
+				<TextView
+					android:id="@+id/rdLabelClearanceCert"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_gravity="center_horizontal|center"
+					android:gravity="center"
+					android:text="@string/text_registration_clearance_cert"
+					android:textSize="11sp" />
+
+				<TextView
+					android:id="@+id/rdInptClearanceCert"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginStart="10dp"
+					android:layout_weight="1"
+					android:background="@drawable/border_rounded"
+					android:contentDescription="rd_te_clearancecert" />
+
+				<ImageView
+					android:id="@+id/rdBtnClearanceCert"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginStart="10dp"
+					android:layout_marginTop="0dp"
+					android:contentDescription="rd_iv_clearancecert"
+					app:srcCompat="@drawable/iv_upload"
+					tools:srcCompat="@drawable/iv_upload" />
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/rd_ContainerTin"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="20dp"
+				android:layout_marginEnd="20dp"
+				app:layout_constraintBottom_toTopOf="@+id/rdContainerSubmitLto"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/rdContainerClearanceCert">
+
+				<TextView
+					android:id="@+id/rdLabelTin"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_gravity="center_horizontal|center"
+					android:gravity="center"
+					android:text="@string/text_registration_docs_tin"
+					android:textSize="11sp" />
+
+				<TextView
+					android:id="@+id/rdInptTin"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginStart="10dp"
+					android:layout_weight="1"
+					android:background="@drawable/border_rounded"
+					android:contentDescription="rd_te_tin" />
+
+				<ImageView
+					android:id="@+id/rdBtnTin"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginStart="10dp"
+					android:contentDescription="rd_iv_tin"
+					app:srcCompat="@drawable/iv_upload"
+					tools:srcCompat="@drawable/iv_upload" />
+
+			</LinearLayout>
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/rdContainerSubmitLto"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="20dp"
+				app:layout_constraintBottom_toTopOf="@+id/rdBtnSubmit"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/rd_ContainerTin">
+
+
+				<TextView
+					android:id="@+id/rdTxtSubmitLto"
+					android:layout_width="96.2dp"
+					android:layout_height="18.2dp"
+					android:layout_marginTop="7dp"
+					android:text="@string/text_registration_submit_lto"
+					android:textSize="12sp"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<Spinner
+					android:id="@+id/rdSpinnerSubmitLto"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:background="@android:drawable/btn_dropdown"
+					android:spinnerMode="dropdown"
+					app:layout_constraintStart_toEndOf="@+id/rdTxtSubmitLto"
+					app:layout_constraintTop_toTopOf="parent" />
+
+
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<Button
+				android:id="@+id/rdBtnSubmit"
+				android:layout_width="99dp"
+				android:layout_height="48dp"
+				android:layout_marginTop="20dp"
+				android:layout_marginBottom="10dp"
+				android:backgroundTint="#20F40E"
+				android:text="submit"
+				android:textColor="@color/white"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/rdContainerSubmitLto" />
+
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+
+	</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

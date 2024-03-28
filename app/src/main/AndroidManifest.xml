@@ -27,61 +27,106 @@
             android:windowSoftInputMode="adjustPan"/>
 
         <activity
-            android:name=".activity.BuyerEditProfile_Activity"
+            android:name=".activity.buyer.BuyerEditProfile_Activity"
             android:exported="true"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".activity.BuyerProfile_Activity"
+            android:name=".activity.buyer.BuyerProfile_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.RenewalRegistration_Activity"
+            android:name=".activity.buyer.RenewalRegistration_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.MyVehicle_Activity"
+            android:name=".activity.buyer.MyVehicle_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.VehicleApplicationProgress_Activity"
+            android:name=".activity.buyer.VehicleApplicationProgress_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.VehicleRegistrationProgress_Activity"
+            android:name=".activity.buyer.VehicleRegistrationProgress_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.ApplicationProgress_Activity"
+            android:name=".activity.buyer.ApplicationProgress_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.InstallmentForm_Activity"
+            android:name=".activity.buyer.InstallmentForm_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.CashPaymentForm_Activity"
+            android:name=".activity.buyer.CashPaymentForm_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.SelectingCar_Activity"
+            android:name=".activity.buyer.SelectingCar_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.SelectingDealership_Activity"
+            android:name=".activity.buyer.SelectingDealership_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.SearchDealership_Activity"
+            android:name=".activity.buyer.SearchDealership_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.BuyerHomepage_Activity"
+            android:name=".activity.buyer.BuyerHomepage_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.dealership.Applicants_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.dealership.Approved_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.dealership.Bank_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.dealership.Banklist_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.dealership.ForApproval_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.dealership.MyVehicles_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.dealership.Notifications_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.dealership.RegistrationDocs_Activity"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.dealership.VehicleAdd_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
