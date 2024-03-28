@@ -1,0 +1,172 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/rfContainerPopup"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/popup_rounded_bg"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<ImageView
+			android:id="@+id/rfImageCoMakerId"
+			android:layout_width="172dp"
+			android:layout_height="120dp"
+			android:layout_marginTop="-20dp"
+			android:layout_marginEnd="20dp"
+			android:contentDescription="rf_iv_comakerid"
+			android:src="@drawable/rf_iv_comakerid"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/rfTxtCoMakerId" />
+
+		<TextView
+			android:id="@+id/rfTxtCoMakerId"
+			android:layout_width="150.6dp"
+			android:layout_height="23.6dp"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="10dp"
+			android:text="@string/text_review_file_comaker_id"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/rfTxtCoMakerName" />
+
+		<TextView
+			android:id="@+id/rfTxtCoMakerName"
+			android:layout_width="231.6dp"
+			android:layout_height="23.6dp"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="20dp"
+			android:text="@string/text_review_file_comaker_name"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/rfImageId" />
+
+
+		<ImageView
+			android:id="@+id/rfImageId"
+			android:layout_width="172dp"
+			android:layout_height="108dp"
+			android:layout_marginTop="-20dp"
+			android:layout_marginEnd="20dp"
+			android:contentDescription="image_72"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/rfTxtId"
+			app:srcCompat="@drawable/rf_iv_id" />
+
+		<TextView
+			android:id="@+id/rfTxtId"
+			android:layout_width="74.6dp"
+			android:layout_height="23.6dp"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="10dp"
+			android:text="@string/text_review_file_id"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/rfTxtPhoneNo" />
+
+		<TextView
+			android:id="@+id/rfTxtPhoneNo"
+			android:layout_width="180.6dp"
+			android:layout_height="23.6dp"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="10dp"
+			android:text="@string/text_review_file_phone_no"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/rfTxtAddress" />
+
+		<TextView
+			android:id="@+id/rfTxtAddress"
+			android:layout_width="295.6dp"
+			android:layout_height="23.6dp"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="10dp"
+			android:text="@string/text_review_file_address"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/rfTxtLastname" />
+
+		<TextView
+			android:id="@+id/rfTxtLastname"
+			android:layout_width="143.6dp"
+			android:layout_height="23.6dp"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="10dp"
+			android:text="@string/text_review_file_lastname"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/rfTxtFirstname" />
+
+		<TextView
+			android:id="@+id/rfTxtFirstname"
+			android:layout_width="176.6dp"
+			android:layout_height="23.6dp"
+			android:layout_marginStart="20dp"
+			android:layout_marginTop="30dp"
+			android:text="@string/text_review_file_firstname"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/rfTxtVehicleTitle" />
+
+
+		<Button
+			android:id="@+id/rfBtnDownload"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="20dp"
+			android:layout_marginBottom="10dp"
+			android:backgroundTint="#3FBB54"
+			android:text="Download"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/rfImageCoMakerId" />
+
+		<TextView
+			android:id="@+id/rfTxtVehicleTitle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="@string/text_review_file_vehicle_title"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/rfTxtTitle" />
+
+		<TextView
+			android:id="@+id/rfTxtTitle"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"
+			android:text="@string/text_review_file_title"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<ImageButton
+			android:id="@+id/rfBtnExit"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:contentDescription="tf_ib_cancel"
+			android:src="@drawable/tf_ib_exit"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.InstallmentForm_Activity">
+    tools:context=".activity.buyer.InstallmentForm_Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/formHeader"
