@@ -1,13 +1,18 @@
 package com.example.roadready.activity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +42,8 @@ import retrofit2.Response;
 import retrofit2.http.Field;
 
 public class SignUp_Activity extends AppCompatActivity {
+    private static final int REQUEST_CODE = 1;
+    private ActivityResultLauncher<Intent> mapResultLauncher;
     private final String TAG = "SignUp_Activity"; // Declare TAG for each class for debugging purposes using Log.d()
     private ActivitySignUpBinding binding; // Use View binding to avoid using too much findViewById
     private final RetrofitFacade retrofitFacade = new RetrofitFacade("https://road-ready-black.vercel.app"); // Declare this if HTTP operations are needed
@@ -47,6 +54,8 @@ public class SignUp_Activity extends AppCompatActivity {
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        // Initialize Map Result Launcher
+        initMapResultLauncher();
         initActions();
     }
 
@@ -59,8 +68,32 @@ public class SignUp_Activity extends AppCompatActivity {
             startActivity(new Intent(SignUp_Activity.this, Login_Activity.class));
         });
 
+        binding.sgnupBtnOpenMaps.setOnClickListener(v -> {
+            startGoogleMaps();
+        });
+      
         binding.sgnupBtnGoogleLogin.setOnClickListener(v -> {
             Toast.makeText(SignUp_Activity.this, "Login with google is not yet available", Toast.LENGTH_SHORT).show();
+        });
+    }
+
+    private void startGoogleMaps() {
+        Intent intent = new Intent(SignUp_Activity.this, GoogleMaps_Activity.class);
+        mapResultLauncher.launch(intent);
+    }
+
+    private void initMapResultLauncher() {
+        mapResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (result.getResultCode() == Activity.RESULT_OK) {
+                Intent data = result.getData();
+                if (data != null) {
+                    double latitude = data.getDoubleExtra("latitude", 0);
+                    double longitude = data.getDoubleExtra("longitude", 0);
+
+                    String LongLatText = longitude + ", " + latitude;
+                    binding.sgnupInptCoordinates.setText(LongLatText);
+                }
+            }
         });
     }
 
@@ -80,7 +113,6 @@ public class SignUp_Activity extends AppCompatActivity {
     }
 
     private final Callback< SuccessGson<Nullable> > registerCallback = new Callback< SuccessGson<Nullable> >() {
-
         @Override
         public void onResponse(@NonNull Call<SuccessGson<Nullable>> call, @NonNull Response<SuccessGson<Nullable>> response) {
             ResponseGson body = null;

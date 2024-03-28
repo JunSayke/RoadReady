@@ -103,7 +103,6 @@
                     android:layout_weight="1"
                     android:autofillHints="@string/placeholder_first_name"
                     android:background="@drawable/rounded_corner_rectangle20_solid"
-                    android:backgroundTint="#FFFFFF"
                     android:ems="10"
                     android:inputType="text"
                     android:padding="12dp" />

@@ -118,8 +118,6 @@
     <string name="text_sexColon">Sex:</string>
     <string name="design_material">design_material</string>
     <string name="text_cancel">Cancel</string>
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-
+    <string name="text_set_location">Set Location</string>
 </resources>

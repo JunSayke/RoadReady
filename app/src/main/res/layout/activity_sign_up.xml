@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#FFFFFF"
     tools:context="activity.SignUp_Activity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sgnupContainerContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -132,22 +133,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sgnupInptPassword" />
 
-        <EditText
-            android:id="@+id/sgnupInptCoordinates"
+        <LinearLayout
+            android:id="@+id/sgnupInptCoordinatesContainer"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="101dp"
-            android:autofillHints="@string/placeholder_longitude_latitude"
             android:background="@drawable/rounded_corner_rectangle20_solid"
-            android:ems="10"
-            android:hint="@string/placeholder_longitude_latitude"
-            android:inputType="text"
+            android:orientation="horizontal"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sgnupInptAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptAddress">
+
+            <EditText
+                android:id="@+id/sgnupInptCoordinates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:autofillHints="@string/placeholder_longitude_latitude"
+                android:background="#FFFFFF"
+                android:ems="10"
+                android:hint="@string/placeholder_longitude_latitude"
+                android:inputType="text" />
+
+            <ImageButton
+                android:id="@+id/sgnupBtnOpenMaps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corner_rectangle20_transp"
+                android:backgroundTint="#0EB2F8"
+                android:src="@drawable/map" />
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/sgnupLblSex"
@@ -160,7 +180,7 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sgnupInptCoordinates" />
+            app:layout_constraintTop_toBottomOf="@id/sgnupInptCoordinatesContainer" />
 
         <RadioGroup
             android:id="@+id/sgnupRgSexOptions"
