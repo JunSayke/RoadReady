@@ -62,4 +62,8 @@ dependencies {
     // [View Dependencies]
     implementation("io.github.chaosleung:pinview:1.4.4")
     implementation("com.github.gcacace:signature-pad:1.3.1")
+
+    //  [Google Maps Dependencies]
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation("com.google.android.gms:play-services-location:21.2.0")
 }

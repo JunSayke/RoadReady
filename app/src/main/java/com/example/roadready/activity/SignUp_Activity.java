@@ -1,13 +1,18 @@
 package com.example.roadready.activity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -29,12 +34,17 @@ public class SignUp_Activity extends AppCompatActivity {
     private final String TAG = "SignUp_Activity";
     private ActivitySignUpBinding binding;
     private ProgressBar progressBar; // Declare ProgressBar
+    private static final int REQUEST_CODE = 1;
+    private ActivityResultLauncher<Intent> mapResultLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Initialize Map Result Launcher
+        initMapResultLauncher();
 
         // Initialize the ProgressBar
         progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
@@ -139,6 +149,31 @@ public class SignUp_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(SignUp_Activity.this, Login_Activity.class);
                 startActivity(intent);
+            }
+        });
+
+        binding.sgnupBtnOpenMaps.setOnClickListener(v -> {
+            startGoogleMaps();
+        });
+    }
+
+    private void startGoogleMaps() {
+        Intent intent = new Intent(SignUp_Activity.this, GoogleMaps_Activity.class);
+        mapResultLauncher.launch(intent);
+    }
+
+    private void initMapResultLauncher() {
+        mapResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+
+            if (result.getResultCode() == Activity.RESULT_OK) {
+                Intent data = result.getData();
+                if (data != null) {
+                    double latitude = data.getDoubleExtra("latitude", 0);
+                    double longitude = data.getDoubleExtra("longitude", 0);
+
+                    String LongLatText = longitude + ", " + latitude;
+                    binding.sgnupInptCoordinates.setText(LongLatText);
+                }
             }
         });
     }

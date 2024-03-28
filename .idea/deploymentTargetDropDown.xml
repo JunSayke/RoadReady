@@ -2,6 +2,9 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="BuyerEditProfile_Activity">
+        <State />
+      </entry>
       <entry key="BuyerProfile_Activity">
         <State>
           <targetSelectedWithDropDown>
@@ -16,22 +19,6 @@
             </Target>
           </targetSelectedWithDropDown>
           <timeTargetWasSelectedWithDropDown value="2024-03-27T07:22:32.543504200Z" />
-        </State>
-      </entry>
-      <entry key="MyVehicle_Activity">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_34.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-26T15:57:36.800664200Z" />
         </State>
       </entry>
       <entry key="RegistrationProgress_Activity">
@@ -66,8 +53,21 @@
           <timeTargetWasSelectedWithDropDown value="2024-03-27T04:06:22.219947300Z" />
         </State>
       </entry>
-      <entry key="VehicleApplicationProgress_Activity">
-        <State />
+      <entry key="SignUp_Activity">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-28T07:48:50.963644100Z" />
+        </State>
       </entry>
       <entry key="app">
         <State>
