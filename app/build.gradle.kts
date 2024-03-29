@@ -38,18 +38,6 @@ android {
 }
 
 dependencies {
-    // START_OF[Firebase Dependencies]
-    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-firestore")
-    implementation("com.google.firebase:firebase-storage")
-    // END_OF[Firebase Dependencies]
-
-    // START_OF[OkHttp Dependencies]
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
-    implementation("com.squareup.okhttp3:okhttp")
-    // END_OF[OkHttp Dependencies]
-
     // START_OF[Retrofit Dependencies]
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.5.0")

@@ -5,45 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".activity.buyer.BuyerProfile_Activity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/formHeader"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/bpImageRedCircle"
-            android:layout_width="264dp"
-            android:layout_height="264dp"
-            android:layout_marginEnd="-120dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/circle"
-            android:backgroundTint="#FE4949"
-            android:contentDescription="@string/red_circle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="ImageContrastCheck" />
-
-        <ImageButton
-            android:id="@+id/bpBtnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="19dp"
-            android:backgroundTint="#00FFFFFF"
-            android:contentDescription="@string/back_btn"
-            android:scaleType="center"
-            android:src="@drawable/left_arrow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".fragments.buyer.profilefragments.BuyerProfile_Fragment">
 
     <LinearLayout
         android:id="@+id/bpContainerContent"
@@ -53,7 +15,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/formHeader">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/bpTitleContent"

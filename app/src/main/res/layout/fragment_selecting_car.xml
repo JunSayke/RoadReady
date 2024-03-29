@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activity.buyer.SelectingCar_Activity">
+    tools:context=".fragments.buyer.home.SelectingCar_Fragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,68 +17,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/formHeader"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#888484"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/sgcImageUserIcon"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="#8DDEF0"
-                android:contentDescription="@string/vector_user_icon"
-                android:scaleType="centerInside"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/default_user_icon"
-                tools:ignore="ImageContrastCheck"
-                tools:srcCompat="@drawable/default_user_icon" />
-
-            <TextView
-                android:id="@+id/sgcTextWelcomeUser"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="54dp"
-                android:layout_marginBottom="27dp"
-                android:text="@string/text_welcome_user"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/sgcImageUserIcon"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <ImageView
-                android:id="@+id/sgcImageRedCircle"
-                android:layout_width="264dp"
-                android:layout_height="264dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="#FE4949"
-                android:contentDescription="@string/red_circle"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/sgcTextWelcomeUser"
-                tools:ignore="ImageContrastCheck" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/sgcDealer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/formHeader">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:id="@+id/sgcContainerDealer"

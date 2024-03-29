@@ -1,62 +1,66 @@
-package com.example.roadready.activity;
+package com.example.roadready.fragments.common;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ProgressBar;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
-import com.example.roadready.classes.general.OkHttp;
-import com.example.roadready.classes.general.SessionManager;
-import com.example.roadready.classes.model.gson.LoginDataGson;
-import com.example.roadready.classes.model.gson.data.BuyerGson;
+import com.example.roadready.R;
+import com.example.roadready.activity.GoogleMaps_Activity;
+import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.response.ErrorGson;
 import com.example.roadready.classes.model.gson.response.ResponseGson;
 import com.example.roadready.classes.model.gson.response.SuccessGson;
-import com.example.roadready.classes.model.livedata.UserGsonViewModel;
-import com.example.roadready.classes.retrofit.RetrofitFacade;
-import com.example.roadready.databinding.ActivitySignUpBinding;
+import com.example.roadready.databinding.FragmentSignUpBinding;
 import com.google.gson.Gson;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Field;
 
-public class SignUp_Activity extends AppCompatActivity {
-    private static final int REQUEST_CODE = 1;
+public class SignUp_Fragment extends Fragment {
+    private static final String TAG = "SignUp_Fragment"; // Declare TAG for each class for debugging purposes using Log.d()
+    private FragmentSignUpBinding binding; // Use View binding to avoid using too much findViewById
     private ActivityResultLauncher<Intent> mapResultLauncher;
-    private final String TAG = "SignUp_Activity"; // Declare TAG for each class for debugging purposes using Log.d()
-    private ActivitySignUpBinding binding; // Use View binding to avoid using too much findViewById
-    private final RetrofitFacade retrofitFacade = new RetrofitFacade("https://road-ready-black.vercel.app"); // Declare this if HTTP operations are needed
+    private final RoadReadyServer server = new RoadReadyServer(); // Declare this if HTTP operations are needed
+    private NavController navController;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        binding = FragmentSignUpBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+        navController = Navigation.findNavController(requireActivity(), R.id.openingFragmentContainer);
+        return root;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivitySignUpBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        // Initialize Map Result Launcher
         initMapResultLauncher();
         initActions();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
     }
 
     private void initActions() {
@@ -65,7 +69,7 @@ public class SignUp_Activity extends AppCompatActivity {
         });
 
         binding.sgnupTextLogin.setOnClickListener(v -> {
-            startActivity(new Intent(SignUp_Activity.this, Login_Activity.class));
+            navController.navigate(R.id.action_signUp_Fragment_to_login_Fragment);
         });
 
         binding.sgnupBtnOpenMaps.setOnClickListener(v -> {
@@ -73,12 +77,12 @@ public class SignUp_Activity extends AppCompatActivity {
         });
       
         binding.sgnupBtnGoogleLogin.setOnClickListener(v -> {
-            Toast.makeText(SignUp_Activity.this, "Login with google is not yet available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Login with google is not yet available", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void startGoogleMaps() {
-        Intent intent = new Intent(SignUp_Activity.this, GoogleMaps_Activity.class);
+        Intent intent = new Intent(requireContext(), GoogleMaps_Activity.class);
         mapResultLauncher.launch(intent);
     }
 
@@ -105,23 +109,22 @@ public class SignUp_Activity extends AppCompatActivity {
         String firstName = String.valueOf(binding.sgnupInptFname.getText());
         String lastName = String.valueOf(binding.sgnupInptLname.getText());
         String phoneNumber = String.valueOf(binding.sgnupInptPhoneNumber.getText());
-        String gender = String.valueOf(findViewById(binding.sgnupRgSexOptions.getCheckedRadioButtonId()).getContentDescription());
+        String gender = String.valueOf(binding.getRoot().findViewById(binding.sgnupRgSexOptions.getCheckedRadioButtonId()).getContentDescription());
         String address = String.valueOf(binding.sgnupInptAddress.getText());
 
-        retrofitFacade.getRetrofitService().register(email, password, firstName, lastName, phoneNumber, gender, address)
+        server.getRetrofitService().register(email, password, firstName, lastName, phoneNumber, gender, address)
                 .enqueue(registerCallback);
     }
 
-    private final Callback< SuccessGson<Nullable> > registerCallback = new Callback< SuccessGson<Nullable> >() {
+    private final Callback< SuccessGson<Void> > registerCallback = new Callback< SuccessGson<Void> >() {
         @Override
-        public void onResponse(@NonNull Call<SuccessGson<Nullable>> call, @NonNull Response<SuccessGson<Nullable>> response) {
+        public void onResponse(@NonNull Call<SuccessGson<Void>> call, @NonNull Response<SuccessGson<Void>> response) {
             ResponseGson body = null;
             try {
                 if (response.isSuccessful()) {
                     assert response.body() != null;
                     body = response.body();
                     Log.d(TAG, String.valueOf(body));
-                    movingToVerification();
                 } else {
                     assert response.errorBody() != null;
                     body = new Gson().fromJson(response.errorBody().string(), ErrorGson.class);
@@ -131,32 +134,27 @@ public class SignUp_Activity extends AppCompatActivity {
                 Log.e(TAG, Objects.requireNonNull(e.getMessage()));
             } finally {
                 if (body != null) {
-                    Toast.makeText(getApplicationContext(), String.valueOf(body.getMessage()), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), String.valueOf(body.getMessage()), Toast.LENGTH_SHORT).show();
                 }
                 hideProgressBar();
             }
         }
 
         @Override
-        public void onFailure(@NonNull Call<SuccessGson<Nullable>> call, @NonNull Throwable t) {
+        public void onFailure(@NonNull Call<SuccessGson<Void>> call, @NonNull Throwable t) {
             Log.e(TAG, "Registration Failed!" + t.getMessage());
-            Toast.makeText(getApplicationContext(), "Network Error!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Network Error!", Toast.LENGTH_SHORT).show();
             hideProgressBar();
         }
     };
 
-    private void movingToVerification() {
-        finish();
-        startActivity(new Intent(SignUp_Activity.this, Verification_Activity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
-    }
-
     private void showProgressBar() {
         binding.sgnupBtnSubmit.setEnabled(false);
-        binding.pbLoadingBar.setVisibility(View.VISIBLE);
+        requireActivity().findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
     }
 
     private void hideProgressBar() {
         binding.sgnupBtnSubmit.setEnabled(true);
-        binding.pbLoadingBar.setVisibility(View.GONE);
+        requireActivity().findViewById(R.id.progressBar).setVisibility(View.GONE);
     }
 }

@@ -5,59 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D9D9D9"
-    tools:context=".activity.buyer.BuyerEditProfile_Activity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/formHeader"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/bepImageRedCircle"
-            android:layout_width="264dp"
-            android:layout_height="264dp"
-            android:layout_marginEnd="-120dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/circle"
-            android:backgroundTint="#FE4949"
-            android:contentDescription="@string/red_circle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="ImageContrastCheck" />
-
-        <ImageButton
-            android:id="@+id/bepBtnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="19dp"
-            android:backgroundTint="#00FFFFFF"
-            android:contentDescription="@string/back_btn"
-            android:scaleType="center"
-            android:src="@drawable/left_arrow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/bepTitleContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="84dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="23dp"
-            android:text="Edit Profile"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/bepImageRedCircle"
-            app:layout_constraintStart_toEndOf="@+id/bepBtnBack"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".fragments.buyer.profilefragments.BuyerEditProfile_Fragment">
 
     <LinearLayout
         android:id="@+id/bepContainerContent"
@@ -68,7 +16,7 @@
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/formHeader">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/bepImageUserIcon"
@@ -96,26 +44,26 @@
                 android:id="@+id/bepInptFname"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
                 android:autofillHints="First Name"
                 android:background="@drawable/rounded_corner_rectangle20_transp"
                 android:ems="10"
                 android:hint="@string/placeholder_first_name"
                 android:inputType="text"
-                android:layout_weight="1"
-                android:layout_marginEnd="5dp"
                 android:padding="12dp" />
 
             <EditText
                 android:id="@+id/bepInptLname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
                 android:autofillHints="Last Name"
                 android:background="@drawable/rounded_corner_rectangle20_transp"
                 android:ems="10"
                 android:hint="@string/placeholder_last_name"
                 android:inputType="text"
-                android:layout_weight="1"
-                android:layout_marginStart="5dp"
                 android:padding="12dp" />
 
         </LinearLayout>
@@ -124,45 +72,45 @@
             android:id="@+id/bepInptEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
             android:autofillHints="Email Address"
             android:background="@drawable/rounded_corner_rectangle20_transp"
             android:ems="10"
             android:hint="@string/placeholder_email_address"
             android:inputType="textEmailAddress"
-            android:layout_marginVertical="10dp"
             android:padding="12dp" />
 
         <EditText
             android:id="@+id/bepInptPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
             android:autofillHints="Phone Number"
             android:background="@drawable/rounded_corner_rectangle20_transp"
             android:ems="10"
             android:hint="@string/placeholder_phone_number"
             android:inputType="phone"
-            android:layout_marginVertical="10dp"
             android:padding="12dp" />
 
         <EditText
             android:id="@+id/bepInptAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
             android:autofillHints="Current Address"
             android:background="@drawable/rounded_corner_rectangle20_transp"
             android:ems="10"
             android:hint="@string/placeholder_current_address"
             android:inputType="text"
-            android:layout_marginVertical="10dp"
             android:padding="12dp" />
 
         <LinearLayout
             android:id="@+id/bepInptCoordinatesContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
             android:background="@drawable/rounded_corner_rectangle20_transp"
             android:orientation="horizontal"
-            android:layout_marginVertical="10dp"
             android:padding="12dp">
 
             <EditText
@@ -199,8 +147,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="20sp"
-                android:text="@string/text_valid_id" />
+                android:text="@string/text_valid_id"
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/bepInptValidId"
@@ -208,8 +156,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_corner_rectangle20_solid"
                 android:ems="10"
-                android:inputType="text"
                 android:enabled="false"
+                android:inputType="text"
                 android:padding="12dp" />
 
             <ImageButton
@@ -218,6 +166,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/upload" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/bepContainerButtons"
             android:layout_width="wrap_content"
@@ -233,8 +182,8 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#3FBB54"
-                android:textColor="@color/black"
-                android:text="@string/text_btn_submit" />
+                android:text="@string/text_btn_submit"
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/bepBtnCancel"
@@ -243,8 +192,8 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FE4949"
-                android:textColor="@color/black"
-                android:text="@string/text_cancel" />
+                android:text="@string/text_cancel"
+                android:textColor="@color/black" />
         </LinearLayout>
     </LinearLayout>
 

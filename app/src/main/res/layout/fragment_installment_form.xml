@@ -4,62 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.buyer.CashPaymentForm_Activity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/formHeader"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/cpfImageRedCircle"
-            android:layout_width="264dp"
-            android:layout_height="264dp"
-            android:layout_marginEnd="-120dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/circle"
-            android:backgroundTint="#FE4949"
-            android:contentDescription="@string/red_circle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="ImageContrastCheck" />
-
-        <ImageButton
-            android:id="@+id/cpfBtnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="19dp"
-            android:backgroundTint="#00FFFFFF"
-            android:scaleType="center"
-            android:src="@drawable/left_arrow"
-            android:contentDescription="@string/back_btn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".fragments.buyer.home.InstallmentForm_Fragment">
 
     <TextView
-        android:id="@+id/cpfTitleContent"
+        android:id="@+id/instTitleContent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="165dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="165dp"
-        android:text="@string/text_cash_payment_form"
+        android:text="@string/text_installment_form"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/formHeader" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cpfContainerBody"
+        android:id="@+id/instContainerContent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="20dp"
@@ -68,10 +30,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpfTitleContent">
+        app:layout_constraintTop_toBottomOf="@+id/instTitleContent">
 
         <LinearLayout
-            android:id="@+id/cpfContainerInpt"
+            android:id="@+id/instContainerInpt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -81,23 +43,23 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/cpfContainerFname"
+                android:id="@+id/instContainerFname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/cpfLblFname"
+                    android:id="@+id/instLblFname"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/cpfInptFname"
+                    android:labelFor="@id/instInptFname"
                     android:text="@string/text_fname"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/cpfInptFname"
+                    android:id="@+id/instInptFname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -109,23 +71,23 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/cpfLnameContainer"
+                android:id="@+id/instContainerLname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/cpfLblLname"
+                    android:id="@+id/instLblLname"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/cpfInptLname"
+                    android:labelFor="@id/instInptLname"
                     android:text="@string/text_lname"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/cpfInptLname"
+                    android:id="@+id/instInptLname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -138,23 +100,23 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/cpfContainerAddress"
+                android:id="@+id/instContainerAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/cpfLblAddress"
+                    android:id="@+id/instLblAddress"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/cpfInptAddress"
+                    android:labelFor="@id/instInptAddress"
                     android:text="@string/text_address"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/cpfInptAddress"
+                    android:id="@+id/instInptAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -166,23 +128,23 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/cpfContainerPhoneNumber"
+                android:id="@+id/instContainerPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/cpfLblPhoneNumber"
+                    android:id="@+id/instLblPhoneNumber"
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/cpfInptPhoneNumber"
+                    android:labelFor="@id/instInptPhoneNumber"
                     android:text="@string/text_phone_number"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/cpfInptPhoneNumber"
+                    android:id="@+id/instInptPhoneNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -194,23 +156,23 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/cpfContainerValidId"
+                android:id="@+id/instContainerValidId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/cpfLblValidId"
-                    android:layout_width="100dp"
+                    android:id="@+id/instLblValidId"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:labelFor="@id/cpfInptValidId"
+                    android:labelFor="@id/instInptValidId"
                     android:text="@string/text_valid_id"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/cpfInptValidId"
+                    android:id="@+id/instInptValidId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -222,7 +184,73 @@
                     android:padding="12dp" />
 
                 <ImageButton
-                    android:id="@+id/cpfBtnUploadValidId"
+                    android:id="@+id/instBtnUploadValidId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/upload"
+                    tools:src="@drawable/upload" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/instContainerComakerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/instLblComakerName"
+                    android:layout_width="156dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:labelFor="@id/instInptValidId"
+                    android:text="@string/text_comaker_name"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/instInptComakerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints="@string/placeholder_phone_number"
+                    android:background="@drawable/rounded_corner_rectangle20_solid"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:padding="12dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/instContainerComakerValidId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/instLblComakerValidId"
+                    android:layout_width="168dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:labelFor="@id/instInptValidId"
+                    android:text="@string/text_comaker_name"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/instInptComakerValidId"
+                    android:layout_width="169dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:autofillHints="@string/placeholder_phone_number"
+                    android:background="@drawable/rounded_corner_rectangle20_solid"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:padding="12dp" />
+
+                <ImageButton
+                    android:id="@+id/instBtnUploadComakerValidId"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -230,65 +258,19 @@
                     android:src="@drawable/upload"
                     tools:src="@drawable/upload" />
 
-                <TextView
-                    android:id="@+id/cpfLblUploadValidId"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:labelFor="@id/cpfBtnUploadValidId"
-                    android:text="@string/text_upload" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cpfContainerMop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/cpfLblMop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/text_mode_of_payment"
-                    android:textSize="18sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <RadioGroup
-                    android:id="@+id/cpfRgMop"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="152dp"
-                    android:layout_marginBottom="13dp"
-                    app:layout_constraintBottom_toTopOf="@+id/cpfInptSignature"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cpfLblMop">
-
-                    <RadioButton
-                        android:id="@+id/cpfRbOverCounter"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:color="#20f40e"
-                        android:text="@string/text_over_the_counter" />
-
-                    <RadioButton
-                        android:id="@+id/cpfRbChequeDelivery"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:color="#20f40e"
-                        android:text="@string/text_cheque_on_delivery" />
-                </RadioGroup>
-
                 <com.github.gcacace.signaturepad.views.SignaturePad
-                    android:id="@+id/cpfInptSignature"
+                    android:id="@+id/instInptSignature"
                     android:layout_width="200dp"
                     android:layout_height="100dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="32dp"
                     android:background="@drawable/rectangle"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/instLblSignature"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.496"
                     app:layout_constraintStart_toStartOf="parent"
@@ -296,7 +278,7 @@
                     app:penColor="@android:color/black" />
 
                 <TextView
-                    android:id="@+id/cpfLblSignature"
+                    android:id="@+id/instLblSignature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="165dp"
@@ -304,13 +286,13 @@
                     android:layout_marginEnd="165dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/text_signature"
-                    app:layout_constraintBottom_toTopOf="@+id/cpfBtnContainer"
+                    app:layout_constraintBottom_toTopOf="@+id/instContainerBtn"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cpfInptSignature" />
+                    app:layout_constraintTop_toBottomOf="@+id/instInptSignature" />
 
                 <LinearLayout
-                    android:id="@+id/cpfBtnContainer"
+                    android:id="@+id/instContainerBtn"
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="152dp"
@@ -321,10 +303,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cpfLblSignature">
+                    app:layout_constraintTop_toBottomOf="@+id/instLblSignature">
 
                     <Button
-                        android:id="@+id/cpfBtnSubmit"
+                        android:id="@+id/instBtnSubmit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
@@ -334,7 +316,7 @@
                         android:textColor="#000000" />
 
                     <Button
-                        android:id="@+id/cpfBtnCancel"
+                        android:id="@+id/instBtnCancel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
@@ -351,4 +333,3 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

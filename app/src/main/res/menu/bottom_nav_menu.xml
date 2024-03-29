@@ -7,16 +7,16 @@
         android:icon="@drawable/baseline_home_24"
         android:title="Home" />
     <item
-        android:id="@+id/mnProgress"
+        android:id="@+id/mnApplication"
         android:icon="@drawable/baseline_inbox_24"
-        android:title="Progress" />
+        android:title="Application" />
     <item
         android:id="@+id/mnMyVehicle"
         android:icon="@drawable/baseline_directions_car_24"
         android:title="My Vehicle" />
     <item
         android:id="@+id/mnNotification"
-        android:icon="@drawable/baseline_home_24"
+        android:icon="@drawable/baseline_notifications_none_24"
         android:title="Notification" />
     <item
         android:id="@+id/mnProfile"

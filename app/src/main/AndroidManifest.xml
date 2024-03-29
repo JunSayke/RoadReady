@@ -19,23 +19,11 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="R.string.maps_api_key" />
-
         <activity
             android:name=".activity.GoogleMaps_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan"/>
-
-        <activity
-            android:name=".activity.buyer.BuyerEditProfile_Activity"
-            android:exported="true"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-
-        <activity
-            android:name=".activity.buyer.BuyerProfile_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait" />
         <activity
             android:name=".activity.buyer.RenewalRegistration_Activity"
             android:exported="false"
@@ -58,30 +46,7 @@
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.buyer.InstallmentForm_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".activity.buyer.CashPaymentForm_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".activity.buyer.SelectingCar_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait" />
-        <activity
-            android:name=".activity.buyer.SelectingDealership_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait" />
-        <activity
             android:name=".activity.buyer.SearchDealership_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".activity.buyer.BuyerHomepage_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
@@ -131,27 +96,7 @@
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.Verification_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".activity.Login_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".activity.SignUpAs_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".activity.SignUp_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".activity.Opening_Activity"
+            android:name=".fragments.MainActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
