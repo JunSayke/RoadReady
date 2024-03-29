@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/buyerHomepage_Fragment2">
+    <fragment
+        android:id="@+id/selectingCar_Fragment"
+        android:name="com.example.roadready.fragments.buyer.home.SelectingCar_Fragment"
+        android:label="fragment_selecting_car"
+        tools:layout="@layout/fragment_selecting_car" >
+        <action
+            android:id="@+id/action_selectingCar_Fragment_to_cashPaymentForm_Fragment"
+            app:destination="@id/cashPaymentForm_Fragment" />
+        <action
+            android:id="@+id/action_selectingCar_Fragment_to_installmentForm_Fragment"
+            app:destination="@id/installmentForm_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectingDealership_Fragment"
+        android:name="com.example.roadready.fragments.buyer.home.SelectingDealership_Fragment"
+        android:label="fragment_selecting_dealership"
+        tools:layout="@layout/fragment_selecting_dealership" >
+        <action
+            android:id="@+id/action_selectingDealership_Fragment_to_selectingCar_Fragment"
+            app:destination="@id/selectingCar_Fragment" />
+        <action
+            android:id="@+id/action_selectingDealership_Fragment_to_cashPaymentForm_Fragment"
+            app:destination="@id/cashPaymentForm_Fragment" />
+        <action
+            android:id="@+id/action_selectingDealership_Fragment_to_installmentForm_Fragment"
+            app:destination="@id/installmentForm_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cashPaymentForm_Fragment"
+        android:name="com.example.roadready.fragments.buyer.home.CashPaymentForm_Fragment"
+        android:label="fragment_cash_payment_form"
+        tools:layout="@layout/fragment_cash_payment_form" />
+    <fragment
+        android:id="@+id/installmentForm_Fragment"
+        android:name="com.example.roadready.fragments.buyer.home.InstallmentForm_Fragment"
+        android:label="fragment_installment_form"
+        tools:layout="@layout/fragment_installment_form" />
+    <fragment
+        android:id="@+id/buyerHomepage_Fragment2"
+        android:name="com.example.roadready.fragments.buyer.home.BuyerHomepage_Fragment"
+        android:label="fragment_buyer_homepage"
+        tools:layout="@layout/fragment_buyer_homepage" >
+        <action
+            android:id="@+id/action_buyerHomepage_Fragment2_to_selectingCar_Fragment"
+            app:destination="@id/selectingCar_Fragment" />
+        <action
+            android:id="@+id/action_buyerHomepage_Fragment2_to_selectingDealership_Fragment"
+            app:destination="@id/selectingDealership_Fragment" />
+    </fragment>
+</navigation>
