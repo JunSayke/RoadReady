@@ -5,6 +5,22 @@
       <entry key="BuyerEditProfile_Activity">
         <State />
       </entry>
+      <entry key="BuyerEditProfile_Activity (1)">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_34.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-30T01:45:45.704024900Z" />
+        </State>
+      </entry>
       <entry key="BuyerHomepage_Activity">
         <State>
           <targetSelectedWithDropDown>
@@ -19,22 +35,6 @@
             </Target>
           </targetSelectedWithDropDown>
           <timeTargetWasSelectedWithDropDown value="2024-03-28T16:04:25.530334100Z" />
-        </State>
-      </entry>
-      <entry key="BuyerProfile_Activity">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_34.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-03-27T07:22:32.543504200Z" />
         </State>
       </entry>
       <entry key="Opening_Activity">
