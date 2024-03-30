@@ -57,12 +57,12 @@
 				tools:ignore="ImageContrastCheck" />
 
 			<TextView
-				android:id="@+id/ivHeader"
+				android:id="@+id/dealershipTxtHeader"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center_horizontal|center"
 				android:gravity="center"
-				android:text="@string/text_header_registration_documents"
+				android:text="@string/text_header_lto"
 				android:textSize="20sp"
 				android:textStyle="bold"
 				app:layout_constraintBottom_toBottomOf="parent"

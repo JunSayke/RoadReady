@@ -51,12 +51,17 @@
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.dealership.Applicants_Activity"
+            android:name=".activity.dealership.Dealership_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.dealership.Approved_Activity"
+            android:name=".fragments.dealership.Applicants_Fragment"
+            android:exported="false"
+            android:screenOrientation="sensorPortrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".fragments.dealership.Approved_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
@@ -66,27 +71,27 @@
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.dealership.Banklist_Activity"
+            android:name=".fragments.dealership.Banklist_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.dealership.ForApproval_Activity"
+            android:name=".fragments.dealership.ForApproval_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.dealership.MyVehicles_Activity"
+            android:name=".fragments.dealership.MyVehicles_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.dealership.Notifications_Activity"
+            android:name=".fragments.dealership.Notifications_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.dealership.RegistrationDocs_Activity"
+            android:name=".fragments.dealership.RegistrationDocs_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />

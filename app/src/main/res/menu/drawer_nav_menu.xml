@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/navMyVehicles"
+            android:icon="@drawable/sb_iv_myvehicles"
+            android:title="@string/text_header_my_vehicles" />
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/grpVehicleApplicants">
+
+        <item
+            android:id="@+id/navForApproval"
+            android:icon="@drawable/sb_iv_vehicleapplicants"
+            android:title="@string/text_header_for_approval" />
+
+        <item
+            android:id="@+id/navApproved"
+            android:icon="@drawable/sb_iv_vehicleapplicants"
+            android:title="@string/text_header_approved" />
+    </group>
+
+    <group
+        android:checkableBehavior="single">
+    <item
+        android:id="@+id/navRegistrationProgress"
+        android:icon="@drawable/sb_iv_registrationprocess"
+        android:title="Registration Progress" />
+
+    <item
+        android:id="@+id/navLTO"
+        android:icon="@drawable/sb_iv_lto"
+        android:title="@string/text_header_lto" />
+
+    <item
+        android:id="@+id/navBank"
+        android:icon="@drawable/sb_iv_bank"
+        android:title="@string/text_header_banklist" />
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/grpProfile">
+        <item
+            android:id="@+id/navNotifications"
+            android:icon="@drawable/sb_iv_notifications"
+            android:title="@string/text_header_notifications" />
+
+        <item
+            android:id="@+id/navProfile"
+            android:icon="@drawable/sb_iv_viewprofile"
+            android:title="Profile" />
+    </group>
+
+
+</menu>
