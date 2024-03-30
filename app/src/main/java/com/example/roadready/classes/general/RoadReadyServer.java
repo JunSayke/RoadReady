@@ -6,4 +6,5 @@ public class RoadReadyServer extends RetrofitFacade {
     public RoadReadyServer() {
         super("https://road-ready-black.vercel.app");
     }
+    // kuugang was here uwu
 }
