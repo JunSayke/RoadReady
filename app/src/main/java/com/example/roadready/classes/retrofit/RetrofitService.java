@@ -38,7 +38,7 @@ public interface RetrofitService {
 
     @FormUrlEncoded
     @PUT("user/profile")
-    Call< SuccessGson<Void> > updateProfile(
+    Call< SuccessGson<LoginDataGson> > updateProfile(
             @Field("firstName") @Nullable String firstName,
             @Field("lastName") @Nullable String lastName,
             @Field("phoneNumber") @Nullable String phoneNumber,

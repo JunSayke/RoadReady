@@ -25,24 +25,24 @@
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan"/>
         <activity
-            android:name=".activity.buyer.RenewalRegistration_Activity"
+            android:name=".fragments.buyer.myvehiclefragments.RenewalRegistration_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.buyer.MyVehicle_Activity"
+            android:name=".fragments.buyer.myvehiclefragments.MyVehicle_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.buyer.VehicleApplicationProgress_Activity"
+            android:name=".fragments.buyer.applicationfragments.VehicleApplicationProgress_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.buyer.VehicleRegistrationProgress_Activity"
+            android:name=".fragments.buyer.applicationfragments.VehicleRegistrationProgress_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
-            android:name=".activity.buyer.ApplicationProgress_Activity"
+            android:name=".fragments.buyer.applicationfragments.ApplicationProgress_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait" />
         <activity
@@ -86,7 +86,7 @@
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".fragments.dealership.Notifications_Fragment"
+            android:name=".fragments.common.notificationfragments.Notifications_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
@@ -101,7 +101,7 @@
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".fragments.MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait">
             <intent-filter>

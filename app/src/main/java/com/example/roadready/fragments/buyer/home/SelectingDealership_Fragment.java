@@ -8,19 +8,29 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 
+import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.databinding.FragmentSelectingDealershipBinding;
 
 public class SelectingDealership_Fragment extends Fragment {
+    private final String TAG = "SelectingDealership_Fragment";
+    private FragmentSelectingDealershipBinding binding;
+    private MainFacade mainFacade;
 
-    private final String TAG = "SelectingDealership_Activity"; // declare TAG for each class for debugging purposes using Log.d()
-    private FragmentSelectingDealershipBinding binding; // use View binding to avoid using too much findViewById
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentSelectingDealershipBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        try {
+            mainFacade = MainFacade.getInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         return root;
     }

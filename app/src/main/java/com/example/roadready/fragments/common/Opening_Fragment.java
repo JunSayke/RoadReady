@@ -3,34 +3,35 @@ package com.example.roadready.fragments.common;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.roadready.R;
-import com.example.roadready.classes.general.SessionManager;
-import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.databinding.FragmentOpeningBinding;
 
 public class Opening_Fragment extends Fragment {
-    private static final String TAG = "Opening_Fragment"; // declare TAG for each class for debugging purposes using Log.d()
+    private final String TAG = "Opening_Fragment";
     private FragmentOpeningBinding binding;
-    private NavController navController;
-    private static final long SPLASH_SCREEN_DURATION = 2000; // 3 seconds
+    private static final long SPLASH_SCREEN_DURATION = 1000;
+    private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         binding = FragmentOpeningBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        navController = Navigation.findNavController(requireActivity(), R.id.openingFragmentContainer);
+        try {
+            mainFacade = MainFacade.getInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         return root;
     }
@@ -40,11 +41,12 @@ public class Opening_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         new Handler().postDelayed(() -> {
-            UserGson user = new SessionManager(requireContext()).getUserGson();
-            if (user != null) {
-                navController.navigate(R.id.action_opening_Fragment_to_homePageContainer_Fragment);
+            if (mainFacade.getSessionManager().getUserGson() == null) {
+                mainFacade.makeToast("Moving to Login page", Toast.LENGTH_SHORT);
+                mainFacade.getMainNavGraphController().navigate(R.id.action_opening_Fragment_to_login_Fragment);
             } else {
-                navController.navigate(R.id.action_opening_Fragment_to_login_Fragment);
+                mainFacade.makeToast("Moving to Homepage", Toast.LENGTH_SHORT);
+                mainFacade.getMainNavGraphController().navigate(R.id.action_opening_Fragment_to_homepageContainer_Fragment);
             }
         }, SPLASH_SCREEN_DURATION);
     }

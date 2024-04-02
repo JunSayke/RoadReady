@@ -18,8 +18,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitFacade {
-    private static final String TAG = "RetrofitFacade";
-    private static final Set<String> cookies = new HashSet<>();
+    private final String TAG = "RetrofitFacade";
+    protected static final Set<String> cookies = new HashSet<>();
     private final RetrofitService retrofitService;
 
     public RetrofitFacade(String baseUrl) {
@@ -45,7 +45,7 @@ public class RetrofitFacade {
     }
 
     private static class CookiesInterceptor implements Interceptor {
-        private static final String TAG = "CookiesInterceptor";
+        private final String TAG = "CookiesInterceptor";
         @NonNull
         @Override
         public Response intercept(@NonNull Chain chain) throws IOException {
@@ -63,7 +63,7 @@ public class RetrofitFacade {
     }
 
     private static class RequestInterceptor implements Interceptor {
-        private static final String TAG = "RequestInterceptor";
+        private final String TAG = "RequestInterceptor";
         @NonNull
         @Override
         public Response intercept(Chain chain) throws IOException {

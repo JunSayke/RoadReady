@@ -9,17 +9,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
-import com.example.roadready.R;
+import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.databinding.FragmentVerificationBinding;
 
 public class Verification_Fragment extends Fragment {
-
-    private static final String TAG = "Verification_Activity"; // Declare TAG for each class for debugging purposes using Log.d()
-    private FragmentVerificationBinding binding; // Use View binding to avoid using too much findViewById
-    private NavController navController;
+    private final String TAG = "Verification_Fragment";
+    private FragmentVerificationBinding binding;
+    private MainFacade mainFacade;
 
     @Nullable
     @Override
@@ -27,7 +24,11 @@ public class Verification_Fragment extends Fragment {
         binding = FragmentVerificationBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        navController = Navigation.findNavController(requireActivity(), R.id.openingFragmentContainer);
+        try {
+            mainFacade = MainFacade.getInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         return root;
     }

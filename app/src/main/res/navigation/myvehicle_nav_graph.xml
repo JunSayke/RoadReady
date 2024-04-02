@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mnMyVehicle"
+    app:startDestination="@id/myVehicle_Fragment">
+    <fragment
+        android:id="@+id/myVehicle_Fragment"
+        android:name="com.example.roadready.fragments.buyer.myvehiclefragments.MyVehicle_Fragment"
+        android:label="fragment_my_vehicle"
+        tools:layout="@layout/fragment_my_vehicle" >
+        <action
+            android:id="@+id/action_myVehicle_Fragment_to_renewalRegistration_Fragment"
+            app:destination="@id/renewalRegistration_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/renewalRegistration_Fragment"
+        android:name="com.example.roadready.fragments.buyer.myvehiclefragments.RenewalRegistration_Fragment"
+        android:label="fragment_renewal_registration"
+        tools:layout="@layout/fragment_renewal_registration" />
+</navigation>

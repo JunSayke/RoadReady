@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homepage_nav_graph"
+    app:startDestination="@id/mnHome">
+
+    <fragment
+        android:id="@+id/mnApplication"
+        android:name="com.example.roadready.fragments.buyer.mainnav.ApplicationContainer_Fragment"
+        android:label="fragment_application_container"
+        tools:layout="@layout/fragment_application_container" />
+    <fragment
+        android:id="@+id/mnHome"
+        android:name="com.example.roadready.fragments.buyer.mainnav.HomeContainer_Fragment"
+        android:label="fragment_home_container"
+        tools:layout="@layout/fragment_home_container" />
+    <fragment
+        android:id="@+id/mnMyVehicle"
+        android:name="com.example.roadready.fragments.buyer.mainnav.MyVehicleContainer_Fragment"
+        android:label="fragment_my_vehicle_container"
+        tools:layout="@layout/fragment_my_vehicle_container" />
+    <fragment
+        android:id="@+id/mnNotification"
+        android:name="com.example.roadready.fragments.buyer.mainnav.NotificationContainer_Fragment"
+        android:label="fragment_notification_container"
+        tools:layout="@layout/fragment_notification_container" />
+    <fragment
+        android:id="@+id/mnProfile"
+        android:name="com.example.roadready.fragments.buyer.mainnav.ProfileContainer_Fragment"
+        android:label="fragment_profile_container"
+        tools:layout="@layout/fragment_profile_container" />
+</navigation>

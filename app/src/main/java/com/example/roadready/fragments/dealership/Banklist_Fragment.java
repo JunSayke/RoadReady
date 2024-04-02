@@ -13,23 +13,23 @@ import com.example.roadready.databinding.FragmentBanklistBinding;
 
 public class Banklist_Fragment extends Fragment {
 
-		private final String TAG = "Banklist_Activity"; // declare TAG for each class for debugging purposes using Log.d()
-		private FragmentBanklistBinding binding; // use View binding to avoid using too much findViewById
+    private final String TAG = "Banklist_Activity"; // declare TAG for each class for debugging purposes using Log.d()
+    private FragmentBanklistBinding binding; // use View binding to avoid using too much findViewById
 
-	public View onCreateView(@NonNull LayoutInflater inflater,
-							 ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
 
-		binding = FragmentBanklistBinding.inflate(inflater, container, false);
-		View root = binding.getRoot();
+        binding = FragmentBanklistBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
 
-		return root;
-	}
+        return root;
+    }
 
-	@Override
-	public void onDestroyView() {
-		super.onDestroyView();
-		binding = null;
-	}
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }
 	
 	

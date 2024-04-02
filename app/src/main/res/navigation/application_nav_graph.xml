@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mnApplication"
+    app:startDestination="@id/applicationProgress_Fragment">
+    <fragment
+        android:id="@+id/applicationProgress_Fragment"
+        android:name="com.example.roadready.fragments.buyer.applicationfragments.ApplicationProgress_Fragment"
+        android:label="fragment_application_progress"
+        tools:layout="@layout/fragment_application_progress" >
+        <action
+            android:id="@+id/action_applicationProgress_Fragment_to_vehicleApplicationProgress_Fragment"
+            app:destination="@id/vehicleApplicationProgress_Fragment" />
+        <action
+            android:id="@+id/action_applicationProgress_Fragment_to_vehicleRegistrationProgress_Fragment"
+            app:destination="@id/vehicleRegistrationProgress_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleApplicationProgress_Fragment"
+        android:name="com.example.roadready.fragments.buyer.applicationfragments.VehicleApplicationProgress_Fragment"
+        android:label="fragment_vehicle_application_progress"
+        tools:layout="@layout/fragment_vehicle_application_progress" />
+    <fragment
+        android:id="@+id/vehicleRegistrationProgress_Fragment"
+        android:name="com.example.roadready.fragments.buyer.applicationfragments.VehicleRegistrationProgress_Fragment"
+        android:label="fragment_vehicle_registration_progress"
+        tools:layout="@layout/fragment_vehicle_registration_progress" />
+</navigation>

@@ -21,7 +21,7 @@ import com.example.roadready.fragments.dealership.Banklist_Fragment;
 import com.example.roadready.fragments.dealership.DealershipProfile_Fragment;
 import com.example.roadready.fragments.dealership.ForApproval_Fragment;
 import com.example.roadready.fragments.dealership.MyVehicles_Fragment;
-import com.example.roadready.fragments.dealership.Notifications_Fragment;
+import com.example.roadready.fragments.common.notificationfragments.Notifications_Fragment;
 import com.example.roadready.fragments.dealership.RegistrationDocs_Fragment;
 import com.google.android.material.navigation.NavigationView;
 

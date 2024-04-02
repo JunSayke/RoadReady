@@ -9,17 +9,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.example.roadready.R;
+import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.databinding.FragmentSignUpAsBinding;
 
 public class SignUpAs_Fragment extends Fragment {
-
-    private static final String TAG = "SignUpAs_Fragment"; // Declare TAG for each class for debugging purposes using Log.d()
-    private FragmentSignUpAsBinding binding; // Use View binding to avoid using too much findViewById
-    private NavController navController;
+    private final String TAG = "SignUpAs_Fragment";
+    private FragmentSignUpAsBinding binding;
+    private MainFacade mainFacade;
 
     @Nullable
     @Override
@@ -27,7 +25,11 @@ public class SignUpAs_Fragment extends Fragment {
         binding = FragmentSignUpAsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        navController = Navigation.findNavController(requireActivity(), R.id.openingFragmentContainer);
+        try {
+            mainFacade = MainFacade.getInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         return root;
     }
@@ -47,15 +49,19 @@ public class SignUpAs_Fragment extends Fragment {
 
     private void initActions() {
         binding.spasTextLogin.setOnClickListener(v -> {
-            navController.navigate(R.id.action_signUpAs_Fragment2_to_login_Fragment);
+            mainFacade.getMainNavGraphController().navigate(R.id.action_global_login_Fragment);
         });
 
         binding.spasBtnVehicleBuyer.setOnClickListener(v -> {
-            navController.navigate(R.id.action_signUpAs_Fragment2_to_signUp_Fragment);
+            mainFacade.getMainNavGraphController().navigate(R.id.action_signUpAs_Fragment_to_signUp_Fragment);
+        });
+
+        binding.spasBtnSignupGoogle.setOnClickListener(v -> {
+            mainFacade.makeToast("Login with google is not yet available!", Toast.LENGTH_SHORT);
         });
 
         binding.spasBtnDealer.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "Dealer Registration is not yet available!", Toast.LENGTH_SHORT).show();
+            mainFacade.makeToast("Dealer Registration is not yet available!", Toast.LENGTH_SHORT);
         });
     }
 }

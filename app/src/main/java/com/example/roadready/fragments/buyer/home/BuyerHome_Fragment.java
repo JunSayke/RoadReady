@@ -1,4 +1,4 @@
-package com.example.roadready.fragments.buyer.mainnav;
+package com.example.roadready.fragments.buyer.home;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -11,15 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.roadready.classes.general.RoadReadyServer;
+import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.response.ErrorGson;
 import com.example.roadready.classes.model.gson.response.ResponseGson;
 import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.classes.ui.adapter.ListingsRecyclerViewAdapter;
-import com.example.roadready.databinding.FragmentBuyerHomepageBinding;
+import com.example.roadready.databinding.FragmentBuyerHomeBinding;
 import com.google.gson.Gson;
 
 import java.util.Objects;
@@ -28,17 +27,23 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-public class BuyerHomepageContainer_Fragment extends Fragment {
-    private static final String TAG = "HomeContainer_Fragment";
-    private FragmentBuyerHomepageBinding binding;
-    private final RoadReadyServer server = new RoadReadyServer();
+public class BuyerHome_Fragment extends Fragment {
+    private final String TAG = "BuyerHome_Fragment";
+    private FragmentBuyerHomeBinding binding;
+    private MainFacade mainFacade;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentBuyerHomepageBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        try {
+            mainFacade = MainFacade.getInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
         return root;
     }
 
@@ -46,7 +51,7 @@ public class BuyerHomepageContainer_Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        server.getRetrofitService().getListings(null, null, null)
+        mainFacade.getServer().getRetrofitService().getListings(null, null, null)
                 .enqueue(getListingsCallback);
     }
 
@@ -60,7 +65,13 @@ public class BuyerHomepageContainer_Fragment extends Fragment {
                     body = response.body();
                     Log.d(TAG, String.valueOf(body));
                     ListingsDataGson data = (ListingsDataGson) ((SuccessGson<?>) body).getData();
-                    binding.bhSVItems.setAdapter(new ListingsRecyclerViewAdapter(requireContext(), data.getListings()));
+                    binding.bhSVItems.setAdapter(new ListingsRecyclerViewAdapter(requireContext(), data.getListings(),
+                            itemId -> {
+                                BuyerHome_FragmentDirections.ActionBuyerHomepageFragmentToSelectingCarFragment action =
+                                        BuyerHome_FragmentDirections.actionBuyerHomepageFragmentToSelectingCarFragment();
+                                action.setModelId(itemId);
+                                mainFacade.getHomeNavGraphController().navigate(action);
+                            }));
                     binding.bhSVItems.setLayoutManager(new LinearLayoutManager(requireContext()));
                 } else {
                     assert response.errorBody() != null;
@@ -71,7 +82,7 @@ public class BuyerHomepageContainer_Fragment extends Fragment {
                 Log.e(TAG, Objects.requireNonNull(e.getMessage()));
             } finally {
                 if (body != null) {
-                    Toast.makeText(requireContext(), String.valueOf(body.getMessage()), Toast.LENGTH_SHORT).show();
+                    mainFacade.makeToast(body.getMessage(), Toast.LENGTH_SHORT);
                 }
             }
         }
@@ -79,7 +90,7 @@ public class BuyerHomepageContainer_Fragment extends Fragment {
         @Override
         public void onFailure(@NonNull Call<SuccessGson<ListingsDataGson>> call, @NonNull Throwable t) {
             Log.e(TAG, "Fetching Listings Failed!" + t.getMessage());
-            Toast.makeText(requireContext(), "Network Error!", Toast.LENGTH_SHORT).show();
+            mainFacade.makeToast("Network Error!", Toast.LENGTH_SHORT);
         }
     };
 

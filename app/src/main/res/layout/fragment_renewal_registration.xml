@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rorContainerContent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".fragments.buyer.myvehiclefragments.RenewalRegistration_Fragment">
+
+    <TextView
+        android:id="@+id/rorTitleContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="@string/text_renewal_of_registration"
+        android:textAlignment="center"
+        android:textSize="34sp" />
+
+    <LinearLayout
+        android:id="@+id/rorContainerMvis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/rorLblMvis"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:labelFor="@id/rorInptMvis"
+            android:text="@string/text_1_mvis"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/rorInptMvis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <ImageButton
+            android:id="@+id/rorBtnUploadMvis"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/upload"
+            tools:src="@drawable/upload" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rorContainerInsurance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/rorLblInsurance"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:labelFor="@+id/rorInptInsurance"
+            android:text="@string/text_2_insurance"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/rorInptInsurance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <ImageButton
+            android:id="@+id/rorBtnUploadInsurance"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/upload"
+            tools:src="@drawable/upload" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rorContainerRegisterCert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/rorLblRegisterCert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:labelFor="@id/rorInptRegisterCert"
+            android:text="@string/text_3_certification_of_registration"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/rorInptRegisterCert"
+            android:layout_width="131dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <ImageButton
+            android:id="@+id/rorBtnUploadRegisterCert"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/upload"
+            tools:src="@drawable/upload" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rorContainerOrigReceipt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/rorLblOrigReceipt"
+            android:layout_width="127dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:labelFor="@id/rorInptOrigReceipt"
+            android:text="@string/text_4_original_receipt"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/rorInptOrigReceipt"
+            android:layout_width="183dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <ImageButton
+            android:id="@+id/rorBtnUploadOrigReceipt"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/upload"
+            tools:src="@drawable/upload" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rorContainerProofPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/rorLblProofPayment"
+            android:layout_width="143dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:labelFor="@id/rorInptProofPayment"
+            android:text="@string/text_5_proof_of_payment"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/rorInptProofPayment"
+            android:layout_width="159dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
+            android:ems="10"
+            android:enabled="false"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <ImageButton
+            android:id="@+id/rorBtnUploadProofPayment"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/upload"
+            tools:src="@drawable/upload" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rorContainerSubmitLto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="50dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:textAlignment="center">
+
+        <TextView
+            android:id="@+id/rorLblLto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/text_submit_to_lto"
+            android:textAlignment="center" />
+
+        <Spinner
+            android:id="@+id/rorSpinnerLto"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/rorBtnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#3FBB54"
+        android:text="@string/text_btn_submit"
+        android:textColor="@color/black" />
+
+</LinearLayout>
+
+
+

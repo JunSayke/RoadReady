@@ -7,12 +7,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roadready.R;
+import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
 import com.squareup.picasso.Picasso;
 
@@ -21,10 +21,13 @@ import java.util.List;
 public class ListingsRecyclerViewAdapter extends RecyclerView.Adapter<ListingsRecyclerViewAdapter.ViewHolder> {
     private final Context context;
     private final List<VehicleGson> vehicleGsonList;
+    private final RoadReadyServer server = new RoadReadyServer();
+    private final OnItemClickListener onItemClickListener;
 
-    public ListingsRecyclerViewAdapter(Context context, List<VehicleGson> vehicleGsonList) {
+    public ListingsRecyclerViewAdapter(Context context, List<VehicleGson> vehicleGsonList, OnItemClickListener listener) {
         this.context = context;
         this.vehicleGsonList = vehicleGsonList;
+        this.onItemClickListener = listener;
     }
 
     @NonNull
@@ -40,12 +43,6 @@ public class ListingsRecyclerViewAdapter extends RecyclerView.Adapter<ListingsRe
         Picasso.get().load(model.getImage()).into(holder.getVehicleImage());
         holder.getVehicleName().setText(model.getModelAndName());
         holder.getVehicleDesc().setText(model.getDealershipGson().getName());
-        holder.getBtnSelect().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, model.getId(), Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
@@ -53,7 +50,11 @@ public class ListingsRecyclerViewAdapter extends RecyclerView.Adapter<ListingsRe
         return vehicleGsonList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public interface OnItemClickListener {
+        void onItemClick(String itemId);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView vehicleImage;
         private final TextView vehicleName;
         private final TextView vehicleDesc;
@@ -64,6 +65,16 @@ public class ListingsRecyclerViewAdapter extends RecyclerView.Adapter<ListingsRe
             vehicleName = itemView.findViewById(R.id.bhVehicleName);
             vehicleDesc = itemView.findViewById(R.id.bhVehicleDesc);
             btnSelect = itemView.findViewById(R.id.bhBtnSelect);
+
+            btnSelect.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getBindingAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
+                        onItemClickListener.onItemClick(vehicleGsonList.get(position).getId());
+                    }
+                }
+            });
         }
 
         public ImageView getVehicleImage() {

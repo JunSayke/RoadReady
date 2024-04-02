@@ -9,4 +9,5 @@
     app:defaultNavHost="true"
     app:navGraph="@navigation/profile_nav_graph"
     tools:context=".fragments.buyer.mainnav.ProfileContainer_Fragment">
+
 </androidx.fragment.app.FragmentContainerView>

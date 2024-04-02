@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
+    // START_OF[Safe Args]
+    id("androidx.navigation.safeargs")
+    // END_OF[Safe Args]
 }
 
 android {
@@ -64,7 +67,6 @@ dependencies {
     // Android 13 and below.
     implementation("androidx.credentials:credentials-play-services-auth:1.3.0-alpha01")
     // END_OF[Google Auth Dependencies]
-
 
     // OTHERS
     implementation("androidx.appcompat:appcompat:1.6.1")

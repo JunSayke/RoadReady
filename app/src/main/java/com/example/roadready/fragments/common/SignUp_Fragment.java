@@ -14,12 +14,10 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.example.roadready.R;
 import com.example.roadready.activity.GoogleMaps_Activity;
-import com.example.roadready.classes.general.RoadReadyServer;
+import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.model.gson.response.ErrorGson;
 import com.example.roadready.classes.model.gson.response.ResponseGson;
 import com.example.roadready.classes.model.gson.response.SuccessGson;
@@ -33,11 +31,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SignUp_Fragment extends Fragment {
-    private static final String TAG = "SignUp_Fragment"; // Declare TAG for each class for debugging purposes using Log.d()
-    private FragmentSignUpBinding binding; // Use View binding to avoid using too much findViewById
+    private final String TAG = "SignUp_Fragment";
+    private FragmentSignUpBinding binding;
     private ActivityResultLauncher<Intent> mapResultLauncher;
-    private final RoadReadyServer server = new RoadReadyServer(); // Declare this if HTTP operations are needed
-    private NavController navController;
+    private MainFacade mainFacade;
+
 
     @Nullable
     @Override
@@ -45,7 +43,12 @@ public class SignUp_Fragment extends Fragment {
         binding = FragmentSignUpBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        navController = Navigation.findNavController(requireActivity(), R.id.openingFragmentContainer);
+        try {
+            mainFacade = MainFacade.getInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
         return root;
     }
 
@@ -69,20 +72,20 @@ public class SignUp_Fragment extends Fragment {
         });
 
         binding.sgnupTextLogin.setOnClickListener(v -> {
-            navController.navigate(R.id.action_signUp_Fragment_to_login_Fragment);
+            mainFacade.getMainNavGraphController().navigate(R.id.action_global_login_Fragment);
         });
 
         binding.sgnupBtnOpenMaps.setOnClickListener(v -> {
             startGoogleMaps();
         });
-      
+
         binding.sgnupBtnGoogleLogin.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "Login with google is not yet available", Toast.LENGTH_SHORT).show();
+            mainFacade.makeToast("Login with google is not yet available!", Toast.LENGTH_SHORT);
         });
     }
 
     private void startGoogleMaps() {
-        Intent intent = new Intent(requireContext(), GoogleMaps_Activity.class);
+        Intent intent = new Intent(mainFacade.getMainActivity().getApplicationContext(), GoogleMaps_Activity.class);
         mapResultLauncher.launch(intent);
     }
 
@@ -112,11 +115,13 @@ public class SignUp_Fragment extends Fragment {
         String gender = String.valueOf(binding.getRoot().findViewById(binding.sgnupRgSexOptions.getCheckedRadioButtonId()).getContentDescription());
         String address = String.valueOf(binding.sgnupInptAddress.getText());
 
-        server.getRetrofitService().register(email, password, firstName, lastName, phoneNumber, gender, address)
+        //TODO: Validations
+
+        mainFacade.getServer().getRetrofitService().register(email, password, firstName, lastName, phoneNumber, gender, address)
                 .enqueue(registerCallback);
     }
 
-    private final Callback< SuccessGson<Void> > registerCallback = new Callback< SuccessGson<Void> >() {
+    private final Callback< SuccessGson<Void> > registerCallback = new Callback<SuccessGson<Void>>() {
         @Override
         public void onResponse(@NonNull Call<SuccessGson<Void>> call, @NonNull Response<SuccessGson<Void>> response) {
             ResponseGson body = null;
@@ -134,7 +139,7 @@ public class SignUp_Fragment extends Fragment {
                 Log.e(TAG, Objects.requireNonNull(e.getMessage()));
             } finally {
                 if (body != null) {
-                    Toast.makeText(getContext(), String.valueOf(body.getMessage()), Toast.LENGTH_SHORT).show();
+                    mainFacade.makeToast(body.getMessage(), Toast.LENGTH_SHORT);
                 }
                 hideProgressBar();
             }
@@ -143,18 +148,18 @@ public class SignUp_Fragment extends Fragment {
         @Override
         public void onFailure(@NonNull Call<SuccessGson<Void>> call, @NonNull Throwable t) {
             Log.e(TAG, "Registration Failed!" + t.getMessage());
-            Toast.makeText(getContext(), "Network Error!", Toast.LENGTH_SHORT).show();
+            mainFacade.makeToast("Network Error!", Toast.LENGTH_SHORT);
             hideProgressBar();
         }
     };
 
     private void showProgressBar() {
         binding.sgnupBtnSubmit.setEnabled(false);
-        requireActivity().findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+        mainFacade.showProgressBar();
     }
 
     private void hideProgressBar() {
         binding.sgnupBtnSubmit.setEnabled(true);
-        requireActivity().findViewById(R.id.progressBar).setVisibility(View.GONE);
+        mainFacade.hideProgressBar();
     }
 }

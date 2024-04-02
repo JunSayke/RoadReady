@@ -13,6 +13,7 @@ public class BuyerGson extends UserGson {
     @SerializedName("isapproved")
     private boolean isApproved;
     private String token;
+    private String email;
 
     public String getAddress() {
         return address;
@@ -34,11 +35,15 @@ public class BuyerGson extends UserGson {
         return role;
     }
 
-    public boolean getIsApproved() {
+    public boolean isApproved() {
         return isApproved;
     }
 
     public String getToken() {
         return token;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/home_nav_graph"
-    app:startDestination="@id/buyerHomepage_Fragment2">
+    android:id="@+id/mnHome"
+    app:startDestination="@id/buyerHomepage_Fragment">
     <fragment
         android:id="@+id/selectingCar_Fragment"
         android:name="com.example.roadready.fragments.buyer.home.SelectingCar_Fragment"
@@ -15,6 +15,11 @@
         <action
             android:id="@+id/action_selectingCar_Fragment_to_installmentForm_Fragment"
             app:destination="@id/installmentForm_Fragment" />
+        <argument
+            android:name="modelId"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/selectingDealership_Fragment"
@@ -35,22 +40,34 @@
         android:id="@+id/cashPaymentForm_Fragment"
         android:name="com.example.roadready.fragments.buyer.home.CashPaymentForm_Fragment"
         android:label="fragment_cash_payment_form"
-        tools:layout="@layout/fragment_cash_payment_form" />
+        tools:layout="@layout/fragment_cash_payment_form">
+        <argument
+            android:name="modelId"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/installmentForm_Fragment"
         android:name="com.example.roadready.fragments.buyer.home.InstallmentForm_Fragment"
         android:label="fragment_installment_form"
-        tools:layout="@layout/fragment_installment_form" />
+        tools:layout="@layout/fragment_installment_form">
+        <argument
+            android:name="modelId"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
-        android:id="@+id/buyerHomepage_Fragment2"
-        android:name="com.example.roadready.fragments.buyer.home.BuyerHomepage_Fragment"
+        android:id="@+id/buyerHomepage_Fragment"
+        android:name="com.example.roadready.fragments.buyer.home.BuyerHome_Fragment"
         android:label="fragment_buyer_homepage"
-        tools:layout="@layout/fragment_buyer_homepage" >
+        tools:layout="@layout/fragment_buyer_home" >
         <action
-            android:id="@+id/action_buyerHomepage_Fragment2_to_selectingCar_Fragment"
+            android:id="@+id/action_buyerHomepage_Fragment_to_selectingCar_Fragment"
             app:destination="@id/selectingCar_Fragment" />
         <action
-            android:id="@+id/action_buyerHomepage_Fragment2_to_selectingDealership_Fragment"
+            android:id="@+id/action_buyerHomepage_Fragment_to_selectingDealership_Fragment"
             app:destination="@id/selectingDealership_Fragment" />
     </fragment>
 </navigation>

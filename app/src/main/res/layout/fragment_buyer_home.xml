@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/rectangle"
     android:orientation="vertical"
-    tools:context=".fragments.buyer.mainnav.BuyerHomepageContainer_Fragment">
+    tools:context=".fragments.buyer.home.BuyerHome_Fragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bhContainerSearch"
@@ -18,9 +17,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="41dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="32dp"
             android:autofillHints="@string/text_search_vehicle"
             android:background="@drawable/rounded_corner_rectangle20_solid"
             android:drawableEnd="@drawable/hp_iv_searchicon"
@@ -33,16 +30,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/bhBtnFilterSearch"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.307" />
 
         <ImageButton
             android:id="@+id/bhBtnFilterSearch"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="30dp"
             android:layout_marginEnd="72dp"
-            android:layout_marginBottom="32dp"
             android:backgroundTint="#00FFFFFF"
             android:contentDescription="@string/vector_filter_icon"
             android:scaleType="centerInside"
@@ -51,6 +47,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/bhInptSearch"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.322"
             tools:src="@drawable/hp_iv_filtericon" />
 
         <Spinner
@@ -58,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginHorizontal="20dp"
+            android:layout_marginEnd="16dp"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown"
             android:visibility="invisible"
@@ -208,6 +206,7 @@
             android:layout_height="420dp"
             android:layout_marginVertical="20dp"
             android:background="@drawable/rectangle"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
