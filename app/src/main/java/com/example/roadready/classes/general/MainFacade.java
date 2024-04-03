@@ -159,17 +159,17 @@ public class MainFacade {
         void onFailure(String message);
     }
 
-    public static class CallbackTemplate<T2 extends GsonData> {
+    public static class CallbackTemplate<T1 extends GsonData> {
         private String TAG = "CallbackTemplate";
 
         public void setTAG(String TAG) {
             this.TAG = TAG;
         }
 
-        <T1 extends GsonData> Callback<SuccessGson<T2>> generate(ResponseListener<T1> responseListener) {
-            return new Callback<SuccessGson<T2>>() {
+        <T2 extends GsonData> Callback<SuccessGson<T1>> generate(ResponseListener<T2> responseListener) {
+            return new Callback<SuccessGson<T1>>() {
                 @Override
-                public void onResponse(@NonNull Call<SuccessGson<T2>> call, @NonNull Response<SuccessGson<T2>> response) {
+                public void onResponse(@NonNull Call<SuccessGson<T1>> call, @NonNull Response<SuccessGson<T1>> response) {
                     ResponseGson body = null;
                     try {
                         if (response.isSuccessful()) {
@@ -178,7 +178,7 @@ public class MainFacade {
                             Log.d(TAG, String.valueOf(body));
 
                             @SuppressWarnings("unchecked")
-                            T1 data = (T1) ((SuccessGson<?>) body).getData();
+                            T2 data = (T2) ((SuccessGson<?>) body).getData();
                             responseListener.onSuccess(data);
                         } else {
                             assert response.errorBody() != null;
@@ -197,7 +197,7 @@ public class MainFacade {
                 }
 
                 @Override
-                public void onFailure(@NonNull Call<SuccessGson<T2>> call, @NonNull Throwable t) {
+                public void onFailure(@NonNull Call<SuccessGson<T1>> call, @NonNull Throwable t) {
                     Log.e(TAG, "Network Error!" + t.getMessage());
                     responseListener.onFailure(t.getMessage());
                 }
@@ -214,8 +214,7 @@ public class MainFacade {
     }
 
     public void startLoginSession(BuyerGson buyerGson) {
-        Set<String> parseCookies = server.getParseCookies();
-        server.addCookies(parseCookies);
+        server.addCookies(server.getParseCookies());
         sessionManager.startSession(buyerGson, server.getCookies());
     }
 
@@ -225,7 +224,7 @@ public class MainFacade {
     }
 
     public boolean isLoggedIn() {
-        return sessionManager.getUserGson() == null;
+        return sessionManager.getUserGson() != null;
     }
 
     public RoadReadyServer getServer() {

@@ -15,7 +15,7 @@ import com.example.roadready.databinding.FragmentNotificationsBinding;
 public class Notifications_Fragment extends Fragment {
     private final String TAG = "Notifications_Fragment";
     private FragmentNotificationsBinding binding;
-	private MainFacade mainFacade;
+    private MainFacade mainFacade;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -23,13 +23,13 @@ public class Notifications_Fragment extends Fragment {
         binding = com.example.roadready.databinding.FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-		try {
-			mainFacade = MainFacade.getInstance();
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+        try {
+            mainFacade = MainFacade.getInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
-		return root;
+        return root;
     }
 
     @Override
