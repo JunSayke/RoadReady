@@ -8,25 +8,29 @@ import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.response.SuccessGson;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface RetrofitService {
     @FormUrlEncoded
     @POST("user/login")
-    Call< SuccessGson<UserDataGson> > login(
+    Call<SuccessGson<UserDataGson>> login(
             @Field("email") String email,
             @Field("password") String password
     );
 
     @FormUrlEncoded
     @POST("buyer/register")
-    Call< SuccessGson<Void> > register(
+    Call<SuccessGson<Void>> register(
             @Field("email") String email,
             @Field("password") String password,
             @Field("firstName") String firstName,
@@ -36,7 +40,7 @@ public interface RetrofitService {
             @Field("address") String address
     );
 
-    @FormUrlEncoded
+/*    @FormUrlEncoded
     @PUT("user/profile")
     Call< SuccessGson<UserDataGson> > updateProfile(
             @Field("firstName") @Nullable String firstName,
@@ -44,16 +48,27 @@ public interface RetrofitService {
             @Field("phoneNumber") @Nullable String phoneNumber,
             @Field("gender") @Nullable String gender,
             @Field("address") @Nullable String address
+    );*/
+
+    @Multipart
+    @PUT("user/profile")
+    Call<SuccessGson<UserDataGson>> updateProfile(
+            @Part("firstName") @Nullable RequestBody firstName,
+            @Part("lastName") @Nullable RequestBody lastName,
+            @Part("phoneNumber") @Nullable RequestBody phoneNumber,
+            @Part("gender") @Nullable RequestBody gender,
+            @Part("address") @Nullable RequestBody address,
+            @Part @Nullable MultipartBody.Part profileImage
     );
 
     @GET("dealership")
-    Call< SuccessGson<DealershipsDataGson> > getDealerships(
+    Call<SuccessGson<DealershipsDataGson>> getDealerships(
             @Query("dealershipId") @Nullable String dealershipId,
             @Query("dealershipName") @Nullable String dealershipName
     );
 
     @GET("listing")
-    Call< SuccessGson<ListingsDataGson> > getListings(
+    Call<SuccessGson<ListingsDataGson>> getListings(
             @Query("listingId") @Nullable String listingId,
             @Query("dealershipId") @Nullable String dealershipId,
             @Query("dealershipAgentId") @Nullable String dealershipAgentId,

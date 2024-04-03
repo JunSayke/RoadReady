@@ -4,8 +4,11 @@ import static com.example.roadready.classes.util.GetFileNameFromUri.getFileNameF
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +20,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.roadready.R;
 import com.example.roadready.activity.GoogleMaps_Activity;
+import com.example.roadready.classes.general.FileUtils;
 import com.example.roadready.classes.general.ImagePicker;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.BuyerGson;
 import com.example.roadready.databinding.FragmentBuyerEditProfileBinding;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class BuyerEditProfile_Fragment extends Fragment implements ImagePicker.OnImageSelectedListener {
     private final String TAG = "BuyerEditProfile_Fragment";
@@ -77,12 +88,14 @@ public class BuyerEditProfile_Fragment extends Fragment implements ImagePicker.O
             String firstName = String.valueOf(binding.bepInptFname.getText());
             String lastName = String.valueOf(binding.bepInptLname.getText());
             String email = String.valueOf(binding.bepInptEmail.getText());
-            String gender = null;
+            String gender = "male";
             String phoneNumber = String.valueOf(binding.bepInptPhone.getText());
             String address = String.valueOf(binding.bepInptAddress.getText());
+
+            File profileImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.hp_iv_civic, "profile_image.png");
             // TODO: Validations, Longitude and Latitude, Valid ID
 
-            mainFacade.updateProfile(firstName, lastName, phoneNumber, gender, address,
+            mainFacade.updateProfile(firstName, lastName, phoneNumber, gender, address, profileImageFile,
                     new MainFacade.ResponseListener<UserDataGson>() {
                         @Override
                         public void onSuccess(UserDataGson data) {

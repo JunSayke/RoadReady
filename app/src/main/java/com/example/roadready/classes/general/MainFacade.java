@@ -23,9 +23,13 @@ import com.example.roadready.classes.model.livedata.BuyerGsonViewModelFactory;
 import com.example.roadready.databinding.ActivityMainBinding;
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.util.Objects;
 import java.util.Set;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -234,7 +238,7 @@ public class MainFacade {
     public void login(
             String email,
             String password,
-            ResponseListener<?> responseListener) {
+            ResponseListener<UserDataGson> responseListener) {
         CallbackTemplate<UserDataGson> callbackTemplate = new CallbackTemplate<>();
         server.getRetrofitService().login(email, password).enqueue(callbackTemplate.generate(responseListener));
     }
@@ -245,11 +249,19 @@ public class MainFacade {
             String phoneNumber,
             String gender,
             String address,
-            ResponseListener<?> responseListener) {
+            File profileImage,
+            ResponseListener<UserDataGson> responseListener) {
         CallbackTemplate<UserDataGson> callbackTemplate = new CallbackTemplate<>();
+
         server.getRetrofitService().updateProfile(
-                        firstName, lastName, phoneNumber, gender, address)
-                .enqueue(callbackTemplate.generate(responseListener));
+                RequestBody.create(MediaType.parse("text/plain"), firstName),
+                RequestBody.create(MediaType.parse("text/plain"), lastName),
+                RequestBody.create(MediaType.parse("text/plain"), phoneNumber),
+                RequestBody.create(MediaType.parse("text/plain"), gender),
+                RequestBody.create(MediaType.parse("text/plain"), address),
+                MultipartBody.Part.createFormData("profileImage", profileImage.getName(),
+                        RequestBody.create(MediaType.parse("image/*"), profileImage))
+        ).enqueue(callbackTemplate.generate(responseListener));
     }
 
     public void getListings(
@@ -257,7 +269,7 @@ public class MainFacade {
             String dealershipId,
             String dealershipAgentId,
             String modelAndName,
-            ResponseListener<?> responseListener
+            ResponseListener<ListingsDataGson> responseListener
     ) {
         CallbackTemplate<ListingsDataGson> callbackTemplate = new CallbackTemplate<>();
         server.getRetrofitService().getListings(
