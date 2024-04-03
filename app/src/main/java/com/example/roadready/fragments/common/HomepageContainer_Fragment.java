@@ -1,7 +1,6 @@
 package com.example.roadready.fragments.common;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,17 +9,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.classes.model.livedata.BuyerGsonViewModel;
-import com.example.roadready.classes.model.livedata.BuyerGsonViewModelFactory;
 import com.example.roadready.databinding.FragmentHomepageContainerBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -28,7 +22,6 @@ public class HomepageContainer_Fragment extends Fragment {
     private final String TAG = "HomepageContainer_Fragment";
     private FragmentHomepageContainerBinding binding;
     private BottomNavigationView bottomNavigationView;
-    private BuyerGsonViewModel userGsonViewModel;
     private MainFacade mainFacade;
 
     @Override
@@ -54,7 +47,7 @@ public class HomepageContainer_Fragment extends Fragment {
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
-        mainFacade.getBuyerGsonViewModel(this).getBuyerGsonLiveData().observe(getViewLifecycleOwner(), buyerGson -> {
+        mainFacade.getBuyerGsonViewModel().getBuyerGsonLiveData().observe(getViewLifecycleOwner(), buyerGson -> {
             TextView textWelcomeUser = mainFacade.getMainActivity().findViewById(R.id.bhTextWelcomeUser);
 
             String welcomeText = "Welcome " + buyerGson.getFirstName();

@@ -41,7 +41,7 @@ public class Opening_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         new Handler().postDelayed(() -> {
-            if (mainFacade.getSessionManager().getUserGson() == null) {
+            if (mainFacade.isLoggedIn()) {
                 mainFacade.makeToast("Moving to Login page", Toast.LENGTH_SHORT);
                 mainFacade.getMainNavGraphController().navigate(R.id.action_opening_Fragment_to_login_Fragment);
             } else {

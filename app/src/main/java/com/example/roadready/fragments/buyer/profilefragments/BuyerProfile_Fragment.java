@@ -10,10 +10,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.roadready.R;
 import com.example.roadready.activity.MainActivity;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.model.livedata.BuyerGsonViewModel;
+import com.example.roadready.classes.model.livedata.BuyerGsonViewModelFactory;
 import com.example.roadready.databinding.FragmentBuyerProfileBinding;
 
 public class BuyerProfile_Fragment extends Fragment {
@@ -33,14 +36,14 @@ public class BuyerProfile_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        mainFacade.getBuyerGsonViewModel(this).getBuyerGsonLiveData().observe(getViewLifecycleOwner(), buyerGson -> {
-            Log.d(TAG, "Buyer gson live data changes detected!");
+        mainFacade.getBuyerGsonViewModel().getBuyerGsonLiveData().observe(getViewLifecycleOwner(), buyerGson -> {
             String fullName = buyerGson.getFirstName() + " " + buyerGson.getLastName();
             binding.bpInptName.setText(fullName);
             binding.bpInptAddress.setText(buyerGson.getAddress());
             binding.bpInptEmail.setText(buyerGson.getEmail());
             binding.bpInptPhoneNumber.setText(buyerGson.getPhoneNumber());
             binding.bpInptSex.setText(buyerGson.getGender());
+
             // TODO: Longitude & Latitude
         });
 

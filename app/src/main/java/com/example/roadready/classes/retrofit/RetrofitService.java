@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 
 import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
-import com.example.roadready.classes.model.gson.LoginDataGson;
+import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.response.SuccessGson;
 
 import retrofit2.Call;
@@ -19,14 +19,14 @@ import retrofit2.http.Query;
 public interface RetrofitService {
     @FormUrlEncoded
     @POST("user/login")
-    Call<SuccessGson<LoginDataGson>> login(
+    Call< SuccessGson<UserDataGson> > login(
             @Field("email") String email,
             @Field("password") String password
     );
 
     @FormUrlEncoded
     @POST("buyer/register")
-    Call<SuccessGson<Void>> register(
+    Call< SuccessGson<Void> > register(
             @Field("email") String email,
             @Field("password") String password,
             @Field("firstName") String firstName,
@@ -38,7 +38,7 @@ public interface RetrofitService {
 
     @FormUrlEncoded
     @PUT("user/profile")
-    Call< SuccessGson<LoginDataGson> > updateProfile(
+    Call< SuccessGson<UserDataGson> > updateProfile(
             @Field("firstName") @Nullable String firstName,
             @Field("lastName") @Nullable String lastName,
             @Field("phoneNumber") @Nullable String phoneNumber,
@@ -56,6 +56,7 @@ public interface RetrofitService {
     Call< SuccessGson<ListingsDataGson> > getListings(
             @Query("listingId") @Nullable String listingId,
             @Query("dealershipId") @Nullable String dealershipId,
-            @Query("dealershipAgentId") @Nullable String dealershipAgentId
+            @Query("dealershipAgentId") @Nullable String dealershipAgentId,
+            @Query("modelAndName") @Nullable String modelAndName
     );
 }

@@ -66,13 +66,10 @@ public class ListingsRecyclerViewAdapter extends RecyclerView.Adapter<ListingsRe
             vehicleDesc = itemView.findViewById(R.id.bhVehicleDesc);
             btnSelect = itemView.findViewById(R.id.bhBtnSelect);
 
-            btnSelect.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getBindingAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
-                        onItemClickListener.onItemClick(vehicleGsonList.get(position).getId());
-                    }
+            btnSelect.setOnClickListener(v -> {
+                int position = getBindingAdapterPosition();
+                if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
+                    onItemClickListener.onItemClick(vehicleGsonList.get(position).getId());
                 }
             });
         }

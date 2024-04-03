@@ -1,37 +1,21 @@
 package com.example.roadready.fragments.buyer.home;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
 
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.DealershipGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
-import com.example.roadready.classes.model.gson.response.ErrorGson;
-import com.example.roadready.classes.model.gson.response.ResponseGson;
-import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentSelectingCarBinding;
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
-
-import java.util.Objects;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SelectingCar_Fragment extends Fragment {
     private final String TAG = "SelectingCar_Fragment";
@@ -59,8 +43,23 @@ public class SelectingCar_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         modelId = SelectingCar_FragmentArgs.fromBundle(getArguments()).getModelId();
-        mainFacade.getServer().getRetrofitService().getListings(modelId, null, null)
-                .enqueue(getListingCallback);
+        mainFacade.getListings(
+                modelId,
+                null,
+                null,
+                null,
+                new MainFacade.ResponseListener<ListingsDataGson>() {
+                    @Override
+                    public void onSuccess(ListingsDataGson data) {
+                        updateVehicleInfo(data.getListing());
+                    }
+
+                    @Override
+                    public void onFailure(String message) {
+                        mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                    }
+                }
+        );
     }
 
     @Override
@@ -68,38 +67,6 @@ public class SelectingCar_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
-    private final Callback<SuccessGson<ListingsDataGson>> getListingCallback = new Callback<SuccessGson<ListingsDataGson>>() {
-        @Override
-        public void onResponse(@NonNull Call<SuccessGson<ListingsDataGson>> call, @NonNull Response<SuccessGson<ListingsDataGson>> response) {
-            ResponseGson body = null;
-            try {
-                if (response.isSuccessful()) {
-                    assert response.body() != null;
-                    body = response.body();
-                    Log.d(TAG, String.valueOf(body));
-                    ListingsDataGson data = (ListingsDataGson) ((SuccessGson<?>) body).getData();
-                    updateVehicleInfo(data.getListing());
-                } else {
-                    assert response.errorBody() != null;
-                    body = new Gson().fromJson(response.errorBody().string(), ErrorGson.class);
-                    Log.e(TAG, String.valueOf(body));
-                }
-            } catch (Exception e) {
-                Log.e(TAG, Objects.requireNonNull(e.getMessage()));
-            } finally {
-                if (body != null) {
-                    mainFacade.makeToast(body.getMessage(), Toast.LENGTH_SHORT);
-                }
-            }
-        }
-
-        @Override
-        public void onFailure(@NonNull Call<SuccessGson<ListingsDataGson>> call, @NonNull Throwable t) {
-            Log.e(TAG, "Fetching Listing Failed!" + t.getMessage());
-            mainFacade.makeToast("Network Error!", Toast.LENGTH_SHORT);
-        }
-    };
 
     private void updateVehicleInfo(VehicleGson vehicleGson) {
         DealershipGson dealershipGson = vehicleGson.getDealershipGson();
