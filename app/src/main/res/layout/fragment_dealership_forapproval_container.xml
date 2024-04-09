@@ -2,10 +2,10 @@
 <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/dealership_myVehicleContainer_Fragment"
+    android:id="@+id/dealership_forApprovalContainer_Fragment"
     android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:defaultNavHost="true"
-    app:navGraph="@navigation/dealership_myvehicle_nav_graph"
-    tools:context=".fragments.dealership.mainnav.Dealership_MyVehicle_Container_Fragment" />
+    app:navGraph="@navigation/dealership_forapproval_nav_graph"
+tools:context=".fragments.dealership.mainnav.Dealership_ForApproval_Container_Fragment" />

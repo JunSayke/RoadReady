@@ -1,9 +1,6 @@
-package com.example.roadready.fragments.buyer.mainnav;
+package com.example.roadready.fragments.dealership.mainnav;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,19 +8,26 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentHomeContainerBinding;
+import com.example.roadready.databinding.FragmentDealershipLtoContainerBinding;
+import com.example.roadready.databinding.FragmentDealershipMyvehicleContainerBinding;
 
-public class HomeContainer_Fragment extends Fragment{
-    private final String TAG = "HomeContainer_Fragment";
-    private FragmentHomeContainerBinding binding;
+
+public class Dealership_Lto_Container_Fragment extends Fragment {
+
+    private final String TAG = "Dealership_Lto_Container_Fragment";
+    private FragmentDealershipLtoContainerBinding binding;
     private MainFacade mainFacade;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentHomeContainerBinding.inflate(inflater, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentDealershipLtoContainerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {
@@ -32,10 +36,11 @@ public class HomeContainer_Fragment extends Fragment{
             throw new RuntimeException(e);
         }
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.homeFragmentContainer);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_ltoContainer_Fragment);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
-        mainFacade.setBuyerHomeNavController(navController);
+
+        mainFacade.setDealershipLtoNavController(navController);
         mainFacade.setCurrentNavController(navController);
 
         return root;
@@ -45,11 +50,16 @@ public class HomeContainer_Fragment extends Fragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        initActions();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void initActions() {
+
     }
 }

@@ -3,10 +3,7 @@ package com.example.roadready.fragments.buyer.myvehiclefragments;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +49,7 @@ public class MyVehicle_Fragment extends Fragment {
     private void initActions() {
         binding.myvBtnRenewRegistration.setOnClickListener(v -> {
             // TODO: Pass params for registration
-            mainFacade.getMyVehicleNavGraphController().navigate(R.id.action_myVehicle_Fragment_to_renewalRegistration_Fragment);
+            mainFacade.getBuyerMyVehicleNavController().navigate(R.id.action_myVehicle_Fragment_to_renewalRegistration_Fragment);
         });
     }
 }

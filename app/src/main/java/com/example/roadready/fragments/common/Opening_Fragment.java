@@ -43,10 +43,10 @@ public class Opening_Fragment extends Fragment {
         new Handler().postDelayed(() -> {
             if (mainFacade.isLoggedIn()) {
                 mainFacade.makeToast("Moving to Homepage", Toast.LENGTH_SHORT);
-                mainFacade.getMainNavGraphController().navigate(R.id.action_opening_Fragment_to_homepageContainer_Fragment);
+                mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_homepageContainer_Fragment);
             } else {
                 mainFacade.makeToast("Moving to Login page", Toast.LENGTH_SHORT);
-                mainFacade.getMainNavGraphController().navigate(R.id.action_opening_Fragment_to_login_Fragment);
+                mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_login_Fragment);
             }
         }, SPLASH_SCREEN_DURATION);
     }

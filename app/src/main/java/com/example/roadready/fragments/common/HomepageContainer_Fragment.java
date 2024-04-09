@@ -42,7 +42,7 @@ public class HomepageContainer_Fragment extends Fragment {
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
 
-        mainFacade.setHomepageNavController(navController);
+        mainFacade.setBuyerHomepageNavController(navController);
         mainFacade.setCurrentNavController(navController);
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
@@ -55,7 +55,7 @@ public class HomepageContainer_Fragment extends Fragment {
         });
 
         // Toggle header
-        mainFacade.getHomepageNavController().addOnDestinationChangedListener((controller, destination, arguments) -> {
+        mainFacade.getBuyerHomepageNavController().addOnDestinationChangedListener((controller, destination, arguments) -> {
             View welcomeHeader = binding.welcomeHeaderLayout.formHeader;
             View regularHeader = binding.headerLayout.formHeader;
 

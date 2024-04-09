@@ -49,11 +49,11 @@ public class SignUpAs_Fragment extends Fragment {
 
     private void initActions() {
         binding.spasTextLogin.setOnClickListener(v -> {
-            mainFacade.getMainNavGraphController().navigate(R.id.action_global_login_Fragment);
+            mainFacade.getBuyerMainNavController().navigate(R.id.action_global_login_Fragment);
         });
 
         binding.spasBtnVehicleBuyer.setOnClickListener(v -> {
-            mainFacade.getMainNavGraphController().navigate(R.id.action_signUpAs_Fragment_to_signUp_Fragment);
+            mainFacade.getBuyerMainNavController().navigate(R.id.action_signUpAs_Fragment_to_signUp_Fragment);
         });
 
         binding.spasBtnSignupGoogle.setOnClickListener(v -> {
@@ -61,7 +61,8 @@ public class SignUpAs_Fragment extends Fragment {
         });
 
         binding.spasBtnDealer.setOnClickListener(v -> {
-            mainFacade.makeToast("Dealer Registration is not yet available!", Toast.LENGTH_SHORT);
+            //mainFacade.makeToast("Dealer Registration is not yet available!", Toast.LENGTH_SHORT);
+            mainFacade.getBuyerMainNavController().navigate(R.id.action_signUpAs_Fragment_to_dealership_homepageContainer_Fragment);
         });
     }
 }

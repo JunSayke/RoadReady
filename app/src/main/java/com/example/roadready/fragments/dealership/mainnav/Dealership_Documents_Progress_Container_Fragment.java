@@ -14,17 +14,18 @@ import android.view.ViewGroup;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentDealershipMyvehicleContainerBinding;
+import com.example.roadready.databinding.FragmentDealershipDocumentsprogressContainerBinding;
+import com.example.roadready.databinding.FragmentDealershipForapprovalContainerBinding;
 
-public class Dealership_MyVehicle_Container_Fragment extends Fragment {
-    private final String TAG = "Dealership_MyVehicle_Container_Fragment";
-    private FragmentDealershipMyvehicleContainerBinding binding;
+public class Dealership_Documents_Progress_Container_Fragment extends Fragment {
+    private final String TAG = "Dealership_Documents_Progress_Container_Fragment";
+    private FragmentDealershipDocumentsprogressContainerBinding binding;
     private MainFacade mainFacade;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentDealershipMyvehicleContainerBinding.inflate(inflater, container, false);
+        binding = FragmentDealershipDocumentsprogressContainerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {
@@ -33,14 +34,21 @@ public class Dealership_MyVehicle_Container_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_myVehicleContainer_Fragment);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_documentsProgressContainer_Fragment);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
 
-        mainFacade.setDealershipMyVehicleNavController(navController);
+        mainFacade.setDealershipDocumentsProgressNavController(navController);
         mainFacade.setCurrentNavController(navController);
 
         return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        initActions();
     }
 
     @Override
@@ -49,4 +57,7 @@ public class Dealership_MyVehicle_Container_Fragment extends Fragment {
         binding = null;
     }
 
+    private void initActions() {
+
+    }
 }

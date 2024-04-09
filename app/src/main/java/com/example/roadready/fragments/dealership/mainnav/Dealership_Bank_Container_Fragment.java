@@ -1,4 +1,4 @@
-package com.example.roadready.fragments.buyer.mainnav;
+package com.example.roadready.fragments.dealership.mainnav;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,33 +13,31 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentMyVehicleContainerBinding;
+import com.example.roadready.databinding.FragmentDealershipBankContainerBinding;
 
-
-public class MyVehicleContainer_Fragment extends Fragment {
-    private final String TAG = "MyVehicleContainer_Fragment";
-    private FragmentMyVehicleContainerBinding binding;
+public class Dealership_Bank_Container_Fragment extends Fragment {
+    private final String TAG = "Dealership_Bank_Container_Container_Fragment";
+    private FragmentDealershipBankContainerBinding binding;
     private MainFacade mainFacade;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentMyVehicleContainerBinding.inflate(inflater, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentDealershipBankContainerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {
-            mainFacade =  MainFacade.getInstance();
+            mainFacade = MainFacade.getInstance();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.myVehicleFragmentContainer);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_bankContainer_Fragment);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
-        mainFacade.setBuyerMyVehicleNavController(navController);
-        mainFacade.setCurrentNavController(navController);
 
-        navController.popBackStack(navController.getGraph().getStartDestinationId(), false);
+        mainFacade.setDealershipBankNavController(navController);
+        mainFacade.setCurrentNavController(navController);
 
         return root;
     }
@@ -47,11 +45,17 @@ public class MyVehicleContainer_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        initActions();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void initActions() {
+
     }
 }

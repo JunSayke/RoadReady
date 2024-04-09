@@ -8,14 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.ActivityMainBinding;
 import com.example.roadready.databinding.FragmentNotificationContainerBinding;
 
 public class NotificationContainer_Fragment extends Fragment {
@@ -38,7 +35,7 @@ public class NotificationContainer_Fragment extends Fragment {
         NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.notificationFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
-        mainFacade.setNotificationNavGraphController(navController);
+        mainFacade.setCommonNotificationNavController(navController);
         mainFacade.setCurrentNavController(navController);
 
         navController.popBackStack(navController.getGraph().getStartDestinationId(), false);

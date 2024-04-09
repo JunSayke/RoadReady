@@ -3,10 +3,7 @@ package com.example.roadready.fragments.buyer.applicationfragments;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,11 +48,11 @@ public class ApplicationProgress_Fragment extends Fragment {
 
     private void initActions() {
         binding.apBtnRegistrationProgress.setOnClickListener(v -> {
-            mainFacade.getApplicationNavGraphController().navigate(R.id.action_applicationProgress_Fragment_to_vehicleRegistrationProgress_Fragment);
+            mainFacade.getBuyerApplicationNavController().navigate(R.id.action_applicationProgress_Fragment_to_vehicleRegistrationProgress_Fragment);
         });
 
         binding.apBtnVehicleAppProgress.setOnClickListener(v -> {
-            mainFacade.getApplicationNavGraphController().navigate(R.id.action_applicationProgress_Fragment_to_vehicleApplicationProgress_Fragment);
+            mainFacade.getBuyerApplicationNavController().navigate(R.id.action_applicationProgress_Fragment_to_vehicleApplicationProgress_Fragment);
         });
     }
 }

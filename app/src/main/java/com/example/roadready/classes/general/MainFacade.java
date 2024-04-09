@@ -22,7 +22,11 @@ import java.io.File;
 public class MainFacade {
     private static FragmentActivity mainActivity;
     private ActivityMainBinding mainBinding;
-    private NavController currentNavController, homepageNavController, mainNavGraphController, homeNavGraphController, applicationNavGraphController, myVehicleNavGraphController, notificationNavGraphController, profileNavGraphController;
+    private NavController currentNavController, buyerHomepageNavController, buyerMainNavController,
+            buyerHomeNavController, buyerApplicationNavController, buyerMyVehicleNavController,
+            commonNotificationNavController, commonProfileNavController, dealershipHomepageNavController,
+            dealershipApprovedNavController, dealershipBankNavController, dealershipDocumentsProgressNavController,
+            dealershipForApprovalNavController, dealershipLtoNavController, dealershipMyVehicleNavController;
     private UserGsonViewModelFactory userGsonViewModelFactory;
     private SessionManager sessionManager;
     private final RoadReadyServer server = new RoadReadyServer();
@@ -78,60 +82,116 @@ public class MainFacade {
         this.currentNavController = currentNavController;
     }
 
-    public NavController getMainNavGraphController() {
-        return mainNavGraphController;
+    public NavController getBuyerMainNavController() {
+        return buyerMainNavController;
     }
 
-    public void setMainNavGraphController(NavController mainNavGraphController) {
-        this.mainNavGraphController = mainNavGraphController;
+    public void setBuyerMainNavController(NavController buyerMainNavController) {
+        this.buyerMainNavController = buyerMainNavController;
     }
 
-    public NavController getHomepageNavController() {
-        return homepageNavController;
+    public NavController getBuyerHomepageNavController() {
+        return buyerHomepageNavController;
     }
 
-    public void setHomepageNavController(NavController homepageNavController) {
-        this.homepageNavController = homepageNavController;
+    public void setBuyerHomepageNavController(NavController buyerHomepageNavController) {
+        this.buyerHomepageNavController = buyerHomepageNavController;
     }
 
-    public NavController getHomeNavGraphController() {
-        return homeNavGraphController;
+    public NavController getBuyerHomeNavController() {
+        return buyerHomeNavController;
     }
 
-    public void setHomeNavGraphController(NavController homeNavGraphController) {
-        this.homeNavGraphController = homeNavGraphController;
+    public void setBuyerHomeNavController(NavController buyerHomeNavController) {
+        this.buyerHomeNavController = buyerHomeNavController;
     }
 
-    public NavController getApplicationNavGraphController() {
-        return applicationNavGraphController;
+    public NavController getBuyerApplicationNavController() {
+        return buyerApplicationNavController;
     }
 
-    public void setApplicationNavGraphController(NavController applicationNavGraphController) {
-        this.applicationNavGraphController = applicationNavGraphController;
+    public void setBuyerApplicationNavController(NavController buyerApplicationNavController) {
+        this.buyerApplicationNavController = buyerApplicationNavController;
     }
 
-    public NavController getMyVehicleNavGraphController() {
-        return myVehicleNavGraphController;
+    public NavController getBuyerMyVehicleNavController() {
+        return buyerMyVehicleNavController;
     }
 
-    public void setMyVehicleNavGraphController(NavController myVehicleNavGraphController) {
-        this.myVehicleNavGraphController = myVehicleNavGraphController;
+    public void setBuyerMyVehicleNavController(NavController buyerMyVehicleNavController) {
+        this.buyerMyVehicleNavController = buyerMyVehicleNavController;
     }
 
-    public NavController getNotificationNavGraphController() {
-        return notificationNavGraphController;
+    public NavController getCommonNotificationNavController() {
+        return commonNotificationNavController;
     }
 
-    public void setNotificationNavGraphController(NavController notificationNavGraphController) {
-        this.notificationNavGraphController = notificationNavGraphController;
+    public void setCommonNotificationNavController(NavController commonNotificationNavController) {
+        this.commonNotificationNavController = commonNotificationNavController;
     }
 
-    public NavController getProfileNavGraphController() {
-        return profileNavGraphController;
+    public NavController getCommonProfileNavController() {
+        return commonProfileNavController;
     }
 
-    public void setProfileNavGraphController(NavController profileNavGraphController) {
-        this.profileNavGraphController = profileNavGraphController;
+    public void setCommonProfileNavController(NavController commonProfileNavController) {
+        this.commonProfileNavController = commonProfileNavController;
+    }
+
+    public NavController getDealershipHomepageNavController() {
+        return dealershipHomepageNavController;
+    }
+
+    public void setDealershipHomepageNavController(NavController dealershipHomepageNavController) {
+        this.dealershipHomepageNavController = dealershipHomepageNavController;
+    }
+
+    public NavController getDealershipApprovedNavController() {
+        return dealershipApprovedNavController;
+    }
+
+    public void setDealershipApprovedNavController(NavController dealershipApprovedNavController) {
+        this.dealershipApprovedNavController = dealershipApprovedNavController;
+    }
+
+    public NavController getDealershipBankNavController() {
+        return dealershipBankNavController;
+    }
+
+    public void setDealershipBankNavController(NavController dealershipBankNavController) {
+        this.dealershipBankNavController = dealershipBankNavController;
+    }
+
+    public NavController getDealershipDocumentsProgressNavController() {
+        return dealershipDocumentsProgressNavController;
+    }
+
+    public void setDealershipDocumentsProgressNavController(NavController dealershipDocumentsProgressNavController) {
+        this.dealershipDocumentsProgressNavController = dealershipDocumentsProgressNavController;
+    }
+
+    public NavController getDealershipForApprovalNavController() {
+        return dealershipForApprovalNavController;
+    }
+
+    public void setDealershipForApprovalNavController(NavController dealershipForApprovalNavController) {
+        this.dealershipForApprovalNavController = dealershipForApprovalNavController;
+    }
+
+    public NavController getDealershipLtoNavController() {
+        return dealershipLtoNavController;
+    }
+
+    public void setDealershipLtoNavController(NavController dealershipLtoNavController) {
+        this.dealershipLtoNavController = dealershipLtoNavController;
+    }
+
+    public NavController getDealershipMyVehicleNavController() {
+        return dealershipMyVehicleNavController;
+    }
+
+    public void setDealershipMyVehicleNavController(NavController dealershipMyVehicleNavController) {
+        this.dealershipMyVehicleNavController = dealershipMyVehicleNavController;
     }
 
     // END_OF[Nav Controllers]

@@ -66,7 +66,7 @@ public class BuyerProfile_Fragment extends Fragment {
         });
 
         binding.bpBtnEditProfile.setOnClickListener(v -> {
-            mainFacade.getProfileNavGraphController().navigate(R.id.action_buyerProfile_Fragment_to_buyerEditProfile_Fragment);
+            mainFacade.getCommonProfileNavController().navigate(R.id.action_buyerProfile_Fragment_to_buyerEditProfile_Fragment);
         });
     }
 }

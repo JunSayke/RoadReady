@@ -1,25 +1,17 @@
 package com.example.roadready.activity;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.databinding.ActivityMainBinding;
-
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
@@ -38,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
 
-        mainFacade.setMainNavGraphController(navController);
+        mainFacade.setBuyerMainNavController(navController);
         mainFacade.setCurrentNavController(navController);
 
         OnBackPressedCallback callback = new OnBackPressedCallback(true) {

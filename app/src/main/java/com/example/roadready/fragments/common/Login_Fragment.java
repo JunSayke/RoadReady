@@ -55,7 +55,7 @@ public class Login_Fragment extends Fragment {
         });
 
         binding.lgnTextSignup.setOnClickListener(v -> {
-            mainFacade.getMainNavGraphController().navigate(R.id.action_login_Fragment_to_signUpAs_Fragment);
+            mainFacade.getBuyerMainNavController().navigate(R.id.action_login_Fragment_to_signUpAs_Fragment);
         });
 
         binding.lgnBtnGoogleLogin.setOnClickListener(v -> {
@@ -77,7 +77,7 @@ public class Login_Fragment extends Fragment {
             public void onSuccess(UserDataGson data) {
                 UserGson user = data.getUserGson();
                 mainFacade.startLoginSession(user);
-                mainFacade.getMainNavGraphController().navigate(R.id.action_login_Fragment_to_homepageContainer_Fragment);
+                mainFacade.getBuyerMainNavController().navigate(R.id.action_login_Fragment_to_homepageContainer_Fragment);
                 hideProgressBar();
             }
 

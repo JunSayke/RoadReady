@@ -66,7 +66,7 @@
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.dealership.Bank_Activity"
+            android:name=".fragments.dealership.Bank_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
@@ -96,7 +96,7 @@
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.dealership.VehicleAdd_Activity"
+            android:name=".fragments.dealership.VehicleAdd_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />

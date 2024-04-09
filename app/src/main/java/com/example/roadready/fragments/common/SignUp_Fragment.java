@@ -3,7 +3,6 @@ package com.example.roadready.fragments.common;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,17 +19,7 @@ import com.example.roadready.activity.GoogleMaps_Activity;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
-import com.example.roadready.classes.model.gson.response.ErrorGson;
-import com.example.roadready.classes.model.gson.response.ResponseGson;
-import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentSignUpBinding;
-import com.google.gson.Gson;
-
-import java.util.Objects;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SignUp_Fragment extends Fragment {
     private final String TAG = "SignUp_Fragment";
@@ -74,7 +63,7 @@ public class SignUp_Fragment extends Fragment {
         });
 
         binding.sgnupTextLogin.setOnClickListener(v -> {
-            mainFacade.getMainNavGraphController().navigate(R.id.action_global_login_Fragment);
+            mainFacade.getBuyerMainNavController().navigate(R.id.action_global_login_Fragment);
         });
 
         binding.sgnupBtnOpenMaps.setOnClickListener(v -> {

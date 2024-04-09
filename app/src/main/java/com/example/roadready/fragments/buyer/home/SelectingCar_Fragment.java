@@ -88,7 +88,7 @@ public class SelectingCar_Fragment extends Fragment {
             SelectingCar_FragmentDirections.ActionSelectingCarFragmentToCashPaymentFormFragment action =
                     SelectingCar_FragmentDirections.actionSelectingCarFragmentToCashPaymentFormFragment();
             action.setModelId(modelId);
-            mainFacade.getHomeNavGraphController().navigate(action);
+            mainFacade.getBuyerHomeNavController().navigate(action);
         });
 
         binding.sgnBtnInstallment.setOnClickListener(v -> {
@@ -96,7 +96,7 @@ public class SelectingCar_Fragment extends Fragment {
             SelectingCar_FragmentDirections.ActionSelectingCarFragmentToInstallmentFormFragment action =
                     SelectingCar_FragmentDirections.actionSelectingCarFragmentToInstallmentFormFragment();
             action.setModelId(modelId);
-            mainFacade.getHomeNavGraphController().navigate(action);
+            mainFacade.getBuyerHomeNavController().navigate(action);
         });
     }
 

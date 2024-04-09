@@ -51,7 +51,7 @@ public class BuyerHome_Fragment extends Fragment {
                             BuyerHome_FragmentDirections.ActionBuyerHomepageFragmentToSelectingCarFragment action =
                                     BuyerHome_FragmentDirections.actionBuyerHomepageFragmentToSelectingCarFragment();
                             action.setModelId(itemId);
-                            mainFacade.getHomeNavGraphController().navigate(action);
+                            mainFacade.getBuyerHomeNavController().navigate(action);
                         }));
                 binding.bhSVItems.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
             }

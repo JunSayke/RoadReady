@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.dealership.Bank_Activity">
+    tools:context=".fragments.dealership.Bank_Fragment">
 
     <LinearLayout
         android:id="@+id/bank"
@@ -16,65 +16,6 @@
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/dealershipFormHeader"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#888484">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/btnOpenSidebar"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:background="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <ImageView
-                    android:id="@+id/union"
-                    android:layout_width="5.33dp"
-                    android:layout_height="9.33dp"
-                    android:contentDescription="union"
-                    android:src="@drawable/sb_iv_union"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <ImageView
-                android:id="@+id/ivRedCircle"
-                android:layout_width="264dp"
-                android:layout_height="264dp"
-                android:layout_marginStart="250dp"
-                android:layout_marginTop="-180dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="#FE4949"
-                android:contentDescription="@string/red_circle"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ImageContrastCheck" />
-
-            <TextView
-                android:id="@+id/dealershipTxtHeader"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center"
-                android:gravity="center"
-                android:text="Bank"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/bankTxtTitle"
