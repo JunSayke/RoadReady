@@ -47,10 +47,10 @@ public class HomepageContainer_Fragment extends Fragment {
 
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
 
-        mainFacade.getBuyerGsonViewModel().getBuyerGsonLiveData().observe(getViewLifecycleOwner(), buyerGson -> {
+        mainFacade.getUserGsonViewModel().getUserGsonLiveData().observe(getViewLifecycleOwner(), userGson -> {
             TextView textWelcomeUser = mainFacade.getMainActivity().findViewById(R.id.bhTextWelcomeUser);
 
-            String welcomeText = "Welcome " + buyerGson.getFirstName();
+            String welcomeText = "Welcome " + userGson.getFirstName();
             textWelcomeUser.setText(welcomeText);
         });
 

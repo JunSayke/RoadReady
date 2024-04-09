@@ -12,8 +12,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.UserDataGson;
-import com.example.roadready.classes.model.gson.data.BuyerGson;
+import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.databinding.FragmentLoginBinding;
 
 public class Login_Fragment extends Fragment {
@@ -67,14 +68,14 @@ public class Login_Fragment extends Fragment {
     }
 
     private void processLogin() {
+        showProgressBar();
         String email = String.valueOf(binding.lgnInptEmail.getText());
         String password = String.valueOf(binding.lgnInptPassword.getText());
-        showProgressBar();
 
-        mainFacade.login(email, password, new MainFacade.ResponseListener<UserDataGson>() {
+        final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
             @Override
             public void onSuccess(UserDataGson data) {
-                BuyerGson user = data.getUserGson();
+                UserGson user = data.getUserGson();
                 mainFacade.startLoginSession(user);
                 mainFacade.getMainNavGraphController().navigate(R.id.action_login_Fragment_to_homepageContainer_Fragment);
                 hideProgressBar();
@@ -85,7 +86,9 @@ public class Login_Fragment extends Fragment {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
-        });
+        };
+
+        mainFacade.login(responseListener, email, password);
     }
 
     private void showProgressBar() {

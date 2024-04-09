@@ -4,11 +4,8 @@ import static com.example.roadready.classes.util.GetFileNameFromUri.getFileNameF
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,15 +22,12 @@ import com.example.roadready.activity.GoogleMaps_Activity;
 import com.example.roadready.classes.general.FileUtils;
 import com.example.roadready.classes.general.ImagePicker;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.UserDataGson;
-import com.example.roadready.classes.model.gson.data.BuyerGson;
+import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.databinding.FragmentBuyerEditProfileBinding;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 
 public class BuyerEditProfile_Fragment extends Fragment implements ImagePicker.OnImageSelectedListener {
     private final String TAG = "BuyerEditProfile_Fragment";
@@ -95,23 +89,23 @@ public class BuyerEditProfile_Fragment extends Fragment implements ImagePicker.O
             File profileImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.hp_iv_civic, "profile_image.png");
             // TODO: Validations, Longitude and Latitude, Valid ID
 
-            mainFacade.updateProfile(firstName, lastName, phoneNumber, gender, address, profileImageFile,
-                    new MainFacade.ResponseListener<UserDataGson>() {
-                        @Override
-                        public void onSuccess(UserDataGson data) {
-                            BuyerGson user = data.getUserGson();
-                            mainFacade.getBuyerGsonViewModel().setBuyerGsonLiveData(user);
-                            mainFacade.getSessionManager().setUserGson(user);
-                            hideProgressBar();
-                        }
+            final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
+                @Override
+                public void onSuccess(UserDataGson data) {
+                    UserGson user = data.getUserGson();
+                    mainFacade.getUserGsonViewModel().setUserGsonLiveData(user);
+                    mainFacade.getSessionManager().setUserGson(user);
+                    hideProgressBar();
+                }
 
-                        @Override
-                        public void onFailure(String message) {
-                            mainFacade.makeToast(message, Toast.LENGTH_SHORT);
-                            hideProgressBar();
-                        }
-                    }
-            );
+                @Override
+                public void onFailure(String message) {
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                    hideProgressBar();
+                }
+            };
+
+            mainFacade.updateBuyerProfile(responseListener, profileImageFile, firstName, lastName, phoneNumber, gender, address);
         });
 
         binding.bepBtnCancel.setOnClickListener(v -> {

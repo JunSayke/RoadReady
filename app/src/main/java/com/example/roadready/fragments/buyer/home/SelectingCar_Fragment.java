@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.DealershipGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
@@ -43,23 +44,20 @@ public class SelectingCar_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         modelId = SelectingCar_FragmentArgs.fromBundle(getArguments()).getModelId();
-        mainFacade.getListings(
-                modelId,
-                null,
-                null,
-                null,
-                new MainFacade.ResponseListener<ListingsDataGson>() {
-                    @Override
-                    public void onSuccess(ListingsDataGson data) {
-                        updateVehicleInfo(data.getListing());
-                    }
 
-                    @Override
-                    public void onFailure(String message) {
-                        mainFacade.makeToast(message, Toast.LENGTH_SHORT);
-                    }
-                }
-        );
+        final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
+            @Override
+            public void onSuccess(ListingsDataGson data) {
+                updateVehicleInfo(data.getListings().get(0));
+            }
+
+            @Override
+            public void onFailure(String message) {
+                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            }
+        };
+
+        mainFacade.getListings(responseListener, modelId, null, null);
     }
 
     @Override
@@ -71,7 +69,7 @@ public class SelectingCar_Fragment extends Fragment {
     private void updateVehicleInfo(VehicleGson vehicleGson) {
         DealershipGson dealershipGson = vehicleGson.getDealershipGson();
 
-//        Picasso.get().load(dealershipGson.getImage()).into(binding.sgcImageDealerLogo);
+        Picasso.get().load(dealershipGson.getImage()).into(binding.sgcImageDealerLogo);
         binding.sgcTextDealerName.setText(dealershipGson.getName());
         Picasso.get().load(vehicleGson.getImage()).into(binding.sgcImageItem);
         binding.sgcTextItemName.setText(vehicleGson.getModelAndName());

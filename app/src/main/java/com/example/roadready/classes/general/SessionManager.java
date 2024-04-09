@@ -3,10 +3,8 @@ package com.example.roadready.classes.general;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.roadready.classes.model.gson.data.BuyerGson;
+import com.example.roadready.classes.model.gson.data.UserGson;
 import com.google.gson.Gson;
-
-import java.util.Set;
 
 public class SessionManager {
     private final SharedPreferences sharedpreferences;
@@ -17,8 +15,8 @@ public class SessionManager {
         editor = sharedpreferences.edit();
     }
 
-    public void startSession(BuyerGson buyerGson, String cookies) {
-        editor.putString("usergson", new Gson().toJson(buyerGson));
+    public void startSession(UserGson userGson, String cookies) {
+        editor.putString("usergson", new Gson().toJson(userGson));
         editor.putString("cookies", cookies);
         editor.apply();
     }
@@ -28,13 +26,13 @@ public class SessionManager {
         editor.apply();
     }
 
-    public void setUserGson(BuyerGson userGson) {
+    public void setUserGson(UserGson userGson) {
         editor.putString("usergson", new Gson().toJson(userGson));
         editor.apply();
     }
 
-    public BuyerGson getUserGson() {
-        return new Gson().fromJson(sharedpreferences.getString("usergson", null), BuyerGson.class);
+    public UserGson getUserGson() {
+        return new Gson().fromJson(sharedpreferences.getString("usergson", null), UserGson.class);
     }
 
     public void setCookies(String cookies) {

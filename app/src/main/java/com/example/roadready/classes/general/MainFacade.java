@@ -1,10 +1,8 @@
 package com.example.roadready.classes.general;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,31 +12,18 @@ import com.example.roadready.activity.MainActivity;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
-import com.example.roadready.classes.model.gson.data.BuyerGson;
-import com.example.roadready.classes.model.gson.response.ErrorGson;
-import com.example.roadready.classes.model.gson.response.ResponseGson;
-import com.example.roadready.classes.model.gson.response.SuccessGson;
-import com.example.roadready.classes.model.livedata.BuyerGsonViewModel;
-import com.example.roadready.classes.model.livedata.BuyerGsonViewModelFactory;
+import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.model.livedata.UserGsonViewModel;
+import com.example.roadready.classes.model.livedata.UserGsonViewModelFactory;
 import com.example.roadready.databinding.ActivityMainBinding;
-import com.google.gson.Gson;
 
 import java.io.File;
-import java.util.Objects;
-import java.util.Set;
-
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainFacade {
     private static FragmentActivity mainActivity;
     private ActivityMainBinding mainBinding;
     private NavController currentNavController, homepageNavController, mainNavGraphController, homeNavGraphController, applicationNavGraphController, myVehicleNavGraphController, notificationNavGraphController, profileNavGraphController;
-    private BuyerGsonViewModelFactory buyerGsonViewModelFactory;
+    private UserGsonViewModelFactory userGsonViewModelFactory;
     private SessionManager sessionManager;
     private final RoadReadyServer server = new RoadReadyServer();
     private static final MainFacade mainFacade = new MainFacade(null);
@@ -68,7 +53,7 @@ public class MainFacade {
     public void setMainActivity(FragmentActivity mainActivity) {
         MainFacade.mainActivity = mainActivity;
         sessionManager = new SessionManager(mainActivity.getApplicationContext());
-        buyerGsonViewModelFactory = new BuyerGsonViewModelFactory(mainActivity.getApplicationContext());
+        userGsonViewModelFactory = new UserGsonViewModelFactory(mainActivity.getApplicationContext());
 
         if (sessionManager.getCookies() != null) {
             server.addCookies(server.parseCookies(sessionManager.getCookies()));
@@ -151,65 +136,9 @@ public class MainFacade {
 
     // END_OF[Nav Controllers]
 
-    public BuyerGsonViewModel getBuyerGsonViewModel() {
-        return new ViewModelProvider(mainActivity, buyerGsonViewModelFactory).get(BuyerGsonViewModel.class);
+    public UserGsonViewModel getUserGsonViewModel() {
+        return new ViewModelProvider(mainActivity, userGsonViewModelFactory).get(UserGsonViewModel.class);
     }
-
-    // START_OF[Interfaces & Inner Classes]
-
-    public interface ResponseListener<T extends GsonData> {
-        void onSuccess(T data);
-
-        void onFailure(String message);
-    }
-
-    public static class CallbackTemplate<T1 extends GsonData> {
-        private String TAG = "CallbackTemplate";
-
-        public void setTAG(String TAG) {
-            this.TAG = TAG;
-        }
-
-        <T2 extends GsonData> Callback<SuccessGson<T1>> generate(ResponseListener<T2> responseListener) {
-            return new Callback<SuccessGson<T1>>() {
-                @Override
-                public void onResponse(@NonNull Call<SuccessGson<T1>> call, @NonNull Response<SuccessGson<T1>> response) {
-                    ResponseGson body = null;
-                    try {
-                        if (response.isSuccessful()) {
-                            assert response.body() != null;
-                            body = response.body();
-                            Log.d(TAG, String.valueOf(body));
-
-                            @SuppressWarnings("unchecked")
-                            T2 data = (T2) ((SuccessGson<?>) body).getData();
-                            responseListener.onSuccess(data);
-                        } else {
-                            assert response.errorBody() != null;
-                            body = new Gson().fromJson(response.errorBody().string(), ErrorGson.class);
-                            Log.e(TAG, String.valueOf(body));
-                        }
-                    } catch (Exception e) {
-                        Log.e(TAG, Objects.requireNonNull(e.getMessage()));
-                    } finally {
-                        String message = "Null response!";
-                        if (body != null) {
-                            message = body.getMessage();
-                        }
-                        responseListener.onFailure(message);
-                    }
-                }
-
-                @Override
-                public void onFailure(@NonNull Call<SuccessGson<T1>> call, @NonNull Throwable t) {
-                    Log.e(TAG, "Network Error!" + t.getMessage());
-                    responseListener.onFailure(t.getMessage());
-                }
-            };
-        }
-    }
-
-    // END_OF[Interfaces & Inner Classes]
 
     // START_OF[Session & Server]
 
@@ -217,9 +146,9 @@ public class MainFacade {
         return sessionManager;
     }
 
-    public void startLoginSession(BuyerGson buyerGson) {
+    public void startLoginSession(UserGson userGson) {
         server.addCookies(server.getParseCookies());
-        sessionManager.startSession(buyerGson, server.getCookies());
+        sessionManager.startSession(userGson, server.getCookies());
     }
 
     public void stopLoginSession() {
@@ -236,45 +165,44 @@ public class MainFacade {
     }
 
     public void login(
-            String email,
-            String password,
-            ResponseListener<UserDataGson> responseListener) {
-        CallbackTemplate<UserDataGson> callbackTemplate = new CallbackTemplate<>();
-        server.getRetrofitService().login(email, password).enqueue(callbackTemplate.generate(responseListener));
+            final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
+            final String email,
+            final String password) {
+        server.login(RoadReadyServer.getCallback(responseListener), email, password);
     }
 
-    public void updateProfile(
-            String firstName,
-            String lastName,
-            String phoneNumber,
-            String gender,
-            String address,
-            File profileImage,
-            ResponseListener<UserDataGson> responseListener) {
-        CallbackTemplate<UserDataGson> callbackTemplate = new CallbackTemplate<>();
+    public void registerBuyer(
+            final RoadReadyServer.ResponseListener<GsonData> responseListener,
+            final String email,
+            final String password,
+            final String firstName,
+            final String lastName,
+            final String phoneNumber,
+            final String gender,
+            final String address
+    ) {
+        server.registerBuyer(RoadReadyServer.getCallback(responseListener), email, password, firstName, lastName, phoneNumber, gender, address);
+    }
 
-        server.getRetrofitService().updateProfile(
-                RequestBody.create(MediaType.parse("text/plain"), firstName),
-                RequestBody.create(MediaType.parse("text/plain"), lastName),
-                RequestBody.create(MediaType.parse("text/plain"), phoneNumber),
-                RequestBody.create(MediaType.parse("text/plain"), gender),
-                RequestBody.create(MediaType.parse("text/plain"), address),
-                MultipartBody.Part.createFormData("profileImage", profileImage.getName(),
-                        RequestBody.create(MediaType.parse("image/*"), profileImage))
-        ).enqueue(callbackTemplate.generate(responseListener));
+    public void updateBuyerProfile(
+            final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
+            @Nullable final File profileImage,
+            @Nullable final String firstName,
+            @Nullable final String lastName,
+            @Nullable final String phoneNumber,
+            @Nullable final String gender,
+            @Nullable final String address
+    ) {
+        server.updateBuyerProfile(RoadReadyServer.getCallback(responseListener), profileImage, firstName, lastName, phoneNumber, gender, address);
     }
 
     public void getListings(
-            String listingId,
-            String dealershipId,
-            String dealershipAgentId,
-            String modelAndName,
-            ResponseListener<ListingsDataGson> responseListener
+            final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener,
+            @Nullable final String listingId,
+            @Nullable final String dealershipId,
+            @Nullable final String modelAndName
     ) {
-        CallbackTemplate<ListingsDataGson> callbackTemplate = new CallbackTemplate<>();
-        server.getRetrofitService().getListings(
-                        listingId, dealershipId, dealershipAgentId, modelAndName)
-                .enqueue(callbackTemplate.generate(responseListener));
+        server.getListings(RoadReadyServer.getCallback(responseListener), listingId, dealershipId, modelAndName);
     }
 
     // END_OF[Session & Server]

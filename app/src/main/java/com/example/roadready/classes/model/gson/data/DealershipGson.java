@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class DealershipGson extends GsonData {
     private String id;
+    private String image;
     private String name;
-    @SerializedName("manager")
-    private DealerGson dealerGson;
+    private UserGson manager;
     private String latitude;
     private String longitude;
     private String address;
@@ -24,8 +24,12 @@ public class DealershipGson extends GsonData {
         return name;
     }
 
-    public DealerGson getManager() {
-        return dealerGson;
+    public String getImage() {
+        return image;
+    }
+
+    public UserGson getManager() {
+        return manager;
     }
 
     public String getLatitude() {

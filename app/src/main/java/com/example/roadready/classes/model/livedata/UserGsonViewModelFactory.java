@@ -6,10 +6,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-public class BuyerGsonViewModelFactory implements ViewModelProvider.Factory {
+public class UserGsonViewModelFactory implements ViewModelProvider.Factory {
     private final Context context;
 
-    public BuyerGsonViewModelFactory(Context context) {
+    public UserGsonViewModelFactory(Context context) {
         this.context = context.getApplicationContext(); // Use application context to avoid memory leaks
     }
 
@@ -17,8 +17,8 @@ public class BuyerGsonViewModelFactory implements ViewModelProvider.Factory {
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        if (modelClass.isAssignableFrom(BuyerGsonViewModel.class)) {
-            return (T) new BuyerGsonViewModel(context);
+        if (modelClass.isAssignableFrom(UserGsonViewModel.class)) {
+            return (T) new UserGsonViewModel(context);
         }
         throw new IllegalArgumentException("Unknown ViewModel class");
     }

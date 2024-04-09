@@ -21,7 +21,6 @@ import java.util.List;
 public class ListingsRecyclerViewAdapter extends RecyclerView.Adapter<ListingsRecyclerViewAdapter.ViewHolder> {
     private final Context context;
     private final List<VehicleGson> vehicleGsonList;
-    private final RoadReadyServer server = new RoadReadyServer();
     private final OnItemClickListener onItemClickListener;
 
     public ListingsRecyclerViewAdapter(Context context, List<VehicleGson> vehicleGsonList, OnItemClickListener listener) {

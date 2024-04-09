@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import com.example.roadready.R;
 import com.example.roadready.activity.GoogleMaps_Activity;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.general.RoadReadyServer;
+import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.response.ErrorGson;
 import com.example.roadready.classes.model.gson.response.ResponseGson;
 import com.example.roadready.classes.model.gson.response.SuccessGson;
@@ -117,41 +119,21 @@ public class SignUp_Fragment extends Fragment {
 
         //TODO: Validations
 
-        mainFacade.getServer().getRetrofitService().register(email, password, firstName, lastName, phoneNumber, gender, address)
-                .enqueue(registerCallback);
-    }
-
-    private final Callback< SuccessGson<Void> > registerCallback = new Callback<SuccessGson<Void>>() {
-        @Override
-        public void onResponse(@NonNull Call<SuccessGson<Void>> call, @NonNull Response<SuccessGson<Void>> response) {
-            ResponseGson body = null;
-            try {
-                if (response.isSuccessful()) {
-                    assert response.body() != null;
-                    body = response.body();
-                    Log.d(TAG, String.valueOf(body));
-                } else {
-                    assert response.errorBody() != null;
-                    body = new Gson().fromJson(response.errorBody().string(), ErrorGson.class);
-                    Log.e(TAG, String.valueOf(body));
-                }
-            } catch (Exception e) {
-                Log.e(TAG, Objects.requireNonNull(e.getMessage()));
-            } finally {
-                if (body != null) {
-                    mainFacade.makeToast(body.getMessage(), Toast.LENGTH_SHORT);
-                }
+        final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
+            @Override
+            public void onSuccess(GsonData data) {
                 hideProgressBar();
             }
-        }
 
-        @Override
-        public void onFailure(@NonNull Call<SuccessGson<Void>> call, @NonNull Throwable t) {
-            Log.e(TAG, "Registration Failed!" + t.getMessage());
-            mainFacade.makeToast("Network Error!", Toast.LENGTH_SHORT);
-            hideProgressBar();
-        }
-    };
+            @Override
+            public void onFailure(String message) {
+                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                hideProgressBar();
+            }
+        };
+
+        mainFacade.registerBuyer(responseListener, email, password, firstName, lastName, phoneNumber, gender, address);
+    }
 
     private void showProgressBar() {
         binding.sgnupBtnSubmit.setEnabled(false);

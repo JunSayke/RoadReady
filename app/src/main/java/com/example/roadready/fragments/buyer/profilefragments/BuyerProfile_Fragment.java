@@ -2,7 +2,6 @@ package com.example.roadready.fragments.buyer.profilefragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +9,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.roadready.R;
 import com.example.roadready.activity.MainActivity;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.classes.model.livedata.BuyerGsonViewModel;
-import com.example.roadready.classes.model.livedata.BuyerGsonViewModelFactory;
 import com.example.roadready.databinding.FragmentBuyerProfileBinding;
 
 public class BuyerProfile_Fragment extends Fragment {
@@ -36,7 +32,7 @@ public class BuyerProfile_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        mainFacade.getBuyerGsonViewModel().getBuyerGsonLiveData().observe(getViewLifecycleOwner(), buyerGson -> {
+        mainFacade.getUserGsonViewModel().getUserGsonLiveData().observe(getViewLifecycleOwner(), buyerGson -> {
             String fullName = buyerGson.getFirstName() + " " + buyerGson.getLastName();
             binding.bpInptName.setText(fullName);
             binding.bpInptAddress.setText(buyerGson.getAddress());

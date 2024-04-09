@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.ui.adapter.ListingsRecyclerViewAdapter;
 import com.example.roadready.databinding.FragmentBuyerHomeBinding;
@@ -40,32 +41,28 @@ public class BuyerHome_Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mainFacade.getListings(
-                null,
-                null,
-                null,
-                null,
-                new MainFacade.ResponseListener<ListingsDataGson>() {
-                    @Override
-                    public void onSuccess(ListingsDataGson data) {
-                        binding.bhSVItems.setAdapter(new ListingsRecyclerViewAdapter(
-                                mainFacade.getMainActivity().getApplicationContext(),
-                                data.getListings(),
-                                itemId -> {
-                                    BuyerHome_FragmentDirections.ActionBuyerHomepageFragmentToSelectingCarFragment action =
-                                            BuyerHome_FragmentDirections.actionBuyerHomepageFragmentToSelectingCarFragment();
-                                    action.setModelId(itemId);
-                                    mainFacade.getHomeNavGraphController().navigate(action);
-                                }));
-                        binding.bhSVItems.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
-                    }
+        final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
+            @Override
+            public void onSuccess(ListingsDataGson data) {
+                binding.bhSVItems.setAdapter(new ListingsRecyclerViewAdapter(
+                        mainFacade.getMainActivity().getApplicationContext(),
+                        data.getListings(),
+                        itemId -> {
+                            BuyerHome_FragmentDirections.ActionBuyerHomepageFragmentToSelectingCarFragment action =
+                                    BuyerHome_FragmentDirections.actionBuyerHomepageFragmentToSelectingCarFragment();
+                            action.setModelId(itemId);
+                            mainFacade.getHomeNavGraphController().navigate(action);
+                        }));
+                binding.bhSVItems.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+            }
 
-                    @Override
-                    public void onFailure(String message) {
-                        mainFacade.makeToast(message, Toast.LENGTH_SHORT);
-                    }
-                });
+            @Override
+            public void onFailure(String message) {
+                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            }
+        };
 
+        mainFacade.getListings(responseListener, null, null, null);
     }
 
     @Override

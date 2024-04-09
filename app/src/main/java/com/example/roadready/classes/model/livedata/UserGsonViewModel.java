@@ -7,23 +7,23 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.roadready.classes.general.SessionManager;
-import com.example.roadready.classes.model.gson.data.BuyerGson;
+import com.example.roadready.classes.model.gson.data.UserGson;
 
 
-public class BuyerGsonViewModel extends ViewModel {
-    private final MutableLiveData<BuyerGson> buyerGsonLiveData;
+public class UserGsonViewModel extends ViewModel {
+    private final MutableLiveData<UserGson> buyerGsonLiveData;
     private final SessionManager sessionManager;
-    public BuyerGsonViewModel(Context context) {
+    public UserGsonViewModel(Context context) {
         buyerGsonLiveData = new MutableLiveData<>();
         sessionManager = new SessionManager(context);
-        setBuyerGsonLiveData(sessionManager.getUserGson());
+        setUserGsonLiveData(sessionManager.getUserGson());
     }
 
-    public void setBuyerGsonLiveData(BuyerGson buyerGson) {
-        buyerGsonLiveData.setValue(buyerGson);
+    public void setUserGsonLiveData(UserGson userGson) {
+        buyerGsonLiveData.setValue(userGson);
     }
 
-    public LiveData<BuyerGson> getBuyerGsonLiveData() {
+    public LiveData<UserGson> getUserGsonLiveData() {
         return buyerGsonLiveData;
     }
 }

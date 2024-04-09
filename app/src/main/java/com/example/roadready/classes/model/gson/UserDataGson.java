@@ -1,13 +1,13 @@
 package com.example.roadready.classes.model.gson;
 
-import com.example.roadready.classes.model.gson.data.BuyerGson;
+import com.example.roadready.classes.model.gson.data.UserGson;
 import com.google.gson.annotations.SerializedName;
 
 public class UserDataGson extends GsonData {
     @SerializedName("user")
-    private BuyerGson buyerGson;
+    private UserGson userGson;
 
-    public BuyerGson getUserGson() {
-        return buyerGson;
+    public UserGson getUserGson() {
+        return userGson;
     }
 }
