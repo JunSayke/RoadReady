@@ -78,6 +78,40 @@ public class RoadReadyServer extends RetrofitFacade {
         getRetrofitService().getListings(filters).enqueue(callback);
     }
 
+    public void createListing(
+            final Callback<SuccessGson<GsonData>> callback,
+            final File listingImage,
+            final String modelAndName,
+            final String make,
+            final String fuelType,
+            final String power,
+            final String transmission,
+            final String engine,
+            final String fuelTankCapacity,
+            final String seatingCapacity,
+            final String price,
+            final String dealershipName,
+            final String vehicleType
+    ) {
+        RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(listingImage.getName())), listingImage);
+        MultipartBody.Part imagePart = MultipartBody.Part.createFormData("listingImage", listingImage.getName(), requestBody);
+
+        Map<String, RequestBody> fields = new HashMap<>();
+        fields.put("modelAndName", RequestBody.create(MediaType.parse("text/plain"), modelAndName));
+        fields.put("make", RequestBody.create(MediaType.parse("text/plain"), make));
+        fields.put("fuelType", RequestBody.create(MediaType.parse("text/plain"), fuelType));
+        fields.put("power", RequestBody.create(MediaType.parse("text/plain"), power));
+        fields.put("transmission", RequestBody.create(MediaType.parse("text/plain"), transmission));
+        fields.put("engine", RequestBody.create(MediaType.parse("text/plain"), engine));
+        fields.put("fuelTankCapacity", RequestBody.create(MediaType.parse("text/plain"), fuelTankCapacity));
+        fields.put("seatingCapacity", RequestBody.create(MediaType.parse("text/plain"), seatingCapacity));
+        fields.put("price", RequestBody.create(MediaType.parse("text/plain"), price));
+        fields.put("dealershipName", RequestBody.create(MediaType.parse("text/plain"), dealershipName));
+        fields.put("vehicleType", RequestBody.create(MediaType.parse("text/plain"),vehicleType));
+
+        getRetrofitService().createListing(imagePart, fields).enqueue(callback);
+    }
+
     public void updateBuyerProfile(
             final Callback<SuccessGson<UserDataGson>> callback,
             @Nullable final File profileImage,

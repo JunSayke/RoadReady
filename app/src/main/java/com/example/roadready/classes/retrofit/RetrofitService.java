@@ -61,6 +61,9 @@ public interface RetrofitService {
     @Multipart
     @POST("manager/listing")
         // TODO:
-    Call<SuccessGson<GsonData>> createListing();
+    Call<SuccessGson<GsonData>> createListing(
+            @Part @Nullable MultipartBody.Part listingImage,
+            @PartMap Map<String, RequestBody> fields
+    );
 
 }

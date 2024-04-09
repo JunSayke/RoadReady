@@ -205,6 +205,27 @@ public class MainFacade {
         server.getListings(RoadReadyServer.getCallback(responseListener), listingId, dealershipId, modelAndName);
     }
 
+    public void addVehicle(
+            final RoadReadyServer.ResponseListener<GsonData> responseListener,
+            final File listingImage,
+            final String modelAndName,
+            final String make,
+            final String fuelType,
+            final String power,
+            final String transmission,
+            final String engine,
+            final String fuelTankCapacity,
+            final String seatingCapacity,
+            final String price,
+            final String dealershipName,
+            final String vehicleType
+    ) {
+        server.createListing(RoadReadyServer.getCallback(responseListener),
+                listingImage, modelAndName, make, fuelType,
+                power, transmission, engine, fuelTankCapacity,
+                seatingCapacity, price, dealershipName, vehicleType);
+    }
+
     // END_OF[Session & Server]
 
     // Others

@@ -109,7 +109,8 @@ public class BuyerEditProfile_Fragment extends Fragment implements ImagePicker.O
         });
 
         binding.bepBtnCancel.setOnClickListener(v -> {
-            mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
+            mainFacade.getMainActivity().getOnBackPressedDispatcher().onBackPressed();
+            //mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
         });
     }
 

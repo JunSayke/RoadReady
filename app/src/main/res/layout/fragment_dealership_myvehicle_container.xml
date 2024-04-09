@@ -7,5 +7,5 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:defaultNavHost="true"
-    app:navGraph="@navigation/common_notification_nav_graph"
-    tools:context=".fragments.buyer.mainnav.NotificationContainer_Fragment" />
+    app:navGraph="@navigation/dealership_myvehicle_nav_graph"
+    tools:context=".fragments.dealership.mainnav.Dealership_MyVehicle_Container_Fragment" />
