@@ -141,6 +141,7 @@
     <string name="text_vehicle_add_title">ADD VEHICLE</string>
     <string name="text_vehicle_add_price">Price:</string>
     <string name="text_vehicle_add_upload_picture">Upload a picture</string>
+    <string name="text_vehicle_add_vehicle_type">Vehicle Type:</string>
     <string name="text_vehicle_add_seating_cap">Seating Capacity:</string>
     <string name="text_vehicle_add_fuel_cap">Fuel Tank Capacity:</string>
     <string name="text_vehicle_add_engine">Engine:</string>

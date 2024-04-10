@@ -13,11 +13,11 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentApplicationContainerBinding;
+import com.example.roadready.databinding.FragmentBuyerApplicationContainerBinding;
 
 public class ApplicationContainer_Fragment extends Fragment {
     private final String TAG = "ApplicationContainer_Fragment";
-    private FragmentApplicationContainerBinding binding;
+    private FragmentBuyerApplicationContainerBinding binding;
     private MainFacade mainFacade = MainFacade.getInstance();
 
     public ApplicationContainer_Fragment() throws Exception {
@@ -26,10 +26,10 @@ public class ApplicationContainer_Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentApplicationContainerBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerApplicationContainerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.applicationFragmentContainer);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.buyer_applicationFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
         mainFacade.setBuyerApplicationNavController(navController);

@@ -11,17 +11,17 @@ import android.view.ViewGroup;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentMyVehicleBinding;
+import com.example.roadready.databinding.FragmentBuyerMyVehicleBinding;
 
 public class MyVehicle_Fragment extends Fragment {
     private final String TAG = "MyVehicle_Fragment";
-    private FragmentMyVehicleBinding binding;
+    private FragmentBuyerMyVehicleBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentMyVehicleBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerMyVehicleBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

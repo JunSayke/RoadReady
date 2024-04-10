@@ -15,17 +15,17 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
-import com.example.roadready.databinding.FragmentLoginBinding;
+import com.example.roadready.databinding.FragmentCommonLoginBinding;
 
 public class Login_Fragment extends Fragment {
     private final String TAG = "Login_Fragment";
-    private FragmentLoginBinding binding;
+    private FragmentCommonLoginBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentLoginBinding.inflate(inflater, container, false);
+        binding = FragmentCommonLoginBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

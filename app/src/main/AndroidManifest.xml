@@ -51,12 +51,7 @@
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activity.dealership.Dealership_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".fragments.dealership.Applicants_Fragment"
+            android:name=".fragments.dealership.DocumentsProgress_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
@@ -91,7 +86,7 @@
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".fragments.dealership.RegistrationDocs_Fragment"
+            android:name=".fragments.dealership.Lto_Fragment"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan" />

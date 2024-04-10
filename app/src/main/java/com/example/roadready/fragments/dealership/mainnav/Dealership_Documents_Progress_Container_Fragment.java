@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.databinding.FragmentDealershipDocumentsprogressContainerBinding;
-import com.example.roadready.databinding.FragmentDealershipForapprovalContainerBinding;
 
 public class Dealership_Documents_Progress_Container_Fragment extends Fragment {
     private final String TAG = "Dealership_Documents_Progress_Container_Fragment";
@@ -34,7 +33,7 @@ public class Dealership_Documents_Progress_Container_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_documentsProgressContainer_Fragment);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_documentsProgressFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
 

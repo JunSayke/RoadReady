@@ -15,19 +15,19 @@ import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.DealershipGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
-import com.example.roadready.databinding.FragmentSelectingCarBinding;
+import com.example.roadready.databinding.FragmentBuyerSelectingCarBinding;
 import com.squareup.picasso.Picasso;
 
 public class SelectingCar_Fragment extends Fragment {
     private final String TAG = "SelectingCar_Fragment";
-    private FragmentSelectingCarBinding binding;
+    private FragmentBuyerSelectingCarBinding binding;
     private MainFacade mainFacade;
     private String modelId;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentSelectingCarBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerSelectingCarBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

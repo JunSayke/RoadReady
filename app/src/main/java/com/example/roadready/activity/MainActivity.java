@@ -11,16 +11,16 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.ActivityMainBinding;
+import com.example.roadready.databinding.ActivityCommonMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
-    private ActivityMainBinding binding;
+    private ActivityCommonMainBinding binding;
     private MainFacade mainFacade;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityCommonMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         mainFacade = MainFacade.getInstance(this);

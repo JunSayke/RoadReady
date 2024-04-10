@@ -12,65 +12,6 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
-		<androidx.constraintlayout.widget.ConstraintLayout
-			android:id="@+id/dealershipFormHeader"
-			android:layout_width="match_parent"
-			android:layout_height="100dp"
-			android:background="#888484">
-
-			<androidx.constraintlayout.widget.ConstraintLayout
-				android:id="@+id/btnOpenSidebar"
-				android:layout_width="28dp"
-				android:layout_height="28dp"
-				android:background="@color/white"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent">
-
-
-				<ImageView
-					android:id="@+id/union"
-					android:layout_width="5.33dp"
-					android:layout_height="9.33dp"
-					android:contentDescription="union"
-					android:src="@drawable/sb_iv_union"
-					app:layout_constraintBottom_toBottomOf="parent"
-					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent" />
-
-			</androidx.constraintlayout.widget.ConstraintLayout>
-
-			<ImageView
-				android:id="@+id/ivRedCircle"
-				android:layout_width="264dp"
-				android:layout_height="264dp"
-				android:layout_marginStart="250dp"
-				android:layout_marginTop="-180dp"
-				android:background="@drawable/circle"
-				android:backgroundTint="#FE4949"
-				android:contentDescription="@string/red_circle"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent"
-				tools:ignore="ImageContrastCheck" />
-
-			<TextView
-				android:id="@+id/dealershipTxtHeader"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center_horizontal|center"
-				android:gravity="center"
-				android:text="@string/text_header_my_vehicles"
-				android:textSize="20sp"
-				android:textStyle="bold"
-				app:layout_constraintBottom_toBottomOf="parent"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-
-
-		</androidx.constraintlayout.widget.ConstraintLayout>
-
 		<TextView
 			android:id="@+id/add_tv_title"
 			android:layout_width="wrap_content"
@@ -88,6 +29,38 @@
 			android:layout_height="match_parent"
 			android:background="#D9D9D9">
 
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:id="@+id/addContainerVehicleType"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="20dp"
+				app:layout_constraintBottom_toTopOf="@+id/addContainerUpload"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/addContainerSeatingCap">
+
+				<TextView
+					android:id="@+id/addLabelVehicleType"
+					android:layout_width="105.2dp"
+					android:layout_height="17.2dp"
+					android:text="@string/text_vehicle_add_vehicle_type"
+					android:textSize="12sp"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<Spinner
+					android:id="@+id/addSpinnerVehicleType"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="190dp"
+					android:background="@android:drawable/btn_dropdown"
+					android:spinnerMode="dropdown"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
 
 			<androidx.constraintlayout.widget.ConstraintLayout
 				android:id="@+id/addContainAddVehicle"
@@ -128,6 +101,7 @@
 				android:id="@+id/addContainerPrice"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="20dp"
 				app:layout_constraintBottom_toTopOf="@+id/addContainAddVehicle"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -162,10 +136,11 @@
 				android:id="@+id/addContainerUpload"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="20dp"
 				app:layout_constraintBottom_toTopOf="@+id/addContainerPrice"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/addContainerSeatingCap">
+				app:layout_constraintTop_toBottomOf="@id/addContainerVehicleType">
 
 				<ImageView
 					android:id="@+id/addBtnUpload"
@@ -182,7 +157,7 @@
 
 				<TextView
 					android:id="@+id/addLabelUpload"
-					android:layout_width="100.2dp"
+					android:layout_width="105.2dp"
 					android:layout_height="17.2dp"
 					android:text="@string/text_vehicle_add_upload_picture"
 					android:textSize="12sp"
@@ -193,7 +168,7 @@
 				<TextView
 					android:id="@+id/addInptUpload"
 					android:layout_width="150dp"
-					android:layout_height="27dp"
+					android:layout_height="25dp"
 					android:layout_marginStart="120dp"
 					android:background="@drawable/border_rounded"
 					android:gravity="left|center_vertical"
@@ -211,7 +186,8 @@
 				android:id="@+id/addContainerSeatingCap"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				app:layout_constraintBottom_toTopOf="@+id/addContainerUpload"
+				android:layout_marginTop="20dp"
+				app:layout_constraintBottom_toTopOf="@id/addContainerVehicleType"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/addContainerFuelCap">
@@ -244,6 +220,7 @@
 				android:id="@+id/addContainerFuelCap"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="20dp"
 				app:layout_constraintBottom_toTopOf="@+id/addContainerSeatingCap"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -277,6 +254,7 @@
 				android:id="@+id/addContainerEngine"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="20dp"
 				app:layout_constraintBottom_toTopOf="@+id/addContainerFuelCap"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -310,6 +288,7 @@
 				android:id="@+id/addContainerTransmission"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="20dp"
 				app:layout_constraintBottom_toTopOf="@+id/addContainerEngine"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -343,6 +322,7 @@
 				android:id="@+id/addContainerPower"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="20dp"
 				app:layout_constraintBottom_toTopOf="@+id/addContainerTransmission"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -376,6 +356,7 @@
 				android:id="@+id/addContainerFuelType"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="20dp"
 				app:layout_constraintBottom_toTopOf="@+id/addContainerPower"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
@@ -409,6 +390,7 @@
 				android:id="@+id/addContainerMake"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="20dp"
 				app:layout_constraintBottom_toTopOf="@+id/addContainerFuelType"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"

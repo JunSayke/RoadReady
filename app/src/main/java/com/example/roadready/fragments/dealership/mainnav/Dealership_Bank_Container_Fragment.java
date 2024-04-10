@@ -32,7 +32,7 @@ public class Dealership_Bank_Container_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_bankContainer_Fragment);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_bankFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
 

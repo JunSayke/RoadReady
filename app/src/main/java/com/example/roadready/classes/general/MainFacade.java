@@ -15,14 +15,14 @@ import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.classes.model.livedata.UserGsonViewModel;
 import com.example.roadready.classes.model.livedata.UserGsonViewModelFactory;
-import com.example.roadready.databinding.ActivityMainBinding;
+import com.example.roadready.databinding.ActivityCommonMainBinding;
 
 import java.io.File;
 import java.util.Set;
 
 public class MainFacade {
     private static FragmentActivity mainActivity;
-    private ActivityMainBinding mainBinding;
+    private ActivityCommonMainBinding mainBinding;
     private NavController currentNavController, buyerHomepageNavController, buyerMainNavController,
             buyerHomeNavController, buyerApplicationNavController, buyerMyVehicleNavController,
             commonNotificationNavController, commonProfileNavController, dealershipHomepageNavController,
@@ -66,11 +66,11 @@ public class MainFacade {
         }
     }
 
-    public ActivityMainBinding getMainBinding() {
+    public ActivityCommonMainBinding getMainBinding() {
         return mainBinding;
     }
 
-    public void setMainBinding(ActivityMainBinding mainBinding) {
+    public void setMainBinding(ActivityCommonMainBinding mainBinding) {
         this.mainBinding = mainBinding;
     }
 

@@ -2,8 +2,6 @@ package com.example.roadready.fragments.dealership.mainnav;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -14,17 +12,17 @@ import android.view.ViewGroup;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentDealershipMyvehicleContainerBinding;
+import com.example.roadready.databinding.FragmentDealershipMyvehiclesContainerBinding;
 
-public class Dealership_MyVehicle_Container_Fragment extends Fragment {
+public class Dealership_MyVehicles_Container_Fragment extends Fragment {
     private final String TAG = "Dealership_MyVehicle_Container_Fragment";
-    private FragmentDealershipMyvehicleContainerBinding binding;
+    private FragmentDealershipMyvehiclesContainerBinding binding;
     private MainFacade mainFacade;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentDealershipMyvehicleContainerBinding.inflate(inflater, container, false);
+        binding = FragmentDealershipMyvehiclesContainerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {
@@ -33,7 +31,7 @@ public class Dealership_MyVehicle_Container_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_myVehicleContainer_Fragment);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_myVehicleFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
 

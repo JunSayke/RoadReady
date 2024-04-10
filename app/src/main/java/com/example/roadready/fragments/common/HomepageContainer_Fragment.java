@@ -15,19 +15,19 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentHomepageContainerBinding;
+import com.example.roadready.databinding.FragmentBuyerHomepageContainerBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomepageContainer_Fragment extends Fragment {
     private final String TAG = "HomepageContainer_Fragment";
-    private FragmentHomepageContainerBinding binding;
+    private FragmentBuyerHomepageContainerBinding binding;
     private BottomNavigationView bottomNavigationView;
     private MainFacade mainFacade;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentHomepageContainerBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerHomepageContainerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

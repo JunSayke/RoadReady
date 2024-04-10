@@ -14,18 +14,18 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentInstallmentFormBinding;
+import com.example.roadready.databinding.FragmentBuyerInstallmentFormBinding;
 
 public class InstallmentForm_Fragment extends Fragment {
     private final String TAG = "InstallmentForm_Fragment";
-    private FragmentInstallmentFormBinding binding;
+    private FragmentBuyerInstallmentFormBinding binding;
     private MainFacade mainFacade;
     private String modelId;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentInstallmentFormBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerInstallmentFormBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

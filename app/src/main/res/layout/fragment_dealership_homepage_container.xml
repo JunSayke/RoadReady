@@ -20,14 +20,14 @@
 
             <include
                 android:id="@+id/headerLayout"
-                layout="@layout/layout_header"
+                layout="@layout/layout_common_header"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:visibility="gone" />
 
             <include
                 android:id="@+id/headerDealershipLayout"
-                layout="@layout/drawer_dealership_header" />
+                layout="@layout/layout_dealership_header" />
 
         </FrameLayout>
 
@@ -58,7 +58,7 @@
         android:layout_gravity="start"
         android:visibility="gone"
         app:dividerInsetStart="60dp"
-        app:headerLayout="@layout/drawer_dealership_main"
+        app:headerLayout="@layout/layout_dealership_main"
         app:menu="@menu/drawer_nav_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

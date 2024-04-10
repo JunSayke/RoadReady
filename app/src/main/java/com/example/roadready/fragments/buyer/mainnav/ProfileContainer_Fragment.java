@@ -13,17 +13,17 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentProfileContainerBinding;
+import com.example.roadready.databinding.FragmentCommonProfileContainerBinding;
 
 public class ProfileContainer_Fragment extends Fragment {
     private final String TAG = "ProfileContainer_Fragment";
-    private FragmentProfileContainerBinding binding;
+    private FragmentCommonProfileContainerBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentProfileContainerBinding.inflate(inflater, container, false);
+        binding = FragmentCommonProfileContainerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {
@@ -32,7 +32,7 @@ public class ProfileContainer_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.profileFragmentContainer);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.common_profileFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
         mainFacade.setCommonProfileNavController(navController);

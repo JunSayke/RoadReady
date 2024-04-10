@@ -13,17 +13,17 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentHomeContainerBinding;
+import com.example.roadready.databinding.FragmentBuyerHomeContainerBinding;
 
 public class HomeContainer_Fragment extends Fragment{
     private final String TAG = "HomeContainer_Fragment";
-    private FragmentHomeContainerBinding binding;
+    private FragmentBuyerHomeContainerBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentHomeContainerBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerHomeContainerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {
@@ -32,7 +32,7 @@ public class HomeContainer_Fragment extends Fragment{
             throw new RuntimeException(e);
         }
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.homeFragmentContainer);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.buyer_homeFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
         mainFacade.setBuyerHomeNavController(navController);

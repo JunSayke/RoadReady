@@ -9,18 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentNotificationsBinding;
+import com.example.roadready.databinding.FragmentCommonNotificationsBinding;
 
 
 public class Notifications_Fragment extends Fragment {
     private final String TAG = "Notifications_Fragment";
-    private FragmentNotificationsBinding binding;
+    private FragmentCommonNotificationsBinding binding;
     private MainFacade mainFacade;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = com.example.roadready.databinding.FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = com.example.roadready.databinding.FragmentCommonNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

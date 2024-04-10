@@ -9,16 +9,16 @@ package com.example.roadready.fragments.dealership;
     import androidx.annotation.NonNull;
     import androidx.fragment.app.Fragment;
 
-	import com.example.roadready.databinding.FragmentRegistrationDocsBinding;
+	import com.example.roadready.databinding.FragmentDealershipLtoBinding;
 
-public class RegistrationDocs_Fragment extends Fragment {
-		private final String TAG = "RegistrationDocs_Activity"; // declare TAG for each class for debugging purposes using Log.d()
-		private FragmentRegistrationDocsBinding binding; // use View binding to avoid using too much findViewById
+public class Lto_Fragment extends Fragment {
+		private final String TAG = "Lto_Fragment"; // declare TAG for each class for debugging purposes using Log.d()
+		private FragmentDealershipLtoBinding binding; // use View binding to avoid using too much findViewById
 
 		public View onCreateView(@NonNull LayoutInflater inflater,
 								 ViewGroup container, Bundle savedInstanceState) {
 
-			binding = FragmentRegistrationDocsBinding.inflate(inflater, container, false);
+			binding = FragmentDealershipLtoBinding.inflate(inflater, container, false);
 			View root = binding.getRoot();
 
 			//There is a much better way of implementing a dropdown list, but this is good for now

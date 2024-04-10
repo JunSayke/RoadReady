@@ -2,12 +2,10 @@
 <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/profileFragmentContainer"
+    android:id="@+id/buyer_myVehicleFragmentContainer"
     android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:defaultNavHost="true"
-    app:navGraph="@navigation/common_profile_nav_graph"
-    tools:context=".fragments.buyer.mainnav.ProfileContainer_Fragment">
-
-</androidx.fragment.app.FragmentContainerView>
+    app:navGraph="@navigation/buyer_myvehicle_nav_graph"
+    tools:context=".fragments.buyer.mainnav.MyVehicleContainer_Fragment" />

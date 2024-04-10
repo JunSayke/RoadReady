@@ -12,17 +12,17 @@ import androidx.fragment.app.Fragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentSignUpAsBinding;
+import com.example.roadready.databinding.FragmentCommonSignUpAsBinding;
 
 public class SignUpAs_Fragment extends Fragment {
     private final String TAG = "SignUpAs_Fragment";
-    private FragmentSignUpAsBinding binding;
+    private FragmentCommonSignUpAsBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentSignUpAsBinding.inflate(inflater, container, false);
+        binding = FragmentCommonSignUpAsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

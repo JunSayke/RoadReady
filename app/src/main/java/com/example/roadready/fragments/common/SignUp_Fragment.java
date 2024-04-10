@@ -19,11 +19,11 @@ import com.example.roadready.activity.GoogleMaps_Activity;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
-import com.example.roadready.databinding.FragmentSignUpBinding;
+import com.example.roadready.databinding.FragmentCommonSignUpBinding;
 
 public class SignUp_Fragment extends Fragment {
     private final String TAG = "SignUp_Fragment";
-    private FragmentSignUpBinding binding;
+    private FragmentCommonSignUpBinding binding;
     private ActivityResultLauncher<Intent> mapResultLauncher;
     private MainFacade mainFacade;
 
@@ -31,7 +31,7 @@ public class SignUp_Fragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentSignUpBinding.inflate(inflater, container, false);
+        binding = FragmentCommonSignUpBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

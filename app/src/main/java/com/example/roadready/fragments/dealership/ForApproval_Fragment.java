@@ -8,18 +8,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.roadready.databinding.FragmentForApprovalBinding;
+import com.example.roadready.databinding.FragmentDealershipForapprovalBinding;
 
 
 public class ForApproval_Fragment extends Fragment {
 
-		private final String TAG = "ForApproval_Activity"; // declare TAG for each class for debugging purposes using Log.d()
-		private FragmentForApprovalBinding binding; // use View binding to avoid using too much findViewById
+		private final String TAG = "ForApproval_Fragment"; // declare TAG for each class for debugging purposes using Log.d()
+		private FragmentDealershipForapprovalBinding binding; // use View binding to avoid using too much findViewById
 
 	public View onCreateView(@NonNull LayoutInflater inflater,
 							 ViewGroup container, Bundle savedInstanceState) {
 
-		binding = FragmentForApprovalBinding.inflate(inflater, container, false);
+		binding = FragmentDealershipForapprovalBinding.inflate(inflater, container, false);
 		View root = binding.getRoot();
 
 		return root;

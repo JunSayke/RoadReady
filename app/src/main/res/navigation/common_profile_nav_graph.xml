@@ -7,18 +7,18 @@
 
     <fragment
         android:id="@+id/buyerProfile_Fragment"
-        android:name="com.example.roadready.fragments.buyer.profilefragments.BuyerProfile_Fragment"
+        android:name="com.example.roadready.fragments.common.profilefragments.Profile_Fragment"
         android:label="fragment_buyer_profile"
-        tools:layout="@layout/fragment_buyer_profile" >
+        tools:layout="@layout/fragment_common_profile" >
         <action
             android:id="@+id/action_buyerProfile_Fragment_to_buyerEditProfile_Fragment"
             app:destination="@id/buyerEditProfile_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/buyerEditProfile_Fragment"
-        android:name="com.example.roadready.fragments.buyer.profilefragments.BuyerEditProfile_Fragment"
+        android:name="com.example.roadready.fragments.common.profilefragments.EditProfile_Fragment"
         android:label="fragment_buyer_edit_profile"
-        tools:layout="@layout/fragment_buyer_edit_profile" >
+        tools:layout="@layout/fragment_common_edit_profile" >
         <action
             android:id="@+id/action_buyerEditProfile_Fragment_to_buyerProfile_Fragment"
             app:destination="@id/buyerProfile_Fragment"

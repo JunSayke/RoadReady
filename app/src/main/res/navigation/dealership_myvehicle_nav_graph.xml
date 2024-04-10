@@ -9,7 +9,7 @@
         android:id="@+id/myVehicles_Fragment"
         android:name="com.example.roadready.fragments.dealership.MyVehicles_Fragment"
         android:label="fragment_my_vehicles"
-        tools:layout="@layout/fragment_my_vehicles" >
+        tools:layout="@layout/fragment_dealership_myvehicles" >
         <action
             android:id="@+id/action_myVehicles_Fragment_to_vehicleAdd_Fragment"
             app:destination="@id/vehicleAdd_Fragment" />

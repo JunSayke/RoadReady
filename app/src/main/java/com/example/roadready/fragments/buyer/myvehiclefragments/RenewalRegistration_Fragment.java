@@ -11,17 +11,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentRenewalRegistrationBinding;
+import com.example.roadready.databinding.FragmentBuyerRenewalRegistrationBinding;
 
 public class RenewalRegistration_Fragment extends Fragment {
     private final String TAG = "RenewalRegistration_Fragment";
-    private FragmentRenewalRegistrationBinding binding;
+    private FragmentBuyerRenewalRegistrationBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentRenewalRegistrationBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerRenewalRegistrationBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

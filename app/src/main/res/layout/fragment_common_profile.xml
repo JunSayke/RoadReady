@@ -8,7 +8,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".fragments.buyer.profilefragments.BuyerProfile_Fragment">
+    tools:context=".fragments.common.profilefragments.Profile_Fragment">
 
     <TextView
         android:id="@+id/bpTitleContent"

@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.app.ActivityCompat;
 
-import com.example.roadready.databinding.ActivityGoogleMapsBinding;
+import com.example.roadready.databinding.ActivityCommonGoogleMapsBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,7 +31,7 @@ import java.util.List;
 
 public class GoogleMaps_Activity extends AppCompatActivity implements OnMapReadyCallback {
     private final String TAG = "GoogleMaps_Activity";
-    private ActivityGoogleMapsBinding binding;
+    private ActivityCommonGoogleMapsBinding binding;
     private GoogleMap myMap;
     private final int FINE_PERMISSION_CODE = 1;
     private LatLng currentLatLng;
@@ -40,7 +40,7 @@ public class GoogleMaps_Activity extends AppCompatActivity implements OnMapReady
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityGoogleMapsBinding.inflate(getLayoutInflater());
+        binding = ActivityCommonGoogleMapsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         initLocationProviderClient();

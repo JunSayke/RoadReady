@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roadready.R;
-import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
 import com.squareup.picasso.Picasso;
 
@@ -32,7 +31,7 @@ public class ListingsRecyclerViewAdapter extends RecyclerView.Adapter<ListingsRe
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_vehicle, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_buyer_vehicle, parent, false);
         return new ViewHolder(view);
     }
 

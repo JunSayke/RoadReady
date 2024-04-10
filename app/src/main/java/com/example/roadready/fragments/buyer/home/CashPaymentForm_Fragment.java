@@ -14,18 +14,18 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentCashPaymentFormBinding;
+import com.example.roadready.databinding.FragmentBuyerCashPaymentFormBinding;
 
 public class CashPaymentForm_Fragment extends Fragment {
     private final String TAG = "CashPaymentForm_Fragment";
-    private FragmentCashPaymentFormBinding binding;
+    private FragmentBuyerCashPaymentFormBinding binding;
     private MainFacade mainFacade;
     private String modelId;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentCashPaymentFormBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerCashPaymentFormBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

@@ -11,17 +11,17 @@ import android.view.ViewGroup;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentApplicationProgressBinding;
+import com.example.roadready.databinding.FragmentBuyerApplicationProgressBinding;
 
 public class ApplicationProgress_Fragment extends Fragment {
     private final String TAG = "ApplicationProgress_Fragment";
-    private FragmentApplicationProgressBinding binding;
+    private FragmentBuyerApplicationProgressBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentApplicationProgressBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerApplicationProgressBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

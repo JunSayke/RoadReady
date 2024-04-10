@@ -33,7 +33,7 @@ public class Dealership_ForApproval_Container_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_forApprovalContainer_Fragment);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_forApprovalFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
 

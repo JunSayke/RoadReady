@@ -12,7 +12,7 @@ import com.example.roadready.databinding.FragmentDealershipProfileBinding;
 
 public class DealershipProfile_Fragment extends Fragment {
 
-    private final String TAG = "BuyerProfile_Activity"; // declare TAG for each class for debugging purposes using Log.d()
+    private final String TAG = "BuyerProfile_Fragment"; // declare TAG for each class for debugging purposes using Log.d()
     private FragmentDealershipProfileBinding binding; // use View binding to avoid using too much findViewById
 
     public View onCreateView(@NonNull LayoutInflater inflater,

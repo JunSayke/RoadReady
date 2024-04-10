@@ -11,17 +11,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentVerificationBinding;
+import com.example.roadready.databinding.FragmentCommonVerificationBinding;
 
 public class Verification_Fragment extends Fragment {
     private final String TAG = "Verification_Fragment";
-    private FragmentVerificationBinding binding;
+    private FragmentCommonVerificationBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentVerificationBinding.inflate(inflater, container, false);
+        binding = FragmentCommonVerificationBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

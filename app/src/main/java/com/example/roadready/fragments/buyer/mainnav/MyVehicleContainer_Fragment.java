@@ -13,18 +13,18 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentMyVehicleContainerBinding;
+import com.example.roadready.databinding.FragmentBuyerMyVehicleContainerBinding;
 
 
 public class MyVehicleContainer_Fragment extends Fragment {
     private final String TAG = "MyVehicleContainer_Fragment";
-    private FragmentMyVehicleContainerBinding binding;
+    private FragmentBuyerMyVehicleContainerBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentMyVehicleContainerBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerMyVehicleContainerBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {
@@ -33,7 +33,7 @@ public class MyVehicleContainer_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.myVehicleFragmentContainer);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.buyer_myVehicleFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
         mainFacade.setBuyerMyVehicleNavController(navController);

@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/registrationDocs_Fragment"
-        android:name="com.example.roadready.fragments.dealership.RegistrationDocs_Fragment"
+        android:name="com.example.roadready.fragments.dealership.Lto_Fragment"
         android:label="RegistrationDocs_Fragment" />
 </navigation>

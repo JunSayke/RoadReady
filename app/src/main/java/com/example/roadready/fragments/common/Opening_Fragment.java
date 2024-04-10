@@ -13,18 +13,18 @@ import android.widget.Toast;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentOpeningBinding;
+import com.example.roadready.databinding.FragmentCommonOpeningBinding;
 
 public class Opening_Fragment extends Fragment {
     private final String TAG = "Opening_Fragment";
-    private FragmentOpeningBinding binding;
+    private FragmentCommonOpeningBinding binding;
     private static final long SPLASH_SCREEN_DURATION = 1000;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentOpeningBinding.inflate(inflater, container, false);
+        binding = FragmentCommonOpeningBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

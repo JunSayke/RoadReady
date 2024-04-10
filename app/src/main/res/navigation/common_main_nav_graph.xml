@@ -9,7 +9,7 @@
         android:id="@+id/login_Fragment"
         android:name="com.example.roadready.fragments.common.Login_Fragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login">
+        tools:layout="@layout/fragment_common_login">
         <deepLink app:uri="android-app://com.example.roadready/login" />
         <action
             android:id="@+id/action_login_Fragment_to_signUpAs_Fragment"
@@ -22,7 +22,7 @@
         android:id="@+id/signUpAs_Fragment"
         android:name="com.example.roadready.fragments.common.SignUpAs_Fragment"
         android:label="fragment_sign_up_as"
-        tools:layout="@layout/fragment_sign_up_as" >
+        tools:layout="@layout/fragment_common_sign_up_as" >
         <action
             android:id="@+id/action_signUpAs_Fragment_to_signUp_Fragment"
             app:destination="@id/signUp_Fragment" />
@@ -34,12 +34,12 @@
         android:id="@+id/signUp_Fragment"
         android:name="com.example.roadready.fragments.common.SignUp_Fragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_common_sign_up" />
     <fragment
         android:id="@+id/opening_Fragment"
         android:name="com.example.roadready.fragments.common.Opening_Fragment"
         android:label="fragment_opening"
-        tools:layout="@layout/fragment_opening" >
+        tools:layout="@layout/fragment_common_opening" >
         <action
             android:id="@+id/action_opening_Fragment_to_login_Fragment"
             app:destination="@id/login_Fragment"
@@ -54,7 +54,7 @@
         android:id="@+id/verification_Fragment"
         android:name="com.example.roadready.fragments.common.Verification_Fragment"
         android:label="fragment_verification"
-        tools:layout="@layout/fragment_verification" />
+        tools:layout="@layout/fragment_common_verification" />
     <action
         android:id="@+id/action_global_verification_Fragment"
         app:destination="@id/verification_Fragment" />
@@ -65,7 +65,7 @@
         android:id="@+id/homepageContainer_Fragment"
         android:name="com.example.roadready.fragments.common.HomepageContainer_Fragment"
         android:label="fragment_homepage_container"
-        tools:layout="@layout/fragment_homepage_container" />
+        tools:layout="@layout/fragment_buyer_homepage_container" />
     <fragment
         android:id="@+id/dealership_homepageContainer_Fragment"
         android:name="com.example.roadready.fragments.dealership.Dealership_HomepageContainer_Fragment"

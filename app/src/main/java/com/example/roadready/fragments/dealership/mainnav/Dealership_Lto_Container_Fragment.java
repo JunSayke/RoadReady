@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.databinding.FragmentDealershipLtoContainerBinding;
-import com.example.roadready.databinding.FragmentDealershipMyvehicleContainerBinding;
 
 
 public class Dealership_Lto_Container_Fragment extends Fragment {
@@ -36,7 +35,7 @@ public class Dealership_Lto_Container_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_ltoContainer_Fragment);
+        NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_ltoFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
 

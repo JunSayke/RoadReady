@@ -10,17 +10,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentVehicleRegistrationProgressBinding;
+import com.example.roadready.databinding.FragmentBuyerVehicleRegistrationProgressBinding;
 
 public class VehicleRegistrationProgress_Fragment extends Fragment {
     private final String TAG = "VehicleRegistrationProgress_Fragment";
-    private FragmentVehicleRegistrationProgressBinding binding;
+    private FragmentBuyerVehicleRegistrationProgressBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentVehicleRegistrationProgressBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerVehicleRegistrationProgressBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

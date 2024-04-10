@@ -8,7 +8,7 @@
         android:id="@+id/selectingCar_Fragment"
         android:name="com.example.roadready.fragments.buyer.home.SelectingCar_Fragment"
         android:label="fragment_selecting_car"
-        tools:layout="@layout/fragment_selecting_car" >
+        tools:layout="@layout/fragment_buyer_selecting_car" >
         <action
             android:id="@+id/action_selectingCar_Fragment_to_cashPaymentForm_Fragment"
             app:destination="@id/cashPaymentForm_Fragment" />
@@ -25,7 +25,7 @@
         android:id="@+id/selectingDealership_Fragment"
         android:name="com.example.roadready.fragments.buyer.home.SelectingDealership_Fragment"
         android:label="fragment_selecting_dealership"
-        tools:layout="@layout/fragment_selecting_dealership" >
+        tools:layout="@layout/fragment_buyer_selecting_dealership" >
         <action
             android:id="@+id/action_selectingDealership_Fragment_to_selectingCar_Fragment"
             app:destination="@id/selectingCar_Fragment" />
@@ -40,7 +40,7 @@
         android:id="@+id/cashPaymentForm_Fragment"
         android:name="com.example.roadready.fragments.buyer.home.CashPaymentForm_Fragment"
         android:label="fragment_cash_payment_form"
-        tools:layout="@layout/fragment_cash_payment_form">
+        tools:layout="@layout/fragment_buyer_cash_payment_form">
         <argument
             android:name="modelId"
             android:defaultValue="@null"
@@ -51,7 +51,7 @@
         android:id="@+id/installmentForm_Fragment"
         android:name="com.example.roadready.fragments.buyer.home.InstallmentForm_Fragment"
         android:label="fragment_installment_form"
-        tools:layout="@layout/fragment_installment_form">
+        tools:layout="@layout/fragment_buyer_installment_form">
         <argument
             android:name="modelId"
             android:defaultValue="@null"

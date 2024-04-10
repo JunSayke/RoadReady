@@ -2,10 +2,10 @@
 <androidx.fragment.app.FragmentContainerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/myVehicleFragmentContainer"
+    android:id="@+id/common_notificationFragmentContainer"
     android:name="androidx.navigation.fragment.NavHostFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     app:defaultNavHost="true"
-    app:navGraph="@navigation/myvehicle_nav_graph"
-    tools:context=".fragments.buyer.mainnav.MyVehicleContainer_Fragment" />
+    app:navGraph="@navigation/common_notification_nav_graph"
+    tools:context=".fragments.buyer.mainnav.NotificationContainer_Fragment" />

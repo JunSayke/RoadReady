@@ -12,18 +12,18 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentSelectingDealershipBinding;
+import com.example.roadready.databinding.FragmentBuyerSelectingDealershipBinding;
 
 public class SelectingDealership_Fragment extends Fragment {
     private final String TAG = "SelectingDealership_Fragment";
-    private FragmentSelectingDealershipBinding binding;
+    private FragmentBuyerSelectingDealershipBinding binding;
     private MainFacade mainFacade;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentSelectingDealershipBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerSelectingDealershipBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {
