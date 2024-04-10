@@ -1,7 +1,5 @@
 package com.example.roadready.classes.retrofit;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import java.io.IOException;
@@ -27,8 +25,8 @@ public class RetrofitFacade {
                 .connectTimeout(120, TimeUnit.SECONDS)
                 .readTimeout(120, TimeUnit.SECONDS)
                 .writeTimeout(120, TimeUnit.SECONDS)
-                .addInterceptor(new CookiesInterceptor())
-                .addInterceptor(new RequestInterceptor())
+                .addInterceptor(getCookiesInterceptor())
+                .addInterceptor(getRequestInterceptor())
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -44,11 +42,20 @@ public class RetrofitFacade {
         return retrofitService;
     }
 
+    public Interceptor getCookiesInterceptor() {
+        return new CookiesInterceptor();
+    }
+
+    public Interceptor getRequestInterceptor() {
+        return new RequestInterceptor();
+    }
+
     private static class CookiesInterceptor implements Interceptor {
         private final String TAG = "CookiesInterceptor";
+
         @NonNull
         @Override
-        public Response intercept(@NonNull Chain chain) throws IOException {
+        public Response intercept(Chain chain) throws IOException {
             Request request = chain.request();
             Response response = chain.proceed(request);
 
@@ -56,7 +63,7 @@ public class RetrofitFacade {
 
             RetrofitFacade.cookies.addAll(cookies);
 
-            Log.d(TAG, RetrofitFacade.cookies.toString());
+//            Log.d(TAG, RetrofitFacade.cookies.toString());
 
             return response;
         }
@@ -73,7 +80,7 @@ public class RetrofitFacade {
                 requestBuilder.addHeader("Cookie", cookie);
             }
 
-            Log.d(TAG, RetrofitFacade.cookies.toString());
+//            Log.d(TAG, RetrofitFacade.cookies.toString());
 
             return chain.proceed(requestBuilder.build());
         }

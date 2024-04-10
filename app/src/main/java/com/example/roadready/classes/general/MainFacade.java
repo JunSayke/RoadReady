@@ -18,6 +18,7 @@ import com.example.roadready.classes.model.livedata.UserGsonViewModelFactory;
 import com.example.roadready.databinding.ActivityMainBinding;
 
 import java.io.File;
+import java.util.Set;
 
 public class MainFacade {
     private static FragmentActivity mainActivity;
@@ -59,8 +60,9 @@ public class MainFacade {
         sessionManager = new SessionManager(mainActivity.getApplicationContext());
         userGsonViewModelFactory = new UserGsonViewModelFactory(mainActivity.getApplicationContext());
 
-        if (sessionManager.getCookies() != null) {
-            server.addCookies(server.parseCookies(sessionManager.getCookies()));
+        Set<String> PREF_COOKIES = sessionManager.getCookies();
+        if (!PREF_COOKIES.isEmpty()) {
+            server.addCookies(PREF_COOKIES);
         }
     }
 
@@ -206,22 +208,25 @@ public class MainFacade {
         return sessionManager;
     }
 
+    public RoadReadyServer getServer() {
+        return server;
+    }
+
     public void startLoginSession(UserGson userGson) {
-        server.addCookies(server.getParseCookies());
-        sessionManager.startSession(userGson, server.getCookies());
+        Set<String> PREF_COOKIES = server.getCookies();
+        server.addCookies(PREF_COOKIES);
+        sessionManager.startSession(userGson, PREF_COOKIES);
+//        Log.d(TAG, server.getCookies() + "\n" + sessionManager.getCookies());
     }
 
     public void stopLoginSession() {
-        server.removeCookies(server.parseCookies(sessionManager.getCookies()));
+        server.removeCookies(sessionManager.getCookies());
         sessionManager.stopSession();
+//        Log.d(TAG, server.getCookies() + "\n" + sessionManager.getCookies());
     }
 
     public boolean isLoggedIn() {
         return sessionManager.getUserGson() != null;
-    }
-
-    public RoadReadyServer getServer() {
-        return server;
     }
 
     public void login(
@@ -265,7 +270,7 @@ public class MainFacade {
         server.getListings(RoadReadyServer.getCallback(responseListener), listingId, dealershipId, modelAndName);
     }
 
-    public void addVehicle(
+    public void createListing(
             final RoadReadyServer.ResponseListener<GsonData> responseListener,
             final File listingImage,
             final String modelAndName,

@@ -16,11 +16,8 @@ import com.example.roadready.classes.retrofit.RetrofitFacade;
 import com.google.gson.Gson;
 
 import java.io.File;
-import java.net.HttpCookie;
 import java.net.URLConnection;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -142,7 +139,6 @@ public class RoadReadyServer extends RetrofitFacade {
         getRetrofitService().updateBuyerProfile(imagePart, fields).enqueue(callback);
     }
 
-
     public void registerBuyer(
             final Callback<SuccessGson<GsonData>> callback,
             final String email,
@@ -172,24 +168,8 @@ public class RoadReadyServer extends RetrofitFacade {
         RetrofitFacade.cookies.removeAll(cookies);
     }
 
-    public Set<String> parseCookies(String cookies) {
-        Log.d(TAG, cookies);
-        List<HttpCookie> parseCookies = HttpCookie.parse(cookies);
-        Set<String> output = new HashSet<>();
-        for (HttpCookie cookie : parseCookies) {
-            output.add(cookie.toString());
-        }
-        Log.d(TAG, output.toString());
-        return output;
-    }
-
-    public String getCookies() {
-        String cookies = RetrofitFacade.cookies.toString();
-        return cookies.substring(1, cookies.length() - 1);
-    }
-
-    public Set<String> getParseCookies() {
-        return parseCookies(getCookies());
+    public Set<String> getCookies() {
+        return cookies;
     }
 
     public interface ResponseListener<T extends GsonData> {
@@ -207,7 +187,7 @@ public class RoadReadyServer extends RetrofitFacade {
                     if (response.isSuccessful()) {
                         assert response.body() != null;
                         body = response.body();
-                        Log.d(TAG, String.valueOf(body));
+//                        Log.d(TAG, String.valueOf(body));
 
                         @SuppressWarnings("unchecked")
                         T1 data = (T1) ((SuccessGson<?>) body).getData();
@@ -215,7 +195,7 @@ public class RoadReadyServer extends RetrofitFacade {
                     } else {
                         assert response.errorBody() != null;
                         body = new Gson().fromJson(response.errorBody().string(), ErrorGson.class);
-                        Log.e(TAG, String.valueOf(body));
+//                        Log.e(TAG, String.valueOf(body));
                     }
                 } catch (Exception e) {
                     Log.e(TAG, Objects.requireNonNull(e.getMessage()));
