@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/opening_nav_graph"
+    app:startDestination="@id/openingFragment">
+
+    <fragment
+        android:id="@+id/openingFragment"
+        android:name="com.example.opening.fragments.OpeningFragment"
+        android:label="fragment_opening"
+        tools:layout="@layout/fragment_opening" >
+        <action
+            android:id="@+id/action_openingFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/openingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpAsFragment"
+        android:name="com.example.opening.fragments.SignUpAsFragment"
+        android:label="fragment_sign_up_as"
+        tools:layout="@layout/fragment_sign_up_as" >
+        <action
+            android:id="@+id/action_signUpAsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_signUpAsFragment_to_buyerSignUpFragment"
+            app:destination="@id/buyerSignUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.opening.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpAsFragment"
+            app:destination="@id/signUpAsFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_loginFragment"
+        app:destination="@id/loginFragment" />
+    <fragment
+        android:id="@+id/buyerSignUpFragment"
+        android:name="com.example.opening.fragments.BuyerSignUpFragment"
+        android:label="fragment_buyer_sign_up"
+        tools:layout="@layout/fragment_buyer_sign_up" >
+        <action
+            android:id="@+id/action_buyerSignUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+</navigation>

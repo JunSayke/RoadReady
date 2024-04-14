@@ -1,0 +1,209 @@
+<resources>
+    <!-- ACTIVITY OPENING -->
+    <string name="text_opening_tagline">Vehicle documents processing</string>
+    <string name="app_name">RoadReady</string>
+    <string name="road_ready_logo">roadReadyLogo</string>
+    <string name="red_circle">red_circle</string>
+    <string name="cyan_circle_left">cyan_circle_left</string>
+    <string name="cyan_circle_right">cyan_circle_right</string>
+
+    <!-- ACTIVITY LOGIN -->
+    <string name="placeholder_email_address">Email Address</string>
+    <string name="placeholder_password">Password</string>
+    <string name="text_forgot_your_password">Forgot your password?</string>
+    <string name="text_btn_login">Login</string>
+    <string name="text_btn_loginGoogle">Login with Google</string>
+    <string name="text_no_have_account">Don\'t have an account?</string>
+    <string name="text_signup">Sign up</string>
+    <string name="vector_or">vector_or</string>
+
+    <!-- ACTIVITY SIGNUP_AS -->
+    <string name="text_signupas">Sign up as</string>
+    <string name="text_btn_vbuyer">Vehicle Buyer</string>
+    <string name="text_btn_dealership">Dealership</string>
+    <string name="text_already_have_account">Already have an account?</string>
+    <string name="text_login">Login</string>
+
+    <!-- ACTIVITY SIGNUP -->
+    <string name="placeholder_first_name">First Name</string>
+    <string name="placeholder_last_name">Last Name</string>
+    <string name="placeholder_phone_number">Phone Number</string>
+    <string name="placeholder_current_address">Current Address</string>
+    <string name="placeholder_longitude_latitude">Longitude and Latitude</string>
+    <string name="text_sex">Sex</string>
+    <string name="text_male">Male</string>
+    <string name="text_female">Female</string>
+    <string name="text_other">Other</string>
+    <string name="text_btn_submit">Submit</string>
+
+    <!-- ACTIVITY VERIFICATION -->
+    <string name="text_enter_verification_code">Please enter your 4 digit verification code</string>
+    <string name="text_resend_code">Resend code</string>
+    <string name="pinv_otp">pinv_otp</string>
+
+    <!-- ACTIVITY BUYER HOMEPAGE -->
+    <string name="text_welcome_user">Welcome Gail!</string>
+    <string name="text_search_vehicle">Search vehicle</string>
+    <string name="text_view_now">View now</string>
+    <string name="text_recommended_for_you">Recommended for you</string>
+    <string name="text_select">Select</string>
+    <string name="recommended_item">Recommended item</string>
+    <string name="vehicle_item">Vehicle item</string>
+    <string name="vector_user_icon">User icon</string>
+    <string name="vector_filter_icon">Filter icon</string>
+
+    <!-- ACTIVITY SEARCH DEALERSHIP -->
+    <string name="text_search_dealership">Search dealership</string>
+    <string name="text_view">View</string>
+
+    <!-- ACTIVITY SELECTING CAR -->
+    <string name="text_specifications">Specifications</string>
+    <string name="text_make">Make:</string>
+    <string name="text_fuel_type">Fuel Type:</string>
+    <string name="text_transmission">Transmission:</string>
+    <string name="text_fuel_tank_capacity">Fuel Tank Capacity(litres):</string>
+    <string name="text_seating_capacity">Seating Capacity:</string>
+    <string name="text_price">Price:</string>
+    <string name="text_power">Power:</string>
+    <string name="text_engine">Engine:</string>
+    <string name="text_buy_now">Buy now!</string>
+    <string name="text_cash">Cash</string>
+    <string name="text_installment">Installment</string>
+    <string name="img_dealer_logo">Dealer Logo</string>
+    <string name="img_vehicle_item">Vehicle Item</string>
+
+    <!-- ACTIVITY CASH PAYMENT FORM -->
+    <string name="text_cash_payment_form">Cash Payment Form</string>
+    <string name="text_fname">First Name:</string>
+    <string name="text_lname">Last Name:</string>
+    <string name="text_address">Address:</string>
+    <string name="text_phone_number">Phone #:</string>
+    <string name="text_valid_id">Valid ID:</string>
+    <string name="text_upload">upload</string>
+    <string name="text_mode_of_payment">Mode of Payment:</string>
+    <string name="text_over_the_counter">Over the counter</string>
+    <string name="text_cheque_on_delivery">Cheque on delivery</string>
+    <string name="text_signature">Signature</string>
+    <string name="back_btn">back button</string>
+
+    <!-- ACTIVITY INSTALLMENT FORM -->
+    <string name="text_installment_form">Installment Form</string>
+    <string name="text_comaker_name">Co-maker Name: </string>
+    <string name="text_comaker_validId">Co-maker Valid ID: </string>
+    <string name="text_vehicle_application_progress">Vehicle application progress</string>
+    <string name="text_application_progress">Application Progress</string>
+
+    <!-- ACTIVITY REGISTRATION PROGRESS-->
+    <string name="text_registration_progress">Registration Progress</string>
+    <string name="text_your_documents_is_on_review">Your documents is on review</string>
+    <string name="text_registration_on_progress">Registration on Progress</string>
+    <string name="text_releasing_of_registration">Releasing of Registration</string>
+    <string name="text_background_checking">Background checking</string>
+    <string name="text_releasing_of_unit">Releasing of unit</string>
+    <string name="text_registered_on">Registered on</string>
+    <string name="text_expiry_on">Expiry on</string>
+    <string name="text_renew_registration">Renew Registration</string>
+    <string name="text_submit_to_lto">Submit to LTO:</string>
+    <string name="text_5_proof_of_payment">5. Proof of Payment:</string>
+    <string name="text_4_original_receipt">4. Original Receipt:</string>
+    <string name="text_3_certification_of_registration">3. Certification of Registration:</string>
+    <string name="text_2_insurance">2. Insurance:</string>
+    <string name="text_1_mvis">1. MVIS:</string>
+    <string name="text_renewal_of_registration">Renewal of Registration</string>
+    <string name="text_profile">Profile</string>
+    <string name="text_edit_profile">Edit Profile</string>
+    <string name="text_name">Name:</string>
+    <string name="text_email">Email:</string>
+    <string name="text_longitude_latitude_id"><![CDATA[Longitude & Latitude ID:]]></string>
+    <string name="text_sexColon">Sex:</string>
+    <string name="design_material">design_material</string>
+    <string name="text_cancel">Cancel</string>
+
+    <string name="text_set_location">Set Location</string>
+    <!-- DEALERSHIP SIDE -->
+    <!-- HEADER TITLES -->
+    <string name="text_header_my_vehicles">My Vehicles</string>
+    <string name="text_header_for_approval">For Approval</string>
+    <string name="text_header_approved">Approved</string>
+    <string name="text_header_documents_progress">Documents Progress</string>
+    <string name="text_header_registration_documents">Registration Documents</string>
+    <string name="text_header_notifications">Notifications</string>
+    <string name="text_header_lto">Land Transportation Office</string>
+    <string name="text_header_banklist">Bank</string>
+    <string name="text_header_profile">Profile</string>
+
+    <!-- ACTIVITY MY VEHICLES -->
+    <string name="text_my_vehicle_title">CAR DISTRICT</string>
+    <string name="text_add_vehicle">Add Vehicle</string>
+    <string name="text_remove_vehicle">Remove Vehicle</string>
+
+    <!-- ACTIVITY VEHICLE ADD -->
+    <string name="text_vehicle_add_title">ADD VEHICLE</string>
+    <string name="text_vehicle_add_price">Price:</string>
+    <string name="text_vehicle_add_upload_picture">Upload a picture</string>
+    <string name="text_vehicle_add_seating_cap">Seating Capacity:</string>
+    <string name="text_vehicle_add_fuel_cap">Fuel Tank Capacity:</string>
+    <string name="text_vehicle_add_engine">Engine:</string>
+    <string name="text_vehicle_add_transmission">Transmission:</string>
+    <string name="text_vehicle_add_power">Power:</string>
+    <string name="text_vehicle_add_fuel_type">Fuel Type:</string>
+    <string name="text_vehicle_add_make">Make:</string>
+    <string name="text_vehicle_add_model_name">Model &amp; Name:</string>
+
+    <!-- ACTIVITY FOR APPROVAL -->
+    <string name="text_tbl_name">NAME</string>
+    <string name="text_tbl_file">File</string>
+    <string name="text_tbl_action">Action</string>
+
+    <!-- ACTIVITY APPROVED -->
+    <string name="text_tbl_date_approved">Date Approved</string>
+
+    <!-- ACTIVITY APPLICANTS -->
+    <string name="text_applicants_documents_review">Documents review</string>
+    <string name="text_applicants_registration">Registration on process</string>
+    <string name="text_applicants_releasing_document">Releasing of document</string>
+    <string name="text_applicants_bank_approval">Bank approval</string>
+    <string name="text_applicants_releasing_unit">Releasing of unit</string>
+
+    <!-- ACTIVITY REGISTRATION DOCS -->
+    <string name="text_registration_docs_sales_invoice">1. Original Sales Invoice</string>
+    <string name="text_registration_docs_coc">2. Appropriate insurance Certificate of Cover (COC)</string>
+    <string name="text_registration_docs_csr">3. Original copy of Certificate of Stock Reported (CSR)</string>
+    <string name="text_registration_clearance_cert">4. Original copy of PNP-HPG MV Clearance Certificate</string>
+    <string name="text_registration_docs_tin">5. Taxpayers Identification Number (TIN ID)</string>
+    <string name="text_registration_submit_lto">Submit to LTO:</string>
+
+    <!-- ACTIVITY BANK -->
+    <string name="text_bank_autoLoan">1. Vehicle Auto Loan Form</string>
+    <string name="text_bank_agreementForm">2. Agreement Form</string>
+    <string name="text_bank_applicantID">3. Applicant Valid ID</string>
+    <string name="text_bank_comakerID">4. Co-maker Valid ID</string>
+    <string name="text_bank_tin">5. Taxpayers Identification Number (TIN ID)</string>
+
+    <!-- POPUP REVIEW FILE -->
+    <string name="text_review_file_title">Abing.pdf</string>
+    <string name="text_review_file_comaker_id">Co-maker Valid ID:</string>
+    <string name="text_review_file_comaker_name">Co-maker Name: Jumio, Marie</string>
+    <string name="text_review_file_id">Valid ID:</string>
+    <string name="text_review_file_phone_no">Phone#: 09398600917</string>
+    <string name="text_review_file_address">Address: Canduman Housing Mandaue</string>
+    <string name="text_review_file_lastname">Last Name: Abing</string>
+    <string name="text_review_file_firstname">First name: Rey Daniel</string>
+    <string name="text_review_file_vehicle_title">TOYOTA HILUX CONQUEST 2023</string>
+
+    <!-- NAVIGATION SIDEBAR -->
+    <string name="text_sidebar_sales_representative">SALES REPRESENTATIVE</string>
+    <string name="text_sidebar_my_vehicles">My Vehicles</string>
+    <string name="text_sidebar_vehicle_applicants">Vehicle Applicants</string>
+    <string name="text_sidebar_for_approval">For Approval</string>
+    <string name="text_sidebar_approved_name_list">Approved Name List</string>
+    <string name="text_sidebar_registration_process">Registration Progress</string>
+    <string name="text_sidebar_lto">Land Transportation Office</string>
+    <string name="text_sidebar_bank">Bank</string>
+    <string name="text_sidebar_notifications">Notifications</string>
+    <string name="text_sidebar_view_profile">View Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".fragments.BuyerSignUpFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sgnupContainerContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/sgnupTextSignup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="152dp"
+            android:layout_marginEnd="153dp"
+            android:layout_marginBottom="650dp"
+            android:text="@string/text_signup"
+            android:textColor="#332F2F"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/sgnupInptFname"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="8dp"
+            android:autofillHints="First Name"
+            android:background="@drawable/rectangle_solid"
+            android:ems="10"
+            android:hint="@string/placeholder_first_name"
+            android:inputType="text"
+            android:padding="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/sgnupInptLname"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupTextSignup" />
+
+        <EditText
+            android:id="@+id/sgnupInptLname"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="17dp"
+            android:autofillHints="Last Name"
+            android:background="@drawable/rectangle_solid"
+            android:ems="10"
+            android:hint="@string/placeholder_last_name"
+            android:inputType="text"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sgnupInptFname"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupTextSignup" />
+
+        <EditText
+            android:id="@+id/sgnupInptEmail"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="103dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="103dp"
+            android:autofillHints="Email Address"
+            android:background="@drawable/rectangle_solid"
+            android:ems="10"
+            android:hint="@string/placeholder_email_address"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptFname" />
+
+        <EditText
+            android:id="@+id/sgnupInptPhoneNumber"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="99dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="103dp"
+            android:autofillHints="Phone Number"
+            android:background="@drawable/rectangle_solid"
+            android:ems="10"
+            android:hint="@string/placeholder_phone_number"
+            android:inputType="phone"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptEmail" />
+
+        <EditText
+            android:id="@+id/sgnupInptPassword"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="101dp"
+            android:autofillHints="Password"
+            android:background="@drawable/rectangle_solid"
+            android:ems="10"
+            android:hint="@string/placeholder_password"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptPhoneNumber" />
+
+        <EditText
+            android:id="@+id/sgnupInptAddress"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="101dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="101dp"
+            android:autofillHints="Current Address"
+            android:background="@drawable/rectangle_solid"
+            android:ems="10"
+            android:hint="@string/placeholder_current_address"
+            android:inputType="text"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptPassword" />
+
+        <LinearLayout
+            android:id="@+id/sgnupInptCoordinatesContainer"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="101dp"
+            android:background="@drawable/rectangle_solid"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptAddress">
+
+            <EditText
+                android:id="@+id/sgnupInptCoordinates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:autofillHints="@string/placeholder_longitude_latitude"
+                android:background="#FFFFFF"
+                android:ems="10"
+                android:hint="@string/placeholder_longitude_latitude"
+                android:inputType="text" />
+
+            <ImageButton
+                android:id="@+id/sgnupBtnOpenMaps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/rectangle_outline"
+                android:backgroundTint="#0EB2F8"
+                android:src="@drawable/map" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/sgnupLblSex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:text="@string/text_sex"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sgnupInptCoordinatesContainer" />
+
+        <RadioGroup
+            android:id="@+id/sgnupRgSexOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="101dp"
+            android:layout_marginEnd="101dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupLblSex">
+
+            <RadioButton
+                android:id="@+id/sgnupRbMale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:contentDescription="male"
+                android:hint="@string/text_male" />
+
+            <RadioButton
+                android:id="@+id/sgnupRbFemale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:contentDescription="female"
+                android:hint="@string/text_female" />
+
+            <RadioButton
+                android:id="@+id/sgnupRadioOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_weight="1"
+                android:contentDescription="others"
+                android:hint="@string/text_other" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/sgnupBtnSubmit"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="167dp"
+            android:backgroundTint="#0EB2F8"
+            android:text="@string/text_btn_submit"
+            android:textColor="#332F2F"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupRgSexOptions" />
+
+        <TextView
+            android:id="@+id/sgnupTextAlreadyHaveAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="105dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/text_already_have_account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupBtnSubmit" />
+
+        <TextView
+            android:id="@+id/sgnupTextLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="108dp"
+            android:clickable="true"
+            android:text="@string/text_login"
+            android:textColor="#3670A8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupBtnSubmit" />
+
+        <ImageView
+            android:id="@+id/sgnupImageOr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="56dp"
+            android:contentDescription="@string/vector_or"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupTextAlreadyHaveAccount"
+            app:srcCompat="@drawable/login_grp_or" />
+
+        <Button
+            android:id="@+id/sgnupBtnGoogleLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="111dp"
+            android:layout_marginEnd="111dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#FFFFFF"
+            android:foreground="@drawable/google"
+            android:foregroundGravity="left"
+            android:paddingStart="70dp"
+            android:paddingEnd="30dp"
+            android:text="@string/text_btn_loginGoogle"
+            android:textColor="#747070"
+            android:textSize="12sp"
+            app:cornerRadius="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupImageOr"
+            app:rippleColor="#F3F3F3F3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
