@@ -139,6 +139,36 @@ public class RoadReadyServer extends RetrofitFacade {
         getRetrofitService().updateBuyerProfile(imagePart, fields).enqueue(callback);
     }
 
+    public void updateDealershipProfile(
+            final Callback<SuccessGson<UserDataGson>> callback,
+            @Nullable final File profileImage,
+            @Nullable final String firstName,
+            @Nullable final String lastName,
+            @Nullable final String phoneNumber,
+            @Nullable final String gender,
+            @Nullable final String address
+    ) {
+        MultipartBody.Part imagePart = null;
+        if (profileImage != null) {
+            RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(profileImage.getName())), profileImage);
+            imagePart = MultipartBody.Part.createFormData("profileImage", profileImage.getName(), requestBody);
+        }
+
+        Map<String, RequestBody> fields = new HashMap<>();
+        if (firstName != null)
+            fields.put("firstName", RequestBody.create(MediaType.parse("text/plain"), firstName));
+        if (lastName != null)
+            fields.put("lastName", RequestBody.create(MediaType.parse("text/plain"), lastName));
+        if (phoneNumber != null)
+            fields.put("phoneNumber", RequestBody.create(MediaType.parse("text/plain"), phoneNumber));
+        if (gender != null)
+            fields.put("gender", RequestBody.create(MediaType.parse("text/plain"), gender));
+        if (address != null)
+            fields.put("address", RequestBody.create(MediaType.parse("text/plain"), address));
+
+        getRetrofitService().updateDealershipProfile(imagePart, fields).enqueue(callback);
+    }
+
     public void registerBuyer(
             final Callback<SuccessGson<GsonData>> callback,
             final String email,
@@ -158,6 +188,42 @@ public class RoadReadyServer extends RetrofitFacade {
         fields.put("gender", gender);
         fields.put("address", address);
         getRetrofitService().buyerRegister(fields).enqueue(callback);
+    }
+
+    public void registerDealership(
+            final Callback<SuccessGson<GsonData>> callback,
+            @Nullable final File profileImage,
+            final String email,
+            final String password,
+            final String firstName,
+            final String lastName,
+            final String phoneNumber,
+            final String gender,
+            final String dealershipName,
+            final String establishmentAddress,
+            final String latitude,
+            final String longitude,
+            final String modeOfPayment
+    ) {
+        MultipartBody.Part imagePart = null;
+        if (profileImage != null) {
+            RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(profileImage.getName())), profileImage);
+            imagePart = MultipartBody.Part.createFormData("profileImage", profileImage.getName(), requestBody);
+        }
+
+        Map<String, String> fields = new HashMap<>();
+        fields.put("email", email);
+        fields.put("password", password);
+        fields.put("firstName", firstName);
+        fields.put("lastName", lastName);
+        fields.put("phoneNumber", phoneNumber);
+        fields.put("gender", gender);
+        fields.put("dealershipName", dealershipName);
+        fields.put("establishmentAddress", establishmentAddress);
+        fields.put("latitude", latitude);
+        fields.put("longitude", longitude);
+        fields.put("modeOfPayment", modeOfPayment);
+        getRetrofitService().dealershipRegister(imagePart, fields).enqueue(callback);
     }
 
     public void addCookies(Set<String> cookies) {

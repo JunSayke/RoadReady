@@ -1,4 +1,4 @@
-package com.example.roadready.fragments.common.profilefragments;
+package com.example.roadready.fragments.buyer.profilefragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,17 +13,17 @@ import androidx.fragment.app.Fragment;
 import com.example.roadready.R;
 import com.example.roadready.activity.MainActivity;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentCommonProfileBinding;
+import com.example.roadready.databinding.FragmentBuyerProfileBinding;
 
-public class Profile_Fragment extends Fragment {
+public class Buyer_Profile_Fragment extends Fragment {
     private final String TAG = "Profile_Fragment";
-    private FragmentCommonProfileBinding binding;
+    private FragmentBuyerProfileBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentCommonProfileBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

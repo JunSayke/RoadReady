@@ -72,12 +72,18 @@ public class Login_Fragment extends Fragment {
         String email = String.valueOf(binding.lgnInptEmail.getText());
         String password = String.valueOf(binding.lgnInptPassword.getText());
 
+
+        //TODO: separate dealership and buyer
         final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
             @Override
             public void onSuccess(UserDataGson data) {
                 UserGson user = data.getUserGson();
                 mainFacade.startLoginSession(user);
-                mainFacade.getBuyerMainNavController().navigate(R.id.action_login_Fragment_to_homepageContainer_Fragment);
+                if(user.getRole().equals("buyer")) {
+                    mainFacade.getBuyerMainNavController().navigate(R.id.action_login_Fragment_to_homepageContainer_Fragment);
+                }else{
+                    mainFacade.getBuyerMainNavController().navigate(R.id.action_login_Fragment_to_dealership_homepageContainer_Fragment);
+                }
                 hideProgressBar();
             }
 

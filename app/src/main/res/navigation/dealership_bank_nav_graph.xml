@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_dealership_bank" />
     <fragment
         android:id="@+id/banklist_Fragment"
-        android:name="com.example.roadready.fragments.dealership.Banklist_Fragment"
+        android:name="com.example.roadready.fragments.dealership.mainnavfragments.Banklist_Fragment"
         android:label="Banklist_Fragment" >
         <action
             android:id="@+id/action_banklist_Fragment_to_bank_Fragment"

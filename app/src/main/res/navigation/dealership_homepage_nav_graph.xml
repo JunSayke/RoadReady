@@ -39,7 +39,7 @@
         android:id="@+id/navProfile"
         android:name="com.example.roadready.fragments.buyer.mainnav.ProfileContainer_Fragment"
         android:label="fragment_profile_container"
-        tools:layout="@layout/fragment_common_profile_container" />
+        tools:layout="@layout/fragment_buyer_profile_container" />
     <fragment
         android:id="@+id/navNotifications"
         android:name="com.example.roadready.fragments.buyer.mainnav.NotificationContainer_Fragment"

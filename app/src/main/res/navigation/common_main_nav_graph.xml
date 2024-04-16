@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_login_Fragment_to_homepageContainer_Fragment"
             app:destination="@id/homepageContainer_Fragment" />
+        <action
+            android:id="@+id/action_login_Fragment_to_dealership_homepageContainer_Fragment"
+            app:destination="@id/dealership_homepageContainer_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpAs_Fragment"
@@ -24,17 +27,17 @@
         android:label="fragment_sign_up_as"
         tools:layout="@layout/fragment_common_sign_up_as" >
         <action
-            android:id="@+id/action_signUpAs_Fragment_to_signUp_Fragment"
-            app:destination="@id/signUp_Fragment" />
+            android:id="@+id/action_signUpAs_Fragment_to_dealership_SignUp_Fragment"
+            app:destination="@id/dealership_SignUp_Fragment" />
         <action
-            android:id="@+id/action_signUpAs_Fragment_to_dealership_homepageContainer_Fragment"
-            app:destination="@id/dealership_homepageContainer_Fragment" />
+            android:id="@+id/action_signUpAs_Fragment_to_buyer_signUp_Fragment"
+            app:destination="@id/buyer_signUp_Fragment" />
     </fragment>
     <fragment
-        android:id="@+id/signUp_Fragment"
-        android:name="com.example.roadready.fragments.common.SignUp_Fragment"
+        android:id="@+id/buyer_signUp_Fragment"
+        android:name="com.example.roadready.fragments.buyer.Buyer_SignUp_Fragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_common_sign_up" />
+        tools:layout="@layout/fragment_buyer_sign_up" />
     <fragment
         android:id="@+id/opening_Fragment"
         android:name="com.example.roadready.fragments.common.Opening_Fragment"
@@ -49,6 +52,9 @@
         <action
             android:id="@+id/action_opening_Fragment_to_homepageContainer_Fragment"
             app:destination="@id/homepageContainer_Fragment" />
+        <action
+            android:id="@+id/action_opening_Fragment_to_dealership_homepageContainer_Fragment"
+            app:destination="@id/dealership_homepageContainer_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/verification_Fragment"
@@ -71,4 +77,9 @@
         android:name="com.example.roadready.fragments.dealership.Dealership_HomepageContainer_Fragment"
         android:label="fragment_dealership_homepage_container"
         tools:layout="@layout/fragment_dealership_homepage_container" />
+    <fragment
+        android:id="@+id/dealership_SignUp_Fragment"
+        android:name="com.example.roadready.fragments.dealership.Dealership_SignUp_Fragment"
+        android:label="fragment_dealership_sign_up"
+        tools:layout="@layout/fragment_dealership_sign_up" />
 </navigation>

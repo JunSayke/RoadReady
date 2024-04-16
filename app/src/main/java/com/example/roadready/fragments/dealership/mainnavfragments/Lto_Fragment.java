@@ -1,4 +1,4 @@
-package com.example.roadready.fragments.dealership;
+package com.example.roadready.fragments.dealership.mainnavfragments;
 
     import android.os.Bundle;
     import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.example.roadready.fragments.common.profilefragments;
+package com.example.roadready.fragments.buyer.profilefragments;
 
 import static com.example.roadready.classes.util.GetFileNameFromUri.getFileNameFromUri;
 
@@ -25,13 +25,13 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
-import com.example.roadready.databinding.FragmentCommonEditProfileBinding;
+import com.example.roadready.databinding.FragmentBuyerEditProfileBinding;
 
 import java.io.File;
 
-public class EditProfile_Fragment extends Fragment implements ImagePicker.OnImageSelectedListener {
+public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.OnImageSelectedListener {
     private final String TAG = "EditProfile_Fragment";
-    private FragmentCommonEditProfileBinding binding;
+    private FragmentBuyerEditProfileBinding binding;
     private ActivityResultLauncher<Intent> mapResultLauncher;
     private MainFacade mainFacade;
     private ImagePicker imagePicker;
@@ -39,7 +39,7 @@ public class EditProfile_Fragment extends Fragment implements ImagePicker.OnImag
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentCommonEditProfileBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerEditProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {

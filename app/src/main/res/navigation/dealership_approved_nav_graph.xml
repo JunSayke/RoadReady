@@ -6,7 +6,7 @@
     app:startDestination="@id/approved_Fragment">
     <fragment
         android:id="@+id/approved_Fragment"
-        android:name="com.example.roadready.fragments.dealership.Approved_Fragment"
+        android:name="com.example.roadready.fragments.dealership.mainnavfragments.Approved_Fragment"
         android:label="fragment_approved"
         tools:layout="@layout/fragment_dealership_approved" />
 </navigation>

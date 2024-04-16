@@ -40,9 +40,23 @@ public interface RetrofitService {
             @FieldMap Map<String, String> fields
     );
 
+    @FormUrlEncoded
+    @POST("manager/register")
+    Call<SuccessGson<GsonData>> dealershipRegister(
+            @Part @Nullable MultipartBody.Part listingImage,
+            @FieldMap Map<String, String> fields
+    );
+
     @Multipart
     @PUT("user/profile")
     Call<SuccessGson<UserDataGson>> updateBuyerProfile(
+            @Part @Nullable MultipartBody.Part profileImage,
+            @PartMap Map<String, RequestBody> fields
+    );
+
+    @Multipart
+    @PUT("user/profile")
+    Call<SuccessGson<UserDataGson>> updateDealershipProfile(
             @Part @Nullable MultipartBody.Part profileImage,
             @PartMap Map<String, RequestBody> fields
     );
@@ -65,5 +79,4 @@ public interface RetrofitService {
             @Part @Nullable MultipartBody.Part listingImage,
             @PartMap Map<String, RequestBody> fields
     );
-
 }

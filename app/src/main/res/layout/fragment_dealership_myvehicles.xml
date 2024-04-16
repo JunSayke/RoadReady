@@ -6,7 +6,7 @@
 	android:layout_height="match_parent"
 	android:background="@drawable/rectangle"
 	android:orientation="vertical"
-	tools:context=".fragments.dealership.MyVehicles_Fragment">
+	tools:context=".fragments.dealership.mainnavfragments.MyVehicles_Fragment">
 
 	<LinearLayout
 		android:id="@+id/my_vehicles"

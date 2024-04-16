@@ -249,6 +249,24 @@ public class MainFacade {
         server.registerBuyer(RoadReadyServer.getCallback(responseListener), email, password, firstName, lastName, phoneNumber, gender, address);
     }
 
+    public void registerDealership(
+            final RoadReadyServer.ResponseListener<GsonData> responseListener,
+            @Nullable final File profileImage,
+            final String email,
+            final String password,
+            final String firstName,
+            final String lastName,
+            final String phoneNumber,
+            final String gender,
+            final String dealershipName,
+            final String establishmentAddress,
+            final String latitude,
+            final String longitude,
+            final String modeOfPayment
+    ) {
+        server.registerDealership(RoadReadyServer.getCallback(responseListener), profileImage, email, password, firstName, lastName, phoneNumber, gender, dealershipName, establishmentAddress, latitude, longitude, modeOfPayment);
+    }
+
     public void updateBuyerProfile(
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
             @Nullable final File profileImage,
@@ -259,6 +277,18 @@ public class MainFacade {
             @Nullable final String address
     ) {
         server.updateBuyerProfile(RoadReadyServer.getCallback(responseListener), profileImage, firstName, lastName, phoneNumber, gender, address);
+    }
+
+    public void updateDealershipProfile(
+            final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
+            @Nullable final File profileImage,
+            @Nullable final String firstName,
+            @Nullable final String lastName,
+            @Nullable final String phoneNumber,
+            @Nullable final String gender,
+            @Nullable final String address
+    ) {
+        server.updateDealershipProfile(RoadReadyServer.getCallback(responseListener), profileImage, firstName, lastName, phoneNumber, gender, address);
     }
 
     public void getListings(

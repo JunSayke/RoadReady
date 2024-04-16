@@ -72,39 +72,49 @@ public class VehicleAdd_Fragment extends Fragment implements ImagePicker.OnImage
 		binding.addBtnAddVehicle.setOnClickListener(v -> {
 			showProgressBar();
 
-			File ListingImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.hp_iv_civic, "listing_image.png");
-			String modelAndName =  String.valueOf(binding.addInptModelName.getText());
-			String make =  String.valueOf(binding.addInptMake.getText());
-			String fuelType =  String.valueOf(binding.addInptFuelType.getText());
-			String power =  String.valueOf(binding.addInptPower.getText());
-			String transmission =  String.valueOf(binding.addInptTransmission.getText());
-			String engine =  String.valueOf(binding.addInptEngine.getText());
-			String fuelTankCapacity =  String.valueOf(binding.addInptFuelCap.getText());
-			String seatingCapacity =  String.valueOf(binding.addInptSeatingCap.getText());
-			String price =  String.valueOf(binding.addInptPrice.getText());
-			String dealershipName =  null; //temporary
-			String vehicleType =  String.valueOf(binding.addSpinnerVehicleType.getSelectedItem().toString());
-
-/*			TODO: fix this tomorrow
-			final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
+			new RoadReadyServer.ResponseListener<UserDataGson>(){
 				@Override
-				public void onSuccess(GsonData data) {
-					UserGson user = data.getGsonData();
-					mainFacade.getUserGsonViewModel().setUserGsonLiveData(user);
-					mainFacade.getSessionManager().setUserGson(user);
-					hideProgressBar();
-				}
+				public void onSuccess(UserDataGson data) {
+					UserGson user = data.getUserGson();
+					File ListingImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.hp_iv_civic, "listing_image.png");
+					String modelAndName =  String.valueOf(binding.addInptModelName.getText());
+					String make =  String.valueOf(binding.addInptMake.getText());
+					String fuelType =  String.valueOf(binding.addInptFuelType.getText());
+					String power =  String.valueOf(binding.addInptPower.getText());
+					String transmission =  String.valueOf(binding.addInptTransmission.getText());
+					String engine =  String.valueOf(binding.addInptEngine.getText());
+					String fuelTankCapacity =  String.valueOf(binding.addInptFuelCap.getText());
+					String seatingCapacity =  String.valueOf(binding.addInptSeatingCap.getText());
+					String price =  String.valueOf(binding.addInptPrice.getText());
+					String dealershipName =  user.getDealership().getName();
+					String vehicleType =  binding.addSpinnerVehicleType.getSelectedItem().toString();
 
+//					TODO: fix this tomorrow
+//					final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
+//						@Override
+//						public void onSuccess(GsonData data) {
+//							UserGson user = data.getGsonData();
+//							mainFacade.getUserGsonViewModel().setUserGsonLiveData(user);
+//							mainFacade.getSessionManager().setUserGson(user);
+//							hideProgressBar();
+//						}
+//
+//						@Override
+//						public void onFailure(String message) {
+//							mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+//							hideProgressBar();
+//						}
+//					};
+//
+//					mainFacade.createListing(responseListener, ListingImageFile, modelAndName, make, fuelType, power,
+//							transmission, engine, fuelTankCapacity, seatingCapacity, price, dealershipName, vehicleType);
+//
+				}
 				@Override
 				public void onFailure(String message) {
 					mainFacade.makeToast(message, Toast.LENGTH_SHORT);
-					hideProgressBar();
 				}
 			};
-
-			mainFacade.createListing(responseListener, ListingImageFile, modelAndName, make, fuelType, power,
-					transmission, engine, fuelTankCapacity, seatingCapacity, price, dealershipName, vehicleType);
-*/
 		});
 	}
 
