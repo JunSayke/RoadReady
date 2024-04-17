@@ -44,31 +44,30 @@ public class Opening_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //TODO: Separate buyer and dealership isLoggedIn
-        new RoadReadyServer.ResponseListener<UserDataGson>() {
-            @Override
-            public void onSuccess(UserDataGson data) {
-                UserGson user = data.getUserGson();
                 new Handler().postDelayed(() -> {
                     if (mainFacade.isLoggedIn()) {
-                        if(user.getRole().equals("buyer")){
-                            mainFacade.makeToast("Moving to Homepage", Toast.LENGTH_SHORT);
-                            mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_homepageContainer_Fragment);
-                        }else{
-                            mainFacade.makeToast("Moving to Homepage", Toast.LENGTH_SHORT);
-                            mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_dealership_homepageContainer_Fragment);
-                        }
+                        new RoadReadyServer.ResponseListener<UserDataGson>() {
+                            @Override
+                            public void onSuccess(UserDataGson data) {
+                                UserGson user = data.getUserGson();
+                                if (user.getRole().equals("buyer")) {
+                                    mainFacade.makeToast("Moving to Homepage", Toast.LENGTH_SHORT);
+                                    mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_homepageContainer_Fragment);
+                                } else {
+                                    mainFacade.makeToast("Moving to Homepage", Toast.LENGTH_SHORT);
+                                    mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_dealership_homepageContainer_Fragment);
+                                }
+                            }
+                            @Override
+                            public void onFailure(String message) {
+                                mainFacade.makeToast(message, Toast.LENGTH_LONG);
+                            }
+                        };
                     } else {
                         mainFacade.makeToast("Moving to Login page", Toast.LENGTH_SHORT);
                         mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_login_Fragment);
                     }
                 }, SPLASH_SCREEN_DURATION);
-            }
-
-            @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
-            }
-        };
 
     }
 
