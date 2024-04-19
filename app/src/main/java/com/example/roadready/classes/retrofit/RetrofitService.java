@@ -6,6 +6,7 @@ import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
+import com.example.roadready.classes.model.gson.data.VehicleGson;
 import com.example.roadready.classes.model.gson.response.SuccessGson;
 
 import java.util.Map;
@@ -61,12 +62,12 @@ public interface RetrofitService {
             @PartMap Map<String, RequestBody> fields
     );
 
-    @GET("dealership")
+    @GET("dealerships")
     Call<SuccessGson<DealershipsDataGson>> getDealerships(
             @QueryMap Map<String, String> filters
     );
 
-    @GET("listing")
+    @GET("dealership/listings")
     Call<SuccessGson<ListingsDataGson>> getListings(
             @QueryMap Map<String, String> filters
     );
@@ -75,7 +76,7 @@ public interface RetrofitService {
     @Multipart
     @POST("manager/listing")
         // TODO:
-    Call<SuccessGson<GsonData>> createListing(
+    Call<SuccessGson<ListingsDataGson>> createListing(
             @Part @Nullable MultipartBody.Part listingImage,
             @PartMap Map<String, RequestBody> fields
     );

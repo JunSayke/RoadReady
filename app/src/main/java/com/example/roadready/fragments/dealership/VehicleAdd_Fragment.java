@@ -20,8 +20,10 @@ import com.example.roadready.classes.general.ImagePicker;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
+import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.model.gson.data.VehicleGson;
 import com.example.roadready.databinding.FragmentDealershipVehicleAddBinding;
 
 import java.io.File;
@@ -72,49 +74,32 @@ public class VehicleAdd_Fragment extends Fragment implements ImagePicker.OnImage
 		binding.addBtnAddVehicle.setOnClickListener(v -> {
 			showProgressBar();
 
-			new RoadReadyServer.ResponseListener<UserDataGson>(){
-				@Override
-				public void onSuccess(UserDataGson data) {
-					UserGson user = data.getUserGson();
-					File ListingImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.hp_iv_civic, "listing_image.png");
-					String modelAndName =  String.valueOf(binding.addInptModelName.getText());
-					String make =  String.valueOf(binding.addInptMake.getText());
-					String fuelType =  String.valueOf(binding.addInptFuelType.getText());
-					String power =  String.valueOf(binding.addInptPower.getText());
-					String transmission =  String.valueOf(binding.addInptTransmission.getText());
-					String engine =  String.valueOf(binding.addInptEngine.getText());
-					String fuelTankCapacity =  String.valueOf(binding.addInptFuelCap.getText());
-					String seatingCapacity =  String.valueOf(binding.addInptSeatingCap.getText());
-					String price =  String.valueOf(binding.addInptPrice.getText());
-					String dealershipName =  user.getDealership().getName();
-					String vehicleType =  binding.addSpinnerVehicleType.getSelectedItem().toString();
+			File listingImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.hp_iv_civic, "listing_image.png");
+			String modelAndName = String.valueOf(binding.addInptModelName.getText());
+			String make = String.valueOf(binding.addInptMake.getText());
+			String fuelType = String.valueOf(binding.addInptFuelType.getText());
+			String power = String.valueOf(binding.addInptPower.getText());
+			String transmission = String.valueOf(binding.addInptTransmission.getText());
+			String engine = String.valueOf(binding.addInptEngine.getText());
+			String fuelTankCapacity = String.valueOf(binding.addInptFuelCap.getText());
+			String seatingCapacity = String.valueOf(binding.addInptSeatingCap.getText());
+			String price = String.valueOf(binding.addInptPrice.getText());
+			String dealershipName = mainFacade.getSessionManager().getUserGson().getDealership().getName();
+			String vehicleType = binding.addSpinnerVehicleType.getSelectedItem().toString();
 
-//					TODO: fix this tomorrow
-//					final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
-//						@Override
-//						public void onSuccess(GsonData data) {
-//							UserGson user = data.getGsonData();
-//							mainFacade.getUserGsonViewModel().setUserGsonLiveData(user);
-//							mainFacade.getSessionManager().setUserGson(user);
-//							hideProgressBar();
-//						}
-//
-//						@Override
-//						public void onFailure(String message) {
-//							mainFacade.makeToast(message, Toast.LENGTH_SHORT);
-//							hideProgressBar();
-//						}
-//					};
-//
-//					mainFacade.createListing(responseListener, ListingImageFile, modelAndName, make, fuelType, power,
-//							transmission, engine, fuelTankCapacity, seatingCapacity, price, dealershipName, vehicleType);
-//
-				}
-				@Override
-				public void onFailure(String message) {
-					mainFacade.makeToast(message, Toast.LENGTH_SHORT);
-				}
-			};
+			mainFacade.createListing(
+				new RoadReadyServer.ResponseListener<ListingsDataGson>() {
+					@Override
+					public void onSuccess(ListingsDataGson data) {
+						hideProgressBar();
+					}
+					@Override
+					public void onFailure(String message) {
+						mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+						hideProgressBar();
+					}
+				}, listingImageFile, modelAndName, make, fuelType, power, transmission, engine, fuelTankCapacity, seatingCapacity, price, dealershipName, vehicleType
+			);
 		});
 	}
 
@@ -147,5 +132,3 @@ public class VehicleAdd_Fragment extends Fragment implements ImagePicker.OnImage
 		}
 	}
 }
-	
-	

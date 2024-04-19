@@ -76,7 +76,7 @@ public class RoadReadyServer extends RetrofitFacade {
     }
 
     public void createListing(
-            final Callback<SuccessGson<GsonData>> callback,
+            final Callback<SuccessGson<ListingsDataGson>> callback,
             final File listingImage,
             final String modelAndName,
             final String make,
@@ -206,10 +206,6 @@ public class RoadReadyServer extends RetrofitFacade {
             final String modeOfPayment
     ) {
         MultipartBody.Part imagePart = null;
-        if (profileImage != null) {
-            RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(profileImage.getName())), profileImage);
-            imagePart = MultipartBody.Part.createFormData("profileImage", profileImage.getName(), requestBody);
-        }
 
         Map<String, String> fields = new HashMap<>();
         fields.put("email", email);

@@ -301,7 +301,7 @@ public class MainFacade {
     }
 
     public void createListing(
-            final RoadReadyServer.ResponseListener<GsonData> responseListener,
+            final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener,
             final File listingImage,
             final String modelAndName,
             final String make,

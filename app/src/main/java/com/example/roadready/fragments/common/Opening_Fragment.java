@@ -46,23 +46,14 @@ public class Opening_Fragment extends Fragment {
         //TODO: Separate buyer and dealership isLoggedIn
                 new Handler().postDelayed(() -> {
                     if (mainFacade.isLoggedIn()) {
-                        new RoadReadyServer.ResponseListener<UserDataGson>() {
-                            @Override
-                            public void onSuccess(UserDataGson data) {
-                                UserGson user = data.getUserGson();
-                                if (user.getRole().equals("buyer")) {
-                                    mainFacade.makeToast("Moving to Homepage", Toast.LENGTH_SHORT);
-                                    mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_homepageContainer_Fragment);
-                                } else {
-                                    mainFacade.makeToast("Moving to Homepage", Toast.LENGTH_SHORT);
-                                    mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_dealership_homepageContainer_Fragment);
-                                }
-                            }
-                            @Override
-                            public void onFailure(String message) {
-                                mainFacade.makeToast(message, Toast.LENGTH_LONG);
-                            }
-                        };
+                        UserGson userGson = mainFacade.getSessionManager().getUserGson();
+                        if (userGson.getRole().equals("buyer")) {
+                            mainFacade.makeToast("Moving to Homepage", Toast.LENGTH_SHORT);
+                            mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_homepageContainer_Fragment);
+                        } else {
+                            mainFacade.makeToast("Moving to Homepage", Toast.LENGTH_SHORT);
+                            mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_dealership_homepageContainer_Fragment);
+                        }
                     } else {
                         mainFacade.makeToast("Moving to Login page", Toast.LENGTH_SHORT);
                         mainFacade.getBuyerMainNavController().navigate(R.id.action_opening_Fragment_to_login_Fragment);
