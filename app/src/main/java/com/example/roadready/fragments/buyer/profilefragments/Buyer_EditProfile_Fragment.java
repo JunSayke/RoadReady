@@ -35,6 +35,7 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
     private ActivityResultLauncher<Intent> mapResultLauncher;
     private MainFacade mainFacade;
     private ImagePicker imagePicker;
+    private Uri imageData;
 
     @Nullable
     @Override
@@ -85,8 +86,9 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
             String gender = "male";
             String phoneNumber = String.valueOf(binding.bepInptPhone.getText());
             String address = String.valueOf(binding.bepInptAddress.getText());
+            File imageFile = FileUtils.uriToFile(requireContext(), imageData);
 
-            File profileImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.hp_iv_civic, "profile_image.png");
+//            File profileImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.hp_iv_civic, "profile_image.png");
             // TODO: Validations, Longitude and Latitude, Valid ID
 
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
@@ -105,7 +107,7 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
                 }
             };
 
-            mainFacade.updateBuyerProfile(responseListener, profileImageFile, firstName, lastName, phoneNumber, gender, address);
+            mainFacade.updateBuyerProfile(responseListener, imageFile, firstName, lastName, phoneNumber, gender, address);
         });
 
         binding.bepBtnCancel.setOnClickListener(v -> {
@@ -151,10 +153,11 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
     }
 
     @Override
-    public void onImageSelected(Uri imageData) {
-        if(imageData != null) {
-            binding.bepImageUserIcon.setImageURI(imageData);
-            binding.bepInptValidId.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), imageData));
+    public void onImageSelected(Uri uri) {
+        if(uri != null) {
+            binding.bepImageUserIcon.setImageURI(uri);
+            binding.bepInptValidId.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), uri));
+            imageData = uri;
         } else {
             mainFacade.makeToast("Image selection canceled", Toast.LENGTH_SHORT);
         }
