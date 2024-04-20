@@ -16,13 +16,13 @@
         android:id="@+id/bepImageRedCircle"
         android:layout_width="264dp"
         android:layout_height="264dp"
-        android:layout_marginEnd="-120dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/circle"
         android:backgroundTint="#FE4949"
         android:contentDescription="@string/red_circle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="ImageContrastCheck" />
 
     <ImageButton
@@ -52,5 +52,22 @@
         app:layout_constraintEnd_toStartOf="@+id/bepImageRedCircle"
         app:layout_constraintStart_toEndOf="@+id/bepBtnBack"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bepTextVerifcation"
+        android:layout_width="0dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:background="#FFB3B3"
+        android:gravity="center"
+        android:text="Account Verification Failed"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

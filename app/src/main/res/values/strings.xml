@@ -31,7 +31,8 @@
     <string name="placeholder_current_address">Current Address</string>
     <string name="placeholder_longitude_latitude">Longitude and Latitude</string>
     <string name="placeholder_dealership_name">Dealership Name</string>
-    <string name="text_sex">Sex</string>
+    <string name="placeholder_dealership_image">Dealership Image</string>
+    <string name="text_sex">Gender</string>
     <string name="text_male">Male</string>
     <string name="text_female">Female</string>
     <string name="text_other">Other</string>

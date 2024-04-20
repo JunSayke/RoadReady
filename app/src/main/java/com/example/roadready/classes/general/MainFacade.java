@@ -1,6 +1,8 @@
 package com.example.roadready.classes.general;
 
+import android.graphics.Color;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -251,7 +253,7 @@ public class MainFacade {
 
     public void registerDealership(
             final RoadReadyServer.ResponseListener<GsonData> responseListener,
-            @Nullable final File profileImage,
+            @Nullable final File dealershipImage,
             final String email,
             final String password,
             final String firstName,
@@ -262,9 +264,9 @@ public class MainFacade {
             final String establishmentAddress,
             final String latitude,
             final String longitude,
-            final String modeOfPayment
+            final String modeOfPayments
     ) {
-        server.registerDealership(RoadReadyServer.getCallback(responseListener), profileImage, email, password, firstName, lastName, phoneNumber, gender, dealershipName, establishmentAddress, latitude, longitude, modeOfPayment);
+        server.registerDealership(RoadReadyServer.getCallback(responseListener), dealershipImage, email, password, firstName, lastName, phoneNumber, gender, dealershipName, establishmentAddress, latitude, longitude, modeOfPayments);
     }
 
     public void updateBuyerProfile(
@@ -324,7 +326,10 @@ public class MainFacade {
     // END_OF[Session & Server]
 
     // Others
-
+    public void restrictButton(Button btn){
+        btn.setEnabled(false);
+        btn.setAlpha(0.2F);
+    }
     public void makeToast(Object message, int duration) {
         Toast.makeText(mainActivity.getApplicationContext(), String.valueOf(message), duration).show();
     }

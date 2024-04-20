@@ -41,11 +41,11 @@ public interface RetrofitService {
             @FieldMap Map<String, String> fields
     );
 
-    @FormUrlEncoded
+    @Multipart
     @POST("manager/register")
     Call<SuccessGson<GsonData>> dealershipRegister(
-            @Part @Nullable MultipartBody.Part listingImage,
-            @FieldMap Map<String, String> fields
+            @Part @Nullable MultipartBody.Part dealershipImage,
+            @PartMap Map<String, RequestBody> fields
     );
 
     @Multipart
@@ -75,7 +75,6 @@ public interface RetrofitService {
 
     @Multipart
     @POST("manager/listing")
-        // TODO:
     Call<SuccessGson<ListingsDataGson>> createListing(
             @Part @Nullable MultipartBody.Part listingImage,
             @PartMap Map<String, RequestBody> fields

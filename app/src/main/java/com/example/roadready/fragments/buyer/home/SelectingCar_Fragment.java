@@ -14,6 +14,7 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.DealershipGson;
+import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
 import com.example.roadready.databinding.FragmentBuyerSelectingCarBinding;
 import com.squareup.picasso.Picasso;
@@ -34,6 +35,12 @@ public class SelectingCar_Fragment extends Fragment {
             mainFacade = MainFacade.getInstance();
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+
+        UserGson userGson = mainFacade.getSessionManager().getUserGson();
+        if(!userGson.isApproved()) {
+            mainFacade.restrictButton(binding.sgcBtnCash);
+            mainFacade.restrictButton(binding.sgcBtnInstallment);
         }
 
         return root;
@@ -91,7 +98,7 @@ public class SelectingCar_Fragment extends Fragment {
             mainFacade.getBuyerHomeNavController().navigate(action);
         });
 
-        binding.sgnBtnInstallment.setOnClickListener(v -> {
+        binding.sgcBtnInstallment.setOnClickListener(v -> {
             disabledButtons();
             SelectingCar_FragmentDirections.ActionSelectingCarFragmentToInstallmentFormFragment action =
                     SelectingCar_FragmentDirections.actionSelectingCarFragmentToInstallmentFormFragment();
@@ -102,11 +109,11 @@ public class SelectingCar_Fragment extends Fragment {
 
     private void disabledButtons() {
         binding.sgcBtnCash.setEnabled(false);
-        binding.sgnBtnInstallment.setEnabled(false);
+        binding.sgcBtnInstallment.setEnabled(false);
     }
 
     private void enabledButtons() {
         binding.sgcBtnCash.setEnabled(true);
-        binding.sgnBtnInstallment.setEnabled(true);
+        binding.sgcBtnInstallment.setEnabled(true);
     }
 }

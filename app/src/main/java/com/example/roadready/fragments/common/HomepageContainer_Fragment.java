@@ -15,6 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.databinding.FragmentBuyerHomepageContainerBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -23,6 +24,7 @@ public class HomepageContainer_Fragment extends Fragment {
     private FragmentBuyerHomepageContainerBinding binding;
     private BottomNavigationView bottomNavigationView;
     private MainFacade mainFacade;
+    private boolean isApproved = false;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -52,21 +54,34 @@ public class HomepageContainer_Fragment extends Fragment {
 
             String welcomeText = "Welcome " + userGson.getFirstName();
             textWelcomeUser.setText(welcomeText);
+
+            if(!userGson.isApproved()) {
+                mainFacade.getMainActivity().findViewById(R.id.bhTextVerifcation).setVisibility(View.VISIBLE);
+                isApproved = false;
+            }
         });
 
         // Toggle header
         mainFacade.getBuyerHomepageNavController().addOnDestinationChangedListener((controller, destination, arguments) -> {
             View welcomeHeader = binding.welcomeHeaderLayout.formHeader;
             View regularHeader = binding.headerLayout.formHeader;
+            TextView welcomeVerifyMsg = binding.welcomeHeaderLayout.bhTextVerifcation;
+            TextView regularVerifyMsg = binding.headerLayout.bepTextVerifcation;
 
             if (destination.getId() == R.id.mnHome
                     && welcomeHeader.getVisibility() == View.GONE) {
                 welcomeHeader.setVisibility(View.VISIBLE);
                 regularHeader.setVisibility(View.GONE);
+                if(!isApproved){
+                    welcomeVerifyMsg.setVisibility(View.VISIBLE);
+                }
             } else if (destination.getId() != R.id.mnHome
                     && welcomeHeader.getVisibility() == View.VISIBLE) {
                 welcomeHeader.setVisibility(View.GONE);
                 regularHeader.setVisibility(View.VISIBLE);
+                if(!isApproved){
+                    regularVerifyMsg.setVisibility(View.VISIBLE);
+                }
             }
         });
 

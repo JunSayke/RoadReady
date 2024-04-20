@@ -20,16 +20,13 @@
             android:id="@+id/sgnupTextSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="152dp"
-            android:layout_marginEnd="153dp"
-            android:layout_marginBottom="650dp"
+            android:layout_marginTop="24dp"
             android:text="@string/text_signup"
             android:textColor="#332F2F"
             android:textSize="32sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/sgnupInptFname"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,8 +62,9 @@
 
         <EditText
             android:id="@+id/sgnupInptEmail"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="8dp"
             android:autofillHints="Email Address"
             android:background="@drawable/rounded_corner_rectangle20_solid"
@@ -79,6 +77,22 @@
             app:layout_constraintTop_toBottomOf="@+id/sgnupInptFname" />
 
         <EditText
+            android:id="@+id/sgnupInptPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="8dp"
+            android:autofillHints="Password"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
+            android:ems="10"
+            android:hint="@string/placeholder_password"
+            android:inputType="textPassword"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptEmail" />
+
+        <EditText
             android:id="@+id/sgnupInptPhoneNumber"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
@@ -89,9 +103,9 @@
             android:hint="@string/placeholder_phone_number"
             android:inputType="phone"
             android:padding="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/sgnupInptDealershipName"
-            app:layout_constraintTop_toBottomOf="@+id/sgnupInptEmail" />
+            app:layout_constraintEnd_toStartOf="@+id/sgnupInptDealershipName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptPassword" />
 
         <EditText
             android:id="@+id/sgnupInptDealershipName"
@@ -104,29 +118,56 @@
             android:hint="@string/placeholder_dealership_name"
             android:inputType="text"
             android:padding="12dp"
-            app:layout_constraintEnd_toStartOf="@+id/sgnupInptPhoneNumber"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sgnupInptEmail" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/sgnupInptPhoneNumber"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptPassword" />
 
-        <EditText
-            android:id="@+id/sgnupInptPassword"
-            android:layout_width="350dp"
+        <LinearLayout
+            android:id="@+id/sgnupInptDealershipImage"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="8dp"
-            android:autofillHints="Password"
             android:background="@drawable/rounded_corner_rectangle20_solid"
-            android:ems="10"
-            android:hint="@string/placeholder_password"
-            android:inputType="textPassword"
+            android:orientation="horizontal"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sgnupInptPhoneNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptPhoneNumber">
+
+            <TextView
+                android:id="@+id/sgnupLblDealershipImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:alpha=".5"
+                android:backgroundTint="#FFFFFF"
+                android:ems="10"
+                android:text="@string/placeholder_dealership_image"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sgnupInptPhoneNumber" />
+
+            <ImageButton
+                android:id="@+id/sgnupBtnUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corner_rectangle20_transp"
+                android:backgroundTint="#0EB2F8"
+                android:paddingVertical="3dp"
+                android:src="@drawable/iv_upload" />
+
+        </LinearLayout>
 
         <EditText
             android:id="@+id/sgnupInptAddress"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="8dp"
             android:autofillHints="Current Address"
             android:background="@drawable/rounded_corner_rectangle20_solid"
@@ -136,15 +177,14 @@
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sgnupInptPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptDealershipImage" />
 
         <LinearLayout
             android:id="@+id/sgnupInptCoordinatesContainer"
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="101dp"
             android:background="@drawable/rounded_corner_rectangle20_solid"
             android:orientation="horizontal"
             android:padding="12dp"
@@ -191,8 +231,6 @@
             android:id="@+id/sgnupRgSexOptions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="101dp"
-            android:layout_marginEnd="101dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -225,7 +263,7 @@
         </RadioGroup>
 
         <TextView
-            android:id="@+id/sgnupLblModeOfPayment"
+            android:id="@+id/sgnupLblmodeOfPayments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -233,66 +271,112 @@
             android:ems="10"
             android:text="@string/text_mode"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/sgnupInptmodeOfPaymentsContainer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sgnupRgSexOptions" />
 
-        <RadioGroup
-            android:id="@+id/sgnupRgModeOfPaymentOptions"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/sgnupInptmodeOfPaymentsContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="101dp"
-            android:layout_marginEnd="101dp"
+            android:layout_marginHorizontal="24dp"
             android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/sgnupInptBankLoanContainer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sgnupLblModeOfPayment">
+            app:layout_constraintTop_toBottomOf="@+id/sgnupLblmodeOfPayments">
 
-            <RadioButton
-                android:id="@+id/sgnupRbBankChoiceDealership"
-                android:layout_width="match_parent"
+            <CheckBox
+                android:id="@+id/sgnupCbInhouseFinance"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:contentDescription="Dealership Bank Choice"
-                android:hint="@string/text_dealership" />
+                android:text="Inhouse\nFinance"
+                android:textColor="#66000000"
+                android:value="inhouseFinance" />
 
-            <RadioButton
-                android:id="@+id/sgnupRbBankChoiceBuyer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="Buyer Bank Choice"
-                android:hint="@string/text_buyer" />
-
-            <RadioButton
-                android:id="@+id/sgnupRadioBankChoiceBoth"
+            <CheckBox
+                android:id="@+id/sgnupCbBankLoan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:contentDescription="Both"
-                android:hint="@string/text_both" />
-        </RadioGroup>
+                android:text="Bank Loan"
+                android:textColor="#66000000" />
+
+            <CheckBox
+                android:id="@+id/sgnupCbCash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cash"
+                android:textColor="#66000000"
+                android:value="cash" />
+
+            <CheckBox
+                android:id="@+id/sgnupCbCheque"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cheque"
+                android:textColor="#66000000"
+                android:value="cheque" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sgnupInptBankLoanContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/sgnupBtnSubmit"
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptmodeOfPaymentsContainer"
+            tools:layout_editor_absoluteX="10dp"
+            tools:visibility="visible">
+
+            <CheckBox
+                android:id="@+id/sgnupCbDealershipBankChoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dealership Bank Choice"
+                android:textColor="#66000000"
+                android:value="bankLoan(dealershipBankChoice)" />
+
+            <CheckBox
+                android:id="@+id/sgnupCbBuyerBankChoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Buyer Bank Choice"
+                android:textColor="#66000000"
+                android:value="bankLoan(buyerBankChoice)" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/sgnupBtnSubmit"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="24dp"
             android:backgroundTint="#0EB2F8"
             android:text="@string/text_btn_submit"
             android:textColor="#332F2F"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/sgnupTextAlreadyHaveAccount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sgnupRgModeOfPaymentOptions" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupInptBankLoanContainer" />
 
         <TextView
             android:id="@+id/sgnupTextAlreadyHaveAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="105dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="8dp"
             android:text="@string/text_already_have_account"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sgnupBtnSubmit" />
@@ -313,6 +397,7 @@
             android:id="@+id/sgnupImageOr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:contentDescription="@string/vector_or"
             app:layout_constraintBottom_toTopOf="@+id/sgnupBtnGoogleLogin"
             app:layout_constraintEnd_toEndOf="parent"
@@ -325,6 +410,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="111dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="111dp"
             android:backgroundTint="#FFFFFF"
             android:foreground="@drawable/google"
@@ -335,7 +421,6 @@
             android:textColor="#747070"
             android:textSize="12sp"
             app:cornerRadius="28dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sgnupImageOr"

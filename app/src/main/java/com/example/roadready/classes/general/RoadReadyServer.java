@@ -192,7 +192,7 @@ public class RoadReadyServer extends RetrofitFacade {
 
     public void registerDealership(
             final Callback<SuccessGson<GsonData>> callback,
-            @Nullable final File profileImage,
+            @Nullable final File dealershipImage,
             final String email,
             final String password,
             final String firstName,
@@ -203,22 +203,27 @@ public class RoadReadyServer extends RetrofitFacade {
             final String establishmentAddress,
             final String latitude,
             final String longitude,
-            final String modeOfPayment
+            final String modeOfPayments
     ) {
         MultipartBody.Part imagePart = null;
+        if (dealershipImage != null) {
+            RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(dealershipImage.getName())), dealershipImage);
+            imagePart = MultipartBody.Part.createFormData("dealershipImage", dealershipImage.getName(), requestBody);
+        }
 
-        Map<String, String> fields = new HashMap<>();
-        fields.put("email", email);
-        fields.put("password", password);
-        fields.put("firstName", firstName);
-        fields.put("lastName", lastName);
-        fields.put("phoneNumber", phoneNumber);
-        fields.put("gender", gender);
-        fields.put("dealershipName", dealershipName);
-        fields.put("establishmentAddress", establishmentAddress);
-        fields.put("latitude", latitude);
-        fields.put("longitude", longitude);
-        fields.put("modeOfPayment", modeOfPayment);
+        Map<String, RequestBody> fields = new HashMap<>();
+        fields.put("email", RequestBody.create(MediaType.parse("text/plain"), email));
+        fields.put("password", RequestBody.create(MediaType.parse("text/plain"), password));
+        fields.put("firstName", RequestBody.create(MediaType.parse("text/plain"), firstName));
+        fields.put("lastName", RequestBody.create(MediaType.parse("text/plain"), lastName));
+        fields.put("phoneNumber", RequestBody.create(MediaType.parse("text/plain"), phoneNumber));
+        fields.put("gender", RequestBody.create(MediaType.parse("text/plain"), gender));
+        fields.put("dealershipName", RequestBody.create(MediaType.parse("text/plain"), dealershipName));
+        fields.put("establishmentAddress", RequestBody.create(MediaType.parse("text/plain"), establishmentAddress));
+        fields.put("latitude", RequestBody.create(MediaType.parse("text/plain"), latitude));
+        fields.put("longitude", RequestBody.create(MediaType.parse("text/plain"), longitude));
+        fields.put("modeOfPayments", RequestBody.create(MediaType.parse("text/plain"), modeOfPayments));
+
         getRetrofitService().dealershipRegister(imagePart, fields).enqueue(callback);
     }
 

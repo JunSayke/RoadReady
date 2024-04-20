@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.databinding.FragmentBuyerMyVehicleBinding;
 
 public class MyVehicle_Fragment extends Fragment {
@@ -28,6 +29,11 @@ public class MyVehicle_Fragment extends Fragment {
             mainFacade = MainFacade.getInstance();
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+
+        UserGson userGson = mainFacade.getSessionManager().getUserGson();
+        if(!userGson.isApproved()) {
+            mainFacade.restrictButton(binding.myvBtnRenewRegistration);
         }
 
         return root;

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.databinding.FragmentBuyerApplicationProgressBinding;
 
 public class ApplicationProgress_Fragment extends Fragment {
@@ -28,6 +29,12 @@ public class ApplicationProgress_Fragment extends Fragment {
             mainFacade = MainFacade.getInstance();
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+
+        UserGson userGson = mainFacade.getSessionManager().getUserGson();
+        if(!userGson.isApproved()) {
+            mainFacade.restrictButton(binding.apBtnRegistrationProgress);
+            mainFacade.restrictButton(binding.apBtnVehicleAppProgress);
         }
 
         return root;
