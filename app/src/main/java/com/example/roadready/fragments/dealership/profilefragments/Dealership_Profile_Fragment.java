@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,15 +33,15 @@ public class Dealership_Profile_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        mainFacade.getUserGsonViewModel().getUserGsonLiveData().observe(getViewLifecycleOwner(), buyerGson -> {
-            String fullName = buyerGson.getFirstName() + " " + buyerGson.getLastName();
+        mainFacade.getUserGsonViewModel().getUserGsonLiveData().observe(getViewLifecycleOwner(), dealershipGson -> {
+            String fullName = dealershipGson.getFirstName() + " " + dealershipGson.getLastName();
             binding.bpInptName.setText(fullName);
-            binding.bpInptAddress.setText(buyerGson.getAddress());
-            binding.bpInptEmail.setText(buyerGson.getEmail());
-            binding.bpInptPhoneNumber.setText(buyerGson.getPhoneNumber());
-            binding.bpInptSex.setText(buyerGson.getGender());
-
-            // TODO: Longitude & Latitude
+            binding.bpInptAddress.setText(dealershipGson.getAddress());
+            binding.bpInptEmail.setText(dealershipGson.getEmail());
+            binding.bpInptPhoneNumber.setText(dealershipGson.getPhoneNumber());
+            binding.bpInptSex.setText(dealershipGson.getGender());
+            binding.bpInptLongitudeId.setText(dealershipGson.getDealership().getLongitude());
+            binding.bpInptLatitudeId.setText(dealershipGson.getDealership().getLatitude());
         });
 
         return root;
@@ -66,7 +67,7 @@ public class Dealership_Profile_Fragment extends Fragment {
         });
 
         binding.bpBtnEditProfile.setOnClickListener(v -> {
-            mainFacade.getCommonProfileNavController().navigate(R.id.action_buyerProfile_Fragment_to_buyerEditProfile_Fragment);
+            mainFacade.getCommonProfileNavController().navigate(R.id.action_dealershipEditProfile_Fragment_to_dealershipProfile_Fragment);
         });
     }
 }

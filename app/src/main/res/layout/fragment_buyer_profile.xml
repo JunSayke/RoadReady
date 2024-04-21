@@ -179,31 +179,6 @@
                     tools:ignore="HardcodedText" />
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/bpLblCoordinatesId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:text="@string/text_longitude_latitude_id"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/bpInptLongitudeId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:text="10.342685341898216"
-                android:textAlignment="center"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/bpInptLatitudeId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="123.90262877242137"
-                android:textAlignment="center"
-                tools:ignore="HardcodedText" />
-
         </LinearLayout>
 
     </LinearLayout>
