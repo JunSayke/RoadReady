@@ -1,6 +1,5 @@
 package com.example.roadready.classes.general;
 
-import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,6 +13,7 @@ import com.example.roadready.activity.MainActivity;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
+import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.classes.model.livedata.UserGsonViewModel;
 import com.example.roadready.classes.model.livedata.UserGsonViewModelFactory;
@@ -25,7 +25,7 @@ import java.util.Set;
 public class MainFacade {
     private static FragmentActivity mainActivity;
     private ActivityCommonMainBinding mainBinding;
-    private NavController currentNavController, buyerHomepageNavController, buyerMainNavController,
+    private NavController currentNavController, buyerHomepageNavController, commonMainNavController,
             buyerHomeNavController, buyerApplicationNavController, buyerMyVehicleNavController,
             commonNotificationNavController, commonProfileNavController, dealershipHomepageNavController,
             dealershipApprovedNavController, dealershipBankNavController, dealershipDocumentsProgressNavController,
@@ -86,12 +86,12 @@ public class MainFacade {
         this.currentNavController = currentNavController;
     }
 
-    public NavController getBuyerMainNavController() {
-        return buyerMainNavController;
+    public NavController getCommonMainNavController() {
+        return commonMainNavController;
     }
 
-    public void setBuyerMainNavController(NavController buyerMainNavController) {
-        this.buyerMainNavController = buyerMainNavController;
+    public void setCommonMainNavController(NavController commonMainNavController) {
+        this.commonMainNavController = commonMainNavController;
     }
 
     public NavController getBuyerHomepageNavController() {
@@ -323,6 +323,12 @@ public class MainFacade {
                 seatingCapacity, price, dealershipName, vehicleType);
     }
 
+    public void getGoogleAuthLink(
+            final RoadReadyServer.ResponseListener<GoogleAuthGson> responseListener
+    ) {
+        server.getGoogleAuthLink(RoadReadyServer.getCallback(responseListener));
+    }
+
     // END_OF[Session & Server]
 
     // Others
@@ -330,6 +336,7 @@ public class MainFacade {
         btn.setEnabled(false);
         btn.setAlpha(0.2F);
     }
+
     public void makeToast(Object message, int duration) {
         Toast.makeText(mainActivity.getApplicationContext(), String.valueOf(message), duration).show();
     }
@@ -340,5 +347,13 @@ public class MainFacade {
 
     public void hideProgressBar() {
         mainBinding.progressBar.setVisibility(View.GONE);
+    }
+
+    public void showBackDrop() {
+        mainBinding.backDrop.setVisibility(View.VISIBLE);
+    }
+
+    public void hideBackDrop() {
+        mainBinding.backDrop.setVisibility(View.GONE);
     }
 }

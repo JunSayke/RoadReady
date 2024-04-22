@@ -22,9 +22,9 @@ public class RetrofitFacade {
 
     public RetrofitFacade(String baseUrl) {
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(120, TimeUnit.SECONDS)
-                .readTimeout(120, TimeUnit.SECONDS)
-                .writeTimeout(120, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
                 .addInterceptor(getCookiesInterceptor())
                 .addInterceptor(getRequestInterceptor())
                 .build();

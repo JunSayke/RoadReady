@@ -6,6 +6,7 @@ import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
+import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
 import com.example.roadready.classes.model.gson.response.SuccessGson;
 
@@ -79,4 +80,7 @@ public interface RetrofitService {
             @Part @Nullable MultipartBody.Part listingImage,
             @PartMap Map<String, RequestBody> fields
     );
+
+    @GET("auth/google")
+    Call<SuccessGson<GoogleAuthGson>> getGoogleAuth();
 }

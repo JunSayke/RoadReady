@@ -1,5 +1,7 @@
 package com.example.roadready.fragments.common;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.UserDataGson;
+import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.databinding.FragmentCommonLoginBinding;
 
@@ -55,15 +58,38 @@ public class Login_Fragment extends Fragment {
         });
 
         binding.lgnTextSignup.setOnClickListener(v -> {
-            mainFacade.getBuyerMainNavController().navigate(R.id.action_login_Fragment_to_signUpAs_Fragment);
+            mainFacade.getCommonMainNavController().navigate(R.id.action_login_Fragment_to_signUpAs_Fragment);
         });
 
         binding.lgnBtnGoogleLogin.setOnClickListener(v -> {
-            mainFacade.makeToast("Login with google is not yet available!", Toast.LENGTH_SHORT);
+            processGoogleAuth();
         });
 
         binding.lgnTextForgetPassword.setOnClickListener(v -> {
             mainFacade.makeToast("Forgot password is not yet available!", Toast.LENGTH_SHORT);
+        });
+    }
+
+    private void processGoogleAuth() {
+        mainFacade.showBackDrop();
+        mainFacade.showProgressBar();
+        mainFacade.getGoogleAuthLink(new RoadReadyServer.ResponseListener<GoogleAuthGson>() {
+            @Override
+            public void onSuccess(GoogleAuthGson data) {
+                String authenticationUrl = data.getAuthorizationUrl();
+
+                Intent googleIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(authenticationUrl));
+                startActivity(googleIntent);
+                mainFacade.hideBackDrop();
+                mainFacade.hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(String message) {
+                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideBackDrop();
+                mainFacade.hideProgressBar();
+            }
         });
     }
 
@@ -80,9 +106,9 @@ public class Login_Fragment extends Fragment {
                 UserGson user = data.getUserGson();
                 mainFacade.startLoginSession(user);
                 if(user.getRole().equals("buyer")) {
-                    mainFacade.getBuyerMainNavController().navigate(R.id.action_login_Fragment_to_homepageContainer_Fragment);
+                    mainFacade.getCommonMainNavController().navigate(R.id.action_login_Fragment_to_homepageContainer_Fragment);
                 }else{
-                    mainFacade.getBuyerMainNavController().navigate(R.id.action_login_Fragment_to_dealership_homepageContainer_Fragment);
+                    mainFacade.getCommonMainNavController().navigate(R.id.action_login_Fragment_to_dealership_homepageContainer_Fragment);
                 }
                 hideProgressBar();
             }

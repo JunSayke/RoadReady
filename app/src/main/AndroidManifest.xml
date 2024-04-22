@@ -25,84 +25,22 @@
             android:screenOrientation="sensorPortrait"
             android:windowSoftInputMode="adjustPan"/>
         <activity
-            android:name=".fragments.buyer.myvehiclefragments.RenewalRegistration_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".fragments.buyer.myvehiclefragments.MyVehicle_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait" />
-        <activity
-            android:name=".fragments.buyer.applicationfragments.VehicleApplicationProgress_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait" />
-        <activity
-            android:name=".fragments.buyer.applicationfragments.VehicleRegistrationProgress_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait" />
-        <activity
-            android:name=".fragments.buyer.applicationfragments.ApplicationProgress_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait" />
-        <activity
-            android:name=".activity.buyer.SearchDealership_Activity"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".fragments.dealership.mainnavfragments.DocumentsProgress_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".fragments.dealership.mainnavfragments.Approved_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".fragments.dealership.Bank_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".fragments.dealership.mainnavfragments.Banklist_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".fragments.dealership.mainnavfragments.ForApproval_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".fragments.dealership.mainnavfragments.MyVehicles_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".fragments.common.notificationfragments.Notifications_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".fragments.dealership.mainnavfragments.Lto_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".fragments.dealership.VehicleAdd_Fragment"
-            android:exported="false"
-            android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name=".activity.MainActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="road-ready-black.vercel.app"
+                    android:scheme="https"
+                    android:path="/dashboard"
+                    />
             </intent-filter>
         </activity>
     </application>

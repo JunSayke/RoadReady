@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -25,10 +24,10 @@ import com.example.roadready.classes.general.ImagePicker;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
+import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.databinding.FragmentDealershipSignUpBinding;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -76,7 +75,7 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
         });
 
         binding.sgnupTextLogin.setOnClickListener(v -> {
-            mainFacade.getBuyerMainNavController().navigate(R.id.action_global_login_Fragment);
+            mainFacade.getCommonMainNavController().navigate(R.id.action_global_login_Fragment);
         });
 
         binding.sgnupBtnOpenMaps.setOnClickListener(v -> {
@@ -84,7 +83,8 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
         });
 
         binding.sgnupBtnGoogleLogin.setOnClickListener(v -> {
-            mainFacade.makeToast("Login with google is not yet available!", Toast.LENGTH_SHORT);
+            // TODO: Make it registered as dealership somehow. Anyway let jake cook
+            processGoogleAuth();
         });
 
         binding.sgnupBtnUpload.setOnClickListener(v -> {
@@ -98,6 +98,29 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
                 binding.sgnupInptBankLoanContainer.setVisibility(View.GONE);
                 binding.sgnupCbDealershipBankChoice.setChecked(false);
                 binding.sgnupCbBuyerBankChoice.setChecked(false);
+            }
+        });
+    }
+
+    private void processGoogleAuth() {
+        mainFacade.showBackDrop();
+        mainFacade.showProgressBar();
+        mainFacade.getGoogleAuthLink(new RoadReadyServer.ResponseListener<GoogleAuthGson>() {
+            @Override
+            public void onSuccess(GoogleAuthGson data) {
+                String authenticationUrl = data.getAuthorizationUrl();
+
+                Intent googleIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(authenticationUrl));
+                startActivity(googleIntent);
+                mainFacade.hideBackDrop();
+                mainFacade.hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(String message) {
+                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideBackDrop();
+                mainFacade.hideProgressBar();
             }
         });
     }

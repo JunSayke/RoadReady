@@ -2,6 +2,7 @@ package com.example.roadready.fragments.buyer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.roadready.activity.GoogleMaps_Activity;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
+import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.databinding.FragmentBuyerSignUpBinding;
 
 public class Buyer_SignUp_Fragment extends Fragment {
@@ -63,7 +65,7 @@ public class Buyer_SignUp_Fragment extends Fragment {
         });
 
         binding.sgnupTextLogin.setOnClickListener(v -> {
-            mainFacade.getBuyerMainNavController().navigate(R.id.action_global_login_Fragment);
+            mainFacade.getCommonMainNavController().navigate(R.id.action_global_login_Fragment);
         });
 
         binding.sgnupBtnOpenMaps.setOnClickListener(v -> {
@@ -71,7 +73,31 @@ public class Buyer_SignUp_Fragment extends Fragment {
         });
 
         binding.sgnupBtnGoogleLogin.setOnClickListener(v -> {
-            mainFacade.makeToast("Login with google is not yet available!", Toast.LENGTH_SHORT);
+            // TODO: Make it registered as buyer somehow. Anyway let jake cook
+            processGoogleAuth();
+        });
+    }
+
+    private void processGoogleAuth() {
+        mainFacade.showBackDrop();
+        mainFacade.showProgressBar();
+        mainFacade.getGoogleAuthLink(new RoadReadyServer.ResponseListener<GoogleAuthGson>() {
+            @Override
+            public void onSuccess(GoogleAuthGson data) {
+                String authenticationUrl = data.getAuthorizationUrl();
+
+                Intent googleIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(authenticationUrl));
+                startActivity(googleIntent);
+                mainFacade.hideBackDrop();
+                mainFacade.hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(String message) {
+                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideBackDrop();
+                mainFacade.hideProgressBar();
+            }
         });
     }
 
