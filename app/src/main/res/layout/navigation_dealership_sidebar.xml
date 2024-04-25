@@ -75,14 +75,14 @@
 					android:layout_height="15dp"
 					android:layout_marginLeft="0dp"
 					android:layout_marginTop="0dp"
-					android:text="@string/text_sidebar_sales_representative"
+					android:text="@string/text_sidebar_header_title"
 					android:textAllCaps="true"
 					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="parent"
-					tools:text="@string/text_sidebar_sales_representative" />
+					tools:text="@string/text_sidebar_header_title" />
 
 				<TextView
-					android:id="@+id/sbTxtTitle"
+					android:id="@+id/sbTxtDealershipName"
 					android:layout_width="160.4dp"
 					android:layout_height="24.4dp"
 					android:layout_marginTop="16dp"

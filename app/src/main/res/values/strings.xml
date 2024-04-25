@@ -199,7 +199,7 @@
     <string name="text_review_file_vehicle_title">TOYOTA HILUX CONQUEST 2023</string>
 
     <!-- NAVIGATION SIDEBAR -->
-    <string name="text_sidebar_sales_representative">SALES REPRESENTATIVE</string>
+    <string name="text_sidebar_header_title">DEALERSHIP</string>
     <string name="text_sidebar_my_vehicles">My Vehicles</string>
     <string name="text_sidebar_vehicle_applicants">Vehicle Applicants</string>
     <string name="text_sidebar_for_approval">For Approval</string>

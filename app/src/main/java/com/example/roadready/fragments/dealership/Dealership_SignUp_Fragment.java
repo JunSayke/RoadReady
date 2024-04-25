@@ -28,6 +28,7 @@ import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.databinding.FragmentDealershipSignUpBinding;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -145,6 +146,33 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
         });
     }
 
+    private String getGender(){
+        if(binding.sgnupRgSexOptions.getCheckedRadioButtonId() != -1){
+            return String.valueOf(binding.getRoot().findViewById(binding.sgnupRgSexOptions.getCheckedRadioButtonId()).getContentDescription());
+        }
+        return "";
+    }
+
+    private List<String> checkCoords(){
+        List<String> coordList = new ArrayList<>();
+        String coords = String.valueOf(binding.sgnupInptCoordinates.getText());
+        if(coords.contains(", ")) {
+            coordList = Arrays.asList(coords.split(", "));
+            if(Double.parseDouble(coordList.get(0)) < -90 && Double.parseDouble(coordList.get(0)) > 90){
+                coordList.set(0, "");
+            }
+            if(Double.parseDouble(coordList.get(0)) < -180 && Double.parseDouble(coordList.get(0)) > 180){
+                coordList.set(1, "");
+            }
+        }
+        else {
+            coordList.add("");
+            coordList.add("");
+        }
+
+        return coordList;
+    }
+
     private String getmodeOfPayments(){
         StringBuilder stringPayments = new StringBuilder();
 
@@ -158,8 +186,7 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
     }
 
     private void processRegistration() {
-        String coords = String.valueOf(binding.sgnupInptCoordinates.getText());
-        List<String> coordList = Arrays.asList(coords.split(", "));
+        List<String> coordList = checkCoords();
         showProgressBar();
 
         File dealershipImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.roadready, "dealership_image.png");
@@ -168,7 +195,7 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
         String firstName = String.valueOf(binding.sgnupInptFname.getText());
         String lastName = String.valueOf(binding.sgnupInptLname.getText());
         String phoneNumber = String.valueOf(binding.sgnupInptPhoneNumber.getText());
-        String gender = String.valueOf(binding.getRoot().findViewById(binding.sgnupRgSexOptions.getCheckedRadioButtonId()).getContentDescription());
+        String gender = getGender();
         String establishmentAddress = String.valueOf(binding.sgnupInptAddress.getText());
         String dealershipName = String.valueOf(binding.sgnupInptDealershipName.getText());
         String latitude = String.valueOf(coordList.get(0));

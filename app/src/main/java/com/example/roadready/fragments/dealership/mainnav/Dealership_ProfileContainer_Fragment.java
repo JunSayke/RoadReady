@@ -35,7 +35,7 @@ public class Dealership_ProfileContainer_Fragment extends Fragment {
         NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_profileFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
-        mainFacade.setCommonProfileNavController(navController);
+        mainFacade.setDealershipProfileNavController(navController);
         mainFacade.setCurrentNavController(navController);
 
         navController.popBackStack(navController.getGraph().getStartDestinationId(), false);
