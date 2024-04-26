@@ -93,6 +93,8 @@ public class Login_Fragment extends Fragment {
         });
     }
 
+
+
     private void processLogin() {
         showProgressBar();
         String email = String.valueOf(binding.lgnInptEmail.getText());

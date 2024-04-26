@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.model.gson.data.UserGson;
@@ -59,15 +61,13 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Uri uri = getIntent().getData();
         if (uri != null) {
-            Log.d("TESTING", "TEST1");
             if (Objects.equals(uri.getHost(), "road-ready-black.vercel.app")) {
                 String apiAccessToken = uri.getQueryParameter("api_access_token");
-                Log.d("TESTING", "TEST2");
-                if (apiAccessToken != null) {
-                    String[] chunks = apiAccessToken.split("\\.");
-                    Base64.Decoder decoder = Base64.getUrlDecoder();
 
-                    String payload = new String(decoder.decode(chunks[1]));
+                if (apiAccessToken != null) {
+                    DecodedJWT jwt = JWT.decode(apiAccessToken);
+
+                    String payload = jwt.getClaims().toString();
                     UserGson userGson = new Gson().fromJson(payload, UserGson.class);
                     mainFacade.startLoginSession(userGson);
                     mainFacade.getUserGsonViewModel().setUserGsonLiveData(userGson);
