@@ -2,6 +2,7 @@ package com.example.roadready.classes.general;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -29,7 +30,8 @@ public class MainFacade {
             buyerHomeNavController, buyerApplicationNavController, buyerMyVehicleNavController,
             commonNotificationNavController, commonProfileNavController, dealershipHomepageNavController,
             dealershipApprovedNavController, dealershipBankNavController, dealershipDocumentsProgressNavController,
-            dealershipForApprovalNavController, dealershipLtoNavController, dealershipMyVehicleNavController;
+            dealershipForApprovalNavController, dealershipLtoNavController, dealershipMyVehicleNavController,
+            dealershipProfileNavController;
     private UserGsonViewModelFactory userGsonViewModelFactory;
     private SessionManager sessionManager;
     private final RoadReadyServer server = new RoadReadyServer();
@@ -198,6 +200,14 @@ public class MainFacade {
         this.dealershipMyVehicleNavController = dealershipMyVehicleNavController;
     }
 
+    public NavController getDealershipProfileNavController() {
+        return dealershipProfileNavController;
+    }
+
+    public void setDealershipProfileNavController(NavController dealershipProfileNavController) {
+        this.dealershipProfileNavController = dealershipProfileNavController;
+    }
+
     // END_OF[Nav Controllers]
 
     public UserGsonViewModel getUserGsonViewModel() {
@@ -333,6 +343,10 @@ public class MainFacade {
 
     // Others
     public void restrictButton(Button btn){
+        btn.setEnabled(false);
+        btn.setAlpha(0.2F);
+    }
+    public void restrictImageButton(ImageButton btn){
         btn.setEnabled(false);
         btn.setAlpha(0.2F);
     }

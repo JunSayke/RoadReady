@@ -67,7 +67,7 @@ public class Dealership_Profile_Fragment extends Fragment {
         });
 
         binding.bpBtnEditProfile.setOnClickListener(v -> {
-            mainFacade.getCommonProfileNavController().navigate(R.id.action_dealershipEditProfile_Fragment_to_dealershipProfile_Fragment);
+            mainFacade.getDealershipProfileNavController().navigate(R.id.action_dealershipProfile_Fragment_to_dealershipEditProfile_Fragment);
         });
     }
 }
