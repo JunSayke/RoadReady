@@ -7,13 +7,18 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Objects;
 
 public class FileUtils {
     public static File drawableToFile(Context context, int drawableId, String fileName) {
@@ -37,7 +42,8 @@ public class FileUtils {
 
             if (inputStream != null) {
                 File tempFile = File.createTempFile("image_", ".png");
-
+                FileOutputStream fos = new FileOutputStream(tempFile);
+                copyStream(inputStream, fos);
                 inputStream.close();
 
                 return tempFile;
@@ -49,6 +55,29 @@ public class FileUtils {
         }
 
         return null;
+    }
+
+    public static Bitmap urlToBitmap(String urlString) {
+        try {
+            URL url = new URL(urlString);
+            return BitmapFactory.decodeStream(url.openStream());
+        } catch (IOException e) {
+            Log.e("FileUtils", Objects.requireNonNull(e.getMessage()));
+        }
+
+        return null;
+    }
+
+    private static void copyStream(InputStream in, OutputStream os) {
+        byte[] buffer = new byte[1024];
+        int read;
+        try {
+            while ((read = in.read(buffer)) != -1) {
+                os.write(buffer, 0, read);
+            }
+        } catch (IOException e) {
+            Log.e("FileUtils", Objects.requireNonNull(e.getMessage()));
+        }
     }
 
 }

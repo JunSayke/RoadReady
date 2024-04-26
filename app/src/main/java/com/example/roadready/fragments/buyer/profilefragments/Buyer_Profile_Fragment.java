@@ -1,7 +1,9 @@
 package com.example.roadready.fragments.buyer.profilefragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.roadready.R;
 import com.example.roadready.activity.MainActivity;
+import com.example.roadready.classes.general.FileUtils;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.databinding.FragmentBuyerProfileBinding;
+
+import java.util.logging.Logger;
 
 public class Buyer_Profile_Fragment extends Fragment {
     private final String TAG = "Profile_Fragment";
@@ -39,6 +44,8 @@ public class Buyer_Profile_Fragment extends Fragment {
             binding.bpInptEmail.setText(buyerGson.getEmail());
             binding.bpInptPhoneNumber.setText(buyerGson.getPhoneNumber());
             binding.bpInptSex.setText(buyerGson.getGender());
+            Log.e(TAG, buyerGson.getProfileImage());
+            binding.bpImageUserIcon.setImageBitmap(FileUtils.urlToBitmap(buyerGson.getProfileImage()));
 
             // TODO: Longitude & Latitude
         });

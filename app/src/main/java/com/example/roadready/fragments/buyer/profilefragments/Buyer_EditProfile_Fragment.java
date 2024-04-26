@@ -83,13 +83,10 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
             String firstName = String.valueOf(binding.bepInptFname.getText());
             String lastName = String.valueOf(binding.bepInptLname.getText());
             String email = String.valueOf(binding.bepInptEmail.getText());
-            String gender = "male";
+            String gender = null;
             String phoneNumber = String.valueOf(binding.bepInptPhone.getText());
             String address = String.valueOf(binding.bepInptAddress.getText());
             File imageFile = FileUtils.uriToFile(requireContext(), imageData);
-
-//            File profileImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.hp_iv_civic, "profile_image.png");
-            // TODO: Validations, Longitude and Latitude, Valid ID
 
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
                 @Override
@@ -98,6 +95,7 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
                     mainFacade.getUserGsonViewModel().setUserGsonLiveData(user);
                     mainFacade.getSessionManager().setUserGson(user);
                     hideProgressBar();
+
                 }
 
                 @Override
