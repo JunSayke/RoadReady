@@ -76,7 +76,7 @@ public class SelectingCar_Fragment extends Fragment {
     private void updateVehicleInfo(VehicleGson vehicleGson) {
         DealershipGson dealershipGson = vehicleGson.getDealershipGson();
 
-        Picasso.get().load(dealershipGson.getImage()).into(binding.sgcImageDealerLogo);
+        Picasso.get().load(dealershipGson.getDealershipImageUrl()).into(binding.sgcImageDealerLogo);
         binding.sgcTextDealerName.setText(dealershipGson.getName());
         Picasso.get().load(vehicleGson.getImage()).into(binding.sgcImageItem);
         binding.sgcTextItemName.setText(vehicleGson.getModelAndName());

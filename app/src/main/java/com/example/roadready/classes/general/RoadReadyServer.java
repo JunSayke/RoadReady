@@ -52,9 +52,9 @@ public class RoadReadyServer extends RetrofitFacade {
     ) {
         Map<String, String> filters = new HashMap<>();
         if (dealershipId != null)
-            filters.put("dealershipId", dealershipId);
+            filters.put("dealership_id", dealershipId);
         if (dealershipName != null)
-            filters.put("dealershipName", dealershipName);
+            filters.put("dealership_name", dealershipName);
         getRetrofitService().getDealerships(filters).enqueue(callback);
     }
 
@@ -66,11 +66,11 @@ public class RoadReadyServer extends RetrofitFacade {
     ) {
         Map<String, String> filters = new HashMap<>();
         if (listingId != null)
-            filters.put("listingId", listingId);
+            filters.put("listing_id", listingId);
         if (dealershipId != null)
-            filters.put("dealershipId", dealershipId);
+            filters.put("dealership_id", dealershipId);
         if (modelAndName != null)
-            filters.put("modelAndName", modelAndName);
+            filters.put("model_and_name", modelAndName);
 
         Log.d(TAG, filters.toString());
         getRetrofitService().getListings(filters).enqueue(callback);
@@ -137,7 +137,7 @@ public class RoadReadyServer extends RetrofitFacade {
         if (address != null)
             fields.put("address", RequestBody.create(MediaType.parse("text/plain"), address));
 
-        getRetrofitService().updateBuyerProfile(imagePart, fields).enqueue(callback);
+        getRetrofitService().updateUserProfile(imagePart, fields).enqueue(callback);
     }
 
     public void updateDealershipProfile(
@@ -167,7 +167,7 @@ public class RoadReadyServer extends RetrofitFacade {
         if (address != null)
             fields.put("address", RequestBody.create(MediaType.parse("text/plain"), address));
 
-        getRetrofitService().updateDealershipProfile(imagePart, fields).enqueue(callback);
+        getRetrofitService().updateUserProfile(imagePart, fields).enqueue(callback);
     }
 
     public void registerBuyer(
@@ -234,6 +234,19 @@ public class RoadReadyServer extends RetrofitFacade {
         getRetrofitService().getGoogleAuth().enqueue(callback);
     }
 
+    public void requestOTP(
+            final Callback<SuccessGson<GsonData>> callback
+    ) {
+        getRetrofitService().requestOTP().enqueue(callback);
+    }
+
+    public void verifyBuyerOTP(
+            final Callback<SuccessGson<UserDataGson>> callback,
+            final String code
+    ) {
+        getRetrofitService().verifyBuyerOTP(code).enqueue(callback);
+    }
+
     public void addCookies(Set<String> cookies) {
         RetrofitFacade.cookies.addAll(cookies);
     }
@@ -261,7 +274,6 @@ public class RoadReadyServer extends RetrofitFacade {
                     if (response.isSuccessful()) {
                         assert response.body() != null;
                         body = response.body();
-//                        Log.d(TAG, String.valueOf(body));
 
                         @SuppressWarnings("unchecked")
                         T1 data = (T1) ((SuccessGson<?>) body).getData();
@@ -269,7 +281,6 @@ public class RoadReadyServer extends RetrofitFacade {
                     } else {
                         assert response.errorBody() != null;
                         body = new Gson().fromJson(response.errorBody().string(), ErrorGson.class);
-//                        Log.e(TAG, String.valueOf(body));
                     }
                 } catch (Exception e) {
                     Log.e(TAG, Objects.requireNonNull(e.getMessage()));

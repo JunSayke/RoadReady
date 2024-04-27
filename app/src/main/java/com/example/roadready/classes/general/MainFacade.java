@@ -228,13 +228,11 @@ public class MainFacade {
         Set<String> PREF_COOKIES = server.getCookies();
         server.addCookies(PREF_COOKIES);
         sessionManager.startSession(userGson, PREF_COOKIES);
-//        Log.d(TAG, server.getCookies() + "\n" + sessionManager.getCookies());
     }
 
     public void stopLoginSession() {
         server.removeCookies(sessionManager.getCookies());
         sessionManager.stopSession();
-//        Log.d(TAG, server.getCookies() + "\n" + sessionManager.getCookies());
     }
 
     public boolean isLoggedIn() {
@@ -337,6 +335,19 @@ public class MainFacade {
             final RoadReadyServer.ResponseListener<GoogleAuthGson> responseListener
     ) {
         server.getGoogleAuthLink(RoadReadyServer.getCallback(responseListener));
+    }
+
+    public void requestOTP(
+            final RoadReadyServer.ResponseListener<GsonData> responseListener
+    ) {
+        server.requestOTP(RoadReadyServer.getCallback(responseListener));
+    }
+
+    public void verifyBuyerOTP(
+        final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
+        final String code
+    ) {
+        server.verifyBuyerOTP(RoadReadyServer.getCallback(responseListener), code);
     }
 
     // END_OF[Session & Server]

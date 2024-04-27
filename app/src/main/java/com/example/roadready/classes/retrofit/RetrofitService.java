@@ -7,7 +7,6 @@ import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
-import com.example.roadready.classes.model.gson.data.VehicleGson;
 import com.example.roadready.classes.model.gson.response.SuccessGson;
 
 import java.util.Map;
@@ -15,7 +14,6 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -25,7 +23,6 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
-import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 public interface RetrofitService {
@@ -51,14 +48,7 @@ public interface RetrofitService {
 
     @Multipart
     @PUT("user/profile")
-    Call<SuccessGson<UserDataGson>> updateBuyerProfile(
-            @Part @Nullable MultipartBody.Part profileImage,
-            @PartMap Map<String, RequestBody> fields
-    );
-
-    @Multipart
-    @PUT("user/profile")
-    Call<SuccessGson<UserDataGson>> updateDealershipProfile(
+    Call<SuccessGson<UserDataGson>> updateUserProfile(
             @Part @Nullable MultipartBody.Part profileImage,
             @PartMap Map<String, RequestBody> fields
     );
@@ -73,7 +63,6 @@ public interface RetrofitService {
             @QueryMap Map<String, String> filters
     );
 
-
     @Multipart
     @POST("manager/listing")
     Call<SuccessGson<ListingsDataGson>> createListing(
@@ -83,4 +72,15 @@ public interface RetrofitService {
 
     @GET("auth/google")
     Call<SuccessGson<GoogleAuthGson>> getGoogleAuth();
+
+    @GET("user/otp")
+    Call<SuccessGson<GsonData>> requestOTP();
+
+    @FormUrlEncoded
+    @POST("buyer/verify")
+    Call<SuccessGson<UserDataGson>> verifyBuyerOTP(
+            @Field("code") String code
+    );
+
+    // TODO: Apply Listings
 }

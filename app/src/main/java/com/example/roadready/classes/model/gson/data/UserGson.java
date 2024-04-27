@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class UserGson extends GsonData {
     private String id;
     @SerializedName("profileimage")
-    private String profileImage;
+    private String profileImageUrl;
     @SerializedName("firstname")
     private String firstName;
     @SerializedName("lastname")
@@ -29,7 +29,7 @@ public class UserGson extends GsonData {
     public String getId() {
         return id;
     }
-    public String getProfileImage() { return profileImage; }
+    public String getProfileImageUrl() { return profileImageUrl; }
 
     public String getFirstName() {
         return firstName;
