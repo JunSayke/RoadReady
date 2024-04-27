@@ -14,6 +14,7 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -64,8 +65,21 @@ public interface RetrofitService {
     );
 
     @Multipart
-    @POST("manager/listing")
+    @POST("manager/listings")
     Call<SuccessGson<ListingsDataGson>> createListing(
+            @Part @Nullable MultipartBody.Part listingImage,
+            @PartMap Map<String, RequestBody> fields
+    );
+
+    @FormUrlEncoded
+    @DELETE("manager/listings")
+    Call<SuccessGson<GsonData>> deleteListing(
+            @Field("listingId") String listingId
+    );
+
+    @Multipart
+    @PUT("manager/listings")
+    Call<SuccessGson<ListingsDataGson>> updateListing(
             @Part @Nullable MultipartBody.Part listingImage,
             @PartMap Map<String, RequestBody> fields
     );

@@ -110,6 +110,65 @@ public class RoadReadyServer extends RetrofitFacade {
         getRetrofitService().createListing(imagePart, fields).enqueue(callback);
     }
 
+    public void deleteListing(
+            final Callback<SuccessGson<GsonData>> callback,
+            final String listingId
+    ) {
+        getRetrofitService().deleteListing(listingId).enqueue(callback);
+    }
+
+    public void updateListing(
+            final Callback<SuccessGson<ListingsDataGson>> callback,
+            @Nullable final File listingImage,
+            @Nullable final String modelAndName,
+            @Nullable final String make,
+            @Nullable final String fuelType,
+            @Nullable final String power,
+            @Nullable final String transmission,
+            @Nullable final String engine,
+            @Nullable final String fuelTankCapacity,
+            @Nullable final String seatingCapacity,
+            @Nullable final String price
+    ) {
+
+        MultipartBody.Part imagePart = null;
+        if (listingImage != null) {
+            RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(listingImage.getName())), listingImage);
+            imagePart = MultipartBody.Part.createFormData("image", listingImage.getName(), requestBody);
+        }
+
+        Map<String, RequestBody> fields = new HashMap<>();
+
+        if (modelAndName != null)
+            fields.put("modelAndName", RequestBody.create(MediaType.parse("text/plain"), modelAndName));
+
+        if (make != null)
+            fields.put("make", RequestBody.create(MediaType.parse("text/plain"), make));
+
+        if (fuelType != null)
+            fields.put("fuelType", RequestBody.create(MediaType.parse("text/plain"), fuelType));
+
+        if (power != null)
+            fields.put("power", RequestBody.create(MediaType.parse("text/plain"), power));
+
+        if (transmission != null)
+            fields.put("transmission", RequestBody.create(MediaType.parse("text/plain"), transmission));
+
+        if (engine != null)
+            fields.put("engine", RequestBody.create(MediaType.parse("text/plain"), engine));
+
+        if (fuelTankCapacity != null)
+            fields.put("fuelTankCapacity", RequestBody.create(MediaType.parse("text/plain"), fuelTankCapacity));
+
+        if (seatingCapacity != null)
+            fields.put("seatingCapacity", RequestBody.create(MediaType.parse("text/plain"), seatingCapacity));
+
+        if (price != null)
+            fields.put("price", RequestBody.create(MediaType.parse("text/plain"), price));
+
+        getRetrofitService().createListing(imagePart, fields).enqueue(callback);
+    }
+
     public void updateBuyerProfile(
             final Callback<SuccessGson<UserDataGson>> callback,
             @Nullable final File profileImage,

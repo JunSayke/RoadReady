@@ -331,6 +331,32 @@ public class MainFacade {
                 seatingCapacity, price, dealershipName, vehicleType);
     }
 
+    public void deleteListing(
+            final RoadReadyServer.ResponseListener<GsonData> responseListener,
+            final String listingId
+    ) {
+        server.deleteListing(RoadReadyServer.getCallback(responseListener), listingId);
+    }
+
+    public void updateListing(
+            final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener,
+            @Nullable final File listingImage,
+            @Nullable final String modelAndName,
+            @Nullable final String make,
+            @Nullable final String fuelType,
+            @Nullable final String power,
+            @Nullable final String transmission,
+            @Nullable final String engine,
+            @Nullable final String fuelTankCapacity,
+            @Nullable final String seatingCapacity,
+            @Nullable final String price
+    ) {
+        server.updateListing(RoadReadyServer.getCallback(responseListener),
+                listingImage, modelAndName, make, fuelType,
+                power, transmission, engine, fuelTankCapacity,
+                seatingCapacity, price);
+    }
+
     public void getGoogleAuthLink(
             final RoadReadyServer.ResponseListener<GoogleAuthGson> responseListener
     ) {
