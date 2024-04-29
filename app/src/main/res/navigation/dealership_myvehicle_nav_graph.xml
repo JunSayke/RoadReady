@@ -13,9 +13,30 @@
         <action
             android:id="@+id/action_myVehicles_Fragment_to_vehicleAdd_Fragment"
             app:destination="@id/vehicleAdd_Fragment" />
+        <action
+            android:id="@+id/action_myVehicles_Fragment_to_vehicleListing_Fragment"
+            app:destination="@id/vehicleListing_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/vehicleAdd_Fragment"
         android:name="com.example.roadready.fragments.dealership.VehicleAdd_Fragment"
-        android:label="VehicleAdd_Fragment" />
+        android:label="VehicleAdd_Fragment" >
+        <action
+            android:id="@+id/action_vehicleAdd_Fragment_to_myVehicles_Fragment"
+            app:destination="@id/myVehicles_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleListing_Fragment"
+        android:name="com.example.roadready.fragments.dealership.VehicleListing_Fragment"
+        android:label="VehicleListing_Fragment" >
+        <action
+            android:id="@+id/action_vehicleListing_Fragment_to_myVehicles_Fragment"
+            app:destination="@id/myVehicles_Fragment" />
+        <argument
+            android:name="modelId"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
 </navigation>

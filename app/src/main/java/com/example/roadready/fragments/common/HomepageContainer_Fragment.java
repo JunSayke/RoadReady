@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,7 +17,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.general.RoadReadyServer;
+import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.util.CircleTransform;
 import com.example.roadready.databinding.FragmentBuyerHomepageContainerBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,6 +30,7 @@ public class HomepageContainer_Fragment extends Fragment {
     private BottomNavigationView bottomNavigationView;
     private MainFacade mainFacade;
     private boolean isApproved = false;
+    private Button btnVerification;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -64,8 +68,9 @@ public class HomepageContainer_Fragment extends Fragment {
                     .error(R.drawable.app_ib_cancel)
                     .into(binding.welcomeHeaderLayout.bhImageUserIcon);
 
-            if(!userGson.isApproved()) {
+            if(!userGson.getIsApproved()) {
                 mainFacade.getMainActivity().findViewById(R.id.bhTextVerifcation).setVisibility(View.VISIBLE);
+                mainFacade.getMainActivity().findViewById(R.id.bhBtnVerify).setVisibility(View.VISIBLE);
                 isApproved = false;
             }
         });
@@ -111,6 +116,21 @@ public class HomepageContainer_Fragment extends Fragment {
     }
 
     private void initActions() {
+        binding.welcomeHeaderLayout.bhBtnVerify.setOnClickListener(v -> {
+            RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
+                @Override
+                public void onSuccess(GsonData data) {
+
+                }
+
+                @Override
+                public void onFailure(String message) {
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                }
+            };
+            mainFacade.requestOTP(responseListener);
+            mainFacade.getBuyerHomepageNavController().navigate(R.id.action_mnHome_to_verification_Fragment);
+        });
         binding.headerLayout.bepBtnBack.setOnClickListener(v -> {
             mainFacade.getMainActivity().getOnBackPressedDispatcher().onBackPressed();
         });

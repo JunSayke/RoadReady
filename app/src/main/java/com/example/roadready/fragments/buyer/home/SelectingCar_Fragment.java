@@ -38,7 +38,7 @@ public class SelectingCar_Fragment extends Fragment {
         }
 
         UserGson userGson = mainFacade.getSessionManager().getUserGson();
-        if(!userGson.isApproved()) {
+        if(!userGson.getIsApproved()) {
             mainFacade.restrictButton(binding.sgcBtnCash);
             mainFacade.restrictButton(binding.sgcBtnInstallment);
         }
