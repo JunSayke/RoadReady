@@ -46,6 +46,7 @@
         tools:layout_editor_absoluteY="166dp">
 
         <LinearLayout
+            android:id="@+id/apContainerStatus1"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:background="@drawable/rectangle"
@@ -77,6 +78,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/apContainerStatus2"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:background="@drawable/rectangle"
@@ -108,6 +110,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/apContainerStatus3"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:background="@drawable/rectangle"
@@ -139,6 +142,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/apContainerStatus4"
             android:layout_width="300dp"
             android:layout_height="match_parent"
             android:background="@drawable/rectangle"
