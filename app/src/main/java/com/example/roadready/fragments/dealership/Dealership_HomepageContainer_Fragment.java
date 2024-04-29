@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +30,7 @@ public class Dealership_HomepageContainer_Fragment extends Fragment {
     private TextView txtName;
     private TextView txtTitle;
     private TextView headerText;
+    private boolean isApproved;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -42,7 +42,6 @@ public class Dealership_HomepageContainer_Fragment extends Fragment {
         viewDrawer = navigationViewDrawer.getHeaderView(0);
         txtName = viewDrawer.findViewById(R.id.sbTxtName);
         txtTitle = viewDrawer.findViewById(R.id.sbTxtDealershipName);
-        headerText = binding.headerDealershipLayout.dealershipTxtHeader;
 
         try {
             mainFacade = MainFacade.getInstance();
@@ -64,11 +63,17 @@ public class Dealership_HomepageContainer_Fragment extends Fragment {
             String name = userGson.getFirstName() + " " + userGson.getLastName();
             txtName.setText(name);
             txtTitle.setText(userGson.getDealership().getName());
+
+            if(!userGson.getIsApproved()) {
+                binding.headerDealershipLayout.dhTextVerifcation.setVisibility(View.VISIBLE);
+                isApproved = false;
+            }
         });
 
         mainFacade.getDealershipHomepageNavController().addOnDestinationChangedListener((controller, destination, arguments) -> {
             View mainHeader = binding.headerContainer;
             View profileHeader = binding.headerLayout.formHeader;
+            headerText = binding.headerDealershipLayout.dealershipTxtHeader;
 
             switch(destination.getId() ){
                 case R.id.navMyVehicles:

@@ -25,7 +25,9 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.util.CircleTransform;
 import com.example.roadready.databinding.FragmentBuyerEditProfileBinding;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
@@ -49,6 +51,14 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
             throw new RuntimeException(e);
         }
 
+        mainFacade.getUserGsonViewModel().getUserGsonLiveData().observe(getViewLifecycleOwner(), buyerGson -> {
+            Picasso.get()
+                    .load(buyerGson.getProfileImageUrl())
+                    .transform(new CircleTransform())
+                    .placeholder(R.drawable.default_user_icon)
+                    .error(R.drawable.app_ib_cancel)
+                    .into(binding.bepImageUserIcon);
+        });
         initImagePicker();
 
         return root;
@@ -95,7 +105,6 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
                     mainFacade.getUserGsonViewModel().setUserGsonLiveData(user);
                     mainFacade.getSessionManager().setUserGson(user);
                     hideProgressBar();
-
                 }
 
                 @Override
@@ -110,7 +119,6 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
 
         binding.bepBtnCancel.setOnClickListener(v -> {
             mainFacade.getMainActivity().getOnBackPressedDispatcher().onBackPressed();
-            //mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
         });
     }
 
@@ -153,7 +161,12 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
     @Override
     public void onImageSelected(Uri uri) {
         if(uri != null) {
-            binding.bepImageUserIcon.setImageURI(uri);
+            Picasso.get()
+                    .load(uri)
+                    .transform(new CircleTransform())
+                    .placeholder(R.drawable.default_user_icon)
+                    .error(R.drawable.app_ib_cancel)
+                    .into(binding.bepImageUserIcon);
             binding.bepInptValidId.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), uri));
             imageData = uri;
         } else {

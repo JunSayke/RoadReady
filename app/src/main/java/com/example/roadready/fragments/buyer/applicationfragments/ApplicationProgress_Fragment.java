@@ -32,7 +32,7 @@ public class ApplicationProgress_Fragment extends Fragment {
         }
 
         UserGson userGson = mainFacade.getSessionManager().getUserGson();
-        if(!userGson.isApproved()) {
+        if(!userGson.getIsApproved()) {
             mainFacade.restrictButton(binding.apBtnRegistrationProgress);
             mainFacade.restrictButton(binding.apBtnVehicleAppProgress);
         }

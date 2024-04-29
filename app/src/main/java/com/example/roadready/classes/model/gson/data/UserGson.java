@@ -63,7 +63,7 @@ public class UserGson extends GsonData {
         return role;
     }
 
-    public boolean isApproved() {
+    public boolean getIsApproved() {
         return isApproved;
     }
 

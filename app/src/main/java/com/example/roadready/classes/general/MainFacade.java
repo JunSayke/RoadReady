@@ -68,6 +68,7 @@ public class MainFacade {
         sessionManager = new SessionManager(mainActivity.getApplicationContext());
         userGsonViewModelFactory = new UserGsonViewModelFactory(mainActivity.getApplicationContext());
 
+
         Set<String> PREF_COOKIES = sessionManager.getCookies();
         if (!PREF_COOKIES.isEmpty()) {
             server.addCookies(PREF_COOKIES);

@@ -22,6 +22,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -98,7 +99,7 @@ public interface RetrofitService {
     );
 
     @FormUrlEncoded
-    @DELETE("manager/listings")
+    @HTTP(method = "DELETE", path = "manager/listings", hasBody = true)
     Call<SuccessGson<GsonData>> deleteListing(
             @Field("listingId") String listingId
     );

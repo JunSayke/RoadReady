@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/formHeader"
     android:layout_width="match_parent"
-    android:layout_height="125dp"
+    android:layout_height="120dp"
     android:orientation="horizontal"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,7 @@
             android:background="@drawable/circle"
             android:backgroundTint="#8DDEF0"
             android:contentDescription="@string/vector_user_icon"
-            android:scaleType="centerInside"
+            android:scaleType="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -64,6 +64,17 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="ImageContrastCheck" />
 
+        <Button
+            android:id="@+id/bhBtnVerify"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:backgroundTint="#F95C5C"
+            android:text="Verify Account"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
@@ -73,7 +84,7 @@
         android:layout_gravity="center"
         android:background="#FFB3B3"
         android:gravity="center"
-        android:text="Account Verification Failed"
+        android:text="Verification Failed"
         android:textAlignment="center"
         android:textColor="@color/red"
         android:textSize="20sp"

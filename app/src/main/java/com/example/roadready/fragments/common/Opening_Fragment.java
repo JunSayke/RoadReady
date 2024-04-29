@@ -40,8 +40,6 @@ public class Opening_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        //TODO: Separate buyer and dealership isLoggedIn
         new Handler().postDelayed(() -> {
             if (mainFacade.isLoggedIn()) {
                 UserGson userGson = mainFacade.getSessionManager().getUserGson();

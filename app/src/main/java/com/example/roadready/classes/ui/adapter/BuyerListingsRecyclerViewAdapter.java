@@ -17,12 +17,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class ListingsRecyclerViewAdapter extends RecyclerView.Adapter<ListingsRecyclerViewAdapter.ViewHolder> {
+public class BuyerListingsRecyclerViewAdapter extends RecyclerView.Adapter<BuyerListingsRecyclerViewAdapter.ViewHolder> {
     private final Context context;
     private final List<VehicleGson> vehicleGsonList;
     private final OnItemClickListener onItemClickListener;
 
-    public ListingsRecyclerViewAdapter(Context context, List<VehicleGson> vehicleGsonList, OnItemClickListener listener) {
+    public BuyerListingsRecyclerViewAdapter(Context context, List<VehicleGson> vehicleGsonList, OnItemClickListener listener) {
         this.context = context;
         this.vehicleGsonList = vehicleGsonList;
         this.onItemClickListener = listener;
@@ -31,7 +31,7 @@ public class ListingsRecyclerViewAdapter extends RecyclerView.Adapter<ListingsRe
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_buyer_vehicle, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listings_buyer_vehicle, parent, false);
         return new ViewHolder(view);
     }
 

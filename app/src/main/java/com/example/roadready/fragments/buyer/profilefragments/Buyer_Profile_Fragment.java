@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import com.example.roadready.R;
 import com.example.roadready.activity.MainActivity;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.util.CircleTransform;
 import com.example.roadready.databinding.FragmentBuyerProfileBinding;
 import com.squareup.picasso.Picasso;
 
@@ -40,7 +41,12 @@ public class Buyer_Profile_Fragment extends Fragment {
             binding.bpInptEmail.setText(buyerGson.getEmail());
             binding.bpInptPhoneNumber.setText(buyerGson.getPhoneNumber());
             binding.bpInptSex.setText(buyerGson.getGender());
-            Picasso.get().load(buyerGson.getProfileImageUrl()).into(binding.bpImageUserIcon);
+            Picasso.get()
+                    .load(buyerGson.getProfileImageUrl())
+                    .transform(new CircleTransform())
+                    .placeholder(R.drawable.default_user_icon)
+                    .error(R.drawable.app_ib_cancel)
+                    .into(binding.bpImageUserIcon);
 
             // TODO: Longitude & Latitude
         });

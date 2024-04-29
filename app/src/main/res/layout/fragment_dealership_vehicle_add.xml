@@ -2,7 +2,8 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
+	android:layout_height="match_parent"
+	tools:context=".fragments.dealership.VehicleAdd_Fragment">
 
 	<LinearLayout
 		android:id="@+id/add"
@@ -12,16 +13,35 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
-		<TextView
-			android:id="@+id/add_tv_title"
-			android:layout_width="wrap_content"
+		<LinearLayout
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_gravity="center_horizontal|center"
-			android:layout_marginVertical="20dp"
-			android:gravity="center"
-			android:text="@string/text_vehicle_add_title"
-			android:textSize="24sp"
-			android:textStyle="bold" />
+			android:orientation="horizontal">
+
+			<ImageButton
+				android:id="@+id/addBtnBack"
+				android:layout_width="36dp"
+				android:layout_height="36dp"
+				android:layout_gravity="center_vertical"
+				android:background="@null"
+				app:srcCompat="@drawable/left_arrow" />
+
+			<TextView
+				android:id="@+id/add_tv_title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal|center"
+				android:layout_marginVertical="20dp"
+				android:layout_weight="1"
+				android:gravity="center"
+				android:text="@string/text_vehicle_add_title"
+				android:textSize="24sp"
+				android:textStyle="bold" />
+
+			<Space
+				android:layout_width="36dp"
+				android:layout_height="wrap_content" />
+		</LinearLayout>
 
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:id="@+id/addContainerVehicleSpecs"
@@ -173,7 +193,6 @@
 					android:background="@drawable/border_rounded"
 					android:gravity="left|center_vertical"
 					android:paddingStart="10dp"
-					android:text="toyotaconquest.pdf"
 					android:textSize="12sp"
 					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
