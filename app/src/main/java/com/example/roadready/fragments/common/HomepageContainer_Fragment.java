@@ -16,8 +16,10 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.util.CircleTransform;
 import com.example.roadready.databinding.FragmentBuyerHomepageContainerBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.squareup.picasso.Picasso;
 
 public class HomepageContainer_Fragment extends Fragment {
     private final String TAG = "HomepageContainer_Fragment";
@@ -54,6 +56,13 @@ public class HomepageContainer_Fragment extends Fragment {
 
             String welcomeText = "Welcome " + userGson.getFirstName();
             textWelcomeUser.setText(welcomeText);
+
+            Picasso.get()
+                    .load(userGson.getProfileImageUrl())
+                    .transform(new CircleTransform())
+                    .placeholder(R.drawable.default_user_icon)
+                    .error(R.drawable.app_ib_cancel)
+                    .into(binding.welcomeHeaderLayout.bhImageUserIcon);
 
             if(!userGson.isApproved()) {
                 mainFacade.getMainActivity().findViewById(R.id.bhTextVerifcation).setVisibility(View.VISIBLE);

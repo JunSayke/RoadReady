@@ -29,7 +29,7 @@
             android:background="@drawable/circle"
             android:backgroundTint="#8DDEF0"
             android:contentDescription="@string/vector_user_icon"
-            android:scaleType="centerInside"
+            android:scaleType="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
