@@ -17,6 +17,7 @@ import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.ModeOfPaymentDataGson;
+import com.example.roadready.classes.model.gson.NotificationsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
@@ -255,7 +256,7 @@ public class MainFacade {
             final RoadReadyServer.ResponseListener<DealershipsDataGson> responseListener,
             @Nullable final String dealershipId,
             @Nullable final String dealershipName
-            ) {
+    ) {
         server.getDealerships(RoadReadyServer.getCallback(responseListener), dealershipId, dealershipName);
     }
 
@@ -327,6 +328,7 @@ public class MainFacade {
                 null
         );
     }
+
     public void applyBankLoanDealershipBankChoiceListing(
             final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
             final String listingId,
@@ -434,14 +436,14 @@ public class MainFacade {
     // Logged user must be a buyer
     public void getBuyerApplications(
             final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener
-            ) {
+    ) {
         server.getBuyerApplications(RoadReadyServer.getCallback(responseListener));
     }
 
     // Logged user must be a dealership
     public void getDealershipApplications(
             final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener
-            ) {
+    ) {
         server.getDealershipApplications(RoadReadyServer.getCallback(responseListener));
     }
 
@@ -587,6 +589,20 @@ public class MainFacade {
             final String dealershipId
     ) {
         server.getModeOfPayments(RoadReadyServer.getCallback(responseListener), dealershipId);
+    }
+
+    // Automatically get the logged in user notification.
+    public void getNotification(
+            final RoadReadyServer.ResponseListener<NotificationsDataGson> responseListener
+    ) {
+        server.getNotifications(RoadReadyServer.getCallback(responseListener));
+    }
+
+    public void deleteNotification(
+            final RoadReadyServer.ResponseListener<GsonData> responseListener,
+            final String notificationId
+    ) {
+        server.deleteNotification(RoadReadyServer.getCallback(responseListener), notificationId);
     }
 
     // END_OF[Session & Server]

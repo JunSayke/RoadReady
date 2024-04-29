@@ -8,6 +8,7 @@ import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.ModeOfPaymentDataGson;
+import com.example.roadready.classes.model.gson.NotificationsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.response.SuccessGson;
@@ -128,5 +129,13 @@ public interface RetrofitService {
         @Query("dealership_id") String dealershipId
     );
 
-    // TODO: Apply Listings
+    @GET("user/notifications")
+    Call<SuccessGson<NotificationsDataGson>> getNotification();
+
+    @FormUrlEncoded
+    @DELETE("user/notifications")
+    Call<SuccessGson<GsonData>> deleteNotification(
+            @Field("notificationId") String notificationId
+    );
+    // TODO: Update Applications
 }

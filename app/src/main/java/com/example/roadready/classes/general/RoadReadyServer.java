@@ -11,6 +11,7 @@ import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.ModeOfPaymentDataGson;
+import com.example.roadready.classes.model.gson.NotificationsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.response.ErrorGson;
@@ -409,6 +410,19 @@ public class RoadReadyServer extends RetrofitFacade {
             final String dealershipId
     ) {
         getRetrofitService().getModeOfPayments(dealershipId).enqueue(callback);
+    }
+
+    public void getNotifications(
+            final Callback<SuccessGson<NotificationsDataGson>> callback
+    ) {
+        getRetrofitService().getNotification().enqueue(callback);
+    }
+
+    public void deleteNotification(
+            final Callback<SuccessGson<GsonData>> callback,
+            final String notificationId
+    ) {
+        getRetrofitService().deleteNotification(notificationId).enqueue(callback);
     }
 
     public void addCookies(Set<String> cookies) {
