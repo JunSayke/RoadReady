@@ -89,27 +89,27 @@ public class RoadReadyServer extends RetrofitFacade {
 
         if (validIdImage != null) {
             RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(validIdImage.getName())), validIdImage);
-            validIdImagePart = MultipartBody.Part.createFormData("image", validIdImage.getName(), requestBody);
+            validIdImagePart = MultipartBody.Part.createFormData("validId", validIdImage.getName(), requestBody);
         }
 
         if (signatureImage != null) {
             RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(signatureImage.getName())), signatureImage);
-            signatureImagePart = MultipartBody.Part.createFormData("image", signatureImage.getName(), requestBody);
+            signatureImagePart = MultipartBody.Part.createFormData("signature", signatureImage.getName(), requestBody);
         }
 
         if (coMakerValidIdImage != null) {
             RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(coMakerValidIdImage.getName())), coMakerValidIdImage);
-            coMakerValidIdImagePart = MultipartBody.Part.createFormData("image", coMakerValidIdImage.getName(), requestBody);
+            coMakerValidIdImagePart = MultipartBody.Part.createFormData("coMakerValidId", coMakerValidIdImage.getName(), requestBody);
         }
 
         if (coMakerSignatureImage != null) {
             RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(coMakerSignatureImage.getName())), coMakerSignatureImage);
-            coMakerSignatureImagePart = MultipartBody.Part.createFormData("image", coMakerSignatureImage.getName(), requestBody);
+            coMakerSignatureImagePart = MultipartBody.Part.createFormData("coMakerSignature", coMakerSignatureImage.getName(), requestBody);
         }
 
         if (bankCertificateImage != null) {
             RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(bankCertificateImage.getName())), bankCertificateImage);
-            bankCertificateImagePart = MultipartBody.Part.createFormData("image", bankCertificateImage.getName(), requestBody);
+            bankCertificateImagePart = MultipartBody.Part.createFormData("bankLoanCertificate", bankCertificateImage.getName(), requestBody);
         }
 
         Map<String, RequestBody> fields = new HashMap<>();
@@ -136,6 +136,15 @@ public class RoadReadyServer extends RetrofitFacade {
             fields.put("coMakerPhoneNumber", RequestBody.create(MediaType.parse("text/plain"), coMakerPhoneNumber));
 
         getRetrofitService().applyForListing(validIdImagePart, signatureImagePart, coMakerValidIdImagePart, coMakerSignatureImagePart, bankCertificateImagePart, fields).enqueue(callback);
+    }
+
+    public void updateApplication(
+            final Callback<SuccessGson<ApplicationDataGson>> callback,
+            final String applicationType,
+            final String applicationId,
+            final int progress
+    ) {
+        getRetrofitService().updateApplication(applicationType, applicationId, progress).enqueue(callback);
     }
 
     public void getBuyerApplications(
@@ -258,7 +267,7 @@ public class RoadReadyServer extends RetrofitFacade {
         if (price != null)
             fields.put("price", RequestBody.create(MediaType.parse("text/plain"), price));
 
-        getRetrofitService().createListing(imagePart, fields).enqueue(callback);
+        getRetrofitService().updateListing(imagePart, fields).enqueue(callback);
     }
 
     public void updateBuyerProfile(

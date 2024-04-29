@@ -81,6 +81,14 @@ public interface RetrofitService {
             @PartMap Map<String, RequestBody> fields
     );
 
+    @FormUrlEncoded
+    @PUT("agent/application")
+    Call<SuccessGson<ApplicationDataGson>> updateApplication(
+            @Field("applicationType") String applicationType,
+            @Field("applicationId") String applicationId,
+            @Field("progress") int progress
+    );
+
     @GET("buyer/applications")
     Call<SuccessGson<ApplicationsDataGson>> getBuyerApplications();
 
@@ -137,5 +145,4 @@ public interface RetrofitService {
     Call<SuccessGson<GsonData>> deleteNotification(
             @Field("notificationId") String notificationId
     );
-    // TODO: Update Applications
 }

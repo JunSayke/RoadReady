@@ -433,6 +433,16 @@ public class MainFacade {
         );
     }
 
+    // Logged user must be of role "dealershipAgent" based on the web (JAKE) idk anymore.
+    public void updateApplication(
+            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final String applicationType,
+            final String applicationId,
+            final int progress
+    ) {
+        server.updateApplication(RoadReadyServer.getCallback(responseListener), applicationType, applicationId, progress);
+    }
+
     // Logged user must be a buyer
     public void getBuyerApplications(
             final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener
