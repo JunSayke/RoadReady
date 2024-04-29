@@ -5,9 +5,12 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.roadready.classes.model.gson.ApplicationDataGson;
+import com.example.roadready.classes.model.gson.ApplicationsDataGson;
 import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
+import com.example.roadready.classes.model.gson.ModeOfPaymentDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.response.ErrorGson;
@@ -56,6 +59,94 @@ public class RoadReadyServer extends RetrofitFacade {
         if (dealershipName != null)
             filters.put("dealership_name", dealershipName);
         getRetrofitService().getDealerships(filters).enqueue(callback);
+    }
+
+    public void applyForListing(
+            final Callback<SuccessGson<ApplicationDataGson>> callback,
+            final String modeOfPayment,
+            final String listingId,
+            final String firstName,
+            final String lastName,
+            final String address,
+            final String phoneNumber,
+            final File validIdImage,
+            final File signatureImage,
+            final @Nullable String cashModeOfPayment,
+            final @Nullable String coMakerFirstName,
+            final @Nullable String coMakerLastName,
+            final @Nullable String coMakerAddress,
+            final @Nullable String coMakerPhoneNumber,
+            final @Nullable File coMakerValidIdImage,
+            final @Nullable File coMakerSignatureImage,
+            final @Nullable File bankCertificateImage
+    ) {
+        MultipartBody.Part validIdImagePart = null;
+        MultipartBody.Part signatureImagePart = null;
+        MultipartBody.Part coMakerValidIdImagePart = null;
+        MultipartBody.Part coMakerSignatureImagePart = null;
+        MultipartBody.Part bankCertificateImagePart = null;
+
+        if (validIdImage != null) {
+            RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(validIdImage.getName())), validIdImage);
+            validIdImagePart = MultipartBody.Part.createFormData("image", validIdImage.getName(), requestBody);
+        }
+
+        if (signatureImage != null) {
+            RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(signatureImage.getName())), signatureImage);
+            signatureImagePart = MultipartBody.Part.createFormData("image", signatureImage.getName(), requestBody);
+        }
+
+        if (coMakerValidIdImage != null) {
+            RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(coMakerValidIdImage.getName())), coMakerValidIdImage);
+            coMakerValidIdImagePart = MultipartBody.Part.createFormData("image", coMakerValidIdImage.getName(), requestBody);
+        }
+
+        if (coMakerSignatureImage != null) {
+            RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(coMakerSignatureImage.getName())), coMakerSignatureImage);
+            coMakerSignatureImagePart = MultipartBody.Part.createFormData("image", coMakerSignatureImage.getName(), requestBody);
+        }
+
+        if (bankCertificateImage != null) {
+            RequestBody requestBody = RequestBody.create(MediaType.parse(URLConnection.guessContentTypeFromName(bankCertificateImage.getName())), bankCertificateImage);
+            bankCertificateImagePart = MultipartBody.Part.createFormData("image", bankCertificateImage.getName(), requestBody);
+        }
+
+        Map<String, RequestBody> fields = new HashMap<>();
+        fields.put("modeofpayment", RequestBody.create(MediaType.parse("text/plain"), modeOfPayment));
+        fields.put("listingId", RequestBody.create(MediaType.parse("text/plain"), listingId));
+        fields.put("firstName", RequestBody.create(MediaType.parse("text/plain"), firstName));
+        fields.put("lastName", RequestBody.create(MediaType.parse("text/plain"), lastName));
+        fields.put("address", RequestBody.create(MediaType.parse("text/plain"), address));
+        fields.put("phoneNumber", RequestBody.create(MediaType.parse("text/plain"), phoneNumber));
+
+        if (cashModeOfPayment != null)
+            fields.put("cashmodeofpayment", RequestBody.create(MediaType.parse("text/plain"), cashModeOfPayment));
+
+        if (coMakerFirstName != null)
+            fields.put("coMakerFirstName", RequestBody.create(MediaType.parse("text/plain"), coMakerFirstName));
+
+        if (coMakerLastName != null)
+            fields.put("coMakerLastName", RequestBody.create(MediaType.parse("text/plain"), coMakerLastName));
+
+        if (coMakerAddress != null)
+            fields.put("coMakerAddress", RequestBody.create(MediaType.parse("text/plain"), coMakerAddress));
+
+        if (coMakerPhoneNumber != null)
+            fields.put("coMakerPhoneNumber", RequestBody.create(MediaType.parse("text/plain"), coMakerPhoneNumber));
+
+        getRetrofitService().applyForListing(validIdImagePart, signatureImagePart, coMakerValidIdImagePart, coMakerSignatureImagePart, bankCertificateImagePart, fields).enqueue(callback);
+    }
+
+    public void getBuyerApplications(
+            final Callback<SuccessGson<ApplicationsDataGson>> callback
+    ) {
+        getRetrofitService().getBuyerApplications().enqueue(callback);
+    }
+
+    public void getDealershipApplications(
+            final Callback<SuccessGson<ApplicationsDataGson>> callback
+    ) {
+        getRetrofitService().getDealershipApplications().enqueue(callback);
     }
 
     public void getListings(
@@ -229,6 +320,13 @@ public class RoadReadyServer extends RetrofitFacade {
         getRetrofitService().updateUserProfile(imagePart, fields).enqueue(callback);
     }
 
+    public void getUserProfile(
+            final Callback<SuccessGson<UserDataGson>> callback,
+            final String userId
+    ) {
+        getRetrofitService().getUserProfile(userId).enqueue(callback);
+    }
+
     public void registerBuyer(
             final Callback<SuccessGson<GsonData>> callback,
             final String email,
@@ -304,6 +402,13 @@ public class RoadReadyServer extends RetrofitFacade {
             final String code
     ) {
         getRetrofitService().verifyBuyerOTP(code).enqueue(callback);
+    }
+
+    public void getModeOfPayments(
+            final Callback<SuccessGson<ModeOfPaymentDataGson>> callback,
+            final String dealershipId
+    ) {
+        getRetrofitService().getModeOfPayments(dealershipId).enqueue(callback);
     }
 
     public void addCookies(Set<String> cookies) {
