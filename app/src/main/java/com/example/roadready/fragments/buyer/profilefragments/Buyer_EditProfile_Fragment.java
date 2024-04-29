@@ -105,7 +105,6 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
                     mainFacade.getUserGsonViewModel().setUserGsonLiveData(user);
                     mainFacade.getSessionManager().setUserGson(user);
                     hideProgressBar();
-
                 }
 
                 @Override
@@ -120,7 +119,6 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
 
         binding.bepBtnCancel.setOnClickListener(v -> {
             mainFacade.getMainActivity().getOnBackPressedDispatcher().onBackPressed();
-            //mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
         });
     }
 

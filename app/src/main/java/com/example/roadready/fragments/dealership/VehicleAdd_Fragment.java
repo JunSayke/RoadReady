@@ -19,11 +19,7 @@ import com.example.roadready.classes.general.FileUtils;
 import com.example.roadready.classes.general.ImagePicker;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
-import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
-import com.example.roadready.classes.model.gson.UserDataGson;
-import com.example.roadready.classes.model.gson.data.UserGson;
-import com.example.roadready.classes.model.gson.data.VehicleGson;
 import com.example.roadready.databinding.FragmentDealershipVehicleAddBinding;
 
 import java.io.File;
@@ -33,6 +29,7 @@ public class VehicleAdd_Fragment extends Fragment implements ImagePicker.OnImage
 	private FragmentDealershipVehicleAddBinding binding; // use View binding to avoid using too much findViewById
 	private MainFacade mainFacade;
 	private ImagePicker imagePicker;
+	private Uri imageData;
 	public View onCreateView(@NonNull LayoutInflater inflater,
 							 ViewGroup container, Bundle savedInstanceState) {
 
@@ -66,6 +63,8 @@ public class VehicleAdd_Fragment extends Fragment implements ImagePicker.OnImage
 	private void initActions() {
 		createSpinner();
 
+		binding.addBtnBack.setOnClickListener(v -> mainFacade.getDealershipMyVehicleNavController().navigate(R.id.action_vehicleAdd_Fragment_to_myVehicles_Fragment));
+
 		binding.addBtnUpload.setOnClickListener(v -> {
 			imagePicker.selectImage(this);
 		});
@@ -74,7 +73,7 @@ public class VehicleAdd_Fragment extends Fragment implements ImagePicker.OnImage
 		binding.addBtnAddVehicle.setOnClickListener(v -> {
 			showProgressBar();
 
-			File listingImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.hp_iv_civic, "listing_image.png");
+			File listingImageFile = FileUtils.uriToFile(requireContext(), imageData);
 			String modelAndName = String.valueOf(binding.addInptModelName.getText());
 			String make = String.valueOf(binding.addInptMake.getText());
 			String fuelType = String.valueOf(binding.addInptFuelType.getText());
@@ -124,9 +123,10 @@ public class VehicleAdd_Fragment extends Fragment implements ImagePicker.OnImage
 	}
 
 	@Override
-	public void onImageSelected(Uri imageData) {
-		if(imageData != null) {
-			binding.addInptUpload.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), imageData));
+	public void onImageSelected(Uri uri) {
+		if(uri != null) {
+			binding.addInptUpload.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), uri));
+			imageData = uri;
 		} else {
 			mainFacade.makeToast("Image selection canceled", Toast.LENGTH_SHORT);
 		}

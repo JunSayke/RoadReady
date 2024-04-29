@@ -11,8 +11,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 
 import com.example.roadready.activity.MainActivity;
+import com.example.roadready.classes.model.gson.ApplicationDataGson;
+import com.example.roadready.classes.model.gson.ApplicationsDataGson;
+import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
+import com.example.roadready.classes.model.gson.ModeOfPaymentDataGson;
+import com.example.roadready.classes.model.gson.NotificationsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
@@ -24,7 +29,9 @@ import java.io.File;
 import java.util.Set;
 
 public class MainFacade {
+    private static final MainFacade mainFacade = new MainFacade(null);
     private static FragmentActivity mainActivity;
+    private final RoadReadyServer server = new RoadReadyServer();
     private ActivityCommonMainBinding mainBinding;
     private NavController currentNavController, buyerHomepageNavController, commonMainNavController,
             buyerHomeNavController, buyerApplicationNavController, buyerMyVehicleNavController,
@@ -34,8 +41,12 @@ public class MainFacade {
             dealershipProfileNavController;
     private UserGsonViewModelFactory userGsonViewModelFactory;
     private SessionManager sessionManager;
-    private final RoadReadyServer server = new RoadReadyServer();
-    private static final MainFacade mainFacade = new MainFacade(null);
+
+    private MainFacade(@Nullable MainActivity mainActivity) {
+        if (mainActivity != null) {
+            setMainActivity(mainActivity);
+        }
+    }
 
     public static synchronized MainFacade getInstance(MainActivity mainActivity) {
         mainFacade.setMainActivity(mainActivity);
@@ -49,12 +60,6 @@ public class MainFacade {
         return mainFacade;
     }
 
-    private MainFacade(@Nullable MainActivity mainActivity) {
-        if (mainActivity != null) {
-            setMainActivity(mainActivity);
-        }
-    }
-
     public FragmentActivity getMainActivity() {
         return mainActivity;
     }
@@ -63,6 +68,7 @@ public class MainFacade {
         MainFacade.mainActivity = mainActivity;
         sessionManager = new SessionManager(mainActivity.getApplicationContext());
         userGsonViewModelFactory = new UserGsonViewModelFactory(mainActivity.getApplicationContext());
+
 
         Set<String> PREF_COOKIES = sessionManager.getCookies();
         if (!PREF_COOKIES.isEmpty()) {
@@ -246,6 +252,211 @@ public class MainFacade {
         server.login(RoadReadyServer.getCallback(responseListener), email, password);
     }
 
+    public void getDealerships(
+            final RoadReadyServer.ResponseListener<DealershipsDataGson> responseListener,
+            @Nullable final String dealershipId,
+            @Nullable final String dealershipName
+    ) {
+        server.getDealerships(RoadReadyServer.getCallback(responseListener), dealershipId, dealershipName);
+    }
+
+    public void applyCashForListing(
+            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final String listingId,
+            final String firstName,
+            final String lastName,
+            final String address,
+            final String phoneNumber,
+            final File validIdImage,
+            final File signatureImage,
+            final String cashModeOfPayment
+    ) {
+        applyForListing(
+                responseListener,
+                "cash",
+                listingId,
+                firstName,
+                lastName,
+                address,
+                phoneNumber,
+                validIdImage,
+                signatureImage,
+                cashModeOfPayment,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
+    public void applyInHouseFinanceListing(
+            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final String listingId,
+            final String firstName,
+            final String lastName,
+            final String address,
+            final String phoneNumber,
+            final File validIdImage,
+            final File signatureImage,
+            final @Nullable String coMakerFirstName,
+            final @Nullable String coMakerLastName,
+            final @Nullable String coMakerAddress,
+            final @Nullable String coMakerPhoneNumber,
+            final @Nullable File coMakerValidIdImage,
+            final @Nullable File coMakerSignatureImage
+    ) {
+        applyForListing(
+                responseListener,
+                "inhouseFinance",
+                listingId,
+                firstName,
+                lastName,
+                address,
+                phoneNumber,
+                validIdImage,
+                signatureImage,
+                null,
+                coMakerFirstName,
+                coMakerLastName,
+                coMakerAddress,
+                coMakerPhoneNumber,
+                coMakerValidIdImage,
+                coMakerSignatureImage,
+                null
+        );
+    }
+
+    public void applyBankLoanDealershipBankChoiceListing(
+            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final String listingId,
+            final String firstName,
+            final String lastName,
+            final String address,
+            final String phoneNumber,
+            final File validIdImage,
+            final File signatureImage,
+            final File bankCertificateImage
+    ) {
+        applyForListing(
+                responseListener,
+                "bankLoan(dealershipBankChoice)",
+                listingId,
+                firstName,
+                lastName,
+                address,
+                phoneNumber,
+                validIdImage,
+                signatureImage,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                bankCertificateImage
+        );
+    }
+
+    public void applyBankLoanBuyerBankChoiceListing(
+            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final String listingId,
+            final String firstName,
+            final String lastName,
+            final String address,
+            final String phoneNumber,
+            final File validIdImage,
+            final File signatureImage,
+            final File bankCertificateImage
+    ) {
+        applyForListing(
+                responseListener,
+                "bankLoan(buyerBankChoice)",
+                listingId,
+                firstName,
+                lastName,
+                address,
+                phoneNumber,
+                validIdImage,
+                signatureImage,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                bankCertificateImage
+        );
+    }
+
+    public void applyForListing(
+            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final String modeOfPayment,
+            final String listingId,
+            final String firstName,
+            final String lastName,
+            final String address,
+            final String phoneNumber,
+            final File validIdImage,
+            final File signatureImage,
+            final @Nullable String cashModeOfPayment,
+            final @Nullable String coMakerFirstName,
+            final @Nullable String coMakerLastName,
+            final @Nullable String coMakerAddress,
+            final @Nullable String coMakerPhoneNumber,
+            final @Nullable File coMakerValidIdImage,
+            final @Nullable File coMakerSignatureImage,
+            final @Nullable File bankCertificateImage
+    ) {
+        server.applyForListing(
+                RoadReadyServer.getCallback(responseListener),
+                modeOfPayment,
+                listingId,
+                firstName,
+                lastName,
+                address,
+                phoneNumber,
+                validIdImage,
+                signatureImage,
+                cashModeOfPayment,
+                coMakerFirstName,
+                coMakerLastName,
+                coMakerAddress,
+                coMakerPhoneNumber,
+                coMakerValidIdImage,
+                coMakerSignatureImage,
+                bankCertificateImage
+        );
+    }
+
+    // Logged user must be of role "dealershipAgent" based on the web (JAKE) idk anymore.
+    public void updateApplication(
+            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final String applicationType,
+            final String applicationId,
+            final int progress
+    ) {
+        server.updateApplication(RoadReadyServer.getCallback(responseListener), applicationType, applicationId, progress);
+    }
+
+    // Logged user must be a buyer
+    public void getBuyerApplications(
+            final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener
+    ) {
+        server.getBuyerApplications(RoadReadyServer.getCallback(responseListener));
+    }
+
+    // Logged user must be a dealership
+    public void getDealershipApplications(
+            final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener
+    ) {
+        server.getDealershipApplications(RoadReadyServer.getCallback(responseListener));
+    }
+
     public void registerBuyer(
             final RoadReadyServer.ResponseListener<GsonData> responseListener,
             final String email,
@@ -299,6 +510,13 @@ public class MainFacade {
             @Nullable final String address
     ) {
         server.updateDealershipProfile(RoadReadyServer.getCallback(responseListener), profileImage, firstName, lastName, phoneNumber, gender, address);
+    }
+
+    public void getUserProfile(
+            final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
+            final String userId
+    ) {
+        server.getUserProfile(RoadReadyServer.getCallback(responseListener), userId);
     }
 
     public void getListings(
@@ -370,20 +588,42 @@ public class MainFacade {
     }
 
     public void verifyBuyerOTP(
-        final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
-        final String code
+            final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
+            final String code
     ) {
         server.verifyBuyerOTP(RoadReadyServer.getCallback(responseListener), code);
+    }
+
+    public void getModeOfPayments(
+            final RoadReadyServer.ResponseListener<ModeOfPaymentDataGson> responseListener,
+            final String dealershipId
+    ) {
+        server.getModeOfPayments(RoadReadyServer.getCallback(responseListener), dealershipId);
+    }
+
+    // Automatically get the logged in user notification.
+    public void getNotification(
+            final RoadReadyServer.ResponseListener<NotificationsDataGson> responseListener
+    ) {
+        server.getNotifications(RoadReadyServer.getCallback(responseListener));
+    }
+
+    public void deleteNotification(
+            final RoadReadyServer.ResponseListener<GsonData> responseListener,
+            final String notificationId
+    ) {
+        server.deleteNotification(RoadReadyServer.getCallback(responseListener), notificationId);
     }
 
     // END_OF[Session & Server]
 
     // Others
-    public void restrictButton(Button btn){
+    public void restrictButton(Button btn) {
         btn.setEnabled(false);
         btn.setAlpha(0.2F);
     }
-    public void restrictImageButton(ImageButton btn){
+
+    public void restrictImageButton(ImageButton btn) {
         btn.setEnabled(false);
         btn.setAlpha(0.2F);
     }

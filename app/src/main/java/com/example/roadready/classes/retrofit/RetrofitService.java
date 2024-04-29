@@ -2,9 +2,13 @@ package com.example.roadready.classes.retrofit;
 
 import androidx.annotation.Nullable;
 
+import com.example.roadready.classes.model.gson.ApplicationDataGson;
+import com.example.roadready.classes.model.gson.ApplicationsDataGson;
 import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
+import com.example.roadready.classes.model.gson.ModeOfPaymentDataGson;
+import com.example.roadready.classes.model.gson.NotificationsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.response.SuccessGson;
@@ -19,11 +23,13 @@ import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 
 public interface RetrofitService {
@@ -54,10 +60,40 @@ public interface RetrofitService {
             @PartMap Map<String, RequestBody> fields
     );
 
+    @GET("user/profile")
+    Call<SuccessGson<UserDataGson>> getUserProfile(
+            @Query("user_id") String userId
+    );
+
     @GET("dealerships")
     Call<SuccessGson<DealershipsDataGson>> getDealerships(
             @QueryMap Map<String, String> filters
     );
+
+    @Multipart
+    @POST("buyer/listings/apply")
+    Call<SuccessGson<ApplicationDataGson>> applyForListing(
+            @Part("validId") MultipartBody.Part validIdImage,
+            @Part("signature") MultipartBody.Part signatureImage,
+            @Part("coMakerValidId") @Nullable MultipartBody.Part coMakerValidIdImage,
+            @Part("coMakerSignature") @Nullable MultipartBody.Part coMakerSignatureImage,
+            @Part("bankCertificate") @Nullable MultipartBody.Part backCertificateImage,
+            @PartMap Map<String, RequestBody> fields
+    );
+
+    @FormUrlEncoded
+    @PUT("agent/application")
+    Call<SuccessGson<ApplicationDataGson>> updateApplication(
+            @Field("applicationType") String applicationType,
+            @Field("applicationId") String applicationId,
+            @Field("progress") int progress
+    );
+
+    @GET("buyer/applications")
+    Call<SuccessGson<ApplicationsDataGson>> getBuyerApplications();
+
+    @GET("dealership/applications")
+    Call<SuccessGson<ApplicationsDataGson>> getDealershipApplications();
 
     @GET("dealership/listings")
     Call<SuccessGson<ListingsDataGson>> getListings(
@@ -72,7 +108,7 @@ public interface RetrofitService {
     );
 
     @FormUrlEncoded
-    @DELETE("manager/listings")
+    @HTTP(method = "DELETE", path = "manager/listings", hasBody = true)
     Call<SuccessGson<GsonData>> deleteListing(
             @Field("listingId") String listingId
     );
@@ -96,5 +132,17 @@ public interface RetrofitService {
             @Field("code") String code
     );
 
-    // TODO: Apply Listings
+    @GET("dealership/modeofpayments")
+    Call<SuccessGson<ModeOfPaymentDataGson>> getModeOfPayments(
+        @Query("dealership_id") String dealershipId
+    );
+
+    @GET("user/notifications")
+    Call<SuccessGson<NotificationsDataGson>> getNotification();
+
+    @FormUrlEncoded
+    @DELETE("user/notifications")
+    Call<SuccessGson<GsonData>> deleteNotification(
+            @Field("notificationId") String notificationId
+    );
 }

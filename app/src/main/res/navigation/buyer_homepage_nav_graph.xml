@@ -14,7 +14,11 @@
         android:id="@+id/mnHome"
         android:name="com.example.roadready.fragments.buyer.mainnav.HomeContainer_Fragment"
         android:label="fragment_home_container"
-        tools:layout="@layout/fragment_buyer_home_container" />
+        tools:layout="@layout/fragment_buyer_home_container" >
+        <action
+            android:id="@+id/action_mnHome_to_verification_Fragment"
+            app:destination="@id/verification_Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/mnMyVehicle"
         android:name="com.example.roadready.fragments.buyer.mainnav.MyVehicleContainer_Fragment"
@@ -30,4 +34,13 @@
         android:name="com.example.roadready.fragments.buyer.mainnav.ProfileContainer_Fragment"
         android:label="fragment_profile_container"
         tools:layout="@layout/fragment_buyer_profile_container" />
+    <fragment
+        android:id="@+id/verification_Fragment"
+        android:name="com.example.roadready.fragments.common.Verification_Fragment"
+        android:label="fragment_common_verification"
+        tools:layout="@layout/fragment_common_verification" >
+        <action
+            android:id="@+id/action_verification_Fragment_to_mnHome"
+            app:destination="@id/mnHome" />
+    </fragment>
 </navigation>

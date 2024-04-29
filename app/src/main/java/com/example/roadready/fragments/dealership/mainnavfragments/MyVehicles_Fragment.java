@@ -16,15 +16,14 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
-import com.example.roadready.classes.ui.adapter.ListingsRecyclerViewAdapter;
+import com.example.roadready.classes.ui.adapter.DealershipListingsRecyclerViewAdapter;
 import com.example.roadready.databinding.FragmentDealershipMyvehiclesBinding;
-import com.example.roadready.fragments.buyer.home.BuyerHome_FragmentDirections;
-
 
 public class MyVehicles_Fragment extends Fragment {
 	private final String TAG = "MyVehicles_Fragment"; // declare TAG for each class for debugging purposes using Log.d()
 	private FragmentDealershipMyvehiclesBinding binding; // use View binding to avoid using too much findViewById
 	private MainFacade mainFacade;
+	private UserGson userGson;
 
 	public View onCreateView(@NonNull LayoutInflater inflater,
 							 ViewGroup container, Bundle savedInstanceState) {
@@ -38,11 +37,12 @@ public class MyVehicles_Fragment extends Fragment {
 			throw new RuntimeException(e);
 		}
 
-		UserGson userGson = mainFacade.getSessionManager().getUserGson();
-		if(!userGson.isApproved()) {
+		userGson = mainFacade.getSessionManager().getUserGson();
+		if(!userGson.getIsApproved()) {
 			mainFacade.restrictImageButton(binding.mvBtnAddVehicle);
 			mainFacade.restrictImageButton(binding.mvBtnRemoveVehicle);
 		}
+		binding.mvTxtTitle.setText(userGson.getDealership().getName());
 
 		return root;
 	}
@@ -50,18 +50,17 @@ public class MyVehicles_Fragment extends Fragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-
 		final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
 			@Override
 			public void onSuccess(ListingsDataGson data) {
-				binding.mvContainerVehicleList.setAdapter(new ListingsRecyclerViewAdapter(
+				binding.mvContainerVehicleList.setAdapter(new DealershipListingsRecyclerViewAdapter(
 						mainFacade.getMainActivity().getApplicationContext(),
 						data.getListings(),
 						itemId -> {
-							BuyerHome_FragmentDirections.ActionBuyerHomepageFragmentToSelectingCarFragment action =
-									BuyerHome_FragmentDirections.actionBuyerHomepageFragmentToSelectingCarFragment();
+							MyVehicles_FragmentDirections.ActionMyVehiclesFragmentToVehicleListingFragment action =
+									MyVehicles_FragmentDirections.actionMyVehiclesFragmentToVehicleListingFragment();
 							action.setModelId(itemId);
-							mainFacade.getDealershipHomepageNavController().navigate(action);
+							mainFacade.getDealershipMyVehicleNavController().navigate(action);
 						}));
 				binding.mvContainerVehicleList.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
 			}
@@ -71,6 +70,8 @@ public class MyVehicles_Fragment extends Fragment {
 				mainFacade.makeToast(message, Toast.LENGTH_SHORT);
 			}
 		};
+
+		mainFacade.getListings(responseListener, null, userGson.getDealership().getId(), null);
 
 		initActions();
 	}
