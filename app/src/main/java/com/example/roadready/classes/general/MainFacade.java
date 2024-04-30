@@ -301,12 +301,12 @@ public class MainFacade {
             final String phoneNumber,
             final File validIdImage,
             final File signatureImage,
-            final @Nullable String coMakerFirstName,
-            final @Nullable String coMakerLastName,
-            final @Nullable String coMakerAddress,
-            final @Nullable String coMakerPhoneNumber,
-            final @Nullable File coMakerValidIdImage,
-            final @Nullable File coMakerSignatureImage
+            final String coMakerFirstName,
+            final String coMakerLastName,
+            final String coMakerAddress,
+            final String coMakerPhoneNumber,
+            final File coMakerValidIdImage,
+            final File coMakerSignatureImage
     ) {
         applyForListing(
                 responseListener,
@@ -337,8 +337,7 @@ public class MainFacade {
             final String address,
             final String phoneNumber,
             final File validIdImage,
-            final File signatureImage,
-            final File bankCertificateImage
+            final File signatureImage
     ) {
         applyForListing(
                 responseListener,
@@ -357,7 +356,7 @@ public class MainFacade {
                 null,
                 null,
                 null,
-                bankCertificateImage
+                null
         );
     }
 

@@ -26,18 +26,20 @@
 			android:textStyle="bold" />
 
 		<TextView
-			android:id="@+id/textView3"
+			android:id="@+id/mvTxtListingCount"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:gravity="center_horizontal"
-			android:text="No Vehicles"
-			android:textSize="24sp" />
+			android:text="No Vehicles Added"
+			android:textSize="24sp"
+			android:visibility="gone" />
 
 		<ScrollView
 			android:id="@+id/mvSVVehicleList"
 			android:layout_width="wrap_content"
 			android:layout_height="0dp"
 			android:layout_gravity="center_horizontal"
+			android:layout_margin="10dp"
 			android:layout_weight="1"
 			android:background="@color/white">
 
@@ -54,78 +56,34 @@
 	</LinearLayout>
 
 	<androidx.constraintlayout.widget.ConstraintLayout
-		android:id="@+id/mvContainerVehicleButtons"
+		android:id="@+id/mvContainerAddVehicle"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_gravity="center_horizontal"
-		android:background="@color/white">
+		android:layout_gravity="center"
+		android:padding="10dp">
 
-
-		<androidx.constraintlayout.widget.ConstraintLayout
-			android:id="@+id/mvContainerAddVehicle"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginStart="100dp"
-			app:layout_constraintStart_toEndOf="@+id/mvContainerRemoveVehicle"
-			app:layout_constraintTop_toTopOf="parent">
-
-			<ImageButton
-				android:id="@+id/mvBtnAddVehicle"
-				android:layout_width="58dp"
-				android:layout_height="58dp"
-				android:background="?android:selectableItemBackground"
-				android:contentDescription="mv_iv_addvehicle"
-				android:src="@drawable/mv_iv_addvehicle"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-
-			<TextView
-				android:id="@+id/mvTxtAddVehicle"
-				android:layout_width="101.6dp"
-				android:layout_height="23.6dp"
-				android:gravity="center"
-				android:text="@string/text_add_vehicle"
-				android:textSize="16sp"
-				android:textStyle="bold"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/mvBtnAddVehicle" />
-
-		</androidx.constraintlayout.widget.ConstraintLayout>
-
-
-		<androidx.constraintlayout.widget.ConstraintLayout
-			android:id="@+id/mvContainerRemoveVehicle"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+		<ImageButton
+			android:id="@+id/mvBtnAddVehicle"
+			android:layout_width="58dp"
+			android:layout_height="58dp"
+			android:background="?android:selectableItemBackground"
+			android:contentDescription="mv_iv_addvehicle"
+			android:src="@drawable/mv_iv_addvehicle"
+			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent">
+			app:layout_constraintTop_toTopOf="parent" />
 
-			<ImageButton
-				android:id="@+id/mvBtnRemoveVehicle"
-				android:layout_width="58dp"
-				android:layout_height="58dp"
-				android:background="?android:selectableItemBackground"
-				android:contentDescription="mv_iv_removevehicle"
-				android:src="@drawable/mv_iv_removevehicle"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="parent" />
-
-			<TextView
-				android:id="@+id/mvTxtRemoveVehicle"
-				android:layout_width="130.6dp"
-				android:layout_height="23.6dp"
-				android:gravity="center"
-				android:text="@string/text_remove_vehicle"
-				android:textSize="16sp"
-				android:textStyle="bold"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/mvBtnRemoveVehicle" />
-
-		</androidx.constraintlayout.widget.ConstraintLayout>
+		<TextView
+			android:id="@+id/mvTxtAddVehicle"
+			android:layout_width="101.6dp"
+			android:layout_height="23.6dp"
+			android:gravity="center"
+			android:text="@string/text_add_vehicle"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/mvBtnAddVehicle" />
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 

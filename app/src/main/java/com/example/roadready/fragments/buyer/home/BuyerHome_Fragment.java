@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
-import com.example.roadready.classes.ui.adapter.BuyerListingsRecyclerViewAdapter;
+import com.example.roadready.classes.ui.adapter.BuyerVehicleListingsRecyclerViewAdapter;
 import com.example.roadready.databinding.FragmentBuyerHomeBinding;
 
 public class BuyerHome_Fragment extends Fragment {
@@ -44,7 +44,7 @@ public class BuyerHome_Fragment extends Fragment {
         final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
             @Override
             public void onSuccess(ListingsDataGson data) {
-                binding.bhSVItems.setAdapter(new BuyerListingsRecyclerViewAdapter(
+                binding.bhSVItems.setAdapter(new BuyerVehicleListingsRecyclerViewAdapter(
                         mainFacade.getMainActivity().getApplicationContext(),
                         data.getListings(),
                         itemId -> {

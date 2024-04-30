@@ -30,7 +30,6 @@ public class HomepageContainer_Fragment extends Fragment {
     private BottomNavigationView bottomNavigationView;
     private MainFacade mainFacade;
     private boolean isApproved = false;
-    private Button btnVerification;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -72,6 +71,8 @@ public class HomepageContainer_Fragment extends Fragment {
                 mainFacade.getMainActivity().findViewById(R.id.bhTextVerifcation).setVisibility(View.VISIBLE);
                 mainFacade.getMainActivity().findViewById(R.id.bhBtnVerify).setVisibility(View.VISIBLE);
                 isApproved = false;
+            }else{
+                isApproved = true;
             }
         });
 

@@ -1,74 +1,31 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nSVNotificationList"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/nContainerNotifications"
+    <TextView
+        android:id="@+id/nTxtNotificationCount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginTop="30dp"
+        android:gravity="center_horizontal"
+        android:text="No Notifications"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nContainerNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/listings_common_notifications">
 
-        <LinearLayout
-            android:id="@+id/nContainerList1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/border_rounded_notification_red"
-            android:padding="15dp">
+    </androidx.recyclerview.widget.RecyclerView>
 
-            <TextView
-                android:id="@+id/nTxtContent1"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="Bank has decline application for 322630420"
-                android:textSize="14sp"
-                tools:text="notification_placeholder" />
-
-            <TextView
-                android:id="@+id/nTxtDate1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:text="11/11/2099"
-                tools:text="date_placeholder" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/nContainList2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="6dp"
-            android:background="@drawable/border_rounded_notification_green"
-            android:padding="15dp">
-
-            <TextView
-                android:id="@+id/nTxtContent2"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="Buyer 293021423 has submitted an application"
-                android:textSize="14sp"
-                tools:text="notification_placeholder" />
-
-            <TextView
-                android:id="@+id/nTxtDate2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:text="11/11/2099"
-                tools:text="date_placeholder" />
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
