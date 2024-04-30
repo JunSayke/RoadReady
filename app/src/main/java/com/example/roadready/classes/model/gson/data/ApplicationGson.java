@@ -42,6 +42,8 @@ public class ApplicationGson extends GsonData {
     private String createdAt;
     @SerializedName("updatedat")
     private String updatedAt;
+    @SerializedName("applicaionpdf")
+    private String applicationPdfUrl;
 
     public String getId() {
         return id;
@@ -125,5 +127,9 @@ public class ApplicationGson extends GsonData {
 
     public String getUpdatedAt() {
         return updatedAt;
+    }
+
+    public String getApplicationPdfUrl() {
+        return applicationPdfUrl;
     }
 }
