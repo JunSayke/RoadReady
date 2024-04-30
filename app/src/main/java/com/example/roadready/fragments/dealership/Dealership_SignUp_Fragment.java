@@ -202,6 +202,7 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
         String longitude = String.valueOf(coordList.get(1));
         String modeOfPayments = getmodeOfPayments();
 
+
         //TODO: Validations
 
         final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {

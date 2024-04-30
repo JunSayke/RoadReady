@@ -10,22 +10,6 @@
     android:orientation="vertical"
     tools:context=".fragments.buyer.profilefragments.Buyer_Profile_Fragment">
 
-    <TextView
-        android:id="@+id/bpTitleContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/text_profile"
-        android:textAlignment="center"
-        android:textSize="34sp" />
-
-    <ImageView
-        android:id="@+id/bpImageLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/line"
-        tools:srcCompat="@drawable/line" />
-
     <LinearLayout
         android:id="@+id/bpContainerUserContent"
         android:layout_width="match_parent"

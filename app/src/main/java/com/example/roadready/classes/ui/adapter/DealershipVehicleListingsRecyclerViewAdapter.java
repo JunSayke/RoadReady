@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,12 +17,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class BuyerListingsRecyclerViewAdapter extends RecyclerView.Adapter<BuyerListingsRecyclerViewAdapter.ViewHolder> {
+public class DealershipVehicleListingsRecyclerViewAdapter extends RecyclerView.Adapter<DealershipVehicleListingsRecyclerViewAdapter.ViewHolder> {
     private final Context context;
     private final List<VehicleGson> vehicleGsonList;
-    private final OnItemClickListener onItemClickListener;
+    private final DealershipVehicleListingsRecyclerViewAdapter.OnItemClickListener onItemClickListener;
 
-    public BuyerListingsRecyclerViewAdapter(Context context, List<VehicleGson> vehicleGsonList, OnItemClickListener listener) {
+    public DealershipVehicleListingsRecyclerViewAdapter(Context context, List<VehicleGson> vehicleGsonList, DealershipVehicleListingsRecyclerViewAdapter.OnItemClickListener listener) {
         this.context = context;
         this.vehicleGsonList = vehicleGsonList;
         this.onItemClickListener = listener;
@@ -30,17 +30,16 @@ public class BuyerListingsRecyclerViewAdapter extends RecyclerView.Adapter<Buyer
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listings_buyer_vehicle, parent, false);
-        return new ViewHolder(view);
+    public DealershipVehicleListingsRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listings_dealership_vehicle, parent, false);
+        return new DealershipVehicleListingsRecyclerViewAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull DealershipVehicleListingsRecyclerViewAdapter.ViewHolder holder, int position) {
         VehicleGson model = vehicleGsonList.get(position);
         Picasso.get().load(model.getImage()).into(holder.getVehicleImage());
         holder.getVehicleName().setText(model.getModelAndName());
-        holder.getVehicleDesc().setText(model.getDealershipGson().getName());
     }
 
     @Override
@@ -55,15 +54,13 @@ public class BuyerListingsRecyclerViewAdapter extends RecyclerView.Adapter<Buyer
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView vehicleImage;
         private final TextView vehicleName;
-        private final TextView vehicleDesc;
-        private final Button btnSelect;
+        private final ImageButton btnDelete;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             vehicleImage = itemView.findViewById(R.id.bhVehicleImage);
             vehicleName = itemView.findViewById(R.id.bhVehicleName);
-            vehicleDesc = itemView.findViewById(R.id.bhVehicleDesc);
-            btnSelect = itemView.findViewById(R.id.bhBtnSelect);
-            btnSelect.setOnClickListener(v -> {
+            btnDelete = itemView.findViewById(R.id.bhBtnDelete);
+            btnDelete.setOnClickListener(v -> {
                 int position = getBindingAdapterPosition();
                 if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
                     onItemClickListener.onItemClick(vehicleGsonList.get(position).getId());
@@ -79,12 +76,8 @@ public class BuyerListingsRecyclerViewAdapter extends RecyclerView.Adapter<Buyer
             return vehicleName;
         }
 
-        public TextView getVehicleDesc() {
-            return vehicleDesc;
-        }
-
-        public Button getBtnSelect() {
-            return btnSelect;
+        public ImageButton getBtnDelete() {
+            return btnDelete;
         }
     }
 }

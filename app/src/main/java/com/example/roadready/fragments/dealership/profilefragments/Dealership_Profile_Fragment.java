@@ -14,7 +14,9 @@ import androidx.fragment.app.Fragment;
 import com.example.roadready.R;
 import com.example.roadready.activity.MainActivity;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.util.CircleTransform;
 import com.example.roadready.databinding.FragmentDealershipProfileBinding;
+import com.squareup.picasso.Picasso;
 
 public class Dealership_Profile_Fragment extends Fragment {
     private final String TAG = "Profile_Fragment";
@@ -42,6 +44,12 @@ public class Dealership_Profile_Fragment extends Fragment {
             binding.bpInptSex.setText(dealershipGson.getGender());
             binding.bpInptLongitudeId.setText(dealershipGson.getDealership().getLongitude());
             binding.bpInptLatitudeId.setText(dealershipGson.getDealership().getLatitude());
+            Picasso.get()
+                    .load(dealershipGson.getProfileImageUrl())
+                    .transform(new CircleTransform())
+                    .placeholder(R.drawable.default_user_icon)
+                    .error(R.drawable.app_ib_cancel)
+                    .into(binding.bpImageUserIcon);
         });
 
         return root;

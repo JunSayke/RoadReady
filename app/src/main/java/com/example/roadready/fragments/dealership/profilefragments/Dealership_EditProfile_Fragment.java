@@ -25,9 +25,14 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.util.CircleTransform;
 import com.example.roadready.databinding.FragmentDealershipEditProfileBinding;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Dealership_EditProfile_Fragment extends Fragment implements ImagePicker.OnImageSelectedListener {
     private final String TAG = "EditProfile_Fragment";
@@ -35,6 +40,8 @@ public class Dealership_EditProfile_Fragment extends Fragment implements ImagePi
     private ActivityResultLauncher<Intent> mapResultLauncher;
     private MainFacade mainFacade;
     private ImagePicker imagePicker;
+
+    private Uri imageData;
 
     @Nullable
     @Override
@@ -48,6 +55,14 @@ public class Dealership_EditProfile_Fragment extends Fragment implements ImagePi
             throw new RuntimeException(e);
         }
 
+        mainFacade.getUserGsonViewModel().getUserGsonLiveData().observe(getViewLifecycleOwner(), dealershipGson -> {
+            Picasso.get()
+                    .load(dealershipGson.getProfileImageUrl())
+                    .transform(new CircleTransform())
+                    .placeholder(R.drawable.default_user_icon)
+                    .error(R.drawable.app_ib_cancel)
+                    .into(binding.bepImageUserIcon);
+        });
         initImagePicker();
 
         return root;
@@ -77,18 +92,18 @@ public class Dealership_EditProfile_Fragment extends Fragment implements ImagePi
         });
 
         binding.bepBtnSubmit.setOnClickListener(v -> {
+            List<String> coordList = checkCoords();
             showProgressBar();
 
             String firstName = String.valueOf(binding.bepInptFname.getText());
             String lastName = String.valueOf(binding.bepInptLname.getText());
             String email = String.valueOf(binding.bepInptEmail.getText());
-            String gender = "male";
+            String gender = null;
             String phoneNumber = String.valueOf(binding.bepInptPhone.getText());
             String address = String.valueOf(binding.bepInptAddress.getText());
-
-            File profileImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.hp_iv_civic, "profile_image.png");
-            // TODO: Validations, Longitude and Latitude, Valid ID
-            // TODO: Update once UpdateProfile in Manager in Postman is up
+            String latitude = String.valueOf(coordList.get(0));
+            String longitude = String.valueOf(coordList.get(1));
+            File profileImageFile = FileUtils.uriToFile(requireContext(), imageData);
 
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
                 @Override
@@ -111,7 +126,6 @@ public class Dealership_EditProfile_Fragment extends Fragment implements ImagePi
 
         binding.bepBtnCancel.setOnClickListener(v -> {
             mainFacade.getMainActivity().getOnBackPressedDispatcher().onBackPressed();
-            //mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
         });
     }
 
@@ -152,12 +166,37 @@ public class Dealership_EditProfile_Fragment extends Fragment implements ImagePi
     }
 
     @Override
-    public void onImageSelected(Uri imageData) {
-        if(imageData != null) {
-            binding.bepImageUserIcon.setImageURI(imageData);
-            binding.bepInptValidId.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), imageData));
+    public void onImageSelected(Uri uri) {
+        if(uri != null) {
+            Picasso.get()
+                    .load(uri)
+                    .transform(new CircleTransform())
+                    .placeholder(R.drawable.default_user_icon)
+                    .error(R.drawable.app_ib_cancel)
+                    .into(binding.bepImageUserIcon);
+            binding.bepInptValidId.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), uri));
+            imageData = uri;
         } else {
             mainFacade.makeToast("Image selection canceled", Toast.LENGTH_SHORT);
         }
+    }
+    private List<String> checkCoords(){
+        List<String> coordList = new ArrayList<>();
+        String coords = String.valueOf(binding.bepInptCoordinates.getText());
+        if(coords.contains(", ")) {
+            coordList = Arrays.asList(coords.split(", "));
+            if(Double.parseDouble(coordList.get(0)) < -90 && Double.parseDouble(coordList.get(0)) > 90){
+                coordList.set(0, "");
+            }
+            if(Double.parseDouble(coordList.get(0)) < -180 && Double.parseDouble(coordList.get(0)) > 180){
+                coordList.set(1, "");
+            }
+        }
+        else {
+            coordList.add("");
+            coordList.add("");
+        }
+
+        return coordList;
     }
 }

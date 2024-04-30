@@ -69,7 +69,6 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
         super.onViewCreated(view, savedInstanceState);
 
         initActions();
-        initMapResultLauncher();
     }
 
     @Override
@@ -79,10 +78,6 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
     }
 
     private void initActions() {
-        binding.bepBtnOpenMaps.setOnClickListener(v -> {
-            startGoogleMaps();
-        });
-
         binding.bepBtnUpload.setOnClickListener(v -> {
             imagePicker.selectImage(this);
         });
@@ -130,27 +125,6 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
     private void hideProgressBar() {
         binding.bepBtnSubmit.setEnabled(true);
         mainFacade.hideProgressBar();
-    }
-
-    private void startGoogleMaps() {
-        Intent intent = new Intent(mainFacade.getMainActivity().getApplicationContext(), GoogleMaps_Activity.class);
-        mapResultLauncher.launch(intent);
-    }
-
-    private void initMapResultLauncher() {
-        mapResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-
-            if (result.getResultCode() == Activity.RESULT_OK) {
-                Intent data = result.getData();
-                if (data != null) {
-                    double latitude = data.getDoubleExtra("latitude", 0);
-                    double longitude = data.getDoubleExtra("longitude", 0);
-
-                    String LongLatText = longitude + ", " + latitude;
-                    binding.bepInptCoordinates.setText(LongLatText);
-                }
-            }
-        });
     }
 
     private void initImagePicker() {

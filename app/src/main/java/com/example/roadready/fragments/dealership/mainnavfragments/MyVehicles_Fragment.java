@@ -1,6 +1,7 @@
 package com.example.roadready.fragments.dealership.mainnavfragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,14 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
-import com.example.roadready.classes.ui.adapter.DealershipListingsRecyclerViewAdapter;
+import com.example.roadready.classes.ui.adapter.DealershipVehicleListingsRecyclerViewAdapter;
 import com.example.roadready.databinding.FragmentDealershipMyvehiclesBinding;
 
 public class MyVehicles_Fragment extends Fragment {
 	private final String TAG = "MyVehicles_Fragment"; // declare TAG for each class for debugging purposes using Log.d()
 	private FragmentDealershipMyvehiclesBinding binding; // use View binding to avoid using too much findViewById
 	private MainFacade mainFacade;
+	private int listingCount;
 	private UserGson userGson;
 
 	public View onCreateView(@NonNull LayoutInflater inflater,
@@ -40,7 +42,6 @@ public class MyVehicles_Fragment extends Fragment {
 		userGson = mainFacade.getSessionManager().getUserGson();
 		if(!userGson.getIsApproved()) {
 			mainFacade.restrictImageButton(binding.mvBtnAddVehicle);
-			mainFacade.restrictImageButton(binding.mvBtnRemoveVehicle);
 		}
 		binding.mvTxtTitle.setText(userGson.getDealership().getName());
 
@@ -53,7 +54,7 @@ public class MyVehicles_Fragment extends Fragment {
 		final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
 			@Override
 			public void onSuccess(ListingsDataGson data) {
-				binding.mvContainerVehicleList.setAdapter(new DealershipListingsRecyclerViewAdapter(
+				binding.mvContainerVehicleList.setAdapter(new DealershipVehicleListingsRecyclerViewAdapter(
 						mainFacade.getMainActivity().getApplicationContext(),
 						data.getListings(),
 						itemId -> {
@@ -63,6 +64,9 @@ public class MyVehicles_Fragment extends Fragment {
 							mainFacade.getDealershipMyVehicleNavController().navigate(action);
 						}));
 				binding.mvContainerVehicleList.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+
+				listingCount = data.getListings().size();
+				setListingCount();
 			}
 
 			@Override
@@ -84,12 +88,15 @@ public class MyVehicles_Fragment extends Fragment {
 	}
 
 	private void initActions() {
-		binding.mvBtnRemoveVehicle.setOnClickListener(v -> {
-			mainFacade.makeToast("Trashcan visibility toggle", Toast.LENGTH_SHORT);
-		});
 		binding.mvBtnAddVehicle.setOnClickListener(v -> {
 			mainFacade.getDealershipMyVehicleNavController().navigate(R.id.action_myVehicles_Fragment_to_vehicleAdd_Fragment);
 		});
+	}
+
+	private void setListingCount() {
+		if(listingCount <= 0){
+			binding.mvTxtListingCount.setVisibility(View.VISIBLE);
+		}
 	}
 }
 	
