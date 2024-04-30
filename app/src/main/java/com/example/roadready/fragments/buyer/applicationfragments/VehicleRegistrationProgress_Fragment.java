@@ -88,7 +88,7 @@ public class VehicleRegistrationProgress_Fragment extends Fragment {
             if (child instanceof RelativeLayout) {
                 RelativeLayout rl = (RelativeLayout) child;
                 rl.removeAllViews();
-                ProgressBar pb = new ProgressBar(requireContext());
+                ProgressBar pb = new ProgressBar(mainFacade.getMainActivity().getApplicationContext());
                 pb.setIndeterminateTintList(ColorStateList.valueOf(Color.rgb(248, 31, 20)));
                 rl.addView(pb);
             }
@@ -102,7 +102,7 @@ public class VehicleRegistrationProgress_Fragment extends Fragment {
             if (child instanceof RelativeLayout) {
                 RelativeLayout rl = (RelativeLayout) child;
                 rl.removeAllViews();
-                ImageView iv = new ImageView(requireContext());
+                ImageView iv = new ImageView(mainFacade.getMainActivity().getApplicationContext());
                 iv.setImageResource(R.drawable.check_mark);
                 iv.setColorFilter(Color.rgb(32,244,14));
                 rl.addView(iv);
