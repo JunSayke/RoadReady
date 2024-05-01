@@ -33,8 +33,8 @@ public class ApplicationProgress_Fragment extends Fragment {
 
         UserGson userGson = mainFacade.getSessionManager().getUserGson();
         if(!userGson.getIsApproved()) {
-            mainFacade.restrictButton(binding.apBtnRegistrationProgress);
-            mainFacade.restrictButton(binding.apBtnVehicleAppProgress);
+//            mainFacade.restrictButton(binding.apBtnRegistrationProgress);
+//            mainFacade.restrictButton(binding.apBtnVehicleAppProgress);
         }
 
         return root;
@@ -54,12 +54,13 @@ public class ApplicationProgress_Fragment extends Fragment {
     }
 
     private void initActions() {
-        binding.apBtnRegistrationProgress.setOnClickListener(v -> {
-            mainFacade.getBuyerApplicationNavController().navigate(R.id.action_applicationProgress_Fragment_to_vehicleRegistrationProgress_Fragment);
-        });
-
-        binding.apBtnVehicleAppProgress.setOnClickListener(v -> {
-            mainFacade.getBuyerApplicationNavController().navigate(R.id.action_applicationProgress_Fragment_to_vehicleApplicationProgress_Fragment);
-        });
+        //TODO: Fix this pls
+//        binding.apBtnRegistrationProgress.setOnClickListener(v -> {
+//            mainFacade.getBuyerApplicationNavController().navigate(R.id.action_applicationProgress_Fragment_to_vehicleRegistrationProgress_Fragment);
+//        });
+//
+//        binding.apBtnVehicleAppProgress.setOnClickListener(v -> {
+//            mainFacade.getBuyerApplicationNavController().navigate(R.id.action_applicationProgress_Fragment_to_vehicleApplicationProgress_Fragment);
+//        });
     }
 }

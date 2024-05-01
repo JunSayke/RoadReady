@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:text="@string/text_your_documents_is_on_review"
+                android:text="null"
                 android:textColor="#9A9696" />
 
             <RelativeLayout
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="5dp"
-                android:text="@string/text_releasing_of_registration"
+                android:text="null"
                 android:textColor="#9A9696" />
 
             <RelativeLayout

@@ -203,8 +203,6 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
         String modeOfPayments = getmodeOfPayments();
 
 
-        //TODO: Validations
-
         final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
             @Override
             public void onSuccess(GsonData data) {

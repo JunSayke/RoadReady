@@ -1,0 +1,1022 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:gravity="center"
+android:orientation="vertical"
+tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragment">
+
+<TextView
+    android:id="@+id/dapTitleContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/text_application_progress"
+    android:textAlignment="center"
+    android:textSize="34sp" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginVertical="20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dapLblItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HILUX Conquest 2023"
+        android:textAlignment="center"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/dapImageItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/sgd_iv_conquest" />
+
+</LinearLayout>
+
+<LinearLayout
+    android:id="@+id/dapContainerBuyerChoice"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="gone"
+    tools:layout_editor_absoluteY="166dp">
+
+    <LinearLayout
+        android:id="@+id/dapBuyerChoice1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#20F40E"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_buyerchoice_tv_progress1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_bank_buyer_choice_1"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_buyerchoice_btn_confirm1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_buyerchoice_btn_cancel1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_buyerchoice_status_progress1"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_mark"
+                android:backgroundTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapBuyerChoice2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#20F40E"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_buyerchoice_tv_progress2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_bank_buyer_choice_2"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_buyerchoice_btn_doc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_view" />
+
+        <ImageButton
+            android:id="@+id/dap_buyerchoice_btn_confirm2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_buyerchoice_btn_cancel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_buyerchoice_status_progress2"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_mark"
+                android:backgroundTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapBuyerChoice3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#20F40E"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_buyerchoice_tv_progress3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_bank_buyer_choice_3"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_buyerchoice_btn_doc3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_view" />
+
+        <ImageButton
+            android:id="@+id/dap_buyerchoice_btn_confirm3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_buyerchoice_btn_cancel3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_buyerchoice_status_progress3"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_mark"
+                android:backgroundTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapBuyerChoice4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#F82114"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_buyerchoice_tv_progress4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_bank_buyer_choice_4"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_buyerchoice_btn_confirm4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_buyerchoice_btn_cancel4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_buyerchoice_tv_status4"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
+
+<LinearLayout
+    android:id="@+id/dapContainerDealershipChoice"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="gone"
+    tools:layout_editor_absoluteY="166dp">
+
+    <LinearLayout
+        android:id="@+id/dapDealershipChoice1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#20F40E"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_dealershipchoice_tv_progress1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_bank_dealership_choice_1"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_confirm1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_cancel1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_dealershipchoice_status_progress1"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_mark"
+                android:backgroundTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapDealershipChoice2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#20F40E"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_dealershipchoice_tv_progress2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_bank_dealership_choice_2"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_doc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_view" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_confirm2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_cancel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_dealershipchoice_status_progress2"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_mark"
+                android:backgroundTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapDealershipChoice3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#20F40E"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_dealershipchoice_tv_progress3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_bank_dealership_choice_3"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_doc3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_view" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_confirm3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_cancel3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_dealershipchoice_status_progress3"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_mark"
+                android:backgroundTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapDealershipChoice4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#F82114"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_dealershipchoice_tv_progress4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_bank_dealership_choice_4"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_confirm4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_cancel4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_dealershipchoice_tv_status4"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapDealershipChoice5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#F82114"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_dealershipchoice_tv_progress5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_bank_dealership_choice_5"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_confirm5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_cancel5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_dealershipchoice_tv_status5"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapDealershipChoice6"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#F82114"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_dealershipchoice_tv_progress6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_bank_dealership_choice_6"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_confirm6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_cancel6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_dealershipchoice_tv_status6"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapDealershipChoice7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#F82114"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_dealershipchoice_tv_progress7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_bank_dealership_choice_7"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_confirm7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_dealershipchoice_btn_cancel7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_dealershipchoice_tv_status7"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
+
+<LinearLayout
+    android:id="@+id/dapContainerCash"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="gone"
+    tools:layout_editor_absoluteY="166dp">
+
+    <LinearLayout
+        android:id="@+id/dapCash1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#20F40E"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_cash_tv_progress1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_tracker_cash_1"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_cash_btn_confirm1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_cash_btn_cancel1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_cash_status_progress1"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_mark"
+                android:backgroundTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapCash2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#20F40E"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_cash_tv_progress2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_tracker_cash_2"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_cash_btn_doc2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_view" />
+
+        <ImageButton
+            android:id="@+id/dap_cash_btn_confirm2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_cash_btn_cancel2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_cash_status_progress2"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_mark"
+                android:backgroundTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapCash3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#20F40E"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_cash_tv_progress3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_tracker_cash_3"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_cash_btn_confirm3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_cash_btn_cancel3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_cash_status_progress3"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_mark"
+                android:backgroundTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapCash4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="#F82114"
+        android:backgroundTintMode="add"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/dap_cash_tv_progress4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:text="@string/text_dealership_tracker_cash_4"
+            android:textColor="#9A9696" />
+
+        <ImageButton
+            android:id="@+id/dap_cash_btn_confirm4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_confirm" />
+
+        <ImageButton
+            android:id="@+id/dap_cash_btn_cancel4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:src="@drawable/fa_ib_cancel" />
+
+        <RelativeLayout
+            android:id="@+id/dap_cash_tv_status4"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="#20F40E" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dapContainerInhouse"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="166dp">
+
+        <LinearLayout
+            android:id="@+id/dapInhouse1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="#20F40E"
+            android:backgroundTintMode="add"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dap_inhouse_tv_progress1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/text_dealership_tracker_inhouse_1"
+                android:textColor="#9A9696" />
+
+            <ImageButton
+                android:id="@+id/dap_inhouse_btn_confirm1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/fa_ib_confirm" />
+
+            <ImageButton
+                android:id="@+id/dap_inhouse_btn_cancel1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/fa_ib_cancel" />
+
+            <RelativeLayout
+                android:id="@+id/dap_inhouse_status_progress1"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/check_mark"
+                    android:backgroundTint="#20F40E" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dapInhouse2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="#20F40E"
+            android:backgroundTintMode="add"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dap_inhouse_tv_progress2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/text_dealership_tracker_inhouse_2"
+                android:textColor="#9A9696" />
+
+            <ImageButton
+                android:id="@+id/dap_inhouse_btn_doc2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/fa_ib_view" />
+
+            <ImageButton
+                android:id="@+id/dap_inhouse_btn_confirm2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/fa_ib_confirm" />
+
+            <ImageButton
+                android:id="@+id/dap_inhouse_btn_cancel2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/fa_ib_cancel" />
+
+            <RelativeLayout
+                android:id="@+id/dap_inhouse_status_progress2"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/check_mark"
+                    android:backgroundTint="#20F40E" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dapInhouse3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="#20F40E"
+            android:backgroundTintMode="add"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dap_inhouse_tv_progress3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/text_dealership_tracker_inhouse_3"
+                android:textColor="#9A9696" />
+
+            <Button
+                android:id="@+id/ap_inhouse_btn_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/red"
+                android:text="Start now" />
+
+            <RelativeLayout
+                android:id="@+id/dap_inhouse_status_progress3"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/check_mark"
+                    android:backgroundTint="#20F40E" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dapInhouse4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/rectangle"
+            android:backgroundTint="#F82114"
+            android:backgroundTintMode="add"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dap_inhouse_tv_progress4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="@string/text_dealership_tracker_inhouse_4"
+                android:textColor="#9A9696" />
+
+            <ImageButton
+                android:id="@+id/dap_inhouse_btn_confirm4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/fa_ib_confirm" />
+
+            <ImageButton
+                android:id="@+id/dap_inhouse_btn_cancel4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:src="@drawable/fa_ib_cancel" />
+
+            <RelativeLayout
+                android:id="@+id/dap_inhouse_tv_status4"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:indeterminate="true"
+                    android:indeterminateTint="#20F40E" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

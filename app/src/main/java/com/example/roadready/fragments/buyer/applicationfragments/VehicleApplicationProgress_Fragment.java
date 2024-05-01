@@ -46,10 +46,10 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
     }
 
     private void initProgresses() {
-        setProcessState(ProcessState.PENDING, binding.apContainerStatus1);
-        setProcessState(ProcessState.PENDING, binding.apContainerStatus2);
-        setProcessState(ProcessState.PENDING, binding.apContainerStatus3);
-        setProcessState(ProcessState.PENDING, binding.apContainerStatus4);
+        setProcessState(ProcessState.PENDING, binding.apBuyerChoice1);
+        setProcessState(ProcessState.PENDING, binding.apBuyerChoice2);
+        setProcessState(ProcessState.PENDING, binding.apBuyerChoice3);
+        setProcessState(ProcessState.PENDING, binding.apBuyerChoice4);
     }
 
     private void startProcessTimer(long millisInFuture, long countDownInterval, LinearLayout container) {
@@ -109,10 +109,10 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        startProcessTimer(1000, 1000, binding.apContainerStatus1);
-        startProcessTimer(1500, 1000, binding.apContainerStatus2);
-        startProcessTimer(2700, 1000, binding.apContainerStatus3);
-        startProcessTimer(3800, 1000, binding.apContainerStatus4);
+        startProcessTimer(1000, 1000, binding.apBuyerChoice1);
+        startProcessTimer(1500, 1000, binding.apBuyerChoice2);
+        startProcessTimer(2700, 1000, binding.apBuyerChoice3);
+        startProcessTimer(3800, 1000, binding.apBuyerChoice4);
     }
 
     @Override

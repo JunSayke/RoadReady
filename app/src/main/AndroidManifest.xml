@@ -16,32 +16,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RoadReady"
         tools:targetApi="31">
+        <activity
+            android:name=".fragments.dealership.DealershipVehicleApplicationProgress_Fragment"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="R.string.maps_api_key" />
+
         <activity
             android:name=".activity.GoogleMaps_Activity"
             android:exported="false"
             android:screenOrientation="sensorPortrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true"
             android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="road-ready-black.vercel.app"
-                    android:scheme="https"
                     android:path="/dashboard"
-                    />
+                    android:scheme="https" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
