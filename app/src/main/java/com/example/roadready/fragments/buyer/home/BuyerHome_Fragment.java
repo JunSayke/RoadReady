@@ -3,6 +3,7 @@ package com.example.roadready.fragments.buyer.home;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -132,7 +133,7 @@ public class BuyerHome_Fragment extends Fragment {
 
         String[] filterOptions = {"Listing ID", "Dealership ID", "Model and Name"};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(),
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(mainFacade.getMainActivity().getApplicationContext(),
                 android.R.layout.simple_spinner_item, filterOptions);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

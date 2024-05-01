@@ -1,6 +1,7 @@
 package com.example.roadready.fragments.buyer.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,8 @@ public class SelectingCar_Fragment extends Fragment {
             mainFacade.restrictButton(binding.sgcBtnInstallment);
         }
 
+        enabledButtons();
+
         return root;
     }
 
@@ -55,7 +58,12 @@ public class SelectingCar_Fragment extends Fragment {
         final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
             @Override
             public void onSuccess(ListingsDataGson data) {
-                updateVehicleInfo(data.getListings().get(0));
+                for(VehicleGson vehicleGson : data.getListings()) {
+                    if(vehicleGson.getId().equals(modelId)) {
+                        updateVehicleInfo(vehicleGson);
+                        break;
+                    }
+                }
             }
 
             @Override
@@ -64,7 +72,7 @@ public class SelectingCar_Fragment extends Fragment {
             }
         };
 
-        mainFacade.getListings(responseListener, modelId, null, null);
+        mainFacade.getListings(responseListener, null, null, null);
     }
 
     @Override
@@ -91,7 +99,6 @@ public class SelectingCar_Fragment extends Fragment {
 
         // TODO: Handle cash and installment click events
         binding.sgcBtnCash.setOnClickListener(v -> {
-            disabledButtons();
             SelectingCar_FragmentDirections.ActionSelectingCarFragmentToCashPaymentFormFragment action =
                     SelectingCar_FragmentDirections.actionSelectingCarFragmentToCashPaymentFormFragment();
             action.setModelId(modelId);
@@ -99,7 +106,6 @@ public class SelectingCar_Fragment extends Fragment {
         });
 
         binding.sgcBtnInstallment.setOnClickListener(v -> {
-            disabledButtons();
             SelectingCar_FragmentDirections.ActionSelectingCarFragmentToInstallmentFormFragment action =
                     SelectingCar_FragmentDirections.actionSelectingCarFragmentToInstallmentFormFragment();
             action.setModelId(modelId);
