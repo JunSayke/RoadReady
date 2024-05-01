@@ -34,7 +34,6 @@ import java.io.File;
 public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.OnImageSelectedListener {
     private final String TAG = "EditProfile_Fragment";
     private FragmentBuyerEditProfileBinding binding;
-    private ActivityResultLauncher<Intent> mapResultLauncher;
     private MainFacade mainFacade;
     private ImagePicker imagePicker;
     private Uri imageData;
@@ -91,7 +90,7 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
             String gender = null;
             String phoneNumber = String.valueOf(binding.bepInptPhone.getText());
             String address = String.valueOf(binding.bepInptAddress.getText());
-            File imageFile = FileUtils.uriToFile(requireContext(), imageData);
+            File imageFile = FileUtils.uriToFile(mainFacade.getMainActivity().getApplicationContext(), imageData);
 
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
                 @Override

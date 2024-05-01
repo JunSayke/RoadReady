@@ -13,14 +13,22 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 
+import com.example.roadready.classes.general.FileUtils;
+import com.example.roadready.classes.general.ImagePicker;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.databinding.FragmentBuyerInstallmentFormBinding;
+
+import java.io.File;
+import java.util.Objects;
 
 public class InstallmentForm_Fragment extends Fragment {
     private final String TAG = "InstallmentForm_Fragment";
     private FragmentBuyerInstallmentFormBinding binding;
     private MainFacade mainFacade;
     private String modelId;
+
+    private ImagePicker imagePicker;
+    private File imageId;
 
     @Nullable
     @Override
@@ -63,4 +71,11 @@ public class InstallmentForm_Fragment extends Fragment {
             mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
         });
     }
+
+    public File getSignature() {
+        return FileUtils.saveBitmapToFile(
+                binding.instInptSignature.getTransparentSignatureBitmap(),
+                Objects.requireNonNull(mainFacade.getUserGsonViewModel().getUserGsonLiveData().getValue()).getLastName());
+    }
+
 }

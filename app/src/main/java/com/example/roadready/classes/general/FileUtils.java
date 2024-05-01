@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Environment;
 import android.util.Log;
 
 import java.io.BufferedInputStream;
@@ -66,6 +67,27 @@ public class FileUtils {
         }
 
         return null;
+    }
+
+    public static File saveBitmapToFile(Bitmap bitmap, String filename) {
+        File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "signatures");
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        File file = new File(directory, filename + ".png");
+
+        try {
+            FileOutputStream outputStream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+            outputStream.flush();
+            outputStream.close();
+
+            return file;
+        } catch (IOException e) {
+            Log.e("FileUtils", Objects.requireNonNull(e.getMessage()));
+            return null;
+        }
     }
 
     private static void copyStream(InputStream in, OutputStream os) {
