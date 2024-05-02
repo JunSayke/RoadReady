@@ -127,7 +127,8 @@ public class Dealership_HomepageContainer_Fragment extends Fragment {
 
     private void initActions() {
         binding.headerLayout.bepBtnBack.setOnClickListener(v -> {
-            mainFacade.getMainActivity().getOnBackPressedDispatcher().onBackPressed();
+            mainFacade.getDealershipHomepageNavController().popBackStack();
+            //mainFacade.getMainActivity().getOnBackPressedDispatcher().onBackPressed();
         });
         mainFacade.getMainActivity().findViewById(R.id.btnOpenSidebar).setOnClickListener(v -> {
             dealershipDrawer.openDrawer(Gravity.LEFT);

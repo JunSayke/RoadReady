@@ -17,9 +17,12 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 
+import com.example.roadready.R;
 import com.example.roadready.classes.general.FileUtils;
 import com.example.roadready.classes.general.ImagePicker;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.general.RoadReadyServer;
+import com.example.roadready.classes.model.gson.ApplicationDataGson;
 import com.example.roadready.databinding.FragmentBuyerCashPaymentFormBinding;
 import com.squareup.picasso.Picasso;
 
@@ -31,6 +34,7 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
     private FragmentBuyerCashPaymentFormBinding binding;
     private MainFacade mainFacade;
     private ImagePicker imagePicker;
+    private Uri imageData;
     private File imageId;
     private String modelId;
 
@@ -68,17 +72,61 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
     private void initActions() {
         binding.cpfBtnSubmit.setOnClickListener(v -> {
             // TODO: Handle Submit Action Event
+            submitApplication();
             mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
         });
 
         binding.cpfBtnCancel.setOnClickListener(v -> {
             // TODO: Handle Cancel Action Event
-            mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
+            mainFacade.getBuyerHomeNavController().popBackStack();
         });
 
         binding.cpfBtnUploadValidId.setOnClickListener(v -> {
             imagePicker.selectImage(this);
         });
+    }
+
+    private void submitApplication(){
+        showProgressBar();
+
+        String firstName = String.valueOf(binding.cpfInptFname.getText());
+        String lastName = String.valueOf(binding.cpfInptLname.getText());
+        String address = String.valueOf(binding.cpfInptAddress.getText());
+        String phoneNumber = String.valueOf(binding.cpfInptPhoneNumber.getText());
+        File validIdImage = FileUtils.uriToFile(mainFacade.getMainActivity().getApplicationContext(), imageData);
+        File signatureImage = getSignature();
+        String cashModeOfPayment = getModeOfPayment();
+
+        RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationDataGson>() {
+            @Override
+            public void onSuccess(ApplicationDataGson data) {
+                hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(String message) {
+                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                hideProgressBar();
+            }
+        };
+        //mainFacade.applyCashForListing(responseListener, null, firstName, lastName, address, phoneNumber, validIdImage, signatureImage, cashModeOfPayment);
+    }
+
+    private void showProgressBar() {
+        binding.cpfBtnSubmit.setEnabled(false);
+        mainFacade.showProgressBar();
+    }
+
+    private void hideProgressBar() {
+        binding.cpfBtnSubmit.setEnabled(true);
+        mainFacade.hideProgressBar();
+    }
+
+    private String getModeOfPayment(){
+        if(binding.cpfRgMop.getCheckedRadioButtonId() != -1){
+            return String.valueOf(binding.getRoot().findViewById(binding.cpfRgMop.getCheckedRadioButtonId()).getContentDescription());
+        }
+        return "";
     }
 
     private void initImagePicker() {
@@ -87,10 +135,10 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
     }
 
     @Override
-    public void onImageSelected(Uri imageData) {
+    public void onImageSelected(Uri uri) {
         if(imageData != null) {
-            binding.cpfInptValidId.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), imageData));
-            imageId = FileUtils.uriToFile(mainFacade.getMainActivity().getApplicationContext(), imageData);
+            imageData = uri;
+            binding.cpfInptValidId.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), uri));
         } else {
             mainFacade.makeToast("Image selection canceled", Toast.LENGTH_SHORT);
         }

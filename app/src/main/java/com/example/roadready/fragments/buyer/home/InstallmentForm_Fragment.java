@@ -1,6 +1,7 @@
 package com.example.roadready.fragments.buyer.home;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,7 @@ import com.example.roadready.databinding.FragmentBuyerInstallmentFormBinding;
 import java.io.File;
 import java.util.Objects;
 
-public class InstallmentForm_Fragment extends Fragment {
+public class InstallmentForm_Fragment extends Fragment implements ImagePicker.OnImageSelectedListener {
     private final String TAG = "InstallmentForm_Fragment";
     private FragmentBuyerInstallmentFormBinding binding;
     private MainFacade mainFacade;
@@ -29,6 +30,7 @@ public class InstallmentForm_Fragment extends Fragment {
 
     private ImagePicker imagePicker;
     private File imageId;
+    private File coMakerImageId;
 
     @Nullable
     @Override
@@ -63,13 +65,42 @@ public class InstallmentForm_Fragment extends Fragment {
     private void initActions() {
         binding.instBtnSubmit.setOnClickListener(v -> {
             // TODO: Handle Submit Action Event
+            submitApplication();
             mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
         });
 
         binding.instBtnCancel.setOnClickListener(v -> {
             // TODO: Handle Cancel Action Event
-            mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
+            mainFacade.getBuyerHomeNavController().popBackStack();
+            //mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
         });
+    }
+
+    private void submitApplication(){
+        showProgressBar();
+
+        String firstName = String.valueOf(binding.instInptFname.getText());
+        String lastName = String.valueOf(binding.instInptLname.getText());
+        String address = String.valueOf(binding.instInptAddress.getText());
+        String phoneNumber = String.valueOf(binding.instInptPhoneNumber.getText());
+        File validIdImage = imageId;
+        File signatureImage = getSignature();
+        String coMakerFirstName = String.valueOf(binding.instInptComakerFirstName.getText());
+        String coMakerLastName = String.valueOf(binding.instInptComakerLastName.getText());
+        String coMakerAddress = String.valueOf(binding.instInptComakerAddress.getText());
+        String coMakerPhoneNumber = String.valueOf(binding.instInptComakerPhoneNumber.getText());
+        File coMakerValidIdImage = imageId;
+        File coMakerSignatureImage = getCoMakerSignature();
+    }
+
+    private void showProgressBar() {
+        binding.instBtnSubmit.setEnabled(false);
+        mainFacade.showProgressBar();
+    }
+
+    private void hideProgressBar() {
+        binding.instBtnSubmit.setEnabled(true);
+        mainFacade.hideProgressBar();
     }
 
     public File getSignature() {
@@ -78,4 +109,14 @@ public class InstallmentForm_Fragment extends Fragment {
                 Objects.requireNonNull(mainFacade.getUserGsonViewModel().getUserGsonLiveData().getValue()).getLastName());
     }
 
+    public File getCoMakerSignature(){
+        return FileUtils.saveBitmapToFile(
+                binding.instInptComakerSignature.getTransparentSignatureBitmap(),
+                Objects.requireNonNull(mainFacade.getUserGsonViewModel().getUserGsonLiveData().getValue()).getLastName());
+    }
+
+    @Override
+    public void onImageSelected(Uri imageData) {
+
+    }
 }

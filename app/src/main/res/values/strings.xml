@@ -94,8 +94,11 @@
 
     <!-- ACTIVITY INSTALLMENT FORM -->
     <string name="text_installment_form">Installment Form</string>
-    <string name="text_comaker_name">Co-maker Name: </string>
+    <string name="text_comaker_fname">Co-maker First Name: </string>
+    <string name="text_comaker_lname">Co-maker Last Name: </string>
     <string name="text_comaker_validId">Co-maker Valid ID: </string>
+    <string name="text_comaker_address">Co-maker Address:</string>
+    <string name="text_comaker_phoneno">Co-maker Phone Number:</string>
     <string name="text_vehicle_application_progress">Vehicle application progress</string>
     <string name="text_application_progress">Application Progress</string>
 
