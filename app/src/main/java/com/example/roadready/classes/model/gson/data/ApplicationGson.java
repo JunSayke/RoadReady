@@ -13,8 +13,8 @@ public class ApplicationGson extends GsonData {
     private String agentId;
     private String status;
     private int progress;
-    @SerializedName("modeofpayment")
-    private String modeOfPayment;
+    @SerializedName("applicationtype")
+    private String applicationType;
     @SerializedName("firstname")
     private String firstName;
     @SerializedName("lastname")
@@ -69,8 +69,8 @@ public class ApplicationGson extends GsonData {
         return progress;
     }
 
-    public String getModeOfPayment() {
-        return modeOfPayment;
+    public String getApplicationType() {
+        return applicationType;
     }
 
     public String getFirstName() {
