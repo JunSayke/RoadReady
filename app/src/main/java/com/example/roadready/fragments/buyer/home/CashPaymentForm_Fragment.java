@@ -109,7 +109,7 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
                 hideProgressBar();
             }
         };
-        //mainFacade.applyCashForListing(responseListener, null, firstName, lastName, address, phoneNumber, validIdImage, signatureImage, cashModeOfPayment);
+        mainFacade.applyCashForListing(responseListener, modelId, firstName, lastName, address, phoneNumber, validIdImage, signatureImage, cashModeOfPayment);
     }
 
     private void showProgressBar() {
@@ -129,6 +129,13 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
         return "";
     }
 
+    public File getSignature() {
+        return FileUtils.saveBitmapToFile(
+                binding.cpfInptSignature.getTransparentSignatureBitmap(),
+                Objects.requireNonNull(mainFacade.getUserGsonViewModel().getUserGsonLiveData().getValue()).getLastName(),
+                mainFacade.getMainActivity());
+    }
+
     private void initImagePicker() {
         imagePicker = new ImagePicker(mainFacade.getMainActivity().getActivityResultRegistry());
         getLifecycle().addObserver(imagePicker);
@@ -136,9 +143,9 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
 
     @Override
     public void onImageSelected(Uri uri) {
-        if(imageData != null) {
-            imageData = uri;
+        if(uri != null) {
             binding.cpfInptValidId.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), uri));
+            imageData = uri;
         } else {
             mainFacade.makeToast("Image selection canceled", Toast.LENGTH_SHORT);
         }
@@ -146,12 +153,6 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
 
     public File getImageId() {
         return imageId;
-    }
-
-    public File getSignature() {
-        return FileUtils.saveBitmapToFile(
-                binding.cpfInptSignature.getTransparentSignatureBitmap(),
-                Objects.requireNonNull(mainFacade.getUserGsonViewModel().getUserGsonLiveData().getValue()).getLastName());
     }
 
 

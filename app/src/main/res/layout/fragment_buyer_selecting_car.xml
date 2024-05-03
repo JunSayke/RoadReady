@@ -310,29 +310,35 @@
 
                 <Button
                     android:id="@+id/sgcBtnCash"
-                    android:layout_width="130dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
                     android:backgroundTint="#3FBB54"
                     android:text="@string/text_cash"
-                    android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/sgcBtnInstallment"
+                    app:layout_constraintEnd_toStartOf="@+id/sgcBtnBankLoan"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sgcTextBuyNow" />
 
                 <Button
-                    android:id="@+id/sgcBtnInstallment"
-                    android:layout_width="130dp"
+                    android:id="@+id/sgc_btn_in_house"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:backgroundTint="#FE4949"
-                    android:text="@string/text_installment"
-                    android:textColor="@color/black"
+                    android:backgroundTint="#3FBB54"
+                    android:text="@string/text_inhouse"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/sgcBtnBankLoan"
+                    app:layout_constraintTop_toBottomOf="@+id/sgcTextBuyNow"
+                    app:layout_constraintVertical_bias="0.4" />
+
+                <Button
+                    android:id="@+id/sgcBtnBankLoan"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#3FBB54"
+                    android:text="@string/text_bank_loan"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/sgc_btn_in_house"
                     app:layout_constraintStart_toEndOf="@+id/sgcBtnCash"
                     app:layout_constraintTop_toBottomOf="@+id/sgcTextBuyNow" />
 

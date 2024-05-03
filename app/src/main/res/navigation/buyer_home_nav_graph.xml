@@ -14,12 +14,15 @@
             app:destination="@id/cashPaymentForm_Fragment" />
         <action
             android:id="@+id/action_selectingCar_Fragment_to_installmentForm_Fragment"
-            app:destination="@id/installmentForm_Fragment" />
+            app:destination="@id/InHouseForm_Fragment" />
         <argument
             android:name="modelId"
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_selectingCar_Fragment_to_BankLoanForm_Fragment"
+            app:destination="@id/BankLoanForm_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/selectingDealership_Fragment"
@@ -34,7 +37,10 @@
             app:destination="@id/cashPaymentForm_Fragment" />
         <action
             android:id="@+id/action_selectingDealership_Fragment_to_installmentForm_Fragment"
-            app:destination="@id/installmentForm_Fragment" />
+            app:destination="@id/InHouseForm_Fragment" />
+        <action
+            android:id="@+id/action_selectingDealership_Fragment_to_BankLoanForm_Fragment"
+            app:destination="@id/BankLoanForm_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/cashPaymentForm_Fragment"
@@ -48,10 +54,21 @@
             app:nullable="true" />
     </fragment>
     <fragment
-        android:id="@+id/installmentForm_Fragment"
-        android:name="com.example.roadready.fragments.buyer.home.InstallmentForm_Fragment"
-        android:label="fragment_installment_form"
-        tools:layout="@layout/fragment_buyer_installment_form">
+        android:id="@+id/InHouseForm_Fragment"
+        android:name="com.example.roadready.fragments.buyer.home.InHouseForm_Fragment"
+        android:label="fragment_inhouse_form"
+        tools:layout="@layout/fragment_buyer_inhouse_form">
+        <argument
+            android:name="modelId"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/BankLoanForm_Fragment"
+        android:name="com.example.roadready.fragments.buyer.home.BankLoanForm_Fragment"
+        android:label="fragment_bankloan_form"
+        tools:layout="@layout/fragment_buyer_bank_loan_form">
         <argument
             android:name="modelId"
             android:defaultValue="@null"

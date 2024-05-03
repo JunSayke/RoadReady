@@ -37,6 +37,7 @@ public class FileUtils {
     }
 
     public static File uriToFile(Context context, Uri uri) {
+        if(uri == null) return null;
         try {
             ContentResolver contentResolver = context.getContentResolver();
             InputStream inputStream = contentResolver.openInputStream(uri);
@@ -69,13 +70,13 @@ public class FileUtils {
         return null;
     }
 
-    public static File saveBitmapToFile(Bitmap bitmap, String filename) {
+    public static File saveBitmapToFile(Bitmap bitmap, String filename, Context context) {
         File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "signatures");
         if (!directory.exists()) {
             directory.mkdirs();
         }
 
-        File file = new File(directory, filename + ".png");
+        File file = new File(context.getCacheDir(), filename + ".png");
 
         try {
             FileOutputStream outputStream = new FileOutputStream(file);
