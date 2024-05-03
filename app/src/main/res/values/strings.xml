@@ -73,8 +73,9 @@
     <string name="text_power">Power:</string>
     <string name="text_engine">Engine:</string>
     <string name="text_buy_now">Buy now!</string>
-    <string name="text_cash">Cash</string>
-    <string name="text_installment">Installment</string>
+    <string name="text_cash">Cash Payment</string>
+    <string name="text_inhouse">In-House Payment</string>
+    <string name="text_bank_loan">Bank Loan</string>
     <string name="img_dealer_logo">Dealer Logo</string>
     <string name="img_vehicle_item">Vehicle Item</string>
 
@@ -92,8 +93,8 @@
     <string name="text_signature">Signature</string>
     <string name="back_btn">back button</string>
 
-    <!-- ACTIVITY INSTALLMENT FORM -->
-    <string name="text_installment_form">Installment Form</string>
+    <!-- ACTIVITY INHOUSE FORM -->
+    <string name="text_inhouse_form">In-House Payment Form</string>
     <string name="text_comaker_fname">Co-maker First Name: </string>
     <string name="text_comaker_lname">Co-maker Last Name: </string>
     <string name="text_comaker_validId">Co-maker Valid ID: </string>
@@ -101,6 +102,13 @@
     <string name="text_comaker_phoneno">Co-maker Phone Number:</string>
     <string name="text_vehicle_application_progress">Vehicle application progress</string>
     <string name="text_application_progress">Application Progress</string>
+
+    <!-- ACTIVITY BANK LOAN -->
+    <string name="text_bank_loan_form">Bank Loan Form</string>
+    <string name="text_pick_bank">Pick Bank:</string>
+    <string name="text_dealership_choice">Dealership\'s choice</string>
+    <string name="text_buyer_choice">Your choice</string>
+    <string name="text_bank_certificate">Bank Certificate:</string>
 
     <!-- ACTIVITY REGISTRATION PROGRESS-->
     <string name="text_registration_progress">Registration Progress</string>

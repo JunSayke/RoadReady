@@ -73,11 +73,11 @@ public interface RetrofitService {
     @Multipart
     @POST("buyer/listings/apply")
     Call<SuccessGson<ApplicationDataGson>> applyForListing(
-            @Part("validId") MultipartBody.Part validIdImage,
-            @Part("signature") MultipartBody.Part signatureImage,
-            @Part("coMakerValidId") @Nullable MultipartBody.Part coMakerValidIdImage,
-            @Part("coMakerSignature") @Nullable MultipartBody.Part coMakerSignatureImage,
-            @Part("bankCertificate") @Nullable MultipartBody.Part backCertificateImage,
+            @Part MultipartBody.Part validIdImage,
+            @Part MultipartBody.Part signatureImage,
+            @Part @Nullable MultipartBody.Part coMakerValidIdImage,
+            @Part @Nullable MultipartBody.Part coMakerSignatureImage,
+            @Part @Nullable MultipartBody.Part backCertificateImage,
             @PartMap Map<String, RequestBody> fields
     );
 

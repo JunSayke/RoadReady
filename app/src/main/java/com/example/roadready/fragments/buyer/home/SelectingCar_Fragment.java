@@ -1,7 +1,6 @@
 package com.example.roadready.fragments.buyer.home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +40,7 @@ public class SelectingCar_Fragment extends Fragment {
         UserGson userGson = mainFacade.getSessionManager().getUserGson();
         if(!userGson.getIsApproved()) {
             mainFacade.restrictButton(binding.sgcBtnCash);
-            mainFacade.restrictButton(binding.sgcBtnInstallment);
+            mainFacade.restrictButton(binding.sgcBtnInHouse);
         }
 
         enabledButtons();
@@ -105,9 +104,15 @@ public class SelectingCar_Fragment extends Fragment {
             mainFacade.getBuyerHomeNavController().navigate(action);
         });
 
-        binding.sgcBtnInstallment.setOnClickListener(v -> {
+        binding.sgcBtnInHouse.setOnClickListener(v -> {
             SelectingCar_FragmentDirections.ActionSelectingCarFragmentToInstallmentFormFragment action =
                     SelectingCar_FragmentDirections.actionSelectingCarFragmentToInstallmentFormFragment();
+            action.setModelId(modelId);
+            mainFacade.getBuyerHomeNavController().navigate(action);
+        });
+        binding.sgcBtnBankLoan.setOnClickListener(v -> {
+            SelectingCar_FragmentDirections.ActionSelectingCarFragmentToBankLoanFormFragment action =
+                    SelectingCar_FragmentDirections.actionSelectingCarFragmentToBankLoanFormFragment();
             action.setModelId(modelId);
             mainFacade.getBuyerHomeNavController().navigate(action);
         });
@@ -115,11 +120,11 @@ public class SelectingCar_Fragment extends Fragment {
 
     private void disabledButtons() {
         binding.sgcBtnCash.setEnabled(false);
-        binding.sgcBtnInstallment.setEnabled(false);
+        binding.sgcBtnInHouse.setEnabled(false);
     }
 
     private void enabledButtons() {
         binding.sgcBtnCash.setEnabled(true);
-        binding.sgcBtnInstallment.setEnabled(true);
+        binding.sgcBtnInHouse.setEnabled(true);
     }
 }

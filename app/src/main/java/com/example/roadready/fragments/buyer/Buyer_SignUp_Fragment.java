@@ -132,8 +132,6 @@ public class Buyer_SignUp_Fragment extends Fragment {
         String gender = String.valueOf(binding.getRoot().findViewById(binding.sgnupRgSexOptions.getCheckedRadioButtonId()).getContentDescription());
         String address = String.valueOf(binding.sgnupInptAddress.getText());
 
-        //TODO: Validations
-
         final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
             @Override
             public void onSuccess(GsonData data) {
