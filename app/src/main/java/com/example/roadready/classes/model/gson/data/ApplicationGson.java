@@ -13,7 +13,7 @@ public class ApplicationGson extends GsonData {
     private String agentId;
     private String status;
     private int progress;
-    @SerializedName("applicationtype")
+    @SerializedName("applicationType")
     private String applicationType;
     @SerializedName("firstname")
     private String firstName;
