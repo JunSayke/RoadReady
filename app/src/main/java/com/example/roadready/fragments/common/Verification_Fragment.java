@@ -1,7 +1,6 @@
 package com.example.roadready.fragments.common;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +12,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.general.VerificationTimer;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.UserDataGson;
-import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.databinding.FragmentCommonVerificationBinding;
 
 public class Verification_Fragment extends Fragment {
@@ -43,6 +42,10 @@ public class Verification_Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        if(VerificationTimer.getInstance().isTimerRunning()){
+            binding.vrfTextResendCode.setText("Cannot resend on cooldown");
+        }
+
         initActions();
     }
 
@@ -57,7 +60,10 @@ public class Verification_Fragment extends Fragment {
             RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
                 @Override
                 public void onSuccess(GsonData data) {
-
+                    //TODO: Timer
+                    if(!VerificationTimer.getInstance().isTimerRunning()){
+                        VerificationTimer.getInstance().startTimer(300000, 1000, binding.vrfTextResendCode);
+                    }
                 }
 
                 @Override

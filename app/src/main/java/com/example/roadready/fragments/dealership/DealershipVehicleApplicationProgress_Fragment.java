@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -40,6 +41,7 @@ public class DealershipVehicleApplicationProgress_Fragment extends Fragment {
     private MainFacade mainFacade;
     private String modelId;
     private ApplicationGson application;
+    private int progress;
 
 
     @Override
@@ -137,25 +139,29 @@ public class DealershipVehicleApplicationProgress_Fragment extends Fragment {
     private void openCashForm(){
         binding.dapContainerCash.setVisibility(View.VISIBLE);
 
-        setProcess(binding.dapContainerCash, application.getProgress(), application.getStatus());
+        progress = application.getProgress();
+        setProcess(binding.dapContainerCash, progress, application.getStatus());
     }
 
     private void openInhouseForm(){
         binding.dapContainerInhouse.setVisibility(View.VISIBLE);
 
-        setProcess(binding.dapContainerInhouse, application.getProgress(), application.getStatus());
+        progress = application.getProgress();
+        setProcess(binding.dapContainerInhouse, progress, application.getStatus());
     }
 
     private void openBankLoanDealership(){
         binding.dapContainerDealershipChoice.setVisibility(View.VISIBLE);
 
-        setProcess(binding.dapContainerDealershipChoice, application.getProgress(), application.getStatus());
+        progress = application.getProgress();
+        setProcess(binding.dapContainerDealershipChoice, progress, application.getStatus());
     }
 
     private void openBankLoanBuyer(){
         binding.dapContainerBuyerChoice.setVisibility(View.VISIBLE);
 
-        setProcess(binding.dapContainerBuyerChoice, application.getProgress(), application.getStatus());
+        progress = application.getProgress();
+        setProcess(binding.dapContainerBuyerChoice, progress, application.getStatus());
     }
 
     private void setProcess(LinearLayout parentContainer, int progress, String status){
@@ -195,9 +201,6 @@ public class DealershipVehicleApplicationProgress_Fragment extends Fragment {
                 pb.setIndeterminateTintList(ColorStateList.valueOf(Color.rgb(248, 31, 20)));
                 rl.addView(pb);
             }
-            if (child instanceof ImageButton || child instanceof Button) {
-                child.setVisibility(View.VISIBLE);
-            }
             container.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(248, 31, 20)));
         }
     }
@@ -213,13 +216,6 @@ public class DealershipVehicleApplicationProgress_Fragment extends Fragment {
                 iv.setColorFilter(Color.rgb(32,244,14));
                 rl.addView(iv);
             }
-            //TODO: Make file viewable on successful processes
-//            if (child instanceof ImageButton) {
-//                ImageButton imageButton = (ImageButton) child;
-//                if (imageButton.getDrawable() == ContextCompat.getDrawable(mainFacade.getMainActivity().getApplicationContext(), R.drawable.fa_ib_view)) {
-//                    imageButton.setVisibility(View.VISIBLE);
-//                }
-//            }
             container.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(32, 244, 14)));
         }
     }

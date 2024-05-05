@@ -205,7 +205,6 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone"
         tools:layout_editor_absoluteY="166dp">
 
         <LinearLayout
@@ -259,8 +258,7 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:text="@string/text_buyer_tracker_bank_dealership_choice_2"
-                android:textColor="#9A9696"
-                android:visibility="gone" />
+                android:textColor="#9A9696" />
 
             <Button
                 android:id="@+id/ap_dealershipchoice_btn_progress2"

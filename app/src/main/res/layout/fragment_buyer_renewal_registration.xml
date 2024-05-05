@@ -11,6 +11,16 @@
     tools:context=".fragments.buyer.myvehiclefragments.RenewalRegistration_Fragment">
 
     <TextView
+        android:id="@+id/rorTxtSoon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:text="Coming Soon"
+        android:textSize="34sp" />
+
+    <TextView
         android:id="@+id/rorTitleContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -49,9 +49,6 @@ public class Banklist_Fragment extends Fragment {
         binding.blImageBdo.setOnClickListener(v -> {
             mainFacade.getDealershipBankNavController().navigate(R.id.action_banklist_Fragment_to_bank_Fragment);
         });
-        binding.blImageUnionbank.setOnClickListener(v -> {
-            mainFacade.getDealershipBankNavController().navigate(R.id.action_banklist_Fragment_to_bank_Fragment);
-        });
     }
 }
 	

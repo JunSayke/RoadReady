@@ -71,13 +71,11 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
 
     private void initActions() {
         binding.cpfBtnSubmit.setOnClickListener(v -> {
-            // TODO: Handle Submit Action Event
             submitApplication();
-            mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
+            //mainFacade.makeToast("Coming Soon", Toast.LENGTH_SHORT);
         });
 
         binding.cpfBtnCancel.setOnClickListener(v -> {
-            // TODO: Handle Cancel Action Event
             mainFacade.getBuyerHomeNavController().popBackStack();
         });
 
@@ -150,10 +148,4 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
             mainFacade.makeToast("Image selection canceled", Toast.LENGTH_SHORT);
         }
     }
-
-    public File getImageId() {
-        return imageId;
-    }
-
-
 }

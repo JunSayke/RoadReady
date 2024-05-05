@@ -157,7 +157,7 @@
     <string name="text_vehicle_add_upload_picture">Upload a picture</string>
     <string name="text_vehicle_add_vehicle_type">Vehicle Type:</string>
     <string name="text_vehicle_add_seating_cap">Seating Capacity:</string>
-    <string name="text_vehicle_add_fuel_cap">Fuel Tank Capacity:</string>
+    <string name="text_vehicle_add_fuel_cap">Fuel Capacity(litres):</string>
     <string name="text_vehicle_add_engine">Engine:</string>
     <string name="text_vehicle_add_transmission">Transmission:</string>
     <string name="text_vehicle_add_power">Power:</string>
