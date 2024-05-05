@@ -33,6 +33,7 @@ public class SelectingDealership_Fragment extends Fragment {
     private Location currentLocation;
     private List listingList;
     private DealershipGson dealershipGson;
+    private int vehicleCount;
 
 
     @Nullable
@@ -40,7 +41,7 @@ public class SelectingDealership_Fragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentBuyerSelectingDealershipBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        vehicleCount = 0;
         listingList = new ArrayList<>();
 
         try {
@@ -94,6 +95,8 @@ public class SelectingDealership_Fragment extends Fragment {
                 for(VehicleGson vehicle : data.getListings()) {
                     listingList.add(vehicle);
                 }
+                vehicleCount = listingList.size();
+                setVehicleCount();
                 binding.sgdSVItems.setAdapter(new BuyerVehicleListingsRecyclerViewAdapter(
                             binding.getRoot().getContext(), currentLocation, listingList,
                             itemId -> {
@@ -108,6 +111,7 @@ public class SelectingDealership_Fragment extends Fragment {
 
             @Override
             public void onFailure(String message) {
+                setVehicleCount();
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
             }
         };
@@ -123,5 +127,11 @@ public class SelectingDealership_Fragment extends Fragment {
     private void initDealership(){
         Picasso.get().load(dealershipGson.getDealershipImageUrl()).into(binding.sgdLogoDealer);
         binding.sgdTextDealerName.setText(dealershipGson.getName());
+    }
+
+    private void setVehicleCount(){
+        if(vehicleCount == 0){
+            binding.sgdNoVehiclesCount.setVisibility(View.VISIBLE);
+        }
     }
 }
