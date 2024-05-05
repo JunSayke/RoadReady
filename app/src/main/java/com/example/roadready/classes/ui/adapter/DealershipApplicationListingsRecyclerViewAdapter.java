@@ -15,12 +15,12 @@ import com.example.roadready.classes.model.gson.data.ApplicationGson;
 
 import java.util.List;
 
-public class BuyerApplicationListingsRecyclerViewAdapter extends RecyclerView.Adapter<BuyerApplicationListingsRecyclerViewAdapter.ViewHolder> {
+public class DealershipApplicationListingsRecyclerViewAdapter extends RecyclerView.Adapter<DealershipApplicationListingsRecyclerViewAdapter.ViewHolder> {
     private final Context context;
     private final List<ApplicationGson> applicationsGsonList;
     private final OnItemClickListener onItemClickListener;
 
-    public BuyerApplicationListingsRecyclerViewAdapter(Context context, List<ApplicationGson> applicationsGsonList, OnItemClickListener listener) {
+    public DealershipApplicationListingsRecyclerViewAdapter(Context context, List<ApplicationGson> applicationsGsonList, OnItemClickListener listener) {
         this.context = context;
         this.applicationsGsonList = applicationsGsonList;
         this.onItemClickListener = listener;
@@ -29,7 +29,7 @@ public class BuyerApplicationListingsRecyclerViewAdapter extends RecyclerView.Ad
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listings_buyer_application, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listings_dealership_application, parent, false);
         return new ViewHolder(view);
     }
 
@@ -37,7 +37,9 @@ public class BuyerApplicationListingsRecyclerViewAdapter extends RecyclerView.Ad
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         ApplicationGson model = applicationsGsonList.get(position);
+        String name = model.getFirstName() + " " + model.getLastName();
 
+        holder.getName().setText(name);
         holder.getApplicationId().setText(String.valueOf(position + 1));
         holder.getModeOfPayment().setText(getFormatModeOfPayment(model.getApplicationType()));
     }
@@ -61,14 +63,16 @@ public class BuyerApplicationListingsRecyclerViewAdapter extends RecyclerView.Ad
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView name;
         private final TextView applicationId;
         private final TextView modeOfPayment;
         private final Button btnSelect;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            applicationId = itemView.findViewById(R.id.buyerApplicationId);
-            modeOfPayment = itemView.findViewById(R.id.buyerModeOfPayment);
-            btnSelect = itemView.findViewById(R.id.buyerBtnSelect);
+            name = itemView.findViewById(R.id.dealershipName);
+            applicationId = itemView.findViewById(R.id.dealershipApplicationId);
+            modeOfPayment = itemView.findViewById(R.id.dealershipModeOfPayment);
+            btnSelect = itemView.findViewById(R.id.dealershipBtnSelect);
             btnSelect.setOnClickListener(v -> {
                 int position = getBindingAdapterPosition();
                 if (position != RecyclerView.NO_POSITION && onItemClickListener != null) {
@@ -77,6 +81,9 @@ public class BuyerApplicationListingsRecyclerViewAdapter extends RecyclerView.Ad
             });
         }
 
+        public TextView getName() {
+            return name;
+        }
         public TextView getApplicationId() {
             return applicationId;
         }

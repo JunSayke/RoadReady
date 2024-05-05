@@ -71,14 +71,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_buyerchoice_btn_cancel1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_buyerchoice_status_progress1"
@@ -119,21 +121,24 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_view" />
+            android:src="@drawable/fa_ib_view"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_buyerchoice_btn_confirm2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_buyerchoice_btn_cancel2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_buyerchoice_status_progress2"
@@ -174,21 +179,24 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_view" />
+            android:src="@drawable/fa_ib_view"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_buyerchoice_btn_confirm3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_buyerchoice_btn_cancel3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_buyerchoice_status_progress3"
@@ -229,14 +237,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_buyerchoice_btn_cancel4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_buyerchoice_tv_status4"
@@ -286,14 +296,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_dealershipchoice_btn_cancel1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_dealershipchoice_status_progress1"
@@ -334,21 +346,24 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_view" />
+            android:src="@drawable/fa_ib_view"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_dealershipchoice_btn_confirm2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_dealershipchoice_btn_cancel2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_dealershipchoice_status_progress2"
@@ -389,21 +404,24 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_view" />
+            android:src="@drawable/fa_ib_view"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_dealershipchoice_btn_confirm3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_dealershipchoice_btn_cancel3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_dealershipchoice_status_progress3"
@@ -444,14 +462,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_dealershipchoice_btn_cancel4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_dealershipchoice_tv_status4"
@@ -492,14 +512,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_dealershipchoice_btn_cancel5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_dealershipchoice_tv_status5"
@@ -540,14 +562,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_dealershipchoice_btn_cancel6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_dealershipchoice_tv_status6"
@@ -588,14 +612,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_dealershipchoice_btn_cancel7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_dealershipchoice_tv_status7"
@@ -645,14 +671,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_cash_btn_cancel1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_cash_status_progress1"
@@ -693,21 +721,24 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_view" />
+            android:src="@drawable/fa_ib_view"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_cash_btn_confirm2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_cash_btn_cancel2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_cash_status_progress2"
@@ -748,14 +779,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_cash_btn_cancel3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_cash_status_progress3"
@@ -796,14 +829,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_confirm" />
+            android:src="@drawable/fa_ib_confirm"
+            android:visibility="gone" />
 
         <ImageButton
             android:id="@+id/dap_cash_btn_cancel4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:src="@drawable/fa_ib_cancel" />
+            android:src="@drawable/fa_ib_cancel"
+            android:visibility="gone" />
 
         <RelativeLayout
             android:id="@+id/dap_cash_tv_status4"
@@ -826,6 +861,7 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
+        android:visibility="gone"
         tools:layout_editor_absoluteY="166dp">
 
         <LinearLayout
@@ -852,14 +888,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
-                android:src="@drawable/fa_ib_confirm" />
+                android:src="@drawable/fa_ib_confirm"
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/dap_inhouse_btn_cancel1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
-                android:src="@drawable/fa_ib_cancel" />
+                android:src="@drawable/fa_ib_cancel"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/dap_inhouse_status_progress1"
@@ -900,21 +938,24 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
-                android:src="@drawable/fa_ib_view" />
+                android:src="@drawable/fa_ib_view"
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/dap_inhouse_btn_confirm2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
-                android:src="@drawable/fa_ib_confirm" />
+                android:src="@drawable/fa_ib_confirm"
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/dap_inhouse_btn_cancel2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
-                android:src="@drawable/fa_ib_cancel" />
+                android:src="@drawable/fa_ib_cancel"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/dap_inhouse_status_progress2"
@@ -955,7 +996,8 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
-                android:text="Start now" />
+                android:text="Start now"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/dap_inhouse_status_progress3"
@@ -996,14 +1038,16 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
-                android:src="@drawable/fa_ib_confirm" />
+                android:src="@drawable/fa_ib_confirm"
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/dap_inhouse_btn_cancel4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="?android:selectableItemBackground"
-                android:src="@drawable/fa_ib_cancel" />
+                android:src="@drawable/fa_ib_cancel"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/dap_inhouse_tv_status4"

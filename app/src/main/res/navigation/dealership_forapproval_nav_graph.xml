@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dealership_forapproval_nav_graph"
     app:startDestination="@id/forApproval_Fragment">
 
     <fragment
         android:id="@+id/forApproval_Fragment"
         android:name="com.example.roadready.fragments.dealership.mainnavfragments.ForApproval_Fragment"
-        android:label="ForApproval_Fragment" />
+        android:label="ForApproval_Fragment" >
+        <action
+            android:id="@+id/action_forApproval_Fragment_to_vehicleApplicationProgress_Fragment"
+            app:destination="@id/vehicleApplicationProgress_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleApplicationProgress_Fragment"
+        android:name="com.example.roadready.fragments.dealership.DealershipVehicleApplicationProgress_Fragment"
+        android:label="fragment_dealership_vehicle_application_progress"
+        tools:layout="@layout/fragment_dealership_vehicle_application_progress" >
+        <argument
+            android:name="modelId"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_vehicleApplicationProgress_Fragment_to_forApproval_Fragment"
+            app:destination="@id/forApproval_Fragment" />
+    </fragment>
 </navigation>

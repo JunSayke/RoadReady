@@ -39,12 +39,6 @@ public class ApplicationProgress_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
-        UserGson userGson = mainFacade.getSessionManager().getUserGson();
-        if(!userGson.getIsApproved()) {
-//            mainFacade.restrictButton(binding.apBtnRegistrationProgress);
-//            mainFacade.restrictButton(binding.apBtnVehicleAppProgress);
-        }
-
         return root;
     }
 
@@ -73,21 +67,11 @@ public class ApplicationProgress_Fragment extends Fragment {
             }
         };
         mainFacade.getBuyerApplications(responseListener);
-
-        initActions();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
-
-    private void initActions() {
-        //TODO: Fix this pls
-
-//        binding.apBtnRegistrationProgress.setOnClickListener(v -> {
-//            mainFacade.getBuyerApplicationNavController().navigate(R.id.action_applicationProgress_Fragment_to_vehicleRegistrationProgress_Fragment);
-//        })
     }
 }

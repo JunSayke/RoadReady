@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import android.widget.LinearLayout;
+import android.os.CountDownTimer;
 
 import com.example.roadready.activity.MainActivity;
 import com.example.roadready.classes.model.gson.ApplicationDataGson;
@@ -617,6 +619,20 @@ public class MainFacade {
     // END_OF[Session & Server]
 
     // Others
+    private void startProcessTimer(long millisInFuture, long countDownInterval, LinearLayout container) {
+        container.setEnabled(false);
+        new CountDownTimer(millisInFuture, countDownInterval) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+            @Override
+            public void onFinish() {
+                container.setEnabled(true);
+            }
+        }.start();
+    }
+
     public void restrictButton(Button btn) {
         btn.setEnabled(false);
         btn.setAlpha(0.2F);

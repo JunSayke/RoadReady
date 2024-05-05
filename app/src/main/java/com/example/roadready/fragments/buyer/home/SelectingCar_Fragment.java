@@ -40,10 +40,9 @@ public class SelectingCar_Fragment extends Fragment {
         UserGson userGson = mainFacade.getSessionManager().getUserGson();
         if(!userGson.getIsApproved()) {
             mainFacade.restrictButton(binding.sgcBtnCash);
+            mainFacade.restrictButton(binding.sgcBtnBankLoan);
             mainFacade.restrictButton(binding.sgcBtnInHouse);
         }
-
-        enabledButtons();
 
         return root;
     }
@@ -96,7 +95,6 @@ public class SelectingCar_Fragment extends Fragment {
         binding.sgcInptPower.setText(vehicleGson.getPower());
         binding.sgcInptEngine.setText(vehicleGson.getEngine());
 
-        // TODO: Handle cash and installment click events
         binding.sgcBtnCash.setOnClickListener(v -> {
             SelectingCar_FragmentDirections.ActionSelectingCarFragmentToCashPaymentFormFragment action =
                     SelectingCar_FragmentDirections.actionSelectingCarFragmentToCashPaymentFormFragment();
@@ -116,15 +114,5 @@ public class SelectingCar_Fragment extends Fragment {
             action.setModelId(modelId);
             mainFacade.getBuyerHomeNavController().navigate(action);
         });
-    }
-
-    private void disabledButtons() {
-        binding.sgcBtnCash.setEnabled(false);
-        binding.sgcBtnInHouse.setEnabled(false);
-    }
-
-    private void enabledButtons() {
-        binding.sgcBtnCash.setEnabled(true);
-        binding.sgcBtnInHouse.setEnabled(true);
     }
 }

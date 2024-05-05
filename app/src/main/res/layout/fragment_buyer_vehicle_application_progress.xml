@@ -105,7 +105,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
-                android:text="Start now" />
+                android:text="Start now"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/ap_buyerchoice_status_progress2"
@@ -146,7 +147,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
-                android:text="Upload" />
+                android:text="Upload"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/ap_buyerchoice_status_progress3"
@@ -257,14 +259,16 @@
                 android:layout_weight="1"
                 android:padding="5dp"
                 android:text="@string/text_buyer_tracker_bank_dealership_choice_2"
-                android:textColor="#9A9696" />
+                android:textColor="#9A9696"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/ap_dealershipchoice_btn_progress2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
-                android:text="Start now" />
+                android:text="Start now"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/ap_dealershipchoice_status_progress2"
@@ -305,7 +309,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
-                android:text="Fill up" />
+                android:text="Fill up"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/ap_dealershipchoice_status_progress3"
@@ -525,7 +530,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
-                android:text="Start now" />
+                android:text="Start now"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/ap_cash_status_progress2"
@@ -566,7 +572,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
-                android:text="Upload" />
+                android:text="Upload"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/ap_cash_status_progress3"
@@ -623,6 +630,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
+        android:visibility="gone"
         tools:layout_editor_absoluteY="166dp">
 
         <LinearLayout
@@ -683,7 +691,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
-                android:text="Start now" />
+                android:text="Start now"
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:id="@+id/ap_inhouse_status_progress2"
