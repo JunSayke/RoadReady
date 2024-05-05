@@ -69,7 +69,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/sgcItem"
                 android:layout_width="380dp"
-                android:layout_height="460dp"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="20dp"
                 android:background="@drawable/rectangle"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -82,6 +82,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:padding="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -310,7 +311,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/sgcBtnBankLoan"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sgcTextBuyNow" />
+                    app:layout_constraintTop_toTopOf="@+id/sgcBtnBankLoan" />
 
                 <Button
                     android:id="@+id/sgc_btn_in_house"
@@ -321,13 +322,14 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/sgcBtnBankLoan"
-                    app:layout_constraintTop_toBottomOf="@+id/sgcTextBuyNow"
+                    app:layout_constraintTop_toTopOf="@+id/sgcBtnBankLoan"
                     app:layout_constraintVertical_bias="0.4" />
 
                 <Button
                     android:id="@+id/sgcBtnBankLoan"
                     android:layout_width="110dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:backgroundTint="#3FBB54"
                     android:text="@string/text_bank_loan"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -344,9 +346,12 @@
                     android:layout_marginEnd="165dp"
                     android:text="@string/text_buy_now"
                     android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.571"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sgcContainerItem" />
+                    app:layout_constraintTop_toBottomOf="@+id/sgcContainerItem"
+                    app:layout_constraintVertical_bias="0.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

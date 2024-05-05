@@ -38,7 +38,7 @@ public class DealershipVehicleListingsRecyclerViewAdapter extends RecyclerView.A
     @Override
     public void onBindViewHolder(@NonNull DealershipVehicleListingsRecyclerViewAdapter.ViewHolder holder, int position) {
         VehicleGson model = vehicleGsonList.get(position);
-        Picasso.get().load(model.getImage()).into(holder.getVehicleImage());
+        Picasso.get().load(model.getImageUrl()).into(holder.getVehicleImage());
         holder.getVehicleName().setText(model.getModelAndName());
     }
 

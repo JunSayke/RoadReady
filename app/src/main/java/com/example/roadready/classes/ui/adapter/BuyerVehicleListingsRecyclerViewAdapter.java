@@ -5,7 +5,6 @@ import static com.example.roadready.classes.util.LocationTool.haversineDistance;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Location;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.roadready.R;
-import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
 import com.squareup.picasso.Picasso;
 
@@ -47,7 +45,7 @@ public class BuyerVehicleListingsRecyclerViewAdapter extends RecyclerView.Adapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         VehicleGson model = vehicleGsonList.get(position);
-        Picasso.get().load(model.getImage()).into(holder.getVehicleImage());
+        Picasso.get().load(model.getImageUrl()).into(holder.getVehicleImage());
         holder.getVehicleName().setText(model.getModelAndName());
 //        float[] results = new float[1];
 //        Location.distanceBetween(10.303841817089438, 123.88096691447505, model.getDealershipGson().getLatitude(), model.getDealershipGson().getLongitude(), results);

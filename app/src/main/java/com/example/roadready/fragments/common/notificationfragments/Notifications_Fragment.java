@@ -43,6 +43,7 @@ public class Notifications_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mainFacade.showProgressBar();
         final RoadReadyServer.ResponseListener<NotificationsDataGson> responseListener = new RoadReadyServer.ResponseListener<NotificationsDataGson>() {
             @Override
             public void onSuccess(NotificationsDataGson data) {
@@ -55,11 +56,13 @@ public class Notifications_Fragment extends Fragment {
 
                 notificationCount = data.getNotifications().size();
                 setListingCount();
+                mainFacade.hideProgressBar();
             }
 
             @Override
             public void onFailure(String message) {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideProgressBar();
             }
         };
 

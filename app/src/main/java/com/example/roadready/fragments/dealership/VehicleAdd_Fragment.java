@@ -71,6 +71,7 @@ public class VehicleAdd_Fragment extends Fragment implements ImagePicker.OnImage
 
 
 		binding.addBtnAddVehicle.setOnClickListener(v -> {
+
 			showProgressBar();
 
 			File listingImageFile = FileUtils.uriToFile(requireContext(), imageData);
@@ -115,13 +116,16 @@ public class VehicleAdd_Fragment extends Fragment implements ImagePicker.OnImage
 
 	private void showProgressBar() {
 		binding.addBtnAddVehicle.setEnabled(false);
+		mainFacade.showBackDrop();
 		mainFacade.showProgressBar();
 	}
 
 	private void hideProgressBar() {
 		binding.addBtnAddVehicle.setEnabled(true);
+		mainFacade.hideBackDrop();
 		mainFacade.hideProgressBar();
 	}
+
 	private void initImagePicker() {
 		imagePicker = new ImagePicker(mainFacade.getMainActivity().getActivityResultRegistry());
 		getLifecycle().addObserver(imagePicker);

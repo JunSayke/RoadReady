@@ -173,7 +173,6 @@ public class RoadReadyServer extends RetrofitFacade {
         if (modelAndName != null)
             filters.put("model_and_name", modelAndName);
 
-        Log.d(TAG, filters.toString());
         getRetrofitService().getListings(filters).enqueue(callback);
     }
 

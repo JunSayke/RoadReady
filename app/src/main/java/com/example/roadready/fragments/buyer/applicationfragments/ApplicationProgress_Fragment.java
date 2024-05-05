@@ -45,10 +45,10 @@ public class ApplicationProgress_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mainFacade.showProgressBar();
         final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
             @Override
             public void onSuccess(ApplicationsDataGson data) {
-                Log.d(TAG, String.valueOf(data));
                 binding.aplContainerApplicationList.setAdapter(new BuyerApplicationListingsRecyclerViewAdapter(
                         mainFacade.getMainActivity().getApplicationContext(),
                         data.getApplications(),
@@ -59,11 +59,13 @@ public class ApplicationProgress_Fragment extends Fragment {
                             mainFacade.getBuyerApplicationNavController().navigate(action);
                         }));
                 binding.aplContainerApplicationList.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+                mainFacade.hideProgressBar();
             }
 
             @Override
             public void onFailure(String message) {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideProgressBar();
             }
         };
         mainFacade.getBuyerApplications(responseListener);

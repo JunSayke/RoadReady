@@ -36,8 +36,15 @@ android {
     // START_OF[View Binding]
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
     // END_OF[View Binding]
+
+    val mapsApiKey: String? = findProperty("MAPS_API_KEY") as String?
+    defaultConfig {
+        buildConfigField("String", "MAPS_API_KEY", "\"${mapsApiKey ?: ""}\"")
+        resValue("string", "google_maps_key", "\"${mapsApiKey ?: ""}\"")
+    }
 }
 
 dependencies {

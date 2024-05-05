@@ -433,5 +433,13 @@
             app:rippleColor="#F3F3F3F3"
             tools:visibility="gone" />
 
+        <CheckBox
+            android:id="@+id/sgnupChkTogglePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/sgnupInptPassword"
+            app:layout_constraintEnd_toEndOf="@+id/sgnupInptPassword"
+            app:layout_constraintTop_toTopOf="@+id/sgnupInptPassword" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

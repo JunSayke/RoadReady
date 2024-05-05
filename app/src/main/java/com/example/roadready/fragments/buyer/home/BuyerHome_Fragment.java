@@ -75,6 +75,8 @@ public class BuyerHome_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mainFacade.showProgressBar();
+        binding.getRoot().setVisibility(View.INVISIBLE);
 
         final RoadReadyServer.ResponseListener<DealershipsDataGson> dealershipResponseListener = new RoadReadyServer.ResponseListener<DealershipsDataGson>() {
             @Override
@@ -106,11 +108,15 @@ public class BuyerHome_Fragment extends Fragment {
                 updateListingScrollViewItems(listingList);
                 binding.bhSVItems.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
                 initFilterButton();
+                mainFacade.hideProgressBar();
+                binding.getRoot().setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onFailure(String message) {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideProgressBar();
+                binding.getRoot().setVisibility(View.VISIBLE);
             }
         };
 

@@ -50,6 +50,8 @@ public class SelectingCar_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mainFacade.showProgressBar();
+        binding.getRoot().setVisibility(View.INVISIBLE);
 
         modelId = SelectingCar_FragmentArgs.fromBundle(getArguments()).getModelId();
 
@@ -62,11 +64,15 @@ public class SelectingCar_Fragment extends Fragment {
                         break;
                     }
                 }
+                mainFacade.hideProgressBar();
+                binding.getRoot().setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onFailure(String message) {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideProgressBar();
+                binding.getRoot().setVisibility(View.VISIBLE);
             }
         };
 
@@ -84,7 +90,7 @@ public class SelectingCar_Fragment extends Fragment {
 
         Picasso.get().load(dealershipGson.getDealershipImageUrl()).into(binding.sgcImageDealerLogo);
         binding.sgcTextDealerName.setText(dealershipGson.getName());
-        Picasso.get().load(vehicleGson.getImage()).into(binding.sgcImageItem);
+        Picasso.get().load(vehicleGson.getImageUrl()).into(binding.sgcImageItem);
         binding.sgcTextItemName.setText(vehicleGson.getModelAndName());
         binding.sgcInptMake.setText(vehicleGson.getBrand());
         binding.sgcInptFuelType.setText(vehicleGson.getFuelType());

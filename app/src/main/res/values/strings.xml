@@ -278,6 +278,7 @@
     <string name="text_dealership_tracker_inhouse_2">2. Buyer has submitted documents</string>
     <string name="text_dealership_tracker_inhouse_3">3. Credit Investigation</string>
     <string name="text_dealership_tracker_inhouse_4">4. For releasing</string>
+    <string name="documents_submitted">Documents Submitted</string>
 
 
 </resources>

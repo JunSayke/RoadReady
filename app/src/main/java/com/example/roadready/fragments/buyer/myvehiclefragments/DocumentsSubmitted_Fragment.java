@@ -5,20 +5,20 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
-import com.example.roadready.classes.model.gson.UserDataGson;
+import com.example.roadready.classes.model.gson.ApplicationsDataGson;
 import com.example.roadready.classes.model.gson.data.ApplicationGson;
-import com.example.roadready.classes.model.gson.data.UserGson;
-import com.example.roadready.databinding.FragmentBuyerMyVehicleBinding;
+import com.example.roadready.classes.ui.adapter.BuyerApplicationLayoutAdapter;
+
+import java.util.List;
 
 public class DocumentsSubmitted_Fragment extends Fragment {
     private final String TAG = "DocumentsSubmitted_Fragment";
@@ -46,24 +46,24 @@ public class DocumentsSubmitted_Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final RoadReadyServer.ResponseListener<ApplicationGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationGson>() {
+        mainFacade.showProgressBar();
+        final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
             @Override
-            public void onSuccess(ApplicationGson data) {
-                String url = "No Application PDFs found!";
-                if(data.getApplicationPdfUrl() != null) {
-                    url = data.getApplicationPdfUrl();
-                }
-                TextView tv = new TextView(mainFacade.getMainActivity());
-                tv.setText(url);
-                binding.dsContainerDetail.addView(tv);
-
+            public void onSuccess(ApplicationsDataGson data) {
+                List<ApplicationGson> applications = data.getApplications();
+                ViewPager2 viewPager = binding.apViewPagerContainer;
+                viewPager.setAdapter(new BuyerApplicationLayoutAdapter(requireActivity(), applications));
+                mainFacade.hideProgressBar();
             }
 
             @Override
             public void onFailure(String message) {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideProgressBar();
             }
         };
+
+        mainFacade.getBuyerApplications(responseListener);
         initActions();
     }
 

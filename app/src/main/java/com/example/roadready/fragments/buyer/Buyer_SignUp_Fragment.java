@@ -1,6 +1,5 @@
 package com.example.roadready.fragments.buyer;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,14 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.roadready.R;
-import com.example.roadready.activity.GoogleMaps_Activity;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
@@ -27,7 +23,6 @@ import com.example.roadready.databinding.FragmentBuyerSignUpBinding;
 public class Buyer_SignUp_Fragment extends Fragment {
     private final String TAG = "SignUp_Fragment";
     private FragmentBuyerSignUpBinding binding;
-    private ActivityResultLauncher<Intent> mapResultLauncher;
     private MainFacade mainFacade;
 
 
@@ -50,7 +45,6 @@ public class Buyer_SignUp_Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        initMapResultLauncher();
         initActions();
     }
 
@@ -67,10 +61,6 @@ public class Buyer_SignUp_Fragment extends Fragment {
 
         binding.sgnupTextLogin.setOnClickListener(v -> {
             mainFacade.getCommonMainNavController().navigate(R.id.action_global_login_Fragment);
-        });
-
-        binding.sgnupBtnOpenMaps.setOnClickListener(v -> {
-            startGoogleMaps();
         });
 
         binding.sgnupBtnGoogleLogin.setOnClickListener(v -> {
@@ -106,26 +96,6 @@ public class Buyer_SignUp_Fragment extends Fragment {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideBackDrop();
                 mainFacade.hideProgressBar();
-            }
-        });
-    }
-
-    private void startGoogleMaps() {
-        Intent intent = new Intent(mainFacade.getMainActivity().getApplicationContext(), GoogleMaps_Activity.class);
-        mapResultLauncher.launch(intent);
-    }
-
-    private void initMapResultLauncher() {
-        mapResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (result.getResultCode() == Activity.RESULT_OK) {
-                Intent data = result.getData();
-                if (data != null) {
-                    double latitude = data.getDoubleExtra("latitude", 0);
-                    double longitude = data.getDoubleExtra("longitude", 0);
-
-                    String LongLatText = longitude + ", " + latitude;
-                    binding.sgnupInptCoordinates.setText(LongLatText);
-                }
             }
         });
     }

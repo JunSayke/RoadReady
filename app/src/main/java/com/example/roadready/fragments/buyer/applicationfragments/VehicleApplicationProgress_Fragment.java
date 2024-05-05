@@ -2,14 +2,11 @@ package com.example.roadready.fragments.buyer.applicationfragments;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -28,8 +25,6 @@ import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.ApplicationGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
 import com.example.roadready.databinding.FragmentBuyerVehicleApplicationProgressBinding;
-import com.example.roadready.fragments.dealership.DealershipVehicleApplicationProgress_FragmentArgs;
-import com.example.roadready.fragments.dealership.VehicleListing_FragmentArgs;
 import com.squareup.picasso.Picasso;
 
 public class VehicleApplicationProgress_Fragment extends Fragment {
@@ -122,7 +117,7 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
 
     private void updateVehicleInfo(VehicleGson vehicleGson){
         binding.apLblItem.setText(vehicleGson.getModelAndName());
-        Picasso.get().load(vehicleGson.getImage()).into(binding.apImageItem);
+        Picasso.get().load(vehicleGson.getImageUrl()).into(binding.apImageItem);
     }
 
     private void openCashForm(){

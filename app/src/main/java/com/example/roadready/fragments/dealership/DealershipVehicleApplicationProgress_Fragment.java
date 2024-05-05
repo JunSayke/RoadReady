@@ -2,20 +2,14 @@ package com.example.roadready.fragments.dealership;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -25,14 +19,11 @@ import android.widget.Toast;
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
-import com.example.roadready.classes.model.gson.ApplicationDataGson;
 import com.example.roadready.classes.model.gson.ApplicationsDataGson;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.ApplicationGson;
-import com.example.roadready.classes.model.gson.data.DealershipGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
 import com.example.roadready.databinding.FragmentDealershipVehicleApplicationProgressBinding;
-import com.example.roadready.fragments.buyer.home.SelectingCar_FragmentArgs;
 import com.squareup.picasso.Picasso;
 
 public class DealershipVehicleApplicationProgress_Fragment extends Fragment {
@@ -127,7 +118,7 @@ public class DealershipVehicleApplicationProgress_Fragment extends Fragment {
 
     private void updateVehicleInfo(VehicleGson vehicleGson){
         binding.dapLblItem.setText(vehicleGson.getModelAndName());
-        Picasso.get().load(vehicleGson.getImage()).into(binding.dapImageItem);
+        Picasso.get().load(vehicleGson.getImageUrl()).into(binding.dapImageItem);
     }
 
     @Override
