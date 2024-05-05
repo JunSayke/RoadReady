@@ -70,12 +70,12 @@ public class InHouseForm_Fragment extends Fragment implements ImagePicker.OnImag
         binding.ihBtnSubmit.setOnClickListener(v -> {
             // TODO: Handle Submit Action Event
             submitApplication();
-            //mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
+            //mainFacade.makeToast("Coming Soon", Toast.LENGTH_SHORT);
         });
 
         binding.ihBtnCancel.setOnClickListener(v -> {
             mainFacade.getBuyerHomeNavController().popBackStack();
-            //mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
+            //mainFacade.makeToast("Coming Soon", Toast.LENGTH_SHORT);
         });
 
         binding.ihBtnUploadValidId.setOnClickListener(v -> {

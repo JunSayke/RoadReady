@@ -63,28 +63,7 @@ public class RenewalRegistration_Fragment extends Fragment {
 
     private void initActions() {
         binding.rorBtnSubmit.setOnClickListener(v -> {
-            // TODO: Handle Submit Action Event
-            mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
-        });
-
-        binding.rorBtnUploadMvis.setOnClickListener(v -> {
-
-        });
-
-        binding.rorBtnUploadInsurance.setOnClickListener(v -> {
-
-        });
-
-        binding.rorBtnUploadRegisterCert.setOnClickListener(v -> {
-
-        });
-
-        binding.rorBtnUploadOrigReceipt.setOnClickListener(v -> {
-
-        });
-
-        binding.rorBtnUploadProofPayment.setOnClickListener(v -> {
-
+            mainFacade.makeToast("Coming Soon", Toast.LENGTH_SHORT);
         });
     }
 

@@ -12,9 +12,6 @@
         <action
             android:id="@+id/action_applicationProgress_Fragment_to_vehicleApplicationProgress_Fragment"
             app:destination="@id/vehicleApplicationProgress_Fragment" />
-        <action
-            android:id="@+id/action_applicationProgress_Fragment_to_vehicleRegistrationProgress_Fragment"
-            app:destination="@id/vehicleRegistrationProgress_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/vehicleApplicationProgress_Fragment"
@@ -27,9 +24,4 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
-    <fragment
-        android:id="@+id/vehicleRegistrationProgress_Fragment"
-        android:name="com.example.roadready.fragments.buyer.applicationfragments.VehicleRegistrationProgress_Fragment"
-        android:label="fragment_vehicle_registration_progress"
-        tools:layout="@layout/fragment_buyer_vehicle_registration_progress" />
 </navigation>

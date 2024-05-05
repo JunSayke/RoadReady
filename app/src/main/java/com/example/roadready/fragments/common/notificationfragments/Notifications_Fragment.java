@@ -59,7 +59,6 @@ public class Notifications_Fragment extends Fragment {
 
             @Override
             public void onFailure(String message) {
-                Log.d("TESTING", String.valueOf(mainFacade.getServer().getCookies()));
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
             }
         };
@@ -74,7 +73,6 @@ public class Notifications_Fragment extends Fragment {
     }
 
     private void deleteNotification(String itemId){
-        mainFacade.makeToast("itemId = " + itemId, Toast.LENGTH_SHORT);
         final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
             @Override
             public void onSuccess(GsonData data) {

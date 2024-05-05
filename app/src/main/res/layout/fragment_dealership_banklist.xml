@@ -12,6 +12,16 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent">
 
+		<TextView
+			android:id="@+id/blTxtSoon"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:layout_margin="20dp"
+			android:gravity="center"
+			android:text="Coming Soon"
+			android:textSize="34sp" />
+
 		<ScrollView
 			android:id="@+id/blSVBankList"
 			android:layout_width="match_parent"
@@ -34,14 +44,6 @@
 					android:contentDescription="bl_ib_bdo"
 					android:padding="10dp"
 					android:src="@drawable/bl_ib_bdo" />
-
-				<ImageView
-					android:id="@+id/blImageUnionbank"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:contentDescription="bl_ib_unionbank"
-					android:padding="10dp"
-					android:src="@drawable/bl_ib_unionbank" />
 
 			</LinearLayout>
 		</ScrollView>

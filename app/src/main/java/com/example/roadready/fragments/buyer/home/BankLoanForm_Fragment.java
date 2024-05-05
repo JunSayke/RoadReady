@@ -67,12 +67,12 @@ public class BankLoanForm_Fragment extends Fragment implements ImagePicker.OnIma
         binding.blBtnSubmit.setOnClickListener(v -> {
             // TODO: Handle Submit Action Event
             submitApplication();
-            //mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
+            //mainFacade.makeToast("Coming Soon", Toast.LENGTH_SHORT);
         });
 
         binding.blBtnCancel.setOnClickListener(v -> {
             mainFacade.getBuyerHomeNavController().popBackStack();
-            //mainFacade.makeToast("Currently under construction!", Toast.LENGTH_SHORT);
+            //mainFacade.makeToast("Coming Soon", Toast.LENGTH_SHORT);
         });
 
         binding.blBtnUploadValidId.setOnClickListener(v -> {

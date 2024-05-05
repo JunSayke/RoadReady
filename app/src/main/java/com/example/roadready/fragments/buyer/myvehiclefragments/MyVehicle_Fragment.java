@@ -54,7 +54,6 @@ public class MyVehicle_Fragment extends Fragment {
 
     private void initActions() {
         binding.myvBtnRenewRegistration.setOnClickListener(v -> {
-            // TODO: Pass params for registration
             mainFacade.getBuyerMyVehicleNavController().navigate(R.id.action_myVehicle_Fragment_to_renewalRegistration_Fragment);
         });
     }

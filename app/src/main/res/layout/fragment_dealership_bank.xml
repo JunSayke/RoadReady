@@ -16,21 +16,33 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/bankTxtSoon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="Coming Soon"
+            android:textSize="34sp" />
+
+        <TextView
             android:id="@+id/bankTxtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="BPI"
+            android:text="bank template"
             android:textSize="24sp"
             android:textStyle="bold"
             tools:text="bank_placeholder" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/bankContainerBody"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#D9D9D9">
+            android:background="#D9D9D9"
+            android:orientation="vertical">
 
 
             <LinearLayout
@@ -39,11 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/bankContainerAgreementForm"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_marginEnd="20dp">
 
                 <TextView
                     android:id="@+id/bankLabelAutoloan"
@@ -79,11 +87,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/bankContainerApplicantId"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bankContainerAutoloan">
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp">
 
                 <TextView
                     android:id="@+id/bankLabelAgreementForm"
@@ -119,11 +124,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/bankContainerComakerId"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bankContainerAgreementForm">
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp">
 
                 <TextView
                     android:id="@+id/bankLabelApplicantId"
@@ -159,11 +161,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintBottom_toTopOf="@+id/bankContainerTin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bankContainerApplicantId">
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp">
 
                 <TextView
                     android:id="@+id/bankLabelComakerId"
@@ -200,12 +199,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="100dp"
-                app:layout_constraintBottom_toTopOf="@+id/bankBtnSubmit"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bankContainerComakerId">
+                android:layout_marginBottom="100dp">
 
                 <TextView
                     android:id="@+id/bankLabelTin"
@@ -240,16 +236,15 @@
                 android:id="@+id/bankBtnSubmit"
                 android:layout_width="99dp"
                 android:layout_height="48dp"
+                android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="#20F40E"
+                android:gravity="center"
                 android:text="submit"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:textColor="@color/white" />
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

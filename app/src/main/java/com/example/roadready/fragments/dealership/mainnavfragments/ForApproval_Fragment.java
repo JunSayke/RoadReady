@@ -46,7 +46,6 @@ public class ForApproval_Fragment extends Fragment {
 		final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
 			@Override
 			public void onSuccess(ApplicationsDataGson data) {
-				Log.d(TAG, String.valueOf(data));
 				binding.faContainerApplicationList.setAdapter(new DealershipApplicationListingsRecyclerViewAdapter(
 						mainFacade.getMainActivity().getApplicationContext(),
 						data.getApplications(),

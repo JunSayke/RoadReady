@@ -69,6 +69,10 @@ public class Dealership_Profile_Fragment extends Fragment {
     }
 
     private void initActions() {
+        binding.bepBtnBack.setOnClickListener(v -> {
+            mainFacade.getDealershipHomepageNavController().popBackStack();
+        });
+
         binding.bpBtnLogout.setOnClickListener(v -> {
             mainFacade.stopLoginSession();
             startActivity(new Intent(mainFacade.getMainActivity().getApplicationContext(), MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));

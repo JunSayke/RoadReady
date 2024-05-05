@@ -73,8 +73,7 @@
 					android:id="@+id/sbTxtOverline"
 					android:layout_width="wrap_content"
 					android:layout_height="15dp"
-					android:layout_marginLeft="0dp"
-					android:layout_marginTop="0dp"
+					android:layout_marginLeft="10dp"
 					android:text="@string/text_sidebar_header_title"
 					android:textAllCaps="true"
 					app:layout_constraintStart_toStartOf="parent"
@@ -85,11 +84,11 @@
 					android:id="@+id/sbTxtDealershipName"
 					android:layout_width="160.4dp"
 					android:layout_height="24.4dp"
-					android:layout_marginTop="16dp"
+					android:layout_marginStart="10dp"
 					android:text="Car District"
 					android:textSize="14sp"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/sbTxtOverline"
 					tools:text="Title_Placeholder" />
 
 			</androidx.constraintlayout.widget.ConstraintLayout>

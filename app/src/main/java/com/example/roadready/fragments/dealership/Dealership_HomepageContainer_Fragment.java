@@ -5,6 +5,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,8 +18,10 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.util.CircleTransform;
 import com.example.roadready.databinding.FragmentDealershipHomepageContainerBinding;
 import com.google.android.material.navigation.NavigationView;
+import com.squareup.picasso.Picasso;
 
 public class Dealership_HomepageContainer_Fragment extends Fragment {
     private final String TAG = "Dealership_HomepageContainer_Fragment";
@@ -30,7 +33,7 @@ public class Dealership_HomepageContainer_Fragment extends Fragment {
     private TextView txtName;
     private TextView txtTitle;
     private TextView headerText;
-    private boolean isApproved;
+    private ImageView imageProfile;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -42,6 +45,7 @@ public class Dealership_HomepageContainer_Fragment extends Fragment {
         viewDrawer = navigationViewDrawer.getHeaderView(0);
         txtName = viewDrawer.findViewById(R.id.sbTxtName);
         txtTitle = viewDrawer.findViewById(R.id.sbTxtDealershipName);
+        imageProfile = viewDrawer.findViewById(R.id.sbImageProfile);
 
         try {
             mainFacade = MainFacade.getInstance();
@@ -64,9 +68,16 @@ public class Dealership_HomepageContainer_Fragment extends Fragment {
             txtName.setText(name);
             txtTitle.setText(userGson.getDealership().getName());
 
+            Picasso.get()
+                    .load(userGson.getProfileImageUrl())
+                    .transform(new CircleTransform())
+                    .placeholder(R.drawable.default_user_icon)
+                    .error(R.drawable.app_ib_cancel)
+                    .into(imageProfile);
+
             if(!userGson.getIsApproved()) {
                 binding.headerDealershipLayout.dhTextVerifcation.setVisibility(View.VISIBLE);
-                isApproved = false;
+
             }
         });
 
@@ -102,8 +113,7 @@ public class Dealership_HomepageContainer_Fragment extends Fragment {
                     && profileHeader.getVisibility() == View.GONE) {
                 profileHeader.setVisibility(View.VISIBLE);
                 mainHeader.setVisibility(View.GONE);
-            } else if (destination.getId() != R.id.navProfile
-                    && profileHeader.getVisibility() == View.VISIBLE) {
+            } else {
                 profileHeader.setVisibility(View.GONE);
                 mainHeader.setVisibility(View.VISIBLE);
             }
@@ -128,7 +138,6 @@ public class Dealership_HomepageContainer_Fragment extends Fragment {
     private void initActions() {
         binding.headerLayout.bepBtnBack.setOnClickListener(v -> {
             mainFacade.getDealershipHomepageNavController().popBackStack();
-            //mainFacade.getMainActivity().getOnBackPressedDispatcher().onBackPressed();
         });
         mainFacade.getMainActivity().findViewById(R.id.btnOpenSidebar).setOnClickListener(v -> {
             dealershipDrawer.openDrawer(Gravity.LEFT);
