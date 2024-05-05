@@ -53,6 +53,7 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mainFacade.showProgressBar();
 
         modelId = VehicleApplicationProgress_FragmentArgs.fromBundle(getArguments()).getModelId();
 
@@ -66,11 +67,13 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
                         break;
                     }
                 }
+                mainFacade.hideProgressBar();
             }
 
             @Override
             public void onFailure(String message) {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideProgressBar();
             }
         };
 

@@ -2,7 +2,6 @@ package com.example.roadready.fragments.buyer.home;
 
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.DealershipsDataGson;
@@ -61,6 +57,9 @@ public class SelectingDealership_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mainFacade.showProgressBar();
+        mainFacade.showBackDrop();
+        binding.getRoot().setVisibility(View.INVISIBLE);
 
         dealershipId = SelectingDealership_FragmentArgs.fromBundle(getArguments()).getDealershipId();
 
@@ -74,11 +73,17 @@ public class SelectingDealership_Fragment extends Fragment {
                     }
                 }
                 initDealership();
+                mainFacade.hideProgressBar();
+                mainFacade.hideBackDrop();
+                binding.getRoot().setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onFailure(String message) {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideProgressBar();
+                mainFacade.hideBackDrop();
+                binding.getRoot().setVisibility(View.VISIBLE);
             }
         };
         mainFacade.getDealerships(dealershipResponseListener, null, null);

@@ -76,15 +76,20 @@ public class Notifications_Fragment extends Fragment {
     }
 
     private void deleteNotification(String itemId){
+        mainFacade.showProgressBar();
+        mainFacade.showBackDrop();
         final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
             @Override
             public void onSuccess(GsonData data) {
-
+                mainFacade.hideProgressBar();
+                mainFacade.hideBackDrop();
             }
 
             @Override
             public void onFailure(String message) {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideProgressBar();
+                mainFacade.hideBackDrop();
             }
         };
 
