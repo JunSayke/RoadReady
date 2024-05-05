@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dsContainerContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".fragments.buyer.myvehiclefragments.DocumentsSubmitted_Fragment">
+
+    <TextView
+        android:id="@+id/apTitleContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_application_progress"
+        android:textAlignment="center"
+        android:textSize="34sp" />
+
+    <LinearLayout
+        android:id="@+id/dsContainerItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/apLblItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Template Vehicle"
+            android:textAlignment="center"
+            tools:ignore="HardcodedText" />
+
+        <ImageView
+            android:id="@+id/apImageItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/sgd_iv_conquest" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dsContainerDetail"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="166dp"/>
+
+    <Button
+        android:id="@+id/dsBtnDownloadDocuments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#D9D9D9"
+        android:text="Download Documents"
+        android:textColor="@color/black" />
+</LinearLayout>

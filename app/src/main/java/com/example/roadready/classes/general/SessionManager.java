@@ -3,6 +3,7 @@ package com.example.roadready.classes.general;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.roadready.classes.model.gson.data.ApplicationGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
 import com.google.gson.Gson;
 

@@ -110,6 +110,9 @@
     <string name="text_buyer_choice">Your choice</string>
     <string name="text_bank_certificate">Bank Certificate:</string>
 
+    <!-- DOCUMENT SUBMITTED -->
+    <string name="text_document_submitted">Documents Submitted</string>
+
     <!-- ACTIVITY REGISTRATION PROGRESS-->
     <string name="text_registration_progress">Registration Progress</string>
     <string name="text_registration_on_progress">Registration on Progress</string>

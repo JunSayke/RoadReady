@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/myvContainerContent"
+    android:id="@+id/dsContainerContent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
@@ -27,7 +27,7 @@
         android:textSize="34sp" />
 
     <LinearLayout
-        android:id="@+id/myvContainerItem"
+        android:id="@+id/dsContainerItem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginVertical="20dp"
@@ -50,7 +50,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/myvContainerDetail"
+        android:id="@+id/dsContainerDetail"
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:gravity="center"
