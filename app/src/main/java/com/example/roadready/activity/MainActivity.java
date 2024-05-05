@@ -21,7 +21,9 @@ import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.databinding.ActivityCommonMainBinding;
 import com.google.gson.Gson;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
@@ -77,6 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
                     String payload = jwt.getClaims().toString();
                     UserGson userGson = new Gson().fromJson(payload, UserGson.class);
+                    Set<String> cookies = new HashSet<>();
+                    cookies.add("api_access_token=" + apiAccessToken);
+                    mainFacade.getServer().addCookies(cookies);
                     mainFacade.startLoginSession(userGson);
                     mainFacade.getUserGsonViewModel().setUserGsonLiveData(userGson);
                 }
