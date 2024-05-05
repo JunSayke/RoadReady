@@ -1,0 +1,793 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.buyer.applicationfragments.VehicleApplicationProgress_Fragment">
+
+    <TextView
+        android:id="@+id/apTitleContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:text="@string/text_application_progress"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/apContenContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/apLblItem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HILUX Conquest 2023"
+                android:textAlignment="center"
+                tools:ignore="HardcodedText" />
+
+            <ImageView
+                android:id="@+id/apImageItem"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/sgd_iv_conquest" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/apContainerBuyerChoice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:layout_editor_absoluteY="166dp">
+
+            <LinearLayout
+                android:id="@+id/apBuyerChoice1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_buyerchoice_tv_progress1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_bank_buyer_choice_1"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_buyerchoice_status_progress1"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apBuyerChoice2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_buyerchoice_tv_progress2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_bank_buyer_choice_2"
+                    android:textColor="#9A9696" />
+
+                <Button
+                    android:id="@+id/ap_buyerchoice_btn_progress2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red"
+                    android:text="Start now"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_buyerchoice_status_progress2"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apBuyerChoice3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_buyerchoice_tv_progress3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_bank_buyer_choice_3"
+                    android:textColor="#9A9696" />
+
+                <Button
+                    android:id="@+id/ap_buyerchoice_btn_progress3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red"
+                    android:text="Upload"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_buyerchoice_status_progress3"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apBuyerChoice4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#F82114"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_buyerchoice_tv_progress4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_bank_buyer_choice_4"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_buyerchoice_tv_status4"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:indeterminateTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/apContainerDealershipChoice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:layout_editor_absoluteY="166dp">
+
+            <LinearLayout
+                android:id="@+id/apDealershipChoice1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_dealershipchoice_tv_progress1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_bank_dealership_choice_1"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_dealershipchoice_status_progress1"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apDealershipChoice2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_dealershipchoice_tv_progress2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_bank_dealership_choice_2"
+                    android:textColor="#9A9696" />
+
+                <Button
+                    android:id="@+id/ap_dealershipchoice_btn_progress2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red"
+                    android:text="Start now"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_dealershipchoice_status_progress2"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apDealershipChoice3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_dealershipchoice_tv_progress3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_bank_dealership_choice_3"
+                    android:textColor="#9A9696" />
+
+                <Button
+                    android:id="@+id/ap_dealershipchoice_btn_progress3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red"
+                    android:text="Fill up"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_dealershipchoice_status_progress3"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apDealershipChoice4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#F82114"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_dealershipchoice_tv_progress4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_bank_dealership_choice_4"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_dealershipchoice_tv_status4"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:indeterminateTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apDealershipChoice5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#F82114"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_dealershipchoice_tv_progress5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_bank_dealership_choice_5"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_dealershipchoice_tv_status5"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:indeterminateTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apDealershipChoice6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#F82114"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_dealershipchoice_tv_progress6"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_bank_dealership_choice_6"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_dealershipchoice_tv_status6"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:indeterminateTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apDealershipChoice7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#F82114"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_dealershipchoice_tv_progress7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_bank_dealership_choice_7"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_dealershipchoice_tv_status7"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:indeterminateTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/apContainerCash"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:layout_editor_absoluteY="166dp">
+
+            <LinearLayout
+                android:id="@+id/apCash1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_cash_tv_progress1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_cash_1"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_cash_status_progress1"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apCash2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_cash_tv_progress2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_cash_2"
+                    android:textColor="#9A9696" />
+
+                <Button
+                    android:id="@+id/ap_cash_btn_progress2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red"
+                    android:text="Start now"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_cash_status_progress2"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apCash3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_cash_tv_progress3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_cash_3"
+                    android:textColor="#9A9696" />
+
+                <Button
+                    android:id="@+id/ap_cash_btn_progress3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red"
+                    android:text="Upload"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_cash_status_progress3"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apCash4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#F82114"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_cash_tv_progress4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_tracker_cash_4"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_cash_tv_status4"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:indeterminateTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/apContainerInhouse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:layout_editor_absoluteY="166dp">
+
+            <LinearLayout
+                android:id="@+id/apInhouse1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_inhouse_tv_progress1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_progress_inhouse_1"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_inhouse_status_progress1"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apInhouse2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_inhouse_tv_progress2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_progress_inhouse_2"
+                    android:textColor="#9A9696" />
+
+                <Button
+                    android:id="@+id/ap_inhouse_btn_progress2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/red"
+                    android:text="Start now"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_inhouse_status_progress2"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apInhouse3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#20F40E"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_inhouse_tv_progress3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_progress_inhouse_3"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_inhouse_status_progress3"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/check_mark"
+                        android:backgroundTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/apInhouse4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rectangle"
+                android:backgroundTint="#F82114"
+                android:backgroundTintMode="add"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ap_inhouse_tv_progress4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/text_buyer_progress_inhouse_4"
+                    android:textColor="#9A9696" />
+
+                <RelativeLayout
+                    android:id="@+id/ap_inhouse_tv_status4"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:indeterminate="true"
+                        android:indeterminateTint="#20F40E" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
+

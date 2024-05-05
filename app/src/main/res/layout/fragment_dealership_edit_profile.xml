@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D9D9D9"
+    tools:context=".fragments.dealership.profilefragments.Dealership_EditProfile_Fragment">
+
+    <LinearLayout
+        android:id="@+id/bepContainerContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/bepImageUserIcon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="#8DDEF0"
+            android:contentDescription="@string/vector_user_icon"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/default_user_icon"
+            tools:ignore="ImageContrastCheck"
+            tools:srcCompat="@drawable/default_user_icon" />
+
+        <LinearLayout
+            android:id="@+id/bepContainerNames"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/bepInptFname"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:autofillHints="First Name"
+                android:background="@drawable/rounded_corner_rectangle20_transp"
+                android:ems="10"
+                android:hint="@string/placeholder_first_name"
+                android:inputType="text"
+                android:padding="12dp" />
+
+            <EditText
+                android:id="@+id/bepInptLname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:autofillHints="Last Name"
+                android:background="@drawable/rounded_corner_rectangle20_transp"
+                android:ems="10"
+                android:hint="@string/placeholder_last_name"
+                android:inputType="text"
+                android:padding="12dp" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/bepInptEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:autofillHints="Email Address"
+            android:background="@drawable/rounded_corner_rectangle20_transp"
+            android:ems="10"
+            android:hint="@string/placeholder_email_address"
+            android:inputType="textEmailAddress"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/bepInptPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:autofillHints="Phone Number"
+            android:background="@drawable/rounded_corner_rectangle20_transp"
+            android:ems="10"
+            android:hint="@string/placeholder_phone_number"
+            android:inputType="phone"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/bepInptAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:autofillHints="Current Address"
+            android:background="@drawable/rounded_corner_rectangle20_transp"
+            android:ems="10"
+            android:hint="@string/placeholder_current_address"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <LinearLayout
+            android:id="@+id/bepInptCoordinatesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:background="@drawable/rounded_corner_rectangle20_transp"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <EditText
+                android:id="@+id/bepInptCoordinates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:autofillHints="@string/placeholder_longitude_latitude"
+                android:background="#D9D9D9"
+                android:ems="10"
+                android:hint="@string/placeholder_longitude_latitude"
+                android:inputType="text" />
+
+            <ImageButton
+                android:id="@+id/bepBtnOpenMaps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_corner_rectangle20_transp"
+                android:backgroundTint="#0EB2F8"
+                android:src="@drawable/map" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bepContainerValidId"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="30dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/bepLblValidId"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/text_valid_id"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/bepInptValidId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_rectangle20_solid"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="text"
+                android:padding="12dp" />
+
+            <ImageButton
+                android:id="@+id/bepBtnUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/upload" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bepContainerButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="459dp">
+
+            <Button
+                android:id="@+id/bepBtnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#3FBB54"
+                android:text="@string/text_btn_submit"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/bepBtnCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="#FE4949"
+                android:text="@string/text_cancel"
+                android:textColor="@color/black" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

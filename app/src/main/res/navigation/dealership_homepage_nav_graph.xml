@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dealership_homepage_nav_graph"
+    app:startDestination="@id/navMyVehicles">
+
+    <fragment
+        android:id="@+id/navMyVehicles"
+        android:name="com.example.roadready.fragments.dealership.mainnav.Dealership_MyVehicles_Container_Fragment"
+        android:label="fragment_dealership_myvehicle_container"
+        tools:layout="@layout/fragment_dealership_myvehicles_container" />
+    <fragment
+        android:id="@+id/navApproved"
+        android:name="com.example.roadready.fragments.dealership.mainnav.Dealership_Approved_Container_Fragment"
+        android:label="fragment_dealership_approved_container"
+        tools:layout="@layout/fragment_dealership_approved_container" />
+    <fragment
+        android:id="@+id/navBank"
+        android:name="com.example.roadready.fragments.dealership.mainnav.Dealership_Bank_Container_Fragment"
+        android:label="fragment_dealership_bank_container"
+        tools:layout="@layout/fragment_dealership_bank_container" />
+    <fragment
+        android:id="@+id/navRegistrationProgress"
+        android:name="com.example.roadready.fragments.dealership.mainnav.Dealership_Documents_Progress_Container_Fragment"
+        android:label="fragment_dealership_documentsprogress_container"
+        tools:layout="@layout/fragment_dealership_documentsprogress_container" />
+    <fragment
+        android:id="@+id/navForApproval"
+        android:name="com.example.roadready.fragments.dealership.mainnav.Dealership_ForApproval_Container_Fragment"
+        android:label="fragment_dealership_forapproval_container"
+        tools:layout="@layout/fragment_dealership_forapproval_container" />
+    <fragment
+        android:id="@+id/navLTO"
+        android:name="com.example.roadready.fragments.dealership.mainnav.Dealership_Lto_Container_Fragment"
+        android:label="fragment_dealership_lto_container"
+        tools:layout="@layout/fragment_dealership_lto_container" />
+    <fragment
+        android:id="@+id/navProfile"
+        android:name="com.example.roadready.fragments.dealership.mainnav.Dealership_ProfileContainer_Fragment"
+        android:label="fragment_profile_container"
+        tools:layout="@layout/fragment_dealership_profile_container" />
+    <fragment
+        android:id="@+id/navNotifications"
+        android:name="com.example.roadready.fragments.buyer.mainnav.NotificationContainer_Fragment"
+        android:label="fragment_notification_container"
+        tools:layout="@layout/fragment_common_notification_container" />
+</navigation>

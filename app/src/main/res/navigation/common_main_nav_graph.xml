@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/opening_Fragment">
+
+    <fragment
+        android:id="@+id/login_Fragment"
+        android:name="com.example.roadready.fragments.common.Login_Fragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_common_login">
+        <deepLink app:uri="android-app://com.example.roadready/login" />
+        <action
+            android:id="@+id/action_login_Fragment_to_signUpAs_Fragment"
+            app:destination="@id/signUpAs_Fragment" />
+        <action
+            android:id="@+id/action_login_Fragment_to_homepageContainer_Fragment"
+            app:destination="@id/homepageContainer_Fragment" />
+        <action
+            android:id="@+id/action_login_Fragment_to_dealership_homepageContainer_Fragment"
+            app:destination="@id/dealership_homepageContainer_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpAs_Fragment"
+        android:name="com.example.roadready.fragments.common.SignUpAs_Fragment"
+        android:label="fragment_sign_up_as"
+        tools:layout="@layout/fragment_common_sign_up_as" >
+        <action
+            android:id="@+id/action_signUpAs_Fragment_to_dealership_SignUp_Fragment"
+            app:destination="@id/dealership_SignUp_Fragment" />
+        <action
+            android:id="@+id/action_signUpAs_Fragment_to_buyer_signUp_Fragment"
+            app:destination="@id/buyer_signUp_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/buyer_signUp_Fragment"
+        android:name="com.example.roadready.fragments.buyer.Buyer_SignUp_Fragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_buyer_sign_up" />
+    <fragment
+        android:id="@+id/opening_Fragment"
+        android:name="com.example.roadready.fragments.common.Opening_Fragment"
+        android:label="fragment_opening"
+        tools:layout="@layout/fragment_common_opening" >
+        <action
+            android:id="@+id/action_opening_Fragment_to_login_Fragment"
+            app:destination="@id/login_Fragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/opening_Fragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_opening_Fragment_to_homepageContainer_Fragment"
+            app:destination="@id/homepageContainer_Fragment" />
+        <action
+            android:id="@+id/action_opening_Fragment_to_dealership_homepageContainer_Fragment"
+            app:destination="@id/dealership_homepageContainer_Fragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_global_login_Fragment"
+        app:destination="@id/login_Fragment" />
+    <fragment
+        android:id="@+id/homepageContainer_Fragment"
+        android:name="com.example.roadready.fragments.common.HomepageContainer_Fragment"
+        android:label="fragment_homepage_container"
+        tools:layout="@layout/fragment_buyer_homepage_container" />
+    <fragment
+        android:id="@+id/dealership_homepageContainer_Fragment"
+        android:name="com.example.roadready.fragments.dealership.Dealership_HomepageContainer_Fragment"
+        android:label="fragment_dealership_homepage_container"
+        tools:layout="@layout/fragment_dealership_homepage_container" />
+    <fragment
+        android:id="@+id/dealership_SignUp_Fragment"
+        android:name="com.example.roadready.fragments.dealership.Dealership_SignUp_Fragment"
+        android:label="fragment_dealership_sign_up"
+        tools:layout="@layout/fragment_dealership_sign_up" />
+</navigation>

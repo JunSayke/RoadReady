@@ -21,11 +21,10 @@ public class VehicleGson extends GsonData {
     private int price;
     @SerializedName("vehicletype")
     private String vehicleType;
-    private String image;
+    @SerializedName("image")
+    private String imageUrl;
     @SerializedName("dealership")
     private DealershipGson dealershipGson;
-    @SerializedName("dealershipagen")
-    private DealerGson dealerGson;
     @SerializedName("createdat")
     private String createdAt;
     @SerializedName("updatedat")
@@ -77,16 +76,12 @@ public class VehicleGson extends GsonData {
         return vehicleType;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
     public DealershipGson getDealershipGson() {
         return dealershipGson;
-    }
-
-    public DealerGson getDealerGson() {
-        return dealerGson;
     }
 
     public String getCreatedAt() {

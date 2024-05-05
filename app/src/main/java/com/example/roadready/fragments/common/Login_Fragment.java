@@ -1,6 +1,9 @@
 package com.example.roadready.fragments.common;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +15,21 @@ import androidx.fragment.app.Fragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.UserDataGson;
-import com.example.roadready.classes.model.gson.data.BuyerGson;
-import com.example.roadready.databinding.FragmentLoginBinding;
+import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
+import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.databinding.FragmentCommonLoginBinding;
 
 public class Login_Fragment extends Fragment {
     private final String TAG = "Login_Fragment";
-    private FragmentLoginBinding binding;
+    private FragmentCommonLoginBinding binding;
     private MainFacade mainFacade;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentLoginBinding.inflate(inflater, container, false);
+        binding = FragmentCommonLoginBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         try {
@@ -54,29 +59,69 @@ public class Login_Fragment extends Fragment {
         });
 
         binding.lgnTextSignup.setOnClickListener(v -> {
-            mainFacade.getMainNavGraphController().navigate(R.id.action_login_Fragment_to_signUpAs_Fragment);
+            mainFacade.getCommonMainNavController().navigate(R.id.action_login_Fragment_to_signUpAs_Fragment);
         });
 
         binding.lgnBtnGoogleLogin.setOnClickListener(v -> {
-            mainFacade.makeToast("Login with google is not yet available!", Toast.LENGTH_SHORT);
+            processGoogleAuth();
         });
 
         binding.lgnTextForgetPassword.setOnClickListener(v -> {
             mainFacade.makeToast("Forgot password is not yet available!", Toast.LENGTH_SHORT);
         });
+
+        binding.lgnChkTogglePassword.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                binding.lgnInptPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            } else {
+                binding.lgnInptPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+            binding.lgnInptPassword.setSelection(binding.lgnInptPassword.getText().length());
+        });
     }
 
+    private void processGoogleAuth() {
+        mainFacade.showBackDrop();
+        mainFacade.showProgressBar();
+        mainFacade.getGoogleAuthLink(new RoadReadyServer.ResponseListener<GoogleAuthGson>() {
+            @Override
+            public void onSuccess(GoogleAuthGson data) {
+                String authenticationUrl = data.getAuthorizationUrl();
+
+                Intent googleIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(authenticationUrl));
+                startActivity(googleIntent);
+                mainFacade.hideBackDrop();
+                mainFacade.hideProgressBar();
+            }
+
+            @Override
+            public void onFailure(String message) {
+                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                mainFacade.hideBackDrop();
+                mainFacade.hideProgressBar();
+            }
+        });
+    }
+
+
+
     private void processLogin() {
+        showProgressBar();
         String email = String.valueOf(binding.lgnInptEmail.getText());
         String password = String.valueOf(binding.lgnInptPassword.getText());
-        showProgressBar();
 
-        mainFacade.login(email, password, new MainFacade.ResponseListener<UserDataGson>() {
+
+        final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
             @Override
             public void onSuccess(UserDataGson data) {
-                BuyerGson user = data.getUserGson();
+                mainFacade.makeToast("Login Successfully!", Toast.LENGTH_SHORT);
+                UserGson user = data.getUserGson();
                 mainFacade.startLoginSession(user);
-                mainFacade.getMainNavGraphController().navigate(R.id.action_login_Fragment_to_homepageContainer_Fragment);
+                if(user.getRole().equals("buyer")) {
+                    mainFacade.getCommonMainNavController().navigate(R.id.action_login_Fragment_to_homepageContainer_Fragment);
+                }else{
+                    mainFacade.getCommonMainNavController().navigate(R.id.action_login_Fragment_to_dealership_homepageContainer_Fragment);
+                }
                 hideProgressBar();
             }
 
@@ -85,7 +130,9 @@ public class Login_Fragment extends Fragment {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
-        });
+        };
+
+        mainFacade.login(responseListener, email, password);
     }
 
     private void showProgressBar() {

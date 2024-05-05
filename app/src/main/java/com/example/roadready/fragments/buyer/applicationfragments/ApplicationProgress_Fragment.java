@@ -3,29 +3,37 @@ package com.example.roadready.fragments.buyer.applicationfragments;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.databinding.FragmentApplicationProgressBinding;
+import com.example.roadready.classes.general.RoadReadyServer;
+import com.example.roadready.classes.model.gson.ApplicationsDataGson;
+import com.example.roadready.classes.model.gson.ListingsDataGson;
+import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.ui.adapter.BuyerApplicationListingsRecyclerViewAdapter;
+import com.example.roadready.classes.ui.adapter.DealershipVehicleListingsRecyclerViewAdapter;
+import com.example.roadready.databinding.FragmentBuyerApplicationProgressBinding;
 
 public class ApplicationProgress_Fragment extends Fragment {
     private final String TAG = "ApplicationProgress_Fragment";
-    private FragmentApplicationProgressBinding binding;
+    private FragmentBuyerApplicationProgressBinding binding;
     private MainFacade mainFacade;
+    private int applicationCount;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentApplicationProgressBinding.inflate(inflater, container, false);
+        binding = FragmentBuyerApplicationProgressBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        applicationCount = 0;
 
         try {
             mainFacade = MainFacade.getInstance();
@@ -39,8 +47,33 @@ public class ApplicationProgress_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mainFacade.showProgressBar();
+        final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
+            @Override
+            public void onSuccess(ApplicationsDataGson data) {
+                binding.aplContainerApplicationList.setAdapter(new BuyerApplicationListingsRecyclerViewAdapter(
+                        mainFacade.getMainActivity().getApplicationContext(),
+                        data.getApplications(),
+                        itemId -> {
+                            ApplicationProgress_FragmentDirections.ActionApplicationProgressFragmentToVehicleApplicationProgressFragment action =
+                                    ApplicationProgress_FragmentDirections.actionApplicationProgressFragmentToVehicleApplicationProgressFragment();
+                            action.setModelId(itemId);
+                            mainFacade.getBuyerApplicationNavController().navigate(action);
+                        }));
+                binding.aplContainerApplicationList.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+                mainFacade.hideProgressBar();
 
-        initActions();
+                applicationCount = data.getApplications().size();
+                setApplicationCount();
+            }
+
+            @Override
+            public void onFailure(String message) {
+                setApplicationCount();
+                mainFacade.hideProgressBar();
+            }
+        };
+        mainFacade.getBuyerApplications(responseListener);
     }
 
     @Override
@@ -49,13 +82,9 @@ public class ApplicationProgress_Fragment extends Fragment {
         binding = null;
     }
 
-    private void initActions() {
-        binding.apBtnRegistrationProgress.setOnClickListener(v -> {
-            mainFacade.getApplicationNavGraphController().navigate(R.id.action_applicationProgress_Fragment_to_vehicleRegistrationProgress_Fragment);
-        });
-
-        binding.apBtnVehicleAppProgress.setOnClickListener(v -> {
-            mainFacade.getApplicationNavGraphController().navigate(R.id.action_applicationProgress_Fragment_to_vehicleApplicationProgress_Fragment);
-        });
+    public void setApplicationCount() {
+        if(applicationCount == 0){
+            binding.aplApplicationCount.setVisibility(View.VISIBLE);
+        }
     }
 }

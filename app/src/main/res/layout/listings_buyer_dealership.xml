@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/bhDealershipItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:background="@drawable/rounded_corner_rectangle40_solid"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/bhDealershipImage"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@string/vehicle_item"
+            app:srcCompat="@drawable/srcd_iv_cardistrictmandaue"
+            tools:srcCompat="@drawable/srcd_iv_cardistrictmandaue" />
+
+        <LinearLayout
+            android:id="@+id/bhContainerDesc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/bhDealershipName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SUSUKI"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/bhDealershipAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:layout_weight="1"
+                android:text="Mandaue"
+                android:textAlignment="center"
+                android:textSize="11sp"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/bhBtnSelect"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_weight="1"
+                android:backgroundTint="#3FBB54"
+                android:text="@string/text_select"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

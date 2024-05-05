@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mnProfile"
+    app:startDestination="@id/buyerProfile_Fragment">
+
+    <fragment
+        android:id="@+id/buyerProfile_Fragment"
+        android:name="com.example.roadready.fragments.buyer.profilefragments.Buyer_Profile_Fragment"
+        android:label="fragment_buyer_profile"
+        tools:layout="@layout/fragment_buyer_profile" >
+        <action
+            android:id="@+id/action_buyerProfile_Fragment_to_buyerEditProfile_Fragment"
+            app:destination="@id/buyerEditProfile_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/buyerEditProfile_Fragment"
+        android:name="com.example.roadready.fragments.buyer.profilefragments.Buyer_EditProfile_Fragment"
+        android:label="fragment_buyer_edit_profile"
+        tools:layout="@layout/fragment_buyer_edit_profile" >
+        <action
+            android:id="@+id/action_buyerEditProfile_Fragment_to_buyerProfile_Fragment"
+            app:destination="@id/buyerProfile_Fragment"
+            app:popUpTo="@id/buyerProfile_Fragment" />
+    </fragment>
+</navigation>

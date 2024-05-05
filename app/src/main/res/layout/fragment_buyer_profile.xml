@@ -8,23 +8,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".fragments.buyer.profilefragments.BuyerProfile_Fragment">
-
-    <TextView
-        android:id="@+id/bpTitleContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="@string/text_profile"
-        android:textAlignment="center"
-        android:textSize="34sp" />
-
-    <ImageView
-        android:id="@+id/bpImageLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/line"
-        tools:srcCompat="@drawable/line" />
+    tools:context=".fragments.buyer.profilefragments.Buyer_Profile_Fragment">
 
     <LinearLayout
         android:id="@+id/bpContainerUserContent"
@@ -178,31 +162,6 @@
                     android:text="Female"
                     tools:ignore="HardcodedText" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/bpLblCoordinatesId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:text="@string/text_longitude_latitude_id"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/bpInptLongitudeId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:text="10.342685341898216"
-                android:textAlignment="center"
-                tools:ignore="HardcodedText" />
-
-            <TextView
-                android:id="@+id/bpInptLatitudeId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="123.90262877242137"
-                android:textAlignment="center"
-                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 

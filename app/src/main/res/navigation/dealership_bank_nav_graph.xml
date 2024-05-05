@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dealership_bank_nav_graph"
+    app:startDestination="@id/banklist_Fragment">
+
+    <fragment
+        android:id="@+id/bank_Fragment"
+        android:name="com.example.roadready.fragments.dealership.Bank_Fragment"
+        android:label="fragment_bank"
+        tools:layout="@layout/fragment_dealership_bank" />
+    <fragment
+        android:id="@+id/banklist_Fragment"
+        android:name="com.example.roadready.fragments.dealership.mainnavfragments.Banklist_Fragment"
+        android:label="Banklist_Fragment" >
+        <action
+            android:id="@+id/action_banklist_Fragment_to_bank_Fragment"
+            app:destination="@id/bank_Fragment" />
+    </fragment>
+</navigation>
+

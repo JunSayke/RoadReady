@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/linearLayout2"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".fragments.dealership.mainnavfragments.MyVehicles_Fragment">
+
+	<LinearLayout
+		android:id="@+id/my_vehicles"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<TextView
+			android:id="@+id/mvTxtTitle"
+			android:layout_width="166.4dp"
+			android:layout_height="35.4dp"
+			android:layout_gravity="center_horizontal|center"
+			android:layout_marginTop="37dp"
+			android:gravity="center"
+			android:text="@string/text_my_vehicle_title"
+			android:textSize="24sp"
+			android:textStyle="bold" />
+
+		<TextView
+			android:id="@+id/mvTxtListingCount"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal"
+			android:text="No Vehicles Added"
+			android:textSize="24sp"
+			android:visibility="gone" />
+
+		<ScrollView
+			android:id="@+id/mvSVVehicleList"
+			android:layout_width="wrap_content"
+			android:layout_height="0dp"
+			android:layout_gravity="center_horizontal"
+			android:layout_margin="10dp"
+			android:layout_weight="1"
+			android:background="@color/white">
+
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/mvContainerVehicleList"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				tools:listitem="@layout/listings_dealership_vehicle" />
+
+		</ScrollView>
+
+	</LinearLayout>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/mvContainerAddVehicle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:padding="10dp">
+
+		<ImageButton
+			android:id="@+id/mvBtnAddVehicle"
+			android:layout_width="58dp"
+			android:layout_height="58dp"
+			android:background="?android:selectableItemBackground"
+			android:contentDescription="mv_iv_addvehicle"
+			android:src="@drawable/mv_iv_addvehicle"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<TextView
+			android:id="@+id/mvTxtAddVehicle"
+			android:layout_width="101.6dp"
+			android:layout_height="23.6dp"
+			android:gravity="center"
+			android:text="@string/text_add_vehicle"
+			android:textSize="16sp"
+			android:textStyle="bold"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/mvBtnAddVehicle" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

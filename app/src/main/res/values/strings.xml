@@ -30,10 +30,16 @@
     <string name="placeholder_phone_number">Phone Number</string>
     <string name="placeholder_current_address">Current Address</string>
     <string name="placeholder_longitude_latitude">Longitude and Latitude</string>
-    <string name="text_sex">Sex</string>
+    <string name="placeholder_dealership_name">Dealership Name</string>
+    <string name="placeholder_dealership_image">Dealership Image</string>
+    <string name="text_sex">Gender</string>
     <string name="text_male">Male</string>
     <string name="text_female">Female</string>
     <string name="text_other">Other</string>
+    <string name="text_mode">Mode of Payment</string>
+    <string name="text_dealership">Dealership Bank Choice</string>
+    <string name="text_buyer">Buyer Bank Choice</string>
+    <string name="text_both">Both</string>
     <string name="text_btn_submit">Submit</string>
 
     <!-- ACTIVITY VERIFICATION -->
@@ -67,8 +73,9 @@
     <string name="text_power">Power:</string>
     <string name="text_engine">Engine:</string>
     <string name="text_buy_now">Buy now!</string>
-    <string name="text_cash">Cash</string>
-    <string name="text_installment">Installment</string>
+    <string name="text_cash">Cash Payment</string>
+    <string name="text_inhouse">In-House Payment</string>
+    <string name="text_bank_loan">Bank Loan</string>
     <string name="img_dealer_logo">Dealer Logo</string>
     <string name="img_vehicle_item">Vehicle Item</string>
 
@@ -86,20 +93,29 @@
     <string name="text_signature">Signature</string>
     <string name="back_btn">back button</string>
 
-    <!-- ACTIVITY INSTALLMENT FORM -->
-    <string name="text_installment_form">Installment Form</string>
-    <string name="text_comaker_name">Co-maker Name: </string>
+    <!-- ACTIVITY INHOUSE FORM -->
+    <string name="text_inhouse_form">In-House Payment Form</string>
+    <string name="text_comaker_fname">Co-maker First Name: </string>
+    <string name="text_comaker_lname">Co-maker Last Name: </string>
     <string name="text_comaker_validId">Co-maker Valid ID: </string>
+    <string name="text_comaker_address">Co-maker Address:</string>
+    <string name="text_comaker_phoneno">Co-maker Phone Number:</string>
     <string name="text_vehicle_application_progress">Vehicle application progress</string>
     <string name="text_application_progress">Application Progress</string>
 
+    <!-- ACTIVITY BANK LOAN -->
+    <string name="text_bank_loan_form">Bank Loan Form</string>
+    <string name="text_pick_bank">Pick Bank:</string>
+    <string name="text_dealership_choice">Dealership\'s choice</string>
+    <string name="text_buyer_choice">Your choice</string>
+    <string name="text_bank_certificate">Bank Certificate:</string>
+
+    <!-- DOCUMENT SUBMITTED -->
+    <string name="text_document_submitted">Documents Submitted</string>
+
     <!-- ACTIVITY REGISTRATION PROGRESS-->
     <string name="text_registration_progress">Registration Progress</string>
-    <string name="text_your_documents_is_on_review">Your documents is on review</string>
     <string name="text_registration_on_progress">Registration on Progress</string>
-    <string name="text_releasing_of_registration">Releasing of Registration</string>
-    <string name="text_background_checking">Background checking</string>
-    <string name="text_releasing_of_unit">Releasing of unit</string>
     <string name="text_registered_on">Registered on</string>
     <string name="text_expiry_on">Expiry on</string>
     <string name="text_renew_registration">Renew Registration</string>
@@ -120,6 +136,7 @@
     <string name="text_cancel">Cancel</string>
 
     <string name="text_set_location">Set Location</string>
+
     <!-- DEALERSHIP SIDE -->
     <!-- HEADER TITLES -->
     <string name="text_header_my_vehicles">My Vehicles</string>
@@ -141,8 +158,9 @@
     <string name="text_vehicle_add_title">ADD VEHICLE</string>
     <string name="text_vehicle_add_price">Price:</string>
     <string name="text_vehicle_add_upload_picture">Upload a picture</string>
+    <string name="text_vehicle_add_vehicle_type">Vehicle Type:</string>
     <string name="text_vehicle_add_seating_cap">Seating Capacity:</string>
-    <string name="text_vehicle_add_fuel_cap">Fuel Tank Capacity:</string>
+    <string name="text_vehicle_add_fuel_cap">Fuel Capacity(litres):</string>
     <string name="text_vehicle_add_engine">Engine:</string>
     <string name="text_vehicle_add_transmission">Transmission:</string>
     <string name="text_vehicle_add_power">Power:</string>
@@ -192,7 +210,7 @@
     <string name="text_review_file_vehicle_title">TOYOTA HILUX CONQUEST 2023</string>
 
     <!-- NAVIGATION SIDEBAR -->
-    <string name="text_sidebar_sales_representative">SALES REPRESENTATIVE</string>
+    <string name="text_sidebar_header_title">DEALERSHIP</string>
     <string name="text_sidebar_my_vehicles">My Vehicles</string>
     <string name="text_sidebar_vehicle_applicants">Vehicle Applicants</string>
     <string name="text_sidebar_for_approval">For Approval</string>
@@ -202,6 +220,65 @@
     <string name="text_sidebar_bank">Bank</string>
     <string name="text_sidebar_notifications">Notifications</string>
     <string name="text_sidebar_view_profile">View Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- BUYER VEHICLE TRACKER -->
+    <!-- BUYER TRACKER BANK BUYER'S CHOICE -->
+    <string name="text_buyer_tracker_bank_buyer_choice_1">1. Vehicle is Selected Waiting for Approval</string>
+    <string name="text_buyer_tracker_bank_buyer_choice_2">2. Fill-up form and submit documents</string>
+    <string name="text_buyer_tracker_bank_buyer_choice_3">3. Upload your Bank Certificate</string>
+    <string name="text_buyer_tracker_bank_buyer_choice_4">4. Releasing of unit</string>
+
+    <!-- BUYER TRACKER BANK DEALERSHIP'S CHOICE -->
+    <string name="text_buyer_tracker_bank_dealership_choice_1">1. Vehicle is Selected Waiting for Approval</string>
+    <string name="text_buyer_tracker_bank_dealership_choice_2">2. Fill-up form and submit documents</string>
+    <string name="text_buyer_tracker_bank_dealership_choice_3">3. Bank loan via Dealership Partners </string>
+    <string name="text_buyer_tracker_bank_dealership_choice_4">4. Bank has approve your application</string>
+    <string name="text_buyer_tracker_bank_dealership_choice_5">5. Bank Credit Investigation  </string>
+    <string name="text_buyer_tracker_bank_dealership_choice_6">6. Bank has submitted your certificate of approval for auto loan</string>
+    <string name="text_buyer_tracker_bank_dealership_choice_7">7. Unit for releasing</string>
+
+    <!-- BUYER TRACKER CASH OR CHEQUE -->
+    <string name="text_buyer_tracker_cash_1">1. Vehicle is Selected Waiting for Approval</string>
+    <string name="text_buyer_tracker_cash_2">2. Fill-up form and submit documents</string>
+    <string name="text_buyer_tracker_cash_3">3. Cash over the counter </string>
+    <string name="text_buyer_tracker_cash_4">4. Unit Ready to release</string>
+
+    <!-- BUYER PROGRESS INHOUSE -->
+    <string name="text_buyer_progress_inhouse_1">1. Vehicle is Selected Waiting for Approval</string>
+    <string name="text_buyer_progress_inhouse_2">2. Fill-up form and submit documents</string>
+    <string name="text_buyer_progress_inhouse_3">3. Dealership Credit Investigation on process </string>
+    <string name="text_buyer_progress_inhouse_4">4. Unit Ready to release</string>
+
+    <!-- DEALERSHIP VEHICLE TRACKER -->
+    <!-- DEALERSHIP BANK BUYER'S CHOICE -->
+    <string name="text_dealership_bank_buyer_choice_1">1. Buyer has selected Vehicle</string>
+    <string name="text_dealership_bank_buyer_choice_2">2. Buyer has submitted documents</string>
+    <string name="text_dealership_bank_buyer_choice_3">3. Buyer has submitted bank certificate</string>
+    <string name="text_dealership_bank_buyer_choice_4">4. For Releasing</string>
+
+    <!-- DEALERSHIP BANK DEALERSHIP'S CHOICE -->
+    <string name="text_dealership_bank_dealership_choice_1">1. Buyer has selected Vehicle</string>
+    <string name="text_dealership_bank_dealership_choice_2">2. Buyer has submitted documents</string>
+    <string name="text_dealership_bank_dealership_choice_3">3. Select and forward to Bank Agent documents </string>
+    <string name="text_dealership_bank_dealership_choice_4">4. Bank Agent has Accepted the Application</string>
+    <string name="text_dealership_bank_dealership_choice_5">5. Bank CI on Progress</string>
+    <string name="text_dealership_bank_dealership_choice_6">6. Bank has submitted a certificate for auto loan</string>
+    <string name="text_dealership_bank_dealership_choice_7">7. For Releasing</string>
+
+    <!-- DEALERSHIP TRACKER CASH OR CHEQUE -->
+    <string name="text_dealership_tracker_cash_1">1. Buyer has selected Vehicle</string>
+    <string name="text_dealership_tracker_cash_2">2. Buyer has submitted documents</string>
+    <string name="text_dealership_tracker_cash_3">3. Buyer has choice cash/cheque</string>
+    <string name="text_dealership_tracker_cash_4">4. For releasing</string>
+
+    <!-- DEALERSHIP TRACKER INHOUSE -->
+    <string name="text_dealership_tracker_inhouse_1">1. Buyer has selected Vehicle</string>
+    <string name="text_dealership_tracker_inhouse_2">2. Buyer has submitted documents</string>
+    <string name="text_dealership_tracker_inhouse_3">3. Credit Investigation</string>
+    <string name="text_dealership_tracker_inhouse_4">4. For releasing</string>
+    <string name="documents_submitted">Documents Submitted</string>
 
 
 </resources>

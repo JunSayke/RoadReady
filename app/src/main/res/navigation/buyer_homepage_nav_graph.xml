@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homepage_nav_graph"
+    app:startDestination="@id/mnHome">
+
+    <fragment
+        android:id="@+id/mnApplication"
+        android:name="com.example.roadready.fragments.buyer.mainnav.ApplicationContainer_Fragment"
+        android:label="fragment_application_container"
+        tools:layout="@layout/fragment_buyer_application_container" />
+    <fragment
+        android:id="@+id/mnHome"
+        android:name="com.example.roadready.fragments.buyer.mainnav.HomeContainer_Fragment"
+        android:label="fragment_home_container"
+        tools:layout="@layout/fragment_buyer_home_container" >
+        <action
+            android:id="@+id/action_mnHome_to_verification_Fragment"
+            app:destination="@id/verification_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mnMyVehicle"
+        android:name="com.example.roadready.fragments.buyer.mainnav.MyVehicleContainer_Fragment"
+        android:label="fragment_my_vehicle_container"
+        tools:layout="@layout/fragment_buyer_my_vehicle_container" />
+    <fragment
+        android:id="@+id/mnNotification"
+        android:name="com.example.roadready.fragments.buyer.mainnav.NotificationContainer_Fragment"
+        android:label="fragment_notification_container"
+        tools:layout="@layout/fragment_common_notification_container" />
+    <fragment
+        android:id="@+id/mnProfile"
+        android:name="com.example.roadready.fragments.buyer.mainnav.ProfileContainer_Fragment"
+        android:label="fragment_profile_container"
+        tools:layout="@layout/fragment_buyer_profile_container" />
+    <fragment
+        android:id="@+id/verification_Fragment"
+        android:name="com.example.roadready.fragments.common.Verification_Fragment"
+        android:label="fragment_common_verification"
+        tools:layout="@layout/fragment_common_verification" >
+        <action
+            android:id="@+id/action_verification_Fragment_to_mnHome"
+            app:destination="@id/mnHome" />
+    </fragment>
+</navigation>
