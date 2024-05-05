@@ -15,32 +15,28 @@
         <action
             android:id="@+id/action_selectingCar_Fragment_to_installmentForm_Fragment"
             app:destination="@id/InHouseForm_Fragment" />
+        <action
+            android:id="@+id/action_selectingCar_Fragment_to_BankLoanForm_Fragment"
+            app:destination="@id/BankLoanForm_Fragment" />
         <argument
             android:name="modelId"
             android:defaultValue="@null"
             app:argType="string"
             app:nullable="true" />
-        <action
-            android:id="@+id/action_selectingCar_Fragment_to_BankLoanForm_Fragment"
-            app:destination="@id/BankLoanForm_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/selectingDealership_Fragment"
         android:name="com.example.roadready.fragments.buyer.home.SelectingDealership_Fragment"
         android:label="fragment_selecting_dealership"
         tools:layout="@layout/fragment_buyer_selecting_dealership" >
+        <argument
+            android:name="dealershipId"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
         <action
             android:id="@+id/action_selectingDealership_Fragment_to_selectingCar_Fragment"
             app:destination="@id/selectingCar_Fragment" />
-        <action
-            android:id="@+id/action_selectingDealership_Fragment_to_cashPaymentForm_Fragment"
-            app:destination="@id/cashPaymentForm_Fragment" />
-        <action
-            android:id="@+id/action_selectingDealership_Fragment_to_installmentForm_Fragment"
-            app:destination="@id/InHouseForm_Fragment" />
-        <action
-            android:id="@+id/action_selectingDealership_Fragment_to_BankLoanForm_Fragment"
-            app:destination="@id/BankLoanForm_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/cashPaymentForm_Fragment"

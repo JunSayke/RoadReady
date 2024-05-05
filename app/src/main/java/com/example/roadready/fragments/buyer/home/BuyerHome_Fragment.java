@@ -4,6 +4,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
+import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
+import com.example.roadready.classes.model.gson.data.DealershipGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
+import com.example.roadready.classes.ui.adapter.BuyerDealershipListRecyclerViewAdapter;
 import com.example.roadready.classes.ui.adapter.BuyerHotListingsRecyclerViewAdapter;
 import com.example.roadready.classes.ui.adapter.BuyerVehicleListingsRecyclerViewAdapter;
 import com.example.roadready.databinding.FragmentBuyerHomeBinding;
@@ -37,8 +41,11 @@ public class BuyerHome_Fragment extends Fragment {
     private final String TAG = "BuyerHome_Fragment";
     private FragmentBuyerHomeBinding binding;
     private MainFacade mainFacade;
-    private List<VehicleGson> itemList;
-    private List<VehicleGson> activeItemList;
+    private List<VehicleGson> listingList;
+    private List<VehicleGson> activeListingList;
+    private List<DealershipGson> dealershipList;
+    private List<DealershipGson> activeDealershipList;
+    boolean isListingSelected = true; // true = vehicle, false = dealership
     private Location currentLocation;
     private final int HOT_VEHICLE_PRICE_THRESHOLD = 100000;
 
@@ -49,8 +56,10 @@ public class BuyerHome_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentBuyerHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        itemList = new ArrayList<>();
-        activeItemList = new ArrayList<>();
+        listingList = new ArrayList<>();
+        activeListingList = new ArrayList<>();
+        dealershipList = new ArrayList<>();
+        activeDealershipList = new ArrayList<>();
 
         try {
             mainFacade = MainFacade.getInstance();
@@ -67,17 +76,34 @@ public class BuyerHome_Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
+        final RoadReadyServer.ResponseListener<DealershipsDataGson> dealershipResponseListener = new RoadReadyServer.ResponseListener<DealershipsDataGson>() {
+            @Override
+            public void onSuccess(DealershipsDataGson data) {
+                for(DealershipGson dealershipGson : data.getDealerships()) {
+                    dealershipList.add(dealershipGson);
+                }
+                updateDealershipScrollViewItems(dealershipList);
+                binding.bhSVDealership.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+            }
+
+            @Override
+            public void onFailure(String message) {
+                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            }
+        };
+        mainFacade.getDealerships(dealershipResponseListener, null, null);
+
+        final RoadReadyServer.ResponseListener<ListingsDataGson> listingResponseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
             @Override
             public void onSuccess(ListingsDataGson data) {
                 for(VehicleGson vehicleGson : data.getListings()) {
                     if(vehicleGson.isAvailable()) {
-                        itemList.add(vehicleGson);
+                        listingList.add(vehicleGson);
                     }
                 }
                 initHotListings();
                 initSearchBar();
-                updateScrollViewItems(itemList);
+                updateListingScrollViewItems(listingList);
                 binding.bhSVItems.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
                 initFilterButton();
             }
@@ -88,7 +114,7 @@ public class BuyerHome_Fragment extends Fragment {
             }
         };
 
-        mainFacade.getListings(responseListener, null, null, null);
+        mainFacade.getListings(listingResponseListener, null, null, null);
     }
 
     @Override
@@ -99,7 +125,7 @@ public class BuyerHome_Fragment extends Fragment {
 
     private void initHotListings() {
         List<VehicleGson> filteredList = new ArrayList<>();
-        for (VehicleGson item : itemList) {
+        for (VehicleGson item : listingList) {
             if (item.getPrice() < HOT_VEHICLE_PRICE_THRESHOLD) {
                 filteredList.add(item);
             }
@@ -138,7 +164,7 @@ public class BuyerHome_Fragment extends Fragment {
         });
     }
 
-    private void updateScrollViewItems(List<VehicleGson> data) {
+    private void updateListingScrollViewItems(List<VehicleGson> data) {
         binding.bhSVItems.setAdapter(new BuyerVehicleListingsRecyclerViewAdapter(
                 mainFacade.getMainActivity().getApplicationContext(),
                 currentLocation,
@@ -148,6 +174,18 @@ public class BuyerHome_Fragment extends Fragment {
                             action.setModelId(itemId);
                             mainFacade.getBuyerHomeNavController().navigate(action);
             }
+        ));
+    }
+
+    private void updateDealershipScrollViewItems(List<DealershipGson> data){
+        binding.bhSVDealership.setAdapter(new BuyerDealershipListRecyclerViewAdapter(
+                mainFacade.getMainActivity().getApplicationContext(),
+                data, itemId -> {
+            BuyerHome_FragmentDirections.ActionBuyerHomepageFragmentToSelectingDealershipFragment action =
+                    BuyerHome_FragmentDirections.actionBuyerHomepageFragmentToSelectingDealershipFragment();
+            action.setDealershipId(itemId);
+            mainFacade.getBuyerHomeNavController().navigate(action);
+        }
         ));
     }
 
@@ -169,17 +207,25 @@ public class BuyerHome_Fragment extends Fragment {
                 ItemListingFilters filter = null;
                 switch (selectedFilter) {
                     case "Vehicle":
+                        binding.bhSVDealership.setVisibility(View.GONE);
+                        binding.bhSVItems.setVisibility(View.VISIBLE);
+                        isListingSelected = true;
+                        updateListingScrollViewItems(listingList);
                         filter = ItemListingFilters.VEHICLE;
                         break;
                     case "Dealership":
+                        binding.bhSVDealership.setVisibility(View.VISIBLE);
+                        binding.bhSVItems.setVisibility(View.GONE);
+                        isListingSelected = false;
+                        updateDealershipScrollViewItems(dealershipList);
                         filter = ItemListingFilters.DEALERSHIP;
                         break;
                     default:
                         break;
                 }
-                if (filter != null) {
-                    sortItemListings(filter);
-                }
+//                if (filter != null) {
+//                    sortItemListings(filter);
+//                }
             }
 
             @Override
@@ -189,31 +235,41 @@ public class BuyerHome_Fragment extends Fragment {
 
 
     private void updateItemListings(CharSequence s) {
-        activeItemList.clear();
-        for(VehicleGson items : itemList) {
-            if(items.getModelAndName().toLowerCase().contains(s.toString().toLowerCase())) {
-                activeItemList.add(items);
+        activeListingList.clear();
+
+        if(isListingSelected){
+            for(VehicleGson items : listingList) {
+                if(items.getModelAndName().toLowerCase().contains(s.toString().toLowerCase())) {
+                    activeListingList.add(items);
+                }
             }
+            updateListingScrollViewItems(activeListingList);
+        }else{
+            for(DealershipGson items : dealershipList) {
+                if(items.getName().toLowerCase().contains(s.toString().toLowerCase())) {
+                    activeDealershipList.add(items);
+                }
+            }
+            updateDealershipScrollViewItems(activeDealershipList);
         }
-        updateScrollViewItems(activeItemList);
     }
 
-    private void sortItemListings(ItemListingFilters filter) {
-        switch (filter) {
-            case VEHICLE:
-                itemList.sort(Comparator.comparing(VehicleGson::getId));
-                updateScrollViewItems(itemList);
-                break;
-            case DEALERSHIP:
-                itemList.sort(Comparator.comparing(
-                        vehicle -> vehicle.getDealershipGson().getId()
-                ));
-                updateScrollViewItems(itemList);
-                break;
-            default:
-                itemList.sort(Comparator.comparing(VehicleGson::getModelAndName));
-                updateScrollViewItems(itemList);
-                break;
-        }
-    }
+//    private void sortItemListings(ItemListingFilters filter) {
+//        switch (filter) {
+//            case VEHICLE:
+//                listingList.sort(Comparator.comparing(VehicleGson::getId));
+//                updateListingScrollViewItems(listingList);
+//                break;
+//            case DEALERSHIP:
+//                listingList.sort(Comparator.comparing(
+//                        vehicle -> vehicle.getDealershipGson().getId()
+//                ));
+//                updateListingScrollViewItems(listingList);
+//                break;
+//            default:
+//                listingList.sort(Comparator.comparing(VehicleGson::getModelAndName));
+//                updateListingScrollViewItems(listingList);
+//                break;
+//        }
+//    }
 }

@@ -98,19 +98,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/bhSVItems"
-            android:layout_width="match_parent"
-            android:layout_height="420dp"
-            android:layout_marginVertical="20dp"
-            android:background="@drawable/rectangle"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/listings_buyer_vehicle" />
-
         <ImageView
             android:id="@+id/bhImageCyanCircle"
             android:layout_width="250dp"
@@ -119,8 +106,35 @@
             android:backgroundTint="#8DDEF0"
             android:contentDescription="@string/cyan_circle_left"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/bhSVItems"
+            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="ImageContrastCheck" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bhSVDealership"
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/rectangle"
+            android:padding="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/listings_buyer_dealership" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/bhSVItems"
+            android:layout_width="match_parent"
+            android:layout_height="420dp"
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/transparent_rectangle"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/listings_buyer_vehicle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
