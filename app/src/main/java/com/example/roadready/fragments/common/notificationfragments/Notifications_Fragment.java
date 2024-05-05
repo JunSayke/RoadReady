@@ -56,13 +56,13 @@ public class Notifications_Fragment extends Fragment {
                 binding.nContainerNotifications.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
 
                 notificationCount = data.getNotifications().size();
-                setListingCount();
+                setNotificationCount();
                 mainFacade.hideProgressBar();
             }
 
             @Override
             public void onFailure(String message) {
-                setListingCount();
+                setNotificationCount();
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
             }
@@ -98,7 +98,7 @@ public class Notifications_Fragment extends Fragment {
         mainFacade.deleteNotification(responseListener, itemId);
     }
 
-    private void setListingCount() {
+    private void setNotificationCount() {
         if(notificationCount <= 0){
             binding.nTxtNotificationCount.setVisibility(View.VISIBLE);
         }

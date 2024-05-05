@@ -50,6 +50,8 @@ public class BuyerHome_Fragment extends Fragment {
     private Location currentLocation;
     private final int HOT_VEHICLE_PRICE_THRESHOLD = 100000;
     private boolean isSpinnerVisible = false;
+    private int listingCount;
+    private int dealershipCount;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -60,6 +62,8 @@ public class BuyerHome_Fragment extends Fragment {
         activeListingList = new ArrayList<>();
         dealershipList = new ArrayList<>();
         activeDealershipList = new ArrayList<>();
+        listingCount = 0;
+        dealershipCount = 0;
 
         try {
             mainFacade = MainFacade.getInstance();
@@ -86,10 +90,13 @@ public class BuyerHome_Fragment extends Fragment {
                 }
                 updateDealershipScrollViewItems(dealershipList);
                 binding.bhSVDealership.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+                dealershipCount = data.getDealerships().size();
+                setDealershipCount();
             }
 
             @Override
             public void onFailure(String message) {
+                setDealershipCount();
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
             }
         };
@@ -110,10 +117,13 @@ public class BuyerHome_Fragment extends Fragment {
                 initFilterButton();
                 mainFacade.hideProgressBar();
                 binding.getRoot().setVisibility(View.VISIBLE);
+                listingCount = data.getListings().size();
+                setListingCount();
             }
 
             @Override
             public void onFailure(String message) {
+                setListingCount();
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
                 binding.getRoot().setVisibility(View.VISIBLE);
@@ -273,22 +283,15 @@ public class BuyerHome_Fragment extends Fragment {
         }
     }
 
-//    private void sortItemListings(ItemListingFilters filter) {
-//        switch (filter) {
-//            case VEHICLE:
-//                listingList.sort(Comparator.comparing(VehicleGson::getId));
-//                updateListingScrollViewItems(listingList);
-//                break;
-//            case DEALERSHIP:
-//                listingList.sort(Comparator.comparing(
-//                        vehicle -> vehicle.getDealershipGson().getId()
-//                ));
-//                updateListingScrollViewItems(listingList);
-//                break;
-//            default:
-//                listingList.sort(Comparator.comparing(VehicleGson::getModelAndName));
-//                updateListingScrollViewItems(listingList);
-//                break;
-//        }
-//    }
+    public void setListingCount(){
+        if(listingCount <= 0){
+            binding.bhTxtListingCount.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void setDealershipCount(){
+        if(dealershipCount <= 0){
+            binding.bhTxtDealershipCount.setVisibility(View.VISIBLE);
+        }
+    }
 }

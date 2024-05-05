@@ -58,6 +58,7 @@ public class DocumentsSubmitted_Fragment extends Fragment {
 
             @Override
             public void onFailure(String message) {
+                binding.apTxtNoDocuments.setVisibility(View.VISIBLE);
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
             }

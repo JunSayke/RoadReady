@@ -18,6 +18,18 @@
         android:text="@string/text_application_progress"
         android:textSize="34sp" />
 
+    <TextView
+        android:id="@+id/aplApplicationCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Apply for applications now!"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/aplContainerApplicationList"
         android:layout_width="match_parent"

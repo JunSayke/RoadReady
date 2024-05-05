@@ -26,12 +26,14 @@ public class ApplicationProgress_Fragment extends Fragment {
     private final String TAG = "ApplicationProgress_Fragment";
     private FragmentBuyerApplicationProgressBinding binding;
     private MainFacade mainFacade;
+    private int applicationCount;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentBuyerApplicationProgressBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        applicationCount = 0;
 
         try {
             mainFacade = MainFacade.getInstance();
@@ -60,10 +62,14 @@ public class ApplicationProgress_Fragment extends Fragment {
                         }));
                 binding.aplContainerApplicationList.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
                 mainFacade.hideProgressBar();
+
+                applicationCount = data.getApplications().size();
+                setApplicationCount();
             }
 
             @Override
             public void onFailure(String message) {
+                setApplicationCount();
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
             }
@@ -75,5 +81,11 @@ public class ApplicationProgress_Fragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public void setApplicationCount() {
+        if(applicationCount == 0){
+            binding.aplApplicationCount.setVisibility(View.VISIBLE);
+        }
     }
 }
