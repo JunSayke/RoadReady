@@ -111,10 +111,10 @@ public class Login_Fragment extends Fragment {
         String password = String.valueOf(binding.lgnInptPassword.getText());
 
 
-        //TODO: separate dealership and buyer
         final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
             @Override
             public void onSuccess(UserDataGson data) {
+                mainFacade.makeToast("Login Successfully!", Toast.LENGTH_SHORT);
                 UserGson user = data.getUserGson();
                 mainFacade.startLoginSession(user);
                 if(user.getRole().equals("buyer")) {

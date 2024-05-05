@@ -114,6 +114,7 @@ public class Buyer_SignUp_Fragment extends Fragment {
         final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
             @Override
             public void onSuccess(GsonData data) {
+                mainFacade.makeToast("Registered Successfully!", Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
 
