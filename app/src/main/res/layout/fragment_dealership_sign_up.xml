@@ -378,8 +378,10 @@
             android:layout_marginStart="105dp"
             android:layout_marginTop="8dp"
             android:text="@string/text_already_have_account"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sgnupBtnSubmit" />
+            app:layout_constraintTop_toBottomOf="@+id/sgnupBtnSubmit"
+            tools:visibility="gone" />
 
         <TextView
             android:id="@+id/sgnupTextLogin"
@@ -390,6 +392,7 @@
             android:clickable="true"
             android:text="@string/text_login"
             android:textColor="#3670A8"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/sgnupTextAlreadyHaveAccount"
             app:layout_constraintTop_toBottomOf="@+id/sgnupBtnSubmit" />
 
@@ -399,11 +402,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:contentDescription="@string/vector_or"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/sgnupBtnGoogleLogin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sgnupTextAlreadyHaveAccount"
-            app:srcCompat="@drawable/login_grp_or" />
+            app:srcCompat="@drawable/login_grp_or"
+            tools:visibility="gone" />
 
         <Button
             android:id="@+id/sgnupBtnGoogleLogin"
@@ -420,11 +425,13 @@
             android:text="@string/text_btn_loginGoogle"
             android:textColor="#747070"
             android:textSize="12sp"
+            android:visibility="gone"
             app:cornerRadius="28dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sgnupImageOr"
-            app:rippleColor="#F3F3F3F3" />
+            app:rippleColor="#F3F3F3F3"
+            tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

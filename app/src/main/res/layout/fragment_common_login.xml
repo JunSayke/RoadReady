@@ -179,6 +179,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/lgnTextNoAccount" />
 
+        <CheckBox
+            android:id="@+id/lgnChkTogglePassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/lgnInptPassword"
+            app:layout_constraintEnd_toEndOf="@+id/lgnInptPassword"
+            app:layout_constraintTop_toTopOf="@+id/lgnInptPassword" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

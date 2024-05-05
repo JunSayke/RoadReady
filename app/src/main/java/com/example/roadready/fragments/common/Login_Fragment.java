@@ -3,6 +3,7 @@ package com.example.roadready.fragments.common;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,15 @@ public class Login_Fragment extends Fragment {
 
         binding.lgnTextForgetPassword.setOnClickListener(v -> {
             mainFacade.makeToast("Forgot password is not yet available!", Toast.LENGTH_SHORT);
+        });
+
+        binding.lgnChkTogglePassword.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                binding.lgnInptPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            } else {
+                binding.lgnInptPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+            binding.lgnInptPassword.setSelection(binding.lgnInptPassword.getText().length());
         });
     }
 
