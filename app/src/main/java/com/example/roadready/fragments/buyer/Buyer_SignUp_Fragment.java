@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,8 +74,16 @@ public class Buyer_SignUp_Fragment extends Fragment {
         });
 
         binding.sgnupBtnGoogleLogin.setOnClickListener(v -> {
-            // TODO: Make it registered as buyer somehow. Anyway let jake cook
             processGoogleAuth();
+        });
+
+        binding.sgnupChkTogglePassword.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                binding.sgnupInptPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            } else {
+                binding.sgnupInptPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            }
+            binding.sgnupInptPassword.setSelection(binding.sgnupInptPassword.getText().length());
         });
     }
 
