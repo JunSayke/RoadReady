@@ -26,7 +26,9 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
+import com.example.roadready.classes.util.CircleTransform;
 import com.example.roadready.databinding.FragmentDealershipSignUpBinding;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -39,6 +41,7 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
     private ActivityResultLauncher<Intent> mapResultLauncher;
     private MainFacade mainFacade;
     private ImagePicker imagePicker;
+    private Uri imageData;
 
     @Nullable
     @Override
@@ -199,12 +202,12 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
         List<String> coordList = checkCoords();
         showProgressBar();
 
-        File dealershipImageFile = FileUtils.drawableToFile(mainFacade.getMainActivity(), R.drawable.roadready, "dealership_image.png");
+        File dealershipImageFile = FileUtils.uriToFile(mainFacade.getMainActivity().getApplicationContext(), imageData);
         String email = String.valueOf(binding.sgnupInptEmail.getText());
-        String password = String.valueOf(binding.sgnupInptPassword.getText());
+        String password = passwordCheck(String.valueOf(binding.sgnupInptPassword.getText()));
         String firstName = String.valueOf(binding.sgnupInptFname.getText());
         String lastName = String.valueOf(binding.sgnupInptLname.getText());
-        String phoneNumber = String.valueOf(binding.sgnupInptPhoneNumber.getText());
+        String phoneNumber = phoneNumberCheck(String.valueOf(binding.sgnupInptPhoneNumber.getText()));
         String gender = getGender();
         String establishmentAddress = String.valueOf(binding.sgnupInptAddress.getText());
         String dealershipName = String.valueOf(binding.sgnupInptDealershipName.getText());
@@ -230,6 +233,26 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
         mainFacade.registerDealership(responseListener, dealershipImageFile, email, password, firstName, lastName, phoneNumber, gender, dealershipName, establishmentAddress, latitude, longitude, modeOfPayments);
     }
 
+    private String passwordCheck(String pass){
+        if(pass.length() < 8){
+            mainFacade.makeToast("Password must be at least 8 characters long", Toast.LENGTH_SHORT);
+            return "";
+        }
+        return pass;
+    }
+
+    private String phoneNumberCheck(String phoneno){
+        if(phoneno.length() != 11){
+            mainFacade.makeToast("Please enter an 11-digit phone number", Toast.LENGTH_SHORT);
+            return "";
+        }
+        if(phoneno.charAt(0) != '0' || phoneno.charAt(1) != '9'){
+            mainFacade.makeToast("Please enter a valid phone number", Toast.LENGTH_SHORT);
+            return "";
+        }
+        return phoneno;
+    }
+
     private void showProgressBar() {
         binding.sgnupBtnSubmit.setEnabled(false);
         mainFacade.showProgressBar();
@@ -246,9 +269,10 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
     }
 
     @Override
-    public void onImageSelected(Uri imageData) {
-        if(imageData != null) {
-            binding.sgnupLblDealershipImage.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), imageData));
+    public void onImageSelected(Uri uri) {
+        if(uri != null) {
+            binding.sgnupLblDealershipImage.setText(getFileNameFromUri(mainFacade.getMainActivity().getApplicationContext(), uri));
+            imageData = uri;
         } else {
             mainFacade.makeToast("Image selection canceled", Toast.LENGTH_SHORT);
         }

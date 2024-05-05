@@ -104,11 +104,11 @@ public class Buyer_SignUp_Fragment extends Fragment {
         showProgressBar();
 
         String email = String.valueOf(binding.sgnupInptEmail.getText());
-        String password = String.valueOf(binding.sgnupInptPassword.getText());
+        String password = passwordCheck(String.valueOf(binding.sgnupInptPassword.getText()));
         String firstName = String.valueOf(binding.sgnupInptFname.getText());
         String lastName = String.valueOf(binding.sgnupInptLname.getText());
-        String phoneNumber = String.valueOf(binding.sgnupInptPhoneNumber.getText());
-        String gender = String.valueOf(binding.getRoot().findViewById(binding.sgnupRgSexOptions.getCheckedRadioButtonId()).getContentDescription());
+        String phoneNumber = phoneNumberCheck(String.valueOf(binding.sgnupInptPhoneNumber.getText()));
+        String gender = getGender();
         String address = String.valueOf(binding.sgnupInptAddress.getText());
 
         final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
@@ -126,6 +126,33 @@ public class Buyer_SignUp_Fragment extends Fragment {
         };
 
         mainFacade.registerBuyer(responseListener, email, password, firstName, lastName, phoneNumber, gender, address);
+    }
+
+    private String passwordCheck(String pass){
+        if(pass.length() < 8){
+            mainFacade.makeToast("Password must be at least 8 characters long", Toast.LENGTH_SHORT);
+            return "";
+        }
+        return pass;
+    }
+
+    private String phoneNumberCheck(String phoneno){
+        if(phoneno.length() != 11){
+            mainFacade.makeToast("Please enter an 11-digit phone number", Toast.LENGTH_SHORT);
+            return "";
+        }
+        if(phoneno.charAt(0) != '0' || phoneno.charAt(1) != '9'){
+            mainFacade.makeToast("Please enter a valid phone number", Toast.LENGTH_SHORT);
+            return "";
+        }
+        return phoneno;
+    }
+
+    private String getGender(){
+        if(binding.sgnupRgSexOptions.getCheckedRadioButtonId() != -1){
+            return String.valueOf(binding.getRoot().findViewById(binding.sgnupRgSexOptions.getCheckedRadioButtonId()).getContentDescription());
+        }
+        return "";
     }
 
     private void showProgressBar() {
