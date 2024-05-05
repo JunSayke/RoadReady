@@ -60,7 +60,6 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
 
         initActions();
         modelId = CashPaymentForm_FragmentArgs.fromBundle(getArguments()).getModelId();
-        //mainFacade.makeToast(modelId, Toast.LENGTH_SHORT);
     }
 
     @Override

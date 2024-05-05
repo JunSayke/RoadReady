@@ -54,6 +54,7 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mainFacade.showProgressBar();
+        binding.apContenContainer.setVisibility(View.INVISIBLE);
 
         modelId = VehicleApplicationProgress_FragmentArgs.fromBundle(getArguments()).getModelId();
 
@@ -68,12 +69,14 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
                     }
                 }
                 mainFacade.hideProgressBar();
+                binding.apContenContainer.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onFailure(String message) {
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
+                binding.apContenContainer.setVisibility(View.VISIBLE);
             }
         };
 

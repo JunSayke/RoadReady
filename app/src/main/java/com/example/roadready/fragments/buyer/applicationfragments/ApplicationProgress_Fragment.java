@@ -70,7 +70,6 @@ public class ApplicationProgress_Fragment extends Fragment {
             @Override
             public void onFailure(String message) {
                 setApplicationCount();
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
             }
         };

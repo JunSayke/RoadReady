@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
                 NavController currentNavController = mainFacade.getCurrentNavController();
 
                 if (currentNavController != null && !currentNavController.popBackStack()) {
-                    mainFacade.makeToast("Moving backward", Toast.LENGTH_SHORT);
                     finish();
                 }
             }

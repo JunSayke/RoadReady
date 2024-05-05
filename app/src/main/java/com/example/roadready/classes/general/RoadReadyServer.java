@@ -472,10 +472,11 @@ public class RoadReadyServer extends RetrofitFacade {
                     Log.e(TAG, Objects.requireNonNull(e.getMessage()));
                 } finally {
                     String message = "Null response!";
-                    if (body != null) {
-                        message = body.getMessage();
+                    if (body == null || body instanceof ErrorGson || !body.getStatus()) {
+                        if (body != null)
+                            message = body.getMessage();
+                        responseListener.onFailure(message);
                     }
-                    responseListener.onFailure(message);
                 }
             }
             @Override
