@@ -15,6 +15,7 @@
         android:roundIcon="@drawable/roadready"
         android:supportsRtl="true"
         android:theme="@style/Theme.RoadReady"
+        android:hasFragileUserData="true"
         tools:targetApi="31">
         <activity
             android:name=".fragments.dealership.DealershipVehicleApplicationProgress_Fragment"

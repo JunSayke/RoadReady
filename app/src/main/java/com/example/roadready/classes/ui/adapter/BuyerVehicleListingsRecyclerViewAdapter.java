@@ -43,6 +43,7 @@ public class BuyerVehicleListingsRecyclerViewAdapter extends RecyclerView.Adapte
         return new ViewHolder(view);
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         VehicleGson model = vehicleGsonList.get(position);
@@ -52,9 +53,14 @@ public class BuyerVehicleListingsRecyclerViewAdapter extends RecyclerView.Adapte
 //        Location.distanceBetween(10.303841817089438, 123.88096691447505, model.getDealershipGson().getLatitude(), model.getDealershipGson().getLongitude(), results);
 //        float distanceInMeters = results[0];
 //        float distanceInKm = distanceInMeters / 1000;
-        double distanceInKm = haversineDistance(currentLocation.getLatitude(), currentLocation.getLongitude(), model.getDealershipGson().getLatitude(), model.getDealershipGson().getLongitude());
-        @SuppressLint("DefaultLocale")
-        String description = model.getDealershipGson().getName() + " (" + String.format("%.2f", distanceInKm) + " km away)";
+
+        String description = "";
+        if (currentLocation != null) {
+            double distanceInKm = haversineDistance(currentLocation.getLatitude(), currentLocation.getLongitude(), model.getDealershipGson().getLatitude(), model.getDealershipGson().getLongitude());
+            description = model.getDealershipGson().getName() + " (" + String.format("%.2f", distanceInKm) + " km away)";
+        } else {
+            description = model.getDealershipGson().getName()  + " (location not available)";
+        }
         holder.getVehicleDesc().setText(description);
     }
 
