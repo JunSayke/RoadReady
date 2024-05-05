@@ -20,16 +20,15 @@
             android:layout_height="100dp"
             android:layout_marginStart="5dp"
             android:contentDescription="@string/vehicle_item"
-            app:srcCompat="@drawable/hp_iv_fortuner"
-            tools:srcCompat="@drawable/hp_iv_fortuner" />
+            app:srcCompat="@drawable/srcd_iv_cardistrictmandaue"
+            tools:srcCompat="@drawable/srcd_iv_cardistrictmandaue" />
 
         <LinearLayout
             android:id="@+id/bhContainerDesc"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="20dp"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/bhDealershipName"
@@ -45,7 +44,7 @@
                 android:id="@+id/bhDealershipAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginVertical="5dp"
                 android:layout_weight="1"
                 android:text="Mandaue"
                 android:textAlignment="center"

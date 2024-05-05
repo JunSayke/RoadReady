@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.DealershipsDataGson;
@@ -48,7 +49,6 @@ public class BuyerHome_Fragment extends Fragment {
     boolean isListingSelected = true; // true = vehicle, false = dealership
     private Location currentLocation;
     private final int HOT_VEHICLE_PRICE_THRESHOLD = 100000;
-
     private boolean isSpinnerVisible = false;
 
     @Override
@@ -213,6 +213,7 @@ public class BuyerHome_Fragment extends Fragment {
                 ItemListingFilters filter = null;
                 switch (selectedFilter) {
                     case "Vehicle":
+                        binding.bhInptSearch.setHint(R.string.text_search_vehicle);
                         binding.bhSVDealership.setVisibility(View.GONE);
                         binding.bhSVItems.setVisibility(View.VISIBLE);
                         isListingSelected = true;
@@ -220,6 +221,7 @@ public class BuyerHome_Fragment extends Fragment {
                         filter = ItemListingFilters.VEHICLE;
                         break;
                     case "Dealership":
+                        binding.bhInptSearch.setHint(R.string.text_search_dealership);
                         binding.bhSVDealership.setVisibility(View.VISIBLE);
                         binding.bhSVItems.setVisibility(View.GONE);
                         isListingSelected = false;
@@ -242,11 +244,17 @@ public class BuyerHome_Fragment extends Fragment {
 
     private void updateItemListings(CharSequence s) {
         activeListingList.clear();
+        activeDealershipList.clear();
 
         if(isListingSelected){
             for(VehicleGson items : listingList) {
                 if(items.getModelAndName().toLowerCase().contains(s.toString().toLowerCase())) {
                     activeListingList.add(items);
+                }
+                if(activeListingList.isEmpty()){
+                    binding.bhTxtSearchCount.setVisibility(View.VISIBLE);
+                }else{
+                    binding.bhTxtSearchCount.setVisibility(View.GONE);
                 }
             }
             updateListingScrollViewItems(activeListingList);
@@ -254,6 +262,11 @@ public class BuyerHome_Fragment extends Fragment {
             for(DealershipGson items : dealershipList) {
                 if(items.getName().toLowerCase().contains(s.toString().toLowerCase())) {
                     activeDealershipList.add(items);
+                }
+                if(activeDealershipList.isEmpty()){
+                    binding.bhTxtSearchCount.setVisibility(View.VISIBLE);
+                }else{
+                    binding.bhTxtSearchCount.setVisibility(View.GONE);
                 }
             }
             updateDealershipScrollViewItems(activeDealershipList);

@@ -30,6 +30,7 @@ public class Notifications_Fragment extends Fragment {
 
         binding = com.example.roadready.databinding.FragmentCommonNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        notificationCount = 0;
 
         try {
             mainFacade = MainFacade.getInstance();
@@ -61,6 +62,7 @@ public class Notifications_Fragment extends Fragment {
 
             @Override
             public void onFailure(String message) {
+                setListingCount();
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
             }

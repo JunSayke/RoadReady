@@ -32,6 +32,7 @@ public class MyVehicles_Fragment extends Fragment {
 
 		binding = FragmentDealershipMyvehiclesBinding.inflate(inflater, container, false);
 		View root = binding.getRoot();
+		listingCount = 0;
 
 		try {
 			mainFacade = MainFacade.getInstance();
@@ -51,6 +52,7 @@ public class MyVehicles_Fragment extends Fragment {
 	@Override
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+		mainFacade.showProgressBar();
 		final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
 			@Override
 			public void onSuccess(ListingsDataGson data) {
@@ -67,11 +69,14 @@ public class MyVehicles_Fragment extends Fragment {
 
 				listingCount = data.getListings().size();
 				setListingCount();
+				mainFacade.hideProgressBar();
 			}
 
 			@Override
 			public void onFailure(String message) {
+				setListingCount();
 				mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+				mainFacade.hideProgressBar();
 			}
 		};
 
