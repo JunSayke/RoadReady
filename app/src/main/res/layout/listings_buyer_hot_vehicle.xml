@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bhHotVehicleItem"
+    android:layout_width="125dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/rectangle"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/bhImageRItem"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/recommended_item"
+        android:foreground="@drawable/hp_iv_hotdeal"
+        android:foregroundGravity="right"
+        android:src="@drawable/hp_iv_territory"
+        tools:src="@drawable/hp_iv_territory" />
+
+    <Button
+        android:id="@+id/bhBtnViewRItem"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:backgroundTint="#0EB2F8"
+        android:gravity="center"
+        android:text="@string/text_view_now"
+        android:textColor="#060606"
+        tools:ignore="TouchTargetSizeCheck" />
+</LinearLayout>

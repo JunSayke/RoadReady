@@ -141,7 +141,7 @@ public interface RetrofitService {
     Call<SuccessGson<NotificationsDataGson>> getNotification();
 
     @FormUrlEncoded
-    @DELETE("user/notifications")
+    @HTTP(method = "DELETE", path = "user/notifications", hasBody = true)
     Call<SuccessGson<GsonData>> deleteNotification(
             @Field("notificationId") String notificationId
     );

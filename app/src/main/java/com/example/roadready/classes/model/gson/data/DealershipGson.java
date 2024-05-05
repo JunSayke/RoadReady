@@ -9,8 +9,8 @@ public class DealershipGson extends GsonData {
     private String dealershipImageUrl;
     private String name;
     private UserGson manager;
-    private String latitude;
-    private String longitude;
+    private double latitude;
+    private double longitude;
     private String address;
     @SerializedName("createdat")
     private String createdAt;
@@ -33,11 +33,11 @@ public class DealershipGson extends GsonData {
         return manager;
     }
 
-    public String getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public String getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 

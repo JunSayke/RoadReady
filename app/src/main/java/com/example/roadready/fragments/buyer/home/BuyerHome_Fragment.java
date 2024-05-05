@@ -1,9 +1,9 @@
 package com.example.roadready.fragments.buyer.home;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,26 +20,27 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
+import com.example.roadready.classes.ui.adapter.BuyerHotListingsRecyclerViewAdapter;
 import com.example.roadready.classes.ui.adapter.BuyerVehicleListingsRecyclerViewAdapter;
 import com.example.roadready.databinding.FragmentBuyerHomeBinding;
 
 import java.util.ArrayList;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class BuyerHome_Fragment extends Fragment {
 
     private enum ItemListingFilters {
-        LISTING_ID, DEALERSHIP_ID, MODEL_AND_NAME,
+        VEHICLE, DEALERSHIP,
     }
     private final String TAG = "BuyerHome_Fragment";
     private FragmentBuyerHomeBinding binding;
     private MainFacade mainFacade;
     private List<VehicleGson> itemList;
     private List<VehicleGson> activeItemList;
+    private Location currentLocation;
+    private final int HOT_VEHICLE_PRICE_THRESHOLD = 100000;
 
     private boolean isSpinnerVisible = false;
 
@@ -57,6 +58,7 @@ public class BuyerHome_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.fetchLocation(location -> currentLocation = location);
 
         return root;
     }
@@ -73,6 +75,7 @@ public class BuyerHome_Fragment extends Fragment {
                         itemList.add(vehicleGson);
                     }
                 }
+                initHotListings();
                 initSearchBar();
                 updateScrollViewItems(itemList);
                 binding.bhSVItems.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
@@ -92,6 +95,25 @@ public class BuyerHome_Fragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    private void initHotListings() {
+        List<VehicleGson> filteredList = new ArrayList<>();
+        for (VehicleGson item : itemList) {
+            if (item.getPrice() < HOT_VEHICLE_PRICE_THRESHOLD) {
+                filteredList.add(item);
+            }
+        }
+
+        binding.bhHSVRItems.setAdapter(new BuyerHotListingsRecyclerViewAdapter(
+                mainFacade.getMainActivity().getApplicationContext(),
+                filteredList, itemId -> {
+            BuyerHome_FragmentDirections.ActionBuyerHomepageFragmentToSelectingCarFragment action =
+                    BuyerHome_FragmentDirections.actionBuyerHomepageFragmentToSelectingCarFragment();
+            action.setModelId(itemId);
+            mainFacade.getBuyerHomeNavController().navigate(action);
+        }
+        ));
     }
 
     private void initSearchBar() {
@@ -119,6 +141,7 @@ public class BuyerHome_Fragment extends Fragment {
     private void updateScrollViewItems(List<VehicleGson> data) {
         binding.bhSVItems.setAdapter(new BuyerVehicleListingsRecyclerViewAdapter(
                 mainFacade.getMainActivity().getApplicationContext(),
+                currentLocation,
                 data, itemId -> {
             BuyerHome_FragmentDirections.ActionBuyerHomepageFragmentToSelectingCarFragment action =
                                     BuyerHome_FragmentDirections.actionBuyerHomepageFragmentToSelectingCarFragment();
@@ -131,7 +154,7 @@ public class BuyerHome_Fragment extends Fragment {
     private void toggleSpinnerFilter() {
         binding.bhSpinnerFilter.setVisibility(isSpinnerVisible ? View.INVISIBLE : View.VISIBLE);
 
-        String[] filterOptions = {"Listing ID", "Dealership ID", "Model and Name"};
+        String[] filterOptions = {"Vehicle", "Dealership"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(mainFacade.getMainActivity().getApplicationContext(),
                 android.R.layout.simple_spinner_item, filterOptions);
@@ -145,14 +168,11 @@ public class BuyerHome_Fragment extends Fragment {
                 String selectedFilter = (String) parent.getItemAtPosition(position);
                 ItemListingFilters filter = null;
                 switch (selectedFilter) {
-                    case "Listing ID":
-                        filter = ItemListingFilters.LISTING_ID;
+                    case "Vehicle":
+                        filter = ItemListingFilters.VEHICLE;
                         break;
-                    case "Dealership ID":
-                        filter = ItemListingFilters.DEALERSHIP_ID;
-                        break;
-                    case "Model and Name":
-                        filter = ItemListingFilters.MODEL_AND_NAME;
+                    case "Dealership":
+                        filter = ItemListingFilters.DEALERSHIP;
                         break;
                     default:
                         break;
@@ -180,11 +200,11 @@ public class BuyerHome_Fragment extends Fragment {
 
     private void sortItemListings(ItemListingFilters filter) {
         switch (filter) {
-            case LISTING_ID:
+            case VEHICLE:
                 itemList.sort(Comparator.comparing(VehicleGson::getId));
                 updateScrollViewItems(itemList);
                 break;
-            case DEALERSHIP_ID:
+            case DEALERSHIP:
                 itemList.sort(Comparator.comparing(
                         vehicle -> vehicle.getDealershipGson().getId()
                 ));

@@ -60,6 +60,7 @@ public class HomepageContainer_Fragment extends Fragment {
             String welcomeText = "Welcome " + userGson.getFirstName();
             textWelcomeUser.setText(welcomeText);
 
+
             Picasso.get()
                     .load(userGson.getProfileImageUrl())
                     .transform(new CircleTransform())
@@ -71,7 +72,7 @@ public class HomepageContainer_Fragment extends Fragment {
                 mainFacade.getMainActivity().findViewById(R.id.bhTextVerifcation).setVisibility(View.VISIBLE);
                 mainFacade.getMainActivity().findViewById(R.id.bhBtnVerify).setVisibility(View.VISIBLE);
                 isApproved = false;
-            }else{
+            } else {
                 isApproved = true;
             }
         });

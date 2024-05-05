@@ -75,125 +75,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginBottom="5dp"
             android:text="@string/text_recommended_for_you"
-            app:layout_constraintBottom_toTopOf="@+id/bhHSVRItems"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <HorizontalScrollView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bhHSVRItems"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/rectangle"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/bhTextRecommended"
+            tools:listitem="@layout/listings_buyer_hot_vehicle" />
 
-            <LinearLayout
-                android:id="@+id/bhContainerRItems"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/bhContainerRItem1"
-                    android:layout_width="125dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/rectangle"
-                    android:foreground="@drawable/hp_iv_hotdeal"
-                    android:foregroundGravity="top|right"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/bhImageRItem1"
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/recommended_item"
-                        android:foregroundGravity="right"
-                        android:scaleType="center"
-                        android:src="@drawable/hp_iv_civic"
-                        tools:src="@drawable/hp_iv_civic" />
-
-                    <Button
-                        android:id="@+id/bhBtnViewRItem1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="38dp"
-                        android:backgroundTint="#0EB2F8"
-                        android:text="@string/text_view_now"
-                        android:textColor="#060606"
-                        tools:ignore="TouchTargetSizeCheck" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/bhContainerRItem2"
-                    android:layout_width="125dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/rectangle"
-                    android:foreground="@drawable/hp_iv_hotdeal"
-                    android:foregroundGravity="top|right"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/bhImageRItem2"
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/recommended_item"
-                        android:foregroundGravity="right"
-                        android:scaleType="center"
-                        android:src="@drawable/hp_iv_yamaha"
-                        tools:src="@drawable/hp_iv_yamaha" />
-
-                    <Button
-                        android:id="@+id/bhBtnViewRItem2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="38dp"
-                        android:backgroundTint="#0EB2F8"
-                        android:text="@string/text_view_now"
-                        android:textColor="#060606"
-                        tools:ignore="TouchTargetSizeCheck" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/bhContainerRItem3"
-                    android:layout_width="125dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/rectangle"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/bhImageRItem3"
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:backgroundTint="#FFFFFF"
-                        android:contentDescription="@string/recommended_item"
-                        android:foreground="@drawable/hp_iv_hotdeal"
-                        android:foregroundGravity="right"
-                        android:scaleType="center"
-                        android:src="@drawable/hp_iv_territory"
-                        tools:src="@drawable/hp_iv_territory" />
-
-                    <Button
-                        android:id="@+id/bhBtnViewRItem3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="38dp"
-                        android:backgroundTint="#0EB2F8"
-                        android:gravity="center"
-                        android:text="@string/text_view_now"
-                        android:textColor="#060606"
-                        tools:ignore="TouchTargetSizeCheck" />
-                </LinearLayout>
-            </LinearLayout>
-        </HorizontalScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

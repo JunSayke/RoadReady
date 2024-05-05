@@ -1,6 +1,7 @@
 package com.example.roadready.fragments.common.notificationfragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class Notifications_Fragment extends Fragment {
         final RoadReadyServer.ResponseListener<NotificationsDataGson> responseListener = new RoadReadyServer.ResponseListener<NotificationsDataGson>() {
             @Override
             public void onSuccess(NotificationsDataGson data) {
+
                 binding.nContainerNotifications.setAdapter(new CommonNotificationListingsRecyclerViewAdapter(
                         mainFacade.getMainActivity().getApplicationContext(),
                         data.getNotifications(),
@@ -57,6 +59,7 @@ public class Notifications_Fragment extends Fragment {
 
             @Override
             public void onFailure(String message) {
+                Log.d("TESTING", String.valueOf(mainFacade.getServer().getCookies()));
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
             }
         };

@@ -34,13 +34,15 @@ public class CommonNotificationListingsRecyclerViewAdapter extends RecyclerView.
     @NonNull
     @Override
     public CommonNotificationListingsRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listings_dealership_vehicle, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listings_common_notifications, parent, false);
         return new CommonNotificationListingsRecyclerViewAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CommonNotificationListingsRecyclerViewAdapter.ViewHolder holder, int position) {
         NotificationGson model = notificationGsonList.get(position);
+        holder.txtContent.setText(model.getNotification());
+        holder.txtDate.setText(model.getCreatedAt());
     }
 
     @Override

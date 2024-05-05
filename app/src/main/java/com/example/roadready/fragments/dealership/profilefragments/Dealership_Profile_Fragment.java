@@ -42,8 +42,8 @@ public class Dealership_Profile_Fragment extends Fragment {
             binding.bpInptEmail.setText(dealershipGson.getEmail());
             binding.bpInptPhoneNumber.setText(dealershipGson.getPhoneNumber());
             binding.bpInptSex.setText(dealershipGson.getGender());
-            binding.bpInptLongitudeId.setText(dealershipGson.getDealership().getLongitude());
-            binding.bpInptLatitudeId.setText(dealershipGson.getDealership().getLatitude());
+            binding.bpInptLongitudeId.setText(String.valueOf(dealershipGson.getDealership().getLongitude()));
+            binding.bpInptLatitudeId.setText(String.valueOf(dealershipGson.getDealership().getLatitude()));
             Picasso.get()
                     .load(dealershipGson.getProfileImageUrl())
                     .transform(new CircleTransform())

@@ -1,5 +1,6 @@
 package com.example.roadready.activity;
 
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,7 +21,6 @@ import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.databinding.ActivityCommonMainBinding;
 import com.google.gson.Gson;
 
-import java.util.Base64;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {

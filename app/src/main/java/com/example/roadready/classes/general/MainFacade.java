@@ -1,16 +1,16 @@
 package com.example.roadready.classes.general;
 
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import android.widget.LinearLayout;
-import android.os.CountDownTimer;
 
 import com.example.roadready.activity.MainActivity;
 import com.example.roadready.classes.model.gson.ApplicationDataGson;
@@ -25,6 +25,7 @@ import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.classes.model.livedata.UserGsonViewModel;
 import com.example.roadready.classes.model.livedata.UserGsonViewModelFactory;
+import com.example.roadready.classes.util.LocationTool;
 import com.example.roadready.databinding.ActivityCommonMainBinding;
 
 import java.io.File;
@@ -617,6 +618,14 @@ public class MainFacade {
     }
 
     // END_OF[Session & Server]
+
+    // START_OF[Location]
+
+    public void fetchLocation(LocationTool.LocationCallback callback) {
+        LocationTool.fetchLocation(mainActivity, callback);
+    }
+
+    // END_OF[Location]
 
     // Others
     private void startProcessTimer(long millisInFuture, long countDownInterval, LinearLayout container) {
