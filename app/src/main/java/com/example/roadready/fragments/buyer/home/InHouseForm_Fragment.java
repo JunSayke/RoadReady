@@ -57,7 +57,7 @@ public class InHouseForm_Fragment extends Fragment implements ImagePicker.OnImag
 
         initActions();
         modelId = InHouseForm_FragmentArgs.fromBundle(getArguments()).getModelId();
-        mainFacade.makeToast(modelId, Toast.LENGTH_SHORT);
+        //mainFacade.makeToast(modelId, Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -68,7 +68,6 @@ public class InHouseForm_Fragment extends Fragment implements ImagePicker.OnImag
 
     private void initActions() {
         binding.ihBtnSubmit.setOnClickListener(v -> {
-            // TODO: Handle Submit Action Event
             submitApplication();
             //mainFacade.makeToast("Coming Soon", Toast.LENGTH_SHORT);
         });

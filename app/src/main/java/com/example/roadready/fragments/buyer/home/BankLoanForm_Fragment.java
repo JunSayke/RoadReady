@@ -54,7 +54,7 @@ public class BankLoanForm_Fragment extends Fragment implements ImagePicker.OnIma
 
         initActions();
         modelId = InHouseForm_FragmentArgs.fromBundle(getArguments()).getModelId();
-        mainFacade.makeToast(modelId, Toast.LENGTH_SHORT);
+        //mainFacade.makeToast(modelId, Toast.LENGTH_SHORT);
     }
 
     @Override
@@ -128,10 +128,10 @@ public class BankLoanForm_Fragment extends Fragment implements ImagePicker.OnIma
         if(binding.blRgPickBank.getCheckedRadioButtonId() != -1){
             String bankChoice = String.valueOf(binding.getRoot().findViewById(binding.blRgPickBank.getCheckedRadioButtonId()).getContentDescription());
             if(bankChoice.equals("bankLoan(dealershipBankChoice)")){
-                mainFacade.makeToast("bankLoan(dealershipBankChoice)", Toast.LENGTH_SHORT);
+                //mainFacade.makeToast("bankLoan(dealershipBankChoice)", Toast.LENGTH_SHORT);
                 mainFacade.applyBankLoanDealershipBankChoiceListing(responseListener, modelId, firstName, lastName, address, phoneNumber, validIdImage, signatureImage);
             }else{
-                mainFacade.makeToast("bankLoan(buyerBankChoice)", Toast.LENGTH_SHORT);
+                //mainFacade.makeToast("bankLoan(buyerBankChoice)", Toast.LENGTH_SHORT);
                 mainFacade.applyBankLoanBuyerBankChoiceListing(responseListener, modelId, firstName, lastName, address, phoneNumber, validIdImage, signatureImage, bankCertifcateImage);
             }
         }else{

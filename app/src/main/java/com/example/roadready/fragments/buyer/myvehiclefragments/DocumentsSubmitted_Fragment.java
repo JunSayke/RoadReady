@@ -26,12 +26,14 @@ public class DocumentsSubmitted_Fragment extends Fragment {
     private MainFacade mainFacade;
 
     private ApplicationGson applicationGson;
+    private int applicationCount;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = com.example.roadready.databinding.FragmentBuyerDocumentsSubmittedBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        applicationCount = 0;
 
         try {
             mainFacade = MainFacade.getInstance();
@@ -53,12 +55,14 @@ public class DocumentsSubmitted_Fragment extends Fragment {
                 List<ApplicationGson> applications = data.getApplications();
                 ViewPager2 viewPager = binding.apViewPagerContainer;
                 viewPager.setAdapter(new BuyerApplicationLayoutAdapter(requireActivity(), applications));
+                applicationCount = applications.size();
+                setApplicationCount();
                 mainFacade.hideProgressBar();
             }
 
             @Override
             public void onFailure(String message) {
-                binding.apTxtNoDocuments.setVisibility(View.VISIBLE);
+                setApplicationCount();
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
             }
@@ -76,5 +80,10 @@ public class DocumentsSubmitted_Fragment extends Fragment {
 
     private void initActions() {
 
+    }
+    private void setApplicationCount() {
+        if (applicationCount == 0) {
+            binding.apTxtNoDocuments.setVisibility(View.VISIBLE);
+        }
     }
 }
