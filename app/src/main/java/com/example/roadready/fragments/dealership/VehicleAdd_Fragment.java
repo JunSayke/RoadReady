@@ -74,6 +74,11 @@ public class VehicleAdd_Fragment extends Fragment implements ImagePicker.OnImage
 			showProgressBar();
 
 			File listingImageFile = FileUtils.uriToFile(requireContext(), imageData);
+			if(listingImageFile == null){
+				mainFacade.makeToast("Add a vehicle image", Toast.LENGTH_SHORT);
+				hideProgressBar();
+				return;
+			}
 			String modelAndName = String.valueOf(binding.addInptModelName.getText());
 			String make = String.valueOf(binding.addInptMake.getText());
 			String fuelType = String.valueOf(binding.addInptFuelType.getText());
