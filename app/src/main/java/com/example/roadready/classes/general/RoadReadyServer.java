@@ -39,15 +39,17 @@ public class RoadReadyServer extends RetrofitFacade {
         super("https://road-ready-black.vercel.app");
     }
 
-    public void login(
+    public Call<SuccessGson<UserDataGson>> login(
             final Callback<SuccessGson<UserDataGson>> callback,
             final String email,
             final String password
     ) {
-        getRetrofitService().login(email, password).enqueue(callback);
+        Call<SuccessGson<UserDataGson>> call = getRetrofitService().login(email, password);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void getDealerships(
+    public Call<SuccessGson<DealershipsDataGson>> getDealerships(
             final Callback<SuccessGson<DealershipsDataGson>> callback,
             @Nullable final String dealershipId,
             @Nullable final String dealershipName
@@ -57,10 +59,12 @@ public class RoadReadyServer extends RetrofitFacade {
             filters.put("dealership_id", dealershipId);
         if (dealershipName != null)
             filters.put("dealership_name", dealershipName);
-        getRetrofitService().getDealerships(filters).enqueue(callback);
+        Call<SuccessGson<DealershipsDataGson>> call = getRetrofitService().getDealerships(filters);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void applyForListing(
+    public Call<SuccessGson<ApplicationsDataGson>> applyForListing(
             final Callback<SuccessGson<ApplicationsDataGson>> callback,
             final String modeOfPayment,
             final String listingId,
@@ -133,16 +137,20 @@ public class RoadReadyServer extends RetrofitFacade {
         if (coMakerPhoneNumber != null)
             fields.put("coMakerPhoneNumber", RequestBody.create(MediaType.parse("text/plain"), coMakerPhoneNumber));
 
-        getRetrofitService().applyForListing(validIdImagePart, signatureImagePart, coMakerValidIdImagePart, coMakerSignatureImagePart, bankCertificateImagePart, fields).enqueue(callback);
+        Call<SuccessGson<ApplicationsDataGson>> call = getRetrofitService().applyForListing(validIdImagePart, signatureImagePart, coMakerValidIdImagePart, coMakerSignatureImagePart, bankCertificateImagePart, fields);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void updateApplication(
+    public Call<SuccessGson<ApplicationsDataGson>> updateApplication(
             final Callback<SuccessGson<ApplicationsDataGson>> callback,
             final String applicationType,
             final String applicationId,
             final int progress
     ) {
-        getRetrofitService().updateApplication(applicationType, applicationId, progress).enqueue(callback);
+        Call<SuccessGson<ApplicationsDataGson>> call = getRetrofitService().updateApplication(applicationType, applicationId, progress);
+        call.enqueue(callback);
+        return call;
     }
 
     public Call<SuccessGson<ApplicationsDataGson>> getBuyerApplications(
@@ -153,13 +161,15 @@ public class RoadReadyServer extends RetrofitFacade {
         return call;
     }
 
-    public void getDealershipApplications(
+    public Call<SuccessGson<ApplicationsDataGson>> getDealershipApplications(
             final Callback<SuccessGson<ApplicationsDataGson>> callback
     ) {
-        getRetrofitService().getDealershipApplications().enqueue(callback);
+        Call<SuccessGson<ApplicationsDataGson>> call = getRetrofitService().getDealershipApplications();
+        call.enqueue(callback);
+        return call;
     }
 
-    public void getListings(
+    public Call<SuccessGson<ListingsDataGson>> getListings(
             final Callback<SuccessGson<ListingsDataGson>> callback,
             @Nullable final String listingId,
             @Nullable final String dealershipId,
@@ -173,10 +183,12 @@ public class RoadReadyServer extends RetrofitFacade {
         if (modelAndName != null)
             filters.put("model_and_name", modelAndName);
 
-        getRetrofitService().getListings(filters).enqueue(callback);
+        Call<SuccessGson<ListingsDataGson>> call = getRetrofitService().getListings(filters);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void createListing(
+    public Call<SuccessGson<ListingsDataGson>> createListing(
             final Callback<SuccessGson<ListingsDataGson>> callback,
             final File listingImage,
             final String modelAndName,
@@ -207,17 +219,21 @@ public class RoadReadyServer extends RetrofitFacade {
         fields.put("dealershipName", RequestBody.create(MediaType.parse("text/plain"), dealershipName));
         fields.put("vehicleType", RequestBody.create(MediaType.parse("text/plain"),vehicleType));
 
-        getRetrofitService().createListing(imagePart, fields).enqueue(callback);
+        Call<SuccessGson<ListingsDataGson>> call = getRetrofitService().createListing(imagePart, fields);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void deleteListing(
+    public Call<SuccessGson<GsonData>> deleteListing(
             final Callback<SuccessGson<GsonData>> callback,
             final String listingId
     ) {
-        getRetrofitService().deleteListing(listingId).enqueue(callback);
+        Call<SuccessGson<GsonData>> call = getRetrofitService().deleteListing(listingId);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void updateListing(
+    public Call<SuccessGson<ListingsDataGson>> updateListing(
             final Callback<SuccessGson<ListingsDataGson>> callback,
             @Nullable final File listingImage,
             @Nullable final String modelAndName,
@@ -266,10 +282,12 @@ public class RoadReadyServer extends RetrofitFacade {
         if (price != null)
             fields.put("price", RequestBody.create(MediaType.parse("text/plain"), price));
 
-        getRetrofitService().updateListing(imagePart, fields).enqueue(callback);
+        Call<SuccessGson<ListingsDataGson>> call = getRetrofitService().updateListing(imagePart, fields);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void updateBuyerProfile(
+    public Call<SuccessGson<UserDataGson>> updateBuyerProfile(
             final Callback<SuccessGson<UserDataGson>> callback,
             @Nullable final File profileImage,
             @Nullable final String firstName,
@@ -296,10 +314,12 @@ public class RoadReadyServer extends RetrofitFacade {
         if (address != null)
             fields.put("address", RequestBody.create(MediaType.parse("text/plain"), address));
 
-        getRetrofitService().updateUserProfile(imagePart, fields).enqueue(callback);
+        Call<SuccessGson<UserDataGson>> call = getRetrofitService().updateUserProfile(imagePart, fields);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void updateDealershipProfile(
+    public Call<SuccessGson<UserDataGson>> updateDealershipProfile(
             final Callback<SuccessGson<UserDataGson>> callback,
             @Nullable final File profileImage,
             @Nullable final String firstName,
@@ -326,17 +346,21 @@ public class RoadReadyServer extends RetrofitFacade {
         if (address != null)
             fields.put("address", RequestBody.create(MediaType.parse("text/plain"), address));
 
-        getRetrofitService().updateUserProfile(imagePart, fields).enqueue(callback);
+        Call<SuccessGson<UserDataGson>> call = getRetrofitService().updateUserProfile(imagePart, fields);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void getUserProfile(
+    public Call<SuccessGson<UserDataGson>> getUserProfile(
             final Callback<SuccessGson<UserDataGson>> callback,
             final String userId
     ) {
-        getRetrofitService().getUserProfile(userId).enqueue(callback);
+        Call<SuccessGson<UserDataGson>> call = getRetrofitService().getUserProfile(userId);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void registerBuyer(
+    public Call<SuccessGson<GsonData>> registerBuyer(
             final Callback<SuccessGson<GsonData>> callback,
             final String email,
             final String password,
@@ -354,10 +378,12 @@ public class RoadReadyServer extends RetrofitFacade {
         fields.put("phoneNumber", phoneNumber);
         fields.put("gender", gender);
         fields.put("address", address);
-        getRetrofitService().buyerRegister(fields).enqueue(callback);
+        Call<SuccessGson<GsonData>> call = getRetrofitService().buyerRegister(fields);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void registerDealership(
+    public Call<SuccessGson<GsonData>> registerDealership(
             final Callback<SuccessGson<GsonData>> callback,
             @Nullable final File dealershipImage,
             final String email,
@@ -391,46 +417,60 @@ public class RoadReadyServer extends RetrofitFacade {
         fields.put("longitude", RequestBody.create(MediaType.parse("text/plain"), longitude));
         fields.put("modeOfPayments", RequestBody.create(MediaType.parse("text/plain"), modeOfPayments));
 
-        getRetrofitService().dealershipRegister(imagePart, fields).enqueue(callback);
+        Call<SuccessGson<GsonData>> call = getRetrofitService().dealershipRegister(imagePart, fields);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void getGoogleAuthLink(
+    public Call<SuccessGson<GoogleAuthGson>> getGoogleAuthLink(
             final Callback<SuccessGson<GoogleAuthGson>> callback
     ) {
-        getRetrofitService().getGoogleAuth().enqueue(callback);
+        Call<SuccessGson<GoogleAuthGson>> call = getRetrofitService().getGoogleAuth();
+        call.enqueue(callback);
+        return call;
     }
 
-    public void requestOTP(
+    public Call<SuccessGson<GsonData>> requestOTP(
             final Callback<SuccessGson<GsonData>> callback
     ) {
-        getRetrofitService().requestOTP().enqueue(callback);
+        Call<SuccessGson<GsonData>> call = getRetrofitService().requestOTP();
+        call.enqueue(callback);
+        return call;
     }
 
-    public void verifyBuyerOTP(
+    public Call<SuccessGson<UserDataGson>> verifyBuyerOTP(
             final Callback<SuccessGson<UserDataGson>> callback,
             final String code
     ) {
-        getRetrofitService().verifyBuyerOTP(code).enqueue(callback);
+        Call<SuccessGson<UserDataGson>> call = getRetrofitService().verifyBuyerOTP(code);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void getModeOfPayments(
+    public Call<SuccessGson<ModeOfPaymentDataGson>> getModeOfPayments(
             final Callback<SuccessGson<ModeOfPaymentDataGson>> callback,
             final String dealershipId
     ) {
-        getRetrofitService().getModeOfPayments(dealershipId).enqueue(callback);
+        Call<SuccessGson<ModeOfPaymentDataGson>> call = getRetrofitService().getModeOfPayments(dealershipId);
+        call.enqueue(callback);
+        return call;
     }
 
-    public void getNotifications(
+    public Call<SuccessGson<NotificationsDataGson>> getNotifications(
             final Callback<SuccessGson<NotificationsDataGson>> callback
     ) {
-        getRetrofitService().getNotification().enqueue(callback);
+        Call<SuccessGson<NotificationsDataGson>> call = getRetrofitService().getNotification();
+        call.enqueue(callback);
+        return call;
     }
 
-    public void deleteNotification(
+    public Call<SuccessGson<GsonData>> deleteNotification(
             final Callback<SuccessGson<GsonData>> callback,
             final String notificationId
     ) {
-        getRetrofitService().deleteNotification(notificationId).enqueue(callback);
+        Call<SuccessGson<GsonData>> call = getRetrofitService().deleteNotification(notificationId);
+        call.enqueue(callback);
+        return call;
     }
 
     public void addCookies(Set<String> cookies) {

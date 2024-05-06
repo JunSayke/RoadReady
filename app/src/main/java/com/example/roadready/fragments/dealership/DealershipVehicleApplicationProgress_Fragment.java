@@ -27,9 +27,8 @@ import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentDealershipVehicleApplicationProgressBinding;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
-
 public class DealershipVehicleApplicationProgress_Fragment extends Fragment {
+    private final String TAG = "DealershipVehicleApplicationProgress_Fragment"; // declare TAG for each class for debugging purposes using Log.d()
     private FragmentDealershipVehicleApplicationProgressBinding binding; // use View binding to avoid using too much findViewById
     private MainFacade mainFacade;
     private String modelId;
@@ -62,7 +61,6 @@ public class DealershipVehicleApplicationProgress_Fragment extends Fragment {
         final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
             @Override
             public void onSuccess(SuccessGson<ApplicationsDataGson> response) {
-
                 for(ApplicationGson applicationGson : response.getData().getApplications()) {
                     if(applicationGson.getId().equals(modelId)) {
                         application = applicationGson;

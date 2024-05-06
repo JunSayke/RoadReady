@@ -250,22 +250,22 @@ public class MainFacade {
         return sessionManager.getUserGson() != null;
     }
 
-    public void login(
+    public Call<SuccessGson<UserDataGson>> login(
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
             final String email,
             final String password) {
-        server.login(RoadReadyServer.getCallback(responseListener), email, password);
+        return server.login(RoadReadyServer.getCallback(responseListener), email, password);
     }
 
-    public void getDealerships(
+    public Call<SuccessGson<DealershipsDataGson>> getDealerships(
             final RoadReadyServer.ResponseListener<DealershipsDataGson> responseListener,
             @Nullable final String dealershipId,
             @Nullable final String dealershipName
     ) {
-        server.getDealerships(RoadReadyServer.getCallback(responseListener), dealershipId, dealershipName);
+        return server.getDealerships(RoadReadyServer.getCallback(responseListener), dealershipId, dealershipName);
     }
 
-    public void applyCashForListing(
+    public Call<SuccessGson<ApplicationsDataGson>> applyCashForListing(
             final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String listingId,
             final String firstName,
@@ -276,7 +276,7 @@ public class MainFacade {
             final File signatureImage,
             final String cashModeOfPayment
     ) {
-        applyForListing(
+        return applyForListing(
                 responseListener,
                 "cash",
                 listingId,
@@ -297,7 +297,7 @@ public class MainFacade {
         );
     }
 
-    public void applyInHouseFinanceListing(
+    public Call<SuccessGson<ApplicationsDataGson>> applyInHouseFinanceListing(
             final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String listingId,
             final String firstName,
@@ -313,7 +313,7 @@ public class MainFacade {
             final File coMakerValidIdImage,
             final File coMakerSignatureImage
     ) {
-        applyForListing(
+        return applyForListing(
                 responseListener,
                 "inhouseFinance",
                 listingId,
@@ -334,7 +334,7 @@ public class MainFacade {
         );
     }
 
-    public void applyBankLoanDealershipBankChoiceListing(
+    public Call<SuccessGson<ApplicationsDataGson>> applyBankLoanDealershipBankChoiceListing(
             final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String listingId,
             final String firstName,
@@ -344,7 +344,7 @@ public class MainFacade {
             final File validIdImage,
             final File signatureImage
     ) {
-        applyForListing(
+        return applyForListing(
                 responseListener,
                 "bankLoan(dealershipBankChoice)",
                 listingId,
@@ -365,7 +365,7 @@ public class MainFacade {
         );
     }
 
-    public void applyBankLoanBuyerBankChoiceListing(
+    public Call<SuccessGson<ApplicationsDataGson>> applyBankLoanBuyerBankChoiceListing(
             final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String listingId,
             final String firstName,
@@ -376,7 +376,7 @@ public class MainFacade {
             final File signatureImage,
             final File bankCertificateImage
     ) {
-        applyForListing(
+        return applyForListing(
                 responseListener,
                 "bankLoan(buyerBankChoice)",
                 listingId,
@@ -397,7 +397,7 @@ public class MainFacade {
         );
     }
 
-    public void applyForListing(
+    public Call<SuccessGson<ApplicationsDataGson>> applyForListing(
             final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String modeOfPayment,
             final String listingId,
@@ -416,7 +416,7 @@ public class MainFacade {
             final @Nullable File coMakerSignatureImage,
             final @Nullable File bankCertificateImage
     ) {
-        server.applyForListing(
+        return server.applyForListing(
                 RoadReadyServer.getCallback(responseListener),
                 modeOfPayment,
                 listingId,
@@ -438,13 +438,13 @@ public class MainFacade {
     }
 
     // Logged user must be of role "dealershipAgent" based on the web (JAKE) idk anymore.
-    public void updateApplication(
+    public Call<SuccessGson<ApplicationsDataGson>> updateApplication(
             final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String applicationType,
             final String applicationId,
             final int progress
     ) {
-        server.updateApplication(RoadReadyServer.getCallback(responseListener), applicationType, applicationId, progress);
+        return server.updateApplication(RoadReadyServer.getCallback(responseListener), applicationType, applicationId, progress);
     }
 
     // Logged user must be a buyer
@@ -455,13 +455,13 @@ public class MainFacade {
     }
 
     // Logged user must be a dealership
-    public void getDealershipApplications(
+    public Call<SuccessGson<ApplicationsDataGson>> getDealershipApplications(
             final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener
     ) {
-        server.getDealershipApplications(RoadReadyServer.getCallback(responseListener));
+        return server.getDealershipApplications(RoadReadyServer.getCallback(responseListener));
     }
 
-    public void registerBuyer(
+    public Call<SuccessGson<GsonData>> registerBuyer(
             final RoadReadyServer.ResponseListener<GsonData> responseListener,
             final String email,
             final String password,
@@ -471,10 +471,10 @@ public class MainFacade {
             final String gender,
             final String address
     ) {
-        server.registerBuyer(RoadReadyServer.getCallback(responseListener), email, password, firstName, lastName, phoneNumber, gender, address);
+        return server.registerBuyer(RoadReadyServer.getCallback(responseListener), email, password, firstName, lastName, phoneNumber, gender, address);
     }
 
-    public void registerDealership(
+    public Call<SuccessGson<GsonData>> registerDealership(
             final RoadReadyServer.ResponseListener<GsonData> responseListener,
             @Nullable final File dealershipImage,
             final String email,
@@ -489,10 +489,10 @@ public class MainFacade {
             final String longitude,
             final String modeOfPayments
     ) {
-        server.registerDealership(RoadReadyServer.getCallback(responseListener), dealershipImage, email, password, firstName, lastName, phoneNumber, gender, dealershipName, establishmentAddress, latitude, longitude, modeOfPayments);
+        return server.registerDealership(RoadReadyServer.getCallback(responseListener), dealershipImage, email, password, firstName, lastName, phoneNumber, gender, dealershipName, establishmentAddress, latitude, longitude, modeOfPayments);
     }
 
-    public void updateBuyerProfile(
+    public Call<SuccessGson<UserDataGson>> updateBuyerProfile(
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
             @Nullable final File profileImage,
             @Nullable final String firstName,
@@ -501,10 +501,10 @@ public class MainFacade {
             @Nullable final String gender,
             @Nullable final String address
     ) {
-        server.updateBuyerProfile(RoadReadyServer.getCallback(responseListener), profileImage, firstName, lastName, phoneNumber, gender, address);
+        return server.updateBuyerProfile(RoadReadyServer.getCallback(responseListener), profileImage, firstName, lastName, phoneNumber, gender, address);
     }
 
-    public void updateDealershipProfile(
+    public Call<SuccessGson<UserDataGson>> updateDealershipProfile(
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
             @Nullable final File profileImage,
             @Nullable final String firstName,
@@ -513,26 +513,26 @@ public class MainFacade {
             @Nullable final String gender,
             @Nullable final String address
     ) {
-        server.updateDealershipProfile(RoadReadyServer.getCallback(responseListener), profileImage, firstName, lastName, phoneNumber, gender, address);
+        return server.updateDealershipProfile(RoadReadyServer.getCallback(responseListener), profileImage, firstName, lastName, phoneNumber, gender, address);
     }
 
-    public void getUserProfile(
+    public Call<SuccessGson<UserDataGson>> getUserProfile(
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
             final String userId
     ) {
-        server.getUserProfile(RoadReadyServer.getCallback(responseListener), userId);
+        return server.getUserProfile(RoadReadyServer.getCallback(responseListener), userId);
     }
 
-    public void getListings(
+    public Call<SuccessGson<ListingsDataGson>> getListings(
             final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener,
             @Nullable final String listingId,
             @Nullable final String dealershipId,
             @Nullable final String modelAndName
     ) {
-        server.getListings(RoadReadyServer.getCallback(responseListener), listingId, dealershipId, modelAndName);
+        return server.getListings(RoadReadyServer.getCallback(responseListener), listingId, dealershipId, modelAndName);
     }
 
-    public void createListing(
+    public Call<SuccessGson<ListingsDataGson>> createListing(
             final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener,
             final File listingImage,
             final String modelAndName,
@@ -547,20 +547,20 @@ public class MainFacade {
             final String dealershipName,
             final String vehicleType
     ) {
-        server.createListing(RoadReadyServer.getCallback(responseListener),
+        return server.createListing(RoadReadyServer.getCallback(responseListener),
                 listingImage, modelAndName, make, fuelType,
                 power, transmission, engine, fuelTankCapacity,
                 seatingCapacity, price, dealershipName, vehicleType);
     }
 
-    public void deleteListing(
+    public Call<SuccessGson<GsonData>> deleteListing(
             final RoadReadyServer.ResponseListener<GsonData> responseListener,
             final String listingId
     ) {
-        server.deleteListing(RoadReadyServer.getCallback(responseListener), listingId);
+        return server.deleteListing(RoadReadyServer.getCallback(responseListener), listingId);
     }
 
-    public void updateListing(
+    public Call<SuccessGson<ListingsDataGson>> updateListing(
             final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener,
             @Nullable final File listingImage,
             @Nullable final String modelAndName,
@@ -573,50 +573,50 @@ public class MainFacade {
             @Nullable final String seatingCapacity,
             @Nullable final String price
     ) {
-        server.updateListing(RoadReadyServer.getCallback(responseListener),
+        return server.updateListing(RoadReadyServer.getCallback(responseListener),
                 listingImage, modelAndName, make, fuelType,
                 power, transmission, engine, fuelTankCapacity,
                 seatingCapacity, price);
     }
 
-    public void getGoogleAuthLink(
+    public Call<SuccessGson<GoogleAuthGson>> getGoogleAuthLink(
             final RoadReadyServer.ResponseListener<GoogleAuthGson> responseListener
     ) {
-        server.getGoogleAuthLink(RoadReadyServer.getCallback(responseListener));
+        return server.getGoogleAuthLink(RoadReadyServer.getCallback(responseListener));
     }
 
-    public void requestOTP(
+    public Call<SuccessGson<GsonData>> requestOTP(
             final RoadReadyServer.ResponseListener<GsonData> responseListener
     ) {
-        server.requestOTP(RoadReadyServer.getCallback(responseListener));
+        return server.requestOTP(RoadReadyServer.getCallback(responseListener));
     }
 
-    public void verifyBuyerOTP(
+    public Call<SuccessGson<UserDataGson>> verifyBuyerOTP(
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
             final String code
     ) {
-        server.verifyBuyerOTP(RoadReadyServer.getCallback(responseListener), code);
+        return server.verifyBuyerOTP(RoadReadyServer.getCallback(responseListener), code);
     }
 
-    public void getModeOfPayments(
+    public Call<SuccessGson<ModeOfPaymentDataGson>> getModeOfPayments(
             final RoadReadyServer.ResponseListener<ModeOfPaymentDataGson> responseListener,
             final String dealershipId
     ) {
-        server.getModeOfPayments(RoadReadyServer.getCallback(responseListener), dealershipId);
+        return server.getModeOfPayments(RoadReadyServer.getCallback(responseListener), dealershipId);
     }
 
     // Automatically get the logged in user notification.
-    public void getNotification(
+    public Call<SuccessGson<NotificationsDataGson>> getNotification(
             final RoadReadyServer.ResponseListener<NotificationsDataGson> responseListener
     ) {
-        server.getNotifications(RoadReadyServer.getCallback(responseListener));
+        return server.getNotifications(RoadReadyServer.getCallback(responseListener));
     }
 
-    public void deleteNotification(
+    public Call<SuccessGson<GsonData>> deleteNotification(
             final RoadReadyServer.ResponseListener<GsonData> responseListener,
             final String notificationId
     ) {
-        server.deleteNotification(RoadReadyServer.getCallback(responseListener), notificationId);
+        return server.deleteNotification(RoadReadyServer.getCallback(responseListener), notificationId);
     }
 
     // END_OF[Session & Server]
