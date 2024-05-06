@@ -12,10 +12,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
-import com.example.roadready.classes.general.VerificationTimer;
 import com.example.roadready.classes.general.RoadReadyServer;
+import com.example.roadready.classes.general.VerificationTimer;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.UserDataGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentCommonVerificationBinding;
 
 public class Verification_Fragment extends Fragment {
@@ -59,7 +60,7 @@ public class Verification_Fragment extends Fragment {
         binding.vrfTextResendCode.setOnClickListener(v -> {
             RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
                 @Override
-                public void onSuccess(GsonData data) {
+                public void onSuccess(SuccessGson<GsonData> response) {
                     //TODO: Timer
                     if(!VerificationTimer.getInstance().isTimerRunning()){
                         VerificationTimer.getInstance().startTimer(300000, 1000, binding.vrfTextResendCode);
@@ -67,8 +68,9 @@ public class Verification_Fragment extends Fragment {
                 }
 
                 @Override
-                public void onFailure(String message) {
-                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                public void onFailure(int code, String message) {
+                    if (code != -1)
+                        mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 }
             };
             mainFacade.requestOTP(responseListener);
@@ -82,17 +84,21 @@ public class Verification_Fragment extends Fragment {
                 mainFacade.makeToast("Enter the code correctly!", Toast.LENGTH_SHORT);
                 return;
             }
+
             RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
                 @Override
-                public void onSuccess(UserDataGson data) {
+                public void onSuccess(SuccessGson<UserDataGson> response) {
                     hideProgressBar();
+                    mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
+                    mainFacade.getUserGsonViewModel().setUserGsonLiveData(response.getData().getUserGson());
                     mainFacade.getBuyerHomepageNavController().navigate(R.id.action_verification_Fragment_to_mnHome);
                 }
 
                 @Override
-                public void onFailure(String message) {
+                public void onFailure(int code, String message) {
+                    if (code != -1)
+                        mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                     hideProgressBar();
-                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 }
             };
             mainFacade.verifyBuyerOTP(responseListener, code);

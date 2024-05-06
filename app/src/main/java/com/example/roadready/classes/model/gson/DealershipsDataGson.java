@@ -11,7 +11,11 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class DealershipsDataGson extends GsonData {
+    private DealershipGson dealership;
     private List<DealershipGson> dealerships;
+    public DealershipGson getDealership() {
+        return dealership;
+    }
 
     public List<DealershipGson> getDealerships() {
         return dealerships;

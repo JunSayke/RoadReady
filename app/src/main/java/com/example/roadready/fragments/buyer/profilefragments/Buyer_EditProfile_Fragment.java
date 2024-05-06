@@ -2,8 +2,6 @@ package com.example.roadready.fragments.buyer.profilefragments;
 
 import static com.example.roadready.classes.util.GetFileNameFromUri.getFileNameFromUri;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,20 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.roadready.R;
-import com.example.roadready.activity.GoogleMaps_Activity;
 import com.example.roadready.classes.general.FileUtils;
 import com.example.roadready.classes.general.ImagePicker;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.classes.util.CircleTransform;
 import com.example.roadready.databinding.FragmentBuyerEditProfileBinding;
 import com.squareup.picasso.Picasso;
@@ -94,16 +90,18 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
 
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
                 @Override
-                public void onSuccess(UserDataGson data) {
-                    UserGson user = data.getUserGson();
+                public void onSuccess(SuccessGson<UserDataGson> response) {
+                    UserGson user = response.getData().getUserGson();
+                    mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
                     mainFacade.getUserGsonViewModel().setUserGsonLiveData(user);
                     mainFacade.getSessionManager().setUserGson(user);
                     hideProgressBar();
                 }
 
                 @Override
-                public void onFailure(String message) {
-                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                public void onFailure(int code, String message) {
+                    if (code != -1)
+                        mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                     hideProgressBar();
                 }
             };

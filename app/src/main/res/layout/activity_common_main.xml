@@ -19,6 +19,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/common_main_nav_graph" />
 
+    <LinearLayout
+        android:id="@+id/unverifiedLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#80FFB3B3"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingVertical="10dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/bhTextVerifcation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="YOU ARE NOT YET VERIFIED"
+            android:textAlignment="center"
+            android:textColor="#811212"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/bhBtnVerify"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:backgroundTint="#F95C5C"
+            android:text="Verify Account"
+            app:strokeColor="#000000" />
+
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/backDrop"
         android:layout_width="match_parent"

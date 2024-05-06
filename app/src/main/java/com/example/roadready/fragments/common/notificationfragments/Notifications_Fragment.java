@@ -1,7 +1,6 @@
 package com.example.roadready.fragments.common.notificationfragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.NotificationsDataGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.classes.ui.adapter.CommonNotificationListingsRecyclerViewAdapter;
 import com.example.roadready.databinding.FragmentCommonNotificationsBinding;
 
@@ -47,28 +47,36 @@ public class Notifications_Fragment extends Fragment {
         mainFacade.showProgressBar();
         final RoadReadyServer.ResponseListener<NotificationsDataGson> responseListener = new RoadReadyServer.ResponseListener<NotificationsDataGson>() {
             @Override
-            public void onSuccess(NotificationsDataGson data) {
+            public void onSuccess(SuccessGson<NotificationsDataGson> response) {
+                if (binding != null) {
+                    binding.nContainerNotifications.setAdapter(new CommonNotificationListingsRecyclerViewAdapter(
+                            mainFacade.getMainActivity().getApplicationContext(),
+                            response.getData().getNotifications(),
+                            itemId -> deleteNotification(itemId)));
+                    binding.nContainerNotifications.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+                }
 
-                binding.nContainerNotifications.setAdapter(new CommonNotificationListingsRecyclerViewAdapter(
-                        mainFacade.getMainActivity().getApplicationContext(),
-                        data.getNotifications(),
-                        itemId -> deleteNotification(itemId)));
-                binding.nContainerNotifications.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
-
-                notificationCount = data.getNotifications().size();
+                notificationCount = response.getData().getNotifications().size();
                 setNotificationCount();
                 mainFacade.hideProgressBar();
             }
 
             @Override
-            public void onFailure(String message) {
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 setNotificationCount();
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
             }
         };
 
         mainFacade.getNotification(responseListener);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mainFacade.hideProgressBar();
     }
 
     @Override
@@ -82,14 +90,16 @@ public class Notifications_Fragment extends Fragment {
         mainFacade.showBackDrop();
         final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
             @Override
-            public void onSuccess(GsonData data) {
+            public void onSuccess(SuccessGson<GsonData> response) {
+                mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
                 mainFacade.hideBackDrop();
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
                 mainFacade.hideBackDrop();
             }

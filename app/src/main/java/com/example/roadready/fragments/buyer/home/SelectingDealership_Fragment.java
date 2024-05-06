@@ -17,7 +17,7 @@ import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.DealershipGson;
-import com.example.roadready.classes.model.gson.data.VehicleGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.classes.ui.adapter.BuyerVehicleListingsRecyclerViewAdapter;
 import com.example.roadready.databinding.FragmentBuyerSelectingDealershipBinding;
 import com.squareup.picasso.Picasso;
@@ -66,38 +66,35 @@ public class SelectingDealership_Fragment extends Fragment {
 
         final RoadReadyServer.ResponseListener<DealershipsDataGson> dealershipResponseListener = new RoadReadyServer.ResponseListener<DealershipsDataGson>() {
             @Override
-            public void onSuccess(DealershipsDataGson data) {
-                for(DealershipGson dealership : data.getDealerships()){
-                    if(dealership.getId().equals(dealershipId)){
-                        dealershipGson = dealership;
-                        break;
-                    }
-                }
+            public void onSuccess(SuccessGson<DealershipsDataGson> response) {
+                dealershipGson = response.getData().getDealership();
                 initDealership();
                 mainFacade.hideProgressBar();
                 mainFacade.hideBackDrop();
-                binding.getRoot().setVisibility(View.VISIBLE);
+                if (binding != null)
+                    binding.getRoot().setVisibility(View.VISIBLE);
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
                 mainFacade.hideBackDrop();
-                binding.getRoot().setVisibility(View.VISIBLE);
+                if (binding != null)
+                    binding.getRoot().setVisibility(View.VISIBLE);
             }
         };
-        mainFacade.getDealerships(dealershipResponseListener, null, null);
+        mainFacade.getDealerships(dealershipResponseListener, dealershipId, null);
 
         final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
             @Override
-            public void onSuccess(ListingsDataGson data) {
-                for(VehicleGson vehicle : data.getListings()) {
-                    listingList.add(vehicle);
-                }
+            public void onSuccess(SuccessGson<ListingsDataGson> data) {
+                listingList.addAll(data.getData().getListings());
                 vehicleCount = listingList.size();
                 setVehicleCount();
-                binding.sgdSVItems.setAdapter(new BuyerVehicleListingsRecyclerViewAdapter(
+                if (binding != null) {
+                    binding.sgdSVItems.setAdapter(new BuyerVehicleListingsRecyclerViewAdapter(
                             binding.getRoot().getContext(), currentLocation, listingList,
                             itemId -> {
                                 SelectingDealership_FragmentDirections.ActionSelectingDealershipFragmentToSelectingCarFragment action =
@@ -105,14 +102,16 @@ public class SelectingDealership_Fragment extends Fragment {
                                 action.setModelId(itemId);
                                 mainFacade.getBuyerHomeNavController().navigate(action);
                             }
-                        ));
-                binding.sgdSVItems.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+                    ));
+                    binding.sgdSVItems.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+                }
             }
 
             @Override
-            public void onFailure(String message) {
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 setVehicleCount();
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
             }
         };
         mainFacade.getListings(responseListener, null, dealershipId, null);

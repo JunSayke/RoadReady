@@ -20,6 +20,7 @@ import com.example.roadready.classes.general.ImagePicker;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentDealershipVehicleAddBinding;
 
 import java.io.File;
@@ -95,12 +96,14 @@ public class VehicleAdd_Fragment extends Fragment implements ImagePicker.OnImage
 			mainFacade.createListing(
 				new RoadReadyServer.ResponseListener<ListingsDataGson>() {
 					@Override
-					public void onSuccess(ListingsDataGson data) {
+					public void onSuccess(SuccessGson<ListingsDataGson> response) {
+						mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
 						hideProgressBar();
 					}
 					@Override
-					public void onFailure(String message) {
-						mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+					public void onFailure(int code, String message) {
+						if (code != -1)
+							mainFacade.makeToast(message, Toast.LENGTH_SHORT);
 						hideProgressBar();
 					}
 				}, listingImageFile, modelAndName, make, fuelType, power, transmission, engine, fuelTankCapacity, seatingCapacity, price, dealershipName, vehicleType

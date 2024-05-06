@@ -1,9 +1,7 @@
 package com.example.roadready.activity;
 
-import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -17,7 +15,10 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
+import com.example.roadready.classes.general.RoadReadyServer;
+import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.ActivityCommonMainBinding;
 import com.google.gson.Gson;
 
@@ -63,6 +64,28 @@ public class MainActivity extends AppCompatActivity {
         };
 
         this.getOnBackPressedDispatcher().addCallback(this, callback);
+
+        initActions();
+    }
+
+    private void initActions() {
+        binding.bhBtnVerify.setOnClickListener(v -> {
+            RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
+                @Override
+                public void onSuccess(SuccessGson<GsonData> response) {
+                    mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
+                    mainFacade.getBuyerHomepageNavController().navigate(R.id.action_mnHome_to_verification_Fragment);
+                }
+
+                @Override
+                public void onFailure(int code, String message) {
+                    if (code != -1)
+                        mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                }
+            };
+
+            mainFacade.requestOTP(responseListener);
+        });
     }
 
     @Override

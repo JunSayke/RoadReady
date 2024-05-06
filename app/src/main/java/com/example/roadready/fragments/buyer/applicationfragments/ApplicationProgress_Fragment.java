@@ -1,29 +1,23 @@
 package com.example.roadready.fragments.buyer.applicationfragments;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ApplicationsDataGson;
-import com.example.roadready.classes.model.gson.ListingsDataGson;
-import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.classes.ui.adapter.BuyerApplicationListingsRecyclerViewAdapter;
-import com.example.roadready.classes.ui.adapter.DealershipVehicleListingsRecyclerViewAdapter;
 import com.example.roadready.databinding.FragmentBuyerApplicationProgressBinding;
 
 public class ApplicationProgress_Fragment extends Fragment {
-    private final String TAG = "ApplicationProgress_Fragment";
     private FragmentBuyerApplicationProgressBinding binding;
     private MainFacade mainFacade;
     private int applicationCount;
@@ -50,10 +44,10 @@ public class ApplicationProgress_Fragment extends Fragment {
         mainFacade.showProgressBar();
         final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
             @Override
-            public void onSuccess(ApplicationsDataGson data) {
+            public void onSuccess(SuccessGson<ApplicationsDataGson> response) {
                 binding.aplContainerApplicationList.setAdapter(new BuyerApplicationListingsRecyclerViewAdapter(
                         mainFacade.getMainActivity().getApplicationContext(),
-                        data.getApplications(),
+                        response.getData().getApplications(),
                         itemId -> {
                             ApplicationProgress_FragmentDirections.ActionApplicationProgressFragmentToVehicleApplicationProgressFragment action =
                                     ApplicationProgress_FragmentDirections.actionApplicationProgressFragmentToVehicleApplicationProgressFragment();
@@ -61,18 +55,18 @@ public class ApplicationProgress_Fragment extends Fragment {
                             mainFacade.getBuyerApplicationNavController().navigate(action);
                         }));
                 binding.aplContainerApplicationList.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
-                mainFacade.hideProgressBar();
-
-                applicationCount = data.getApplications().size();
+                applicationCount = response.getData().getApplications().size();
                 setApplicationCount();
+                mainFacade.hideProgressBar();
             }
 
             @Override
-            public void onFailure(String message) {
+            public void onFailure(int code, String message) {
                 setApplicationCount();
                 mainFacade.hideProgressBar();
             }
         };
+
         mainFacade.getBuyerApplications(responseListener);
     }
 
@@ -83,7 +77,7 @@ public class ApplicationProgress_Fragment extends Fragment {
     }
 
     public void setApplicationCount() {
-        if(applicationCount == 0){
+        if (applicationCount == 0 && binding != null) {
             binding.aplApplicationCount.setVisibility(View.VISIBLE);
         }
     }

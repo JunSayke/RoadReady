@@ -2,7 +2,6 @@ package com.example.roadready.classes.retrofit;
 
 import androidx.annotation.Nullable;
 
-import com.example.roadready.classes.model.gson.ApplicationDataGson;
 import com.example.roadready.classes.model.gson.ApplicationsDataGson;
 import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.GsonData;
@@ -18,7 +17,6 @@ import java.util.Map;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -72,7 +70,7 @@ public interface RetrofitService {
 
     @Multipart
     @POST("buyer/listings/apply")
-    Call<SuccessGson<ApplicationDataGson>> applyForListing(
+    Call<SuccessGson<ApplicationsDataGson>> applyForListing(
             @Part MultipartBody.Part validIdImage,
             @Part MultipartBody.Part signatureImage,
             @Part @Nullable MultipartBody.Part coMakerValidIdImage,
@@ -83,7 +81,7 @@ public interface RetrofitService {
 
     @FormUrlEncoded
     @PUT("agent/application")
-    Call<SuccessGson<ApplicationDataGson>> updateApplication(
+    Call<SuccessGson<ApplicationsDataGson>> updateApplication(
             @Field("applicationType") String applicationType,
             @Field("applicationId") String applicationId,
             @Field("progress") int progress

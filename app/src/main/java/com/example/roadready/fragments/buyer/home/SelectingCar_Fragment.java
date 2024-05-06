@@ -16,6 +16,7 @@ import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.DealershipGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentBuyerSelectingCarBinding;
 import com.squareup.picasso.Picasso;
 
@@ -57,26 +58,24 @@ public class SelectingCar_Fragment extends Fragment {
 
         final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
             @Override
-            public void onSuccess(ListingsDataGson data) {
-                for(VehicleGson vehicleGson : data.getListings()) {
-                    if(vehicleGson.getId().equals(modelId)) {
-                        updateVehicleInfo(vehicleGson);
-                        break;
-                    }
-                }
+            public void onSuccess(SuccessGson<ListingsDataGson> response) {
+                updateVehicleInfo(response.getData().getListing());
                 mainFacade.hideProgressBar();
-                binding.getRoot().setVisibility(View.VISIBLE);
+                if (binding != null)
+                    binding.getRoot().setVisibility(View.VISIBLE);
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
-                binding.getRoot().setVisibility(View.VISIBLE);
+                if (binding != null)
+                    binding.getRoot().setVisibility(View.VISIBLE);
             }
         };
 
-        mainFacade.getListings(responseListener, null, null, null);
+        mainFacade.getListings(responseListener, modelId, null, null);
     }
 
     @Override
@@ -86,39 +85,41 @@ public class SelectingCar_Fragment extends Fragment {
     }
 
     private void updateVehicleInfo(VehicleGson vehicleGson) {
-        DealershipGson dealershipGson = vehicleGson.getDealershipGson();
+        if (binding != null) {
+            DealershipGson dealershipGson = vehicleGson.getDealershipGson();
 
-        Picasso.get().load(dealershipGson.getDealershipImageUrl()).into(binding.sgcImageDealerLogo);
-        binding.sgcTextDealerName.setText(dealershipGson.getName());
-        Picasso.get().load(vehicleGson.getImageUrl()).into(binding.sgcImageItem);
-        binding.sgcTextItemName.setText(vehicleGson.getModelAndName());
-        binding.sgcInptMake.setText(vehicleGson.getBrand());
-        binding.sgcInptFuelType.setText(vehicleGson.getFuelType());
-        binding.sgcInptTransmission.setText(vehicleGson.getTransmission());
-        binding.sgcInptFtc.setText(vehicleGson.getFuelTankCapacity());
-        binding.sgcInptSc.setText(vehicleGson.getSeatingCapacity());
-        binding.sgcInptPrice.setText(String.valueOf(vehicleGson.getPrice()));
-        binding.sgcInptPower.setText(vehicleGson.getPower());
-        binding.sgcInptEngine.setText(vehicleGson.getEngine());
+            Picasso.get().load(dealershipGson.getDealershipImageUrl()).into(binding.sgcImageDealerLogo);
+            binding.sgcTextDealerName.setText(dealershipGson.getName());
+            Picasso.get().load(vehicleGson.getImageUrl()).into(binding.sgcImageItem);
+            binding.sgcTextItemName.setText(vehicleGson.getModelAndName());
+            binding.sgcInptMake.setText(vehicleGson.getBrand());
+            binding.sgcInptFuelType.setText(vehicleGson.getFuelType());
+            binding.sgcInptTransmission.setText(vehicleGson.getTransmission());
+            binding.sgcInptFtc.setText(vehicleGson.getFuelTankCapacity());
+            binding.sgcInptSc.setText(vehicleGson.getSeatingCapacity());
+            binding.sgcInptPrice.setText(String.valueOf(vehicleGson.getPrice()));
+            binding.sgcInptPower.setText(vehicleGson.getPower());
+            binding.sgcInptEngine.setText(vehicleGson.getEngine());
 
-        binding.sgcBtnCash.setOnClickListener(v -> {
-            SelectingCar_FragmentDirections.ActionSelectingCarFragmentToCashPaymentFormFragment action =
-                    SelectingCar_FragmentDirections.actionSelectingCarFragmentToCashPaymentFormFragment();
-            action.setModelId(modelId);
-            mainFacade.getBuyerHomeNavController().navigate(action);
-        });
+            binding.sgcBtnCash.setOnClickListener(v -> {
+                SelectingCar_FragmentDirections.ActionSelectingCarFragmentToCashPaymentFormFragment action =
+                        SelectingCar_FragmentDirections.actionSelectingCarFragmentToCashPaymentFormFragment();
+                action.setModelId(modelId);
+                mainFacade.getBuyerHomeNavController().navigate(action);
+            });
 
-        binding.sgcBtnInHouse.setOnClickListener(v -> {
-            SelectingCar_FragmentDirections.ActionSelectingCarFragmentToInstallmentFormFragment action =
-                    SelectingCar_FragmentDirections.actionSelectingCarFragmentToInstallmentFormFragment();
-            action.setModelId(modelId);
-            mainFacade.getBuyerHomeNavController().navigate(action);
-        });
-        binding.sgcBtnBankLoan.setOnClickListener(v -> {
-            SelectingCar_FragmentDirections.ActionSelectingCarFragmentToBankLoanFormFragment action =
-                    SelectingCar_FragmentDirections.actionSelectingCarFragmentToBankLoanFormFragment();
-            action.setModelId(modelId);
-            mainFacade.getBuyerHomeNavController().navigate(action);
-        });
+            binding.sgcBtnInHouse.setOnClickListener(v -> {
+                SelectingCar_FragmentDirections.ActionSelectingCarFragmentToInstallmentFormFragment action =
+                        SelectingCar_FragmentDirections.actionSelectingCarFragmentToInstallmentFormFragment();
+                action.setModelId(modelId);
+                mainFacade.getBuyerHomeNavController().navigate(action);
+            });
+            binding.sgcBtnBankLoan.setOnClickListener(v -> {
+                SelectingCar_FragmentDirections.ActionSelectingCarFragmentToBankLoanFormFragment action =
+                        SelectingCar_FragmentDirections.actionSelectingCarFragmentToBankLoanFormFragment();
+                action.setModelId(modelId);
+                mainFacade.getBuyerHomeNavController().navigate(action);
+            });
+        }
     }
 }

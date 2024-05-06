@@ -16,6 +16,7 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ApplicationsDataGson;
 import com.example.roadready.classes.model.gson.data.ApplicationGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.classes.ui.adapter.BuyerApplicationLayoutAdapter;
 
 import java.util.List;
@@ -49,27 +50,37 @@ public class DocumentsSubmitted_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mainFacade.showProgressBar();
+
         final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
             @Override
-            public void onSuccess(ApplicationsDataGson data) {
-                List<ApplicationGson> applications = data.getApplications();
-                ViewPager2 viewPager = binding.apViewPagerContainer;
-                viewPager.setAdapter(new BuyerApplicationLayoutAdapter(requireActivity(), applications));
+            public void onSuccess(SuccessGson<ApplicationsDataGson> response) {
+                List<ApplicationGson> applications = response.getData().getApplications();
+                if (binding != null) {
+                    ViewPager2 viewPager = binding.apViewPagerContainer;
+                    viewPager.setAdapter(new BuyerApplicationLayoutAdapter(requireActivity(), applications));
+                }
                 applicationCount = applications.size();
                 setApplicationCount();
                 mainFacade.hideProgressBar();
             }
 
             @Override
-            public void onFailure(String message) {
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 setApplicationCount();
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
             }
         };
 
         mainFacade.getBuyerApplications(responseListener);
         initActions();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mainFacade.hideProgressBar();
     }
 
     @Override

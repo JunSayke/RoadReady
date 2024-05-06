@@ -4,7 +4,6 @@ import android.location.Location;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +23,7 @@ import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.DealershipGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.classes.ui.adapter.BuyerDealershipListRecyclerViewAdapter;
 import com.example.roadready.classes.ui.adapter.BuyerHotListingsRecyclerViewAdapter;
 import com.example.roadready.classes.ui.adapter.BuyerVehicleListingsRecyclerViewAdapter;
@@ -31,7 +31,6 @@ import com.example.roadready.databinding.FragmentBuyerHomeBinding;
 
 import java.util.ArrayList;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class BuyerHome_Fragment extends Fragment {
@@ -84,28 +83,27 @@ public class BuyerHome_Fragment extends Fragment {
 
         final RoadReadyServer.ResponseListener<DealershipsDataGson> dealershipResponseListener = new RoadReadyServer.ResponseListener<DealershipsDataGson>() {
             @Override
-            public void onSuccess(DealershipsDataGson data) {
-                for(DealershipGson dealershipGson : data.getDealerships()) {
-                    dealershipList.add(dealershipGson);
-                }
+            public void onSuccess(SuccessGson<DealershipsDataGson> response) {
+                dealershipList.addAll(response.getData().getDealerships());
                 updateDealershipScrollViewItems(dealershipList);
                 binding.bhSVDealership.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
-                dealershipCount = data.getDealerships().size();
+                dealershipCount = response.getData().getDealerships().size();
                 setDealershipCount();
             }
 
             @Override
-            public void onFailure(String message) {
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 setDealershipCount();
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
             }
         };
         mainFacade.getDealerships(dealershipResponseListener, null, null);
 
         final RoadReadyServer.ResponseListener<ListingsDataGson> listingResponseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
             @Override
-            public void onSuccess(ListingsDataGson data) {
-                for(VehicleGson vehicleGson : data.getListings()) {
+            public void onSuccess(SuccessGson<ListingsDataGson> response) {
+                for(VehicleGson vehicleGson : response.getData().getListings()) {
                     if(vehicleGson.isAvailable()) {
                         listingList.add(vehicleGson);
                     }
@@ -117,20 +115,27 @@ public class BuyerHome_Fragment extends Fragment {
                 initFilterButton();
                 mainFacade.hideProgressBar();
                 binding.getRoot().setVisibility(View.VISIBLE);
-                listingCount = data.getListings().size();
+                listingCount = response.getData().getListings().size();
                 setListingCount();
             }
 
             @Override
-            public void onFailure(String message) {
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 setListingCount();
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
                 binding.getRoot().setVisibility(View.VISIBLE);
             }
         };
 
         mainFacade.getListings(listingResponseListener, null, null, null);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mainFacade.hideProgressBar();
     }
 
     @Override
@@ -147,7 +152,7 @@ public class BuyerHome_Fragment extends Fragment {
             }
         }
 
-        binding.bhHSVRItems.setAdapter(new BuyerHotListingsRecyclerViewAdapter(
+        binding.bhRVRecommended.setAdapter(new BuyerHotListingsRecyclerViewAdapter(
                 mainFacade.getMainActivity().getApplicationContext(),
                 filteredList, itemId -> {
             BuyerHome_FragmentDirections.ActionBuyerHomepageFragmentToSelectingCarFragment action =

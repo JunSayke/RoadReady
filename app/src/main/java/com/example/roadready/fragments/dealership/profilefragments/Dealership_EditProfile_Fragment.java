@@ -25,6 +25,7 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.classes.util.CircleTransform;
 import com.example.roadready.databinding.FragmentDealershipEditProfileBinding;
 import com.squareup.picasso.Picasso;
@@ -107,16 +108,18 @@ public class Dealership_EditProfile_Fragment extends Fragment implements ImagePi
 
             final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
                 @Override
-                public void onSuccess(UserDataGson data) {
-                    UserGson user = data.getUserGson();
+                public void onSuccess(SuccessGson<UserDataGson> response) {
+                    UserGson user = response.getData().getUserGson();
+                    mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
                     mainFacade.getUserGsonViewModel().setUserGsonLiveData(user);
                     mainFacade.getSessionManager().setUserGson(user);
                     hideProgressBar();
                 }
 
                 @Override
-                public void onFailure(String message) {
-                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                public void onFailure(int code, String message) {
+                    if (code != -1)
+                        mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                     hideProgressBar();
                 }
             };

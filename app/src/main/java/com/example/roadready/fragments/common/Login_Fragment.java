@@ -19,6 +19,7 @@ import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentCommonLoginBinding;
 
 public class Login_Fragment extends Fragment {
@@ -85,8 +86,8 @@ public class Login_Fragment extends Fragment {
         mainFacade.showProgressBar();
         mainFacade.getGoogleAuthLink(new RoadReadyServer.ResponseListener<GoogleAuthGson>() {
             @Override
-            public void onSuccess(GoogleAuthGson data) {
-                String authenticationUrl = data.getAuthorizationUrl();
+            public void onSuccess(SuccessGson<GoogleAuthGson> response) {
+                String authenticationUrl = response.getData().getAuthorizationUrl();
 
                 Intent googleIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(authenticationUrl));
                 startActivity(googleIntent);
@@ -95,15 +96,14 @@ public class Login_Fragment extends Fragment {
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideBackDrop();
                 mainFacade.hideProgressBar();
             }
         });
     }
-
-
 
     private void processLogin() {
         showProgressBar();
@@ -113,9 +113,9 @@ public class Login_Fragment extends Fragment {
 
         final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
             @Override
-            public void onSuccess(UserDataGson data) {
-                mainFacade.makeToast("Login Successfully!", Toast.LENGTH_SHORT);
-                UserGson user = data.getUserGson();
+            public void onSuccess(SuccessGson<UserDataGson> response) {
+                mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
+                UserGson user = response.getData().getUserGson();
                 mainFacade.startLoginSession(user);
                 if(user.getRole().equals("buyer")) {
                     mainFacade.getCommonMainNavController().navigate(R.id.action_login_Fragment_to_homepageContainer_Fragment);
@@ -126,8 +126,9 @@ public class Login_Fragment extends Fragment {
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
         };

@@ -1,7 +1,6 @@
 package com.example.roadready.fragments.dealership.mainnavfragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ApplicationsDataGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.classes.ui.adapter.DealershipApplicationListingsRecyclerViewAdapter;
 import com.example.roadready.databinding.FragmentDealershipForapprovalBinding;
 
@@ -45,22 +45,25 @@ public class ForApproval_Fragment extends Fragment {
 
 		final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
 			@Override
-			public void onSuccess(ApplicationsDataGson data) {
-				binding.faContainerApplicationList.setAdapter(new DealershipApplicationListingsRecyclerViewAdapter(
-						mainFacade.getMainActivity().getApplicationContext(),
-						data.getApplications(),
-						itemId -> {
-							ForApproval_FragmentDirections.ActionForApprovalFragmentToVehicleApplicationProgressFragment action =
-									ForApproval_FragmentDirections.actionForApprovalFragmentToVehicleApplicationProgressFragment();
-							action.setModelId(itemId);
-							mainFacade.getDealershipForApprovalNavController().navigate(action);
-						}));
-				binding.faContainerApplicationList.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+			public void onSuccess(SuccessGson<ApplicationsDataGson> response) {
+				if (binding != null) {
+					binding.faContainerApplicationList.setAdapter(new DealershipApplicationListingsRecyclerViewAdapter(
+							mainFacade.getMainActivity().getApplicationContext(),
+							response.getData().getApplications(),
+							itemId -> {
+								ForApproval_FragmentDirections.ActionForApprovalFragmentToVehicleApplicationProgressFragment action =
+										ForApproval_FragmentDirections.actionForApprovalFragmentToVehicleApplicationProgressFragment();
+								action.setModelId(itemId);
+								mainFacade.getDealershipForApprovalNavController().navigate(action);
+							}));
+					binding.faContainerApplicationList.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+				}
 			}
 
 			@Override
-			public void onFailure(String message) {
-				mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+			public void onFailure(int code, String message) {
+				if (code != -1)
+					mainFacade.makeToast(message, Toast.LENGTH_SHORT);
 			}
 		};
 		mainFacade.getDealershipApplications(responseListener);

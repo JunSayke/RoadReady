@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +14,8 @@ import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
-import com.example.roadready.classes.model.gson.data.VehicleGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentDealershipVehicleListingBinding;
-import com.example.roadready.fragments.buyer.home.SelectingCar_FragmentArgs;
 
 public class VehicleListing_Fragment extends Fragment {
     private final String TAG = "VehicleListing_Fragment"; // declare TAG for each class for debugging purposes using Log.d()
@@ -64,13 +62,15 @@ public class VehicleListing_Fragment extends Fragment {
             showProgressBar();
             final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
                 @Override
-                public void onSuccess(GsonData data) {
+                public void onSuccess(SuccessGson<GsonData> response) {
+                    mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
                     hideProgressBar();
                 }
 
                 @Override
-                public void onFailure(String message) {
-                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+                public void onFailure(int code, String message) {
+                    if (code != -1)
+                        mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                     hideProgressBar();
                 }
             };
