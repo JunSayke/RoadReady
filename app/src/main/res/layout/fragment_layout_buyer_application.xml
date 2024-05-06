@@ -17,12 +17,13 @@
         android:textAlignment="center"
         tools:ignore="HardcodedText" />
 
+
     <ImageView
         android:id="@+id/apImageItem"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:paddingVertical="20dp"
-        app:srcCompat="@drawable/sgd_iv_conquest" />
+        android:layout_gravity="center"
+        android:paddingVertical="20dp" />
 
     <Button
         android:id="@+id/apBtnDownloadDocuments"

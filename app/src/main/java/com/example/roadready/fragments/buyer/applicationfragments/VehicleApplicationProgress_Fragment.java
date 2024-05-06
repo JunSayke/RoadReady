@@ -24,12 +24,12 @@ import com.example.roadready.classes.model.gson.ApplicationsDataGson;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.ApplicationGson;
 import com.example.roadready.classes.model.gson.data.VehicleGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentBuyerVehicleApplicationProgressBinding;
 import com.squareup.picasso.Picasso;
 
 public class VehicleApplicationProgress_Fragment extends Fragment {
 
-    private final String TAG = "VehicleApplicationProgress_Fragment";
     private FragmentBuyerVehicleApplicationProgressBinding binding;
     private MainFacade mainFacade;
     private String modelId;
@@ -60,23 +60,26 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
 
         final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
             @Override
-            public void onSuccess(ApplicationsDataGson data) {
-                for(ApplicationGson applicationGson : data.getApplications()) {
+            public void onSuccess(SuccessGson<ApplicationsDataGson> response) {
+                for(ApplicationGson applicationGson : response.getData().getApplications()) {
                     if(applicationGson.getId().equals(modelId)) {
                         application = applicationGson;
                         getVehicleInfo(applicationGson);
                         break;
                     }
                 }
+
+                if (binding != null)
+                    binding.apContenContainer.setVisibility(View.VISIBLE);
                 mainFacade.hideProgressBar();
-                binding.apContenContainer.setVisibility(View.VISIBLE);
             }
 
             @Override
-            public void onFailure(String message) {
+            public void onFailure(int code, String message) {
+                if (binding != null)
+                    binding.apContenContainer.setVisibility(View.VISIBLE);
                 mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideProgressBar();
-                binding.apContenContainer.setVisibility(View.VISIBLE);
             }
         };
 
@@ -87,22 +90,18 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
         getApplicationForm(applicationGson.getApplicationType());
         final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
             @Override
-            public void onSuccess(ListingsDataGson data) {
-                for(VehicleGson vehicleGson : data.getListings()) {
-                    if(vehicleGson.getId().equals(applicationGson.getListingId())) {
-                        updateVehicleInfo(vehicleGson);
-                        break;
-                    }
-                }
+            public void onSuccess(SuccessGson<ListingsDataGson> response) {
+                updateVehicleInfo(response.getData().getListing());
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
             }
         };
 
-        mainFacade.getListings(responseListener, null, null, null);
+        mainFacade.getListings(responseListener, applicationGson.getListingId(), null, null);
     }
 
     private void getApplicationForm(String applicationType){
@@ -121,9 +120,11 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
         }
     }
 
-    private void updateVehicleInfo(VehicleGson vehicleGson){
-        binding.apLblItem.setText(vehicleGson.getModelAndName());
-        Picasso.get().load(vehicleGson.getImageUrl()).into(binding.apImageItem);
+    private void updateVehicleInfo(VehicleGson vehicleGson) {
+        if (binding != null) {
+            binding.apLblItem.setText(vehicleGson.getModelAndName());
+            Picasso.get().load(vehicleGson.getImageUrl()).into(binding.apImageItem);
+        }
     }
 
     private void openCashForm(){

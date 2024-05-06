@@ -16,6 +16,7 @@ import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentCommonSignUpAsBinding;
 
 public class SignUpAs_Fragment extends Fragment {
@@ -76,8 +77,8 @@ public class SignUpAs_Fragment extends Fragment {
         mainFacade.showProgressBar();
         mainFacade.getGoogleAuthLink(new RoadReadyServer.ResponseListener<GoogleAuthGson>() {
             @Override
-            public void onSuccess(GoogleAuthGson data) {
-                String authenticationUrl = data.getAuthorizationUrl();
+            public void onSuccess(SuccessGson<GoogleAuthGson> response) {
+                String authenticationUrl = response.getData().getAuthorizationUrl();
 
                 Intent googleIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(authenticationUrl));
                 startActivity(googleIntent);
@@ -86,8 +87,9 @@ public class SignUpAs_Fragment extends Fragment {
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideBackDrop();
                 mainFacade.hideProgressBar();
             }

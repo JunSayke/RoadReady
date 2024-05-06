@@ -2,10 +2,8 @@ package com.example.roadready.fragments.buyer.home;
 
 import static com.example.roadready.classes.util.GetFileNameFromUri.getFileNameFromUri;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +12,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
 
-import com.example.roadready.R;
 import com.example.roadready.classes.general.FileUtils;
 import com.example.roadready.classes.general.ImagePicker;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
-import com.example.roadready.classes.model.gson.ApplicationDataGson;
+import com.example.roadready.classes.model.gson.ApplicationsDataGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentBuyerCashPaymentFormBinding;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.Objects;
@@ -94,15 +89,17 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
         File signatureImage = getSignature();
         String cashModeOfPayment = getModeOfPayment();
 
-        RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationDataGson>() {
+        RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
             @Override
-            public void onSuccess(ApplicationDataGson data) {
+            public void onSuccess(SuccessGson<ApplicationsDataGson> response) {
+                mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
         };

@@ -17,7 +17,8 @@ import com.example.roadready.classes.general.FileUtils;
 import com.example.roadready.classes.general.ImagePicker;
 import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
-import com.example.roadready.classes.model.gson.ApplicationDataGson;
+import com.example.roadready.classes.model.gson.ApplicationsDataGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentBuyerBankLoanFormBinding;
 
 import java.io.File;
@@ -99,7 +100,7 @@ public class BankLoanForm_Fragment extends Fragment implements ImagePicker.OnIma
         }
     }
 
-    private void submitApplication(){
+    private void submitApplication() {
         showProgressBar();
 
         String firstName = String.valueOf(binding.blInptFname.getText());
@@ -110,15 +111,17 @@ public class BankLoanForm_Fragment extends Fragment implements ImagePicker.OnIma
         File signatureImage = getSignature();
         File bankCertifcateImage = FileUtils.uriToFile(mainFacade.getMainActivity().getApplicationContext(), bankImageData);
 
-        RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationDataGson>() {
+        RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
             @Override
-            public void onSuccess(ApplicationDataGson data) {
+            public void onSuccess(SuccessGson<ApplicationsDataGson> response) {
+                mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
         };

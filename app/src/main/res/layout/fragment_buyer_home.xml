@@ -80,7 +80,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/bhHSVRItems"
+            android:id="@+id/bhRVRecommended"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

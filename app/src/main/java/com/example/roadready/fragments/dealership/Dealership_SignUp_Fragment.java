@@ -26,9 +26,8 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
-import com.example.roadready.classes.util.CircleTransform;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentDealershipSignUpBinding;
-import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -68,11 +67,7 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
         initActions();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        binding = null;
-    }
+
 
     private void initActions() {
         binding.sgnupBtnSubmit.setOnClickListener(v -> {
@@ -121,8 +116,8 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
         mainFacade.showProgressBar();
         mainFacade.getGoogleAuthLink(new RoadReadyServer.ResponseListener<GoogleAuthGson>() {
             @Override
-            public void onSuccess(GoogleAuthGson data) {
-                String authenticationUrl = data.getAuthorizationUrl();
+            public void onSuccess(SuccessGson<GoogleAuthGson> response) {
+                String authenticationUrl = response.getData().getAuthorizationUrl();
 
                 Intent googleIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(authenticationUrl));
                 startActivity(googleIntent);
@@ -131,8 +126,9 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideBackDrop();
                 mainFacade.hideProgressBar();
             }
@@ -218,14 +214,15 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
 
         final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
             @Override
-            public void onSuccess(GsonData data) {
-                mainFacade.makeToast("Registered Successfully!", Toast.LENGTH_SHORT);
+            public void onSuccess(SuccessGson<GsonData> response) {
+                mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
         };

@@ -1,7 +1,6 @@
 package com.example.roadready.fragments.dealership.mainnavfragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.ListingsDataGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.classes.ui.adapter.DealershipVehicleListingsRecyclerViewAdapter;
 import com.example.roadready.databinding.FragmentDealershipMyvehiclesBinding;
 
@@ -55,27 +55,30 @@ public class MyVehicles_Fragment extends Fragment {
 		mainFacade.showProgressBar();
 		final RoadReadyServer.ResponseListener<ListingsDataGson> responseListener = new RoadReadyServer.ResponseListener<ListingsDataGson>() {
 			@Override
-			public void onSuccess(ListingsDataGson data) {
-				binding.mvContainerVehicleList.setAdapter(new DealershipVehicleListingsRecyclerViewAdapter(
-						mainFacade.getMainActivity().getApplicationContext(),
-						data.getListings(),
-						itemId -> {
-							MyVehicles_FragmentDirections.ActionMyVehiclesFragmentToVehicleListingFragment action =
-									MyVehicles_FragmentDirections.actionMyVehiclesFragmentToVehicleListingFragment();
-							action.setModelId(itemId);
-							mainFacade.getDealershipMyVehicleNavController().navigate(action);
-						}));
-				binding.mvContainerVehicleList.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+			public void onSuccess(SuccessGson<ListingsDataGson> response) {
+				if (binding != null) {
+					binding.mvContainerVehicleList.setAdapter(new DealershipVehicleListingsRecyclerViewAdapter(
+							mainFacade.getMainActivity().getApplicationContext(),
+							response.getData().getListings(),
+							itemId -> {
+								MyVehicles_FragmentDirections.ActionMyVehiclesFragmentToVehicleListingFragment action =
+										MyVehicles_FragmentDirections.actionMyVehiclesFragmentToVehicleListingFragment();
+								action.setModelId(itemId);
+								mainFacade.getDealershipMyVehicleNavController().navigate(action);
+							}));
+					binding.mvContainerVehicleList.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
+				}
 
-				listingCount = data.getListings().size();
+				listingCount = response.getData().getListings().size();
 				setListingCount();
 				mainFacade.hideProgressBar();
 			}
 
 			@Override
-			public void onFailure(String message) {
+			public void onFailure(int code, String message) {
+				if (code != -1)
+					mainFacade.makeToast(message, Toast.LENGTH_SHORT);
 				setListingCount();
-				mainFacade.makeToast(message, Toast.LENGTH_SHORT);
 				mainFacade.hideProgressBar();
 			}
 		};

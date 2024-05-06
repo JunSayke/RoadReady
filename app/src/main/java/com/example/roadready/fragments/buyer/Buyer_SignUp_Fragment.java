@@ -18,6 +18,7 @@ import com.example.roadready.classes.general.MainFacade;
 import com.example.roadready.classes.general.RoadReadyServer;
 import com.example.roadready.classes.model.gson.GsonData;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.FragmentBuyerSignUpBinding;
 
 public class Buyer_SignUp_Fragment extends Fragment {
@@ -82,8 +83,8 @@ public class Buyer_SignUp_Fragment extends Fragment {
         mainFacade.showProgressBar();
         mainFacade.getGoogleAuthLink(new RoadReadyServer.ResponseListener<GoogleAuthGson>() {
             @Override
-            public void onSuccess(GoogleAuthGson data) {
-                String authenticationUrl = data.getAuthorizationUrl();
+            public void onSuccess(SuccessGson<GoogleAuthGson> response) {
+                String authenticationUrl = response.getData().getAuthorizationUrl();
 
                 Intent googleIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(authenticationUrl));
                 startActivity(googleIntent);
@@ -92,8 +93,9 @@ public class Buyer_SignUp_Fragment extends Fragment {
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 mainFacade.hideBackDrop();
                 mainFacade.hideProgressBar();
             }
@@ -113,14 +115,15 @@ public class Buyer_SignUp_Fragment extends Fragment {
 
         final RoadReadyServer.ResponseListener<GsonData> responseListener = new RoadReadyServer.ResponseListener<GsonData>() {
             @Override
-            public void onSuccess(GsonData data) {
-                mainFacade.makeToast("Registered Successfully!", Toast.LENGTH_SHORT);
+            public void onSuccess(SuccessGson<GsonData> response) {
+                mainFacade.makeToast(response.getMessage(), Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
 
             @Override
-            public void onFailure(String message) {
-                mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+            public void onFailure(int code, String message) {
+                if (code != -1)
+                    mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 hideProgressBar();
             }
         };

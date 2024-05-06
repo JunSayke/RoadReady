@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.roadready.classes.model.gson.ApplicationDataGson;
 import com.example.roadready.classes.model.gson.ApplicationsDataGson;
 import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.GsonData;
@@ -24,7 +23,6 @@ import java.io.File;
 import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 
 import okhttp3.MediaType;
@@ -63,7 +61,7 @@ public class RoadReadyServer extends RetrofitFacade {
     }
 
     public void applyForListing(
-            final Callback<SuccessGson<ApplicationDataGson>> callback,
+            final Callback<SuccessGson<ApplicationsDataGson>> callback,
             final String modeOfPayment,
             final String listingId,
             final String firstName,
@@ -139,7 +137,7 @@ public class RoadReadyServer extends RetrofitFacade {
     }
 
     public void updateApplication(
-            final Callback<SuccessGson<ApplicationDataGson>> callback,
+            final Callback<SuccessGson<ApplicationsDataGson>> callback,
             final String applicationType,
             final String applicationId,
             final int progress
@@ -147,10 +145,12 @@ public class RoadReadyServer extends RetrofitFacade {
         getRetrofitService().updateApplication(applicationType, applicationId, progress).enqueue(callback);
     }
 
-    public void getBuyerApplications(
+    public Call<SuccessGson<ApplicationsDataGson>> getBuyerApplications(
             final Callback<SuccessGson<ApplicationsDataGson>> callback
     ) {
-        getRetrofitService().getBuyerApplications().enqueue(callback);
+        Call<SuccessGson<ApplicationsDataGson>> call = getRetrofitService().getBuyerApplications();
+        call.enqueue(callback);
+        return call;
     }
 
     public void getDealershipApplications(
@@ -446,15 +446,15 @@ public class RoadReadyServer extends RetrofitFacade {
     }
 
     public interface ResponseListener<T extends GsonData> {
-        void onSuccess(T data);
+        void onSuccess(SuccessGson<T> response);
 
-        void onFailure(String message);
+        void onFailure(int code, String message);
     }
 
-    public static <T1 extends GsonData> Callback<SuccessGson<T1>> getCallback(ResponseListener<T1> responseListener) {
-        return new Callback<SuccessGson<T1>>() {
+    public static <T extends GsonData> Callback<SuccessGson<T>> getCallback(ResponseListener<T> responseListener) {
+        return new Callback<SuccessGson<T>>() {
             @Override
-            public void onResponse(@NonNull Call<SuccessGson<T1>> call, @NonNull Response<SuccessGson<T1>> response) {
+            public void onResponse(@NonNull Call<SuccessGson<T>> call, @NonNull Response<SuccessGson<T>> response) {
                 ResponseGson body = null;
                 try {
                     if (response.isSuccessful()) {
@@ -462,30 +462,34 @@ public class RoadReadyServer extends RetrofitFacade {
                         body = response.body();
 
                         @SuppressWarnings("unchecked")
-                        T1 data = (T1) ((SuccessGson<?>) body).getData();
-                        responseListener.onSuccess(data);
+                        SuccessGson<T> successGson = (SuccessGson<T>) body;
+                        responseListener.onSuccess(successGson);
                     } else {
                         assert response.errorBody() != null;
                         body = new Gson().fromJson(response.errorBody().string(), ErrorGson.class);
+                        throw new RequestFailedException(body.getMessage());
                     }
+                } catch (RequestFailedException e) {
+                    responseListener.onFailure(response.code(), e.getMessage());
                 } catch (Exception e) {
-                    Log.e(TAG, Objects.requireNonNull(e.getMessage()));
-                } finally {
-                    String message = "Null response!";
-                    if (body == null || body instanceof ErrorGson || !body.getStatus()) {
-                        if (body != null)
-                            message = body.getMessage();
-                        responseListener.onFailure(message);
-                    }
+                    onFailure(call, e);
                 }
             }
+
             @Override
-            public void onFailure(@NonNull Call<SuccessGson<T1>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<SuccessGson<T>> call, @NonNull Throwable t) {
                 Log.e(TAG, "Network Error!" + t.getMessage());
-                responseListener.onFailure(t.getMessage());
+                responseListener.onFailure(-1, t.getMessage());
             }
         };
     };
+
+    static class RequestFailedException extends Exception {
+        public RequestFailedException(String message) {
+            super(message);
+        }
+    }
 }
+
 
 

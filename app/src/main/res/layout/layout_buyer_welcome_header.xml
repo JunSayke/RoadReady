@@ -64,35 +64,6 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="ImageContrastCheck" />
 
-        <Button
-            android:id="@+id/bhBtnVerify"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:backgroundTint="#F95C5C"
-            android:text="Verify Account"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/bhTextVerifcation"
-        android:layout_width="0dp"
-        android:layout_height="25dp"
-        android:layout_gravity="center"
-        android:background="#FFB3B3"
-        android:gravity="center"
-        android:text="Verification Failed"
-        android:textAlignment="center"
-        android:textColor="@color/red"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

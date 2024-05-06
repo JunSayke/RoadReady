@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 
 import com.example.roadready.activity.MainActivity;
-import com.example.roadready.classes.model.gson.ApplicationDataGson;
 import com.example.roadready.classes.model.gson.ApplicationsDataGson;
 import com.example.roadready.classes.model.gson.DealershipsDataGson;
 import com.example.roadready.classes.model.gson.GsonData;
@@ -23,6 +22,7 @@ import com.example.roadready.classes.model.gson.NotificationsDataGson;
 import com.example.roadready.classes.model.gson.UserDataGson;
 import com.example.roadready.classes.model.gson.data.GoogleAuthGson;
 import com.example.roadready.classes.model.gson.data.UserGson;
+import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.classes.model.livedata.UserGsonViewModel;
 import com.example.roadready.classes.model.livedata.UserGsonViewModelFactory;
 import com.example.roadready.classes.util.LocationTool;
@@ -30,6 +30,8 @@ import com.example.roadready.databinding.ActivityCommonMainBinding;
 
 import java.io.File;
 import java.util.Set;
+
+import retrofit2.Call;
 
 public class MainFacade {
     private static final MainFacade mainFacade = new MainFacade(null);
@@ -264,7 +266,7 @@ public class MainFacade {
     }
 
     public void applyCashForListing(
-            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String listingId,
             final String firstName,
             final String lastName,
@@ -296,7 +298,7 @@ public class MainFacade {
     }
 
     public void applyInHouseFinanceListing(
-            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String listingId,
             final String firstName,
             final String lastName,
@@ -333,7 +335,7 @@ public class MainFacade {
     }
 
     public void applyBankLoanDealershipBankChoiceListing(
-            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String listingId,
             final String firstName,
             final String lastName,
@@ -364,7 +366,7 @@ public class MainFacade {
     }
 
     public void applyBankLoanBuyerBankChoiceListing(
-            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String listingId,
             final String firstName,
             final String lastName,
@@ -396,7 +398,7 @@ public class MainFacade {
     }
 
     public void applyForListing(
-            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String modeOfPayment,
             final String listingId,
             final String firstName,
@@ -437,7 +439,7 @@ public class MainFacade {
 
     // Logged user must be of role "dealershipAgent" based on the web (JAKE) idk anymore.
     public void updateApplication(
-            final RoadReadyServer.ResponseListener<ApplicationDataGson> responseListener,
+            final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener,
             final String applicationType,
             final String applicationId,
             final int progress
@@ -446,10 +448,10 @@ public class MainFacade {
     }
 
     // Logged user must be a buyer
-    public void getBuyerApplications(
+    public Call<SuccessGson<ApplicationsDataGson>> getBuyerApplications(
             final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener
     ) {
-        server.getBuyerApplications(RoadReadyServer.getCallback(responseListener));
+        return server.getBuyerApplications(RoadReadyServer.getCallback(responseListener));
     }
 
     // Logged user must be a dealership
@@ -654,6 +656,14 @@ public class MainFacade {
 
     public void makeToast(Object message, int duration) {
         Toast.makeText(mainActivity.getApplicationContext(), String.valueOf(message), duration).show();
+    }
+
+    public void showUnverifiedDialog() {
+        mainBinding.unverifiedLayout.setVisibility(View.VISIBLE);
+    }
+
+    public void hideUnverifiedDialog() {
+        mainBinding.unverifiedLayout.setVisibility(View.GONE);
     }
 
     public void showProgressBar() {
