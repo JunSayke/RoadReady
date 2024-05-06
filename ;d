@@ -1,0 +1,56 @@
+[33mcommit 4c725606278d09ed4e17e20da9a261261171dc3c[m
+Author: Antonio Mancera Ubaldo Jr <142708326+JunSayke@users.noreply.github.com>
+Date:   Tue Apr 30 23:47:10 2024 +0800
+
+    [Hunyo] Added generated application pdf url.
+
+[1mdiff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml[m
+[1mindex 32efb29..0c0c338 100644[m
+[1m--- a/.idea/deploymentTargetDropDown.xml[m
+[1m+++ b/.idea/deploymentTargetDropDown.xml[m
+[36m@@ -2,21 +2,8 @@[m
+ <project version="4">[m
+   <component name="deploymentTargetDropDown">[m
+     <value>[m
+[31m-      <entry key="Main">[m
+[31m-        <State>[m
+[31m-          <targetSelectedWithDropDown>[m
+[31m-            <Target>[m
+[31m-              <type value="QUICK_BOOT_TARGET" />[m
+[31m-              <deviceKey>[m
+[31m-                <Key>[m
+[31m-                  <type value="VIRTUAL_DEVICE_PATH" />[m
+[31m-                  <value value="C:\Users\porte\.android\avd\Pixel_6_Pro_API_34.avd" />[m
+[31m-                </Key>[m
+[31m-              </deviceKey>[m
+[31m-            </Target>[m
+[31m-          </targetSelectedWithDropDown>[m
+[31m-          <timeTargetWasSelectedWithDropDown value="2024-04-30T07:32:12.056663100Z" />[m
+[31m-        </State>[m
+[32m+[m[32m      <entry key="app">[m
+[32m+[m[32m        <State />[m
+       </entry>[m
+     </value>[m
+   </component>[m
+[1mdiff --git a/app/src/main/java/com/example/roadready/classes/model/gson/data/ApplicationGson.java b/app/src/main/java/com/example/roadready/classes/model/gson/data/ApplicationGson.java[m
+[1mindex 657485e..8463b77 100644[m
+[1m--- a/app/src/main/java/com/example/roadready/classes/model/gson/data/ApplicationGson.java[m
+[1m+++ b/app/src/main/java/com/example/roadready/classes/model/gson/data/ApplicationGson.java[m
+[36m@@ -42,6 +42,8 @@[m [mpublic class ApplicationGson extends GsonData {[m
+     private String createdAt;[m
+     @SerializedName("updatedat")[m
+     private String updatedAt;[m
+[32m+[m[32m    @SerializedName("applicaionpdf")[m
+[32m+[m[32m    private String applicationPdfUrl;[m
+ [m
+     public String getId() {[m
+         return id;[m
+[36m@@ -126,4 +128,8 @@[m [mpublic class ApplicationGson extends GsonData {[m
+     public String getUpdatedAt() {[m
+         return updatedAt;[m
+     }[m
+[32m+[m
+[32m+[m[32m    public String getApplicationPdfUrl() {[m
+[32m+[m[32m        return applicationPdfUrl;[m
+[32m+[m[32m    }[m
+ }[m

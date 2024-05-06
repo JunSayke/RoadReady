@@ -20,8 +20,6 @@ import com.example.roadready.databinding.FragmentDealershipForapprovalBinding;
 
 
 public class ForApproval_Fragment extends Fragment {
-
-	private final String TAG = "ForApproval_Fragment"; // declare TAG for each class for debugging purposes using Log.d()
 	private FragmentDealershipForapprovalBinding binding; // use View binding to avoid using too much findViewById
 
 	private MainFacade mainFacade;
@@ -42,7 +40,7 @@ public class ForApproval_Fragment extends Fragment {
 
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-
+		mainFacade.showProgressBar();
 		final RoadReadyServer.ResponseListener<ApplicationsDataGson> responseListener = new RoadReadyServer.ResponseListener<ApplicationsDataGson>() {
 			@Override
 			public void onSuccess(SuccessGson<ApplicationsDataGson> response) {
@@ -58,12 +56,14 @@ public class ForApproval_Fragment extends Fragment {
 							}));
 					binding.faContainerApplicationList.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
 				}
+				mainFacade.hideProgressBar();
 			}
 
 			@Override
 			public void onFailure(int code, String message) {
 				if (code != -1)
 					mainFacade.makeToast(message, Toast.LENGTH_SHORT);
+				mainFacade.hideProgressBar();
 			}
 		};
 		mainFacade.getDealershipApplications(responseListener);

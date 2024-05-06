@@ -32,9 +32,9 @@ tools:context=".fragments.dealership.DealershipVehicleApplicationProgress_Fragme
 
     <ImageView
         android:id="@+id/dapImageItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/sgd_iv_conquest" />
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center" />
 
 </LinearLayout>
 

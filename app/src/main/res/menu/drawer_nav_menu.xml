@@ -8,6 +8,10 @@
             android:id="@+id/navMyVehicles"
             android:icon="@drawable/sb_iv_myvehicles"
             android:title="@string/text_header_my_vehicles" />
+                <item
+                    android:id="@+id/navForApproval"
+                    android:icon="@drawable/sb_iv_vehicleapplicants"
+                    android:title="@string/text_header_for_approval" />
     </group>
 
     <group
