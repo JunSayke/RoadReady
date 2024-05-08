@@ -31,6 +31,9 @@ public class MyVehicle_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         UserGson userGson = mainFacade.getSessionManager().getUserGson();
         if(!userGson.getIsApproved()) {
             mainFacade.restrictButton(binding.myvBtnRenewRegistration);
@@ -51,6 +54,8 @@ public class MyVehicle_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
     }

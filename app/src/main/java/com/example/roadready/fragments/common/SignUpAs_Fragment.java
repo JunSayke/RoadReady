@@ -36,6 +36,9 @@ public class SignUpAs_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         return root;
     }
 
@@ -51,6 +54,8 @@ public class SignUpAs_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.spasTextLogin.setOnClickListener(v -> {

@@ -31,6 +31,9 @@ public class Banklist_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
 
         return root;
     }
@@ -45,6 +48,8 @@ public class Banklist_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
     private void initActions() {
         binding.blImageBdo.setOnClickListener(v -> {
             mainFacade.getDealershipBankNavController().navigate(R.id.action_banklist_Fragment_to_bank_Fragment);

@@ -35,6 +35,9 @@ public class Dealership_Profile_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         mainFacade.getUserGsonViewModel().getUserGsonLiveData().observe(getViewLifecycleOwner(), dealershipGson -> {
             String fullName = dealershipGson.getFirstName() + " " + dealershipGson.getLastName();
             binding.bpInptName.setText(fullName);
@@ -67,6 +70,8 @@ public class Dealership_Profile_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.bepBtnBack.setOnClickListener(v -> {

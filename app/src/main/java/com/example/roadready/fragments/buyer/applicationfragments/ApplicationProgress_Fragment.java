@@ -35,6 +35,9 @@ public class ApplicationProgress_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         return root;
     }
 
@@ -76,9 +79,11 @@ public class ApplicationProgress_Fragment extends Fragment {
         binding = null;
     }
 
-    public void setApplicationCount() {
-        if (applicationCount == 0 && binding != null) {
-            binding.aplApplicationCount.setVisibility(View.VISIBLE);
+    public void setApplicationCount(){
+        if (binding != null) {
+            if(applicationCount <= 0){
+                binding.aplApplicationCount.setVisibility(View.VISIBLE);
+            }
         }
     }
 }

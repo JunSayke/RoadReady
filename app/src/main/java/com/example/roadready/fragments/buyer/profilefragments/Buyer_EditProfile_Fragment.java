@@ -46,6 +46,9 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+        
         mainFacade.getUserGsonViewModel().getUserGsonLiveData().observe(getViewLifecycleOwner(), buyerGson -> {
             Picasso.get()
                     .load(buyerGson.getProfileImageUrl())
@@ -71,6 +74,8 @@ public class Buyer_EditProfile_Fragment extends Fragment implements ImagePicker.
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.bepBtnUpload.setOnClickListener(v -> {

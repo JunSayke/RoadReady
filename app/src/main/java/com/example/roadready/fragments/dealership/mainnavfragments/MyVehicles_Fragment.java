@@ -102,8 +102,10 @@ public class MyVehicles_Fragment extends Fragment {
 	}
 
 	private void setListingCount() {
-		if(listingCount <= 0){
-			binding.mvTxtListingCount.setVisibility(View.VISIBLE);
+		if (binding != null) {
+			if(listingCount <= 0){
+				binding.mvTxtListingCount.setVisibility(View.VISIBLE);
+			}
 		}
 	}
 }

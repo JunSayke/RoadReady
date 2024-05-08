@@ -45,6 +45,9 @@ public class BankLoanForm_Fragment extends Fragment implements ImagePicker.OnIma
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         initImagePicker();
         return root;
     }
@@ -62,6 +65,8 @@ public class BankLoanForm_Fragment extends Fragment implements ImagePicker.OnIma
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.blBtnSubmit.setOnClickListener(v -> {

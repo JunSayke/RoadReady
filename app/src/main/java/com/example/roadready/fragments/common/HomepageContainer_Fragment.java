@@ -39,6 +39,9 @@ public class HomepageContainer_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         bottomNavigationView = binding.homePageBottomNav;
 
         NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.homepageFragmentContainer);
@@ -103,6 +106,8 @@ public class HomepageContainer_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.headerLayout.bepBtnBack.setOnClickListener(v -> {

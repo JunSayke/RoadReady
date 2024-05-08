@@ -35,6 +35,9 @@ public class Dealership_Lto_Container_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.dealership_ltoFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
@@ -57,6 +60,8 @@ public class Dealership_Lto_Container_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
 

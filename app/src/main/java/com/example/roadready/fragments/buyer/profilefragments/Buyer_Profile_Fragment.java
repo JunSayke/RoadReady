@@ -34,6 +34,9 @@ public class Buyer_Profile_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         mainFacade.getUserGsonViewModel().getUserGsonLiveData().observe(getViewLifecycleOwner(), buyerGson -> {
             String fullName = buyerGson.getFirstName() + " " + buyerGson.getLastName();
             binding.bpInptName.setText(fullName);
@@ -66,6 +69,8 @@ public class Buyer_Profile_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.bpBtnLogout.setOnClickListener(v -> {

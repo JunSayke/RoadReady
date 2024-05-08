@@ -45,6 +45,9 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         initImagePicker();
         return root;
     }
@@ -62,6 +65,8 @@ public class CashPaymentForm_Fragment extends Fragment implements ImagePicker.On
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.cpfBtnSubmit.setOnClickListener(v -> {

@@ -32,6 +32,9 @@ public class HomeContainer_Fragment extends Fragment{
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.buyer_homeFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
@@ -52,4 +55,6 @@ public class HomeContainer_Fragment extends Fragment{
         super.onDestroyView();
         binding = null;
     }
+
+
 }

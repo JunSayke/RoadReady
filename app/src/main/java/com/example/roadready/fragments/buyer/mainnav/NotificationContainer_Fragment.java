@@ -32,6 +32,9 @@ public class NotificationContainer_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.common_notificationFragmentContainer);
         assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
@@ -54,4 +57,6 @@ public class NotificationContainer_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 }

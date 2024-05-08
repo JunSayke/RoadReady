@@ -47,6 +47,9 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         return root;
     }
 
@@ -230,4 +233,6 @@ public class VehicleApplicationProgress_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 }

@@ -659,26 +659,32 @@ public class MainFacade {
     }
 
     public void showUnverifiedDialog() {
-        mainBinding.unverifiedLayout.setVisibility(View.VISIBLE);
+        if (mainBinding.unverifiedLayout.getVisibility() != View.VISIBLE)
+            mainBinding.unverifiedLayout.setVisibility(View.VISIBLE);
     }
 
     public void hideUnverifiedDialog() {
-        mainBinding.unverifiedLayout.setVisibility(View.GONE);
+        if (mainBinding.unverifiedLayout.getVisibility() != View.GONE)
+            mainBinding.unverifiedLayout.setVisibility(View.GONE);
     }
 
     public void showProgressBar() {
-        mainBinding.progressBar.setVisibility(View.VISIBLE);
+        if (mainBinding.progressBar.getVisibility() != View.VISIBLE)
+            mainBinding.progressBar.setVisibility(View.VISIBLE);
     }
 
     public void hideProgressBar() {
-        mainBinding.progressBar.setVisibility(View.GONE);
+        if (mainBinding.progressBar.getVisibility() != View.GONE)
+            mainBinding.progressBar.setVisibility(View.GONE);
     }
 
     public void showBackDrop() {
-        mainBinding.backDrop.setVisibility(View.VISIBLE);
+        if (mainBinding.backDrop.getVisibility() != View.VISIBLE)
+            mainBinding.backDrop.setVisibility(View.VISIBLE);
     }
 
     public void hideBackDrop() {
-        mainBinding.backDrop.setVisibility(View.GONE);
+        if (mainBinding.backDrop.getVisibility() != View.GONE)
+            mainBinding.backDrop.setVisibility(View.GONE);
     }
 }

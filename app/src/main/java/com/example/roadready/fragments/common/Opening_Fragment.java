@@ -34,6 +34,9 @@ public class Opening_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         return root;
     }
 

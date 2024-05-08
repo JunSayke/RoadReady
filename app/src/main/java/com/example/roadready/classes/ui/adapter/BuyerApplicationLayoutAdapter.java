@@ -24,6 +24,7 @@ public class BuyerApplicationLayoutAdapter extends FragmentStateAdapter {
     public BuyerApplicationLayoutAdapter(@NonNull FragmentActivity fragmentActivity, List<ApplicationGson> applications) {
         super(fragmentActivity);
         this.applications = applications;
+
         try {
             mainFacade = MainFacade.getInstance();
         } catch (Exception e) {

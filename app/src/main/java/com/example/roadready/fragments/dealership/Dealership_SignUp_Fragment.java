@@ -54,6 +54,9 @@ public class Dealership_SignUp_Fragment extends Fragment implements ImagePicker.
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         initImagePicker();
 
         return root;

@@ -56,6 +56,9 @@ public class Dealership_EditProfile_Fragment extends Fragment implements ImagePi
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         mainFacade.getUserGsonViewModel().getUserGsonLiveData().observe(getViewLifecycleOwner(), dealershipGson -> {
             Picasso.get()
                     .load(dealershipGson.getProfileImageUrl())
@@ -82,6 +85,8 @@ public class Dealership_EditProfile_Fragment extends Fragment implements ImagePi
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.bepBtnOpenMaps.setOnClickListener(v -> {

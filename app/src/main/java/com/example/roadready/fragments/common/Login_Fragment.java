@@ -39,6 +39,11 @@ public class Login_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
         return root;
     }
 
@@ -53,6 +58,8 @@ public class Login_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.lgnBtnLogin.setOnClickListener(v -> {
@@ -106,10 +113,10 @@ public class Login_Fragment extends Fragment {
     }
 
     private void processLogin() {
-        showProgressBar();
+        mainFacade.showProgressBar();
+        mainFacade.showBackDrop();
         String email = String.valueOf(binding.lgnInptEmail.getText());
         String password = String.valueOf(binding.lgnInptPassword.getText());
-
 
         final RoadReadyServer.ResponseListener<UserDataGson> responseListener = new RoadReadyServer.ResponseListener<UserDataGson>() {
             @Override
@@ -122,14 +129,16 @@ public class Login_Fragment extends Fragment {
                 }else{
                     mainFacade.getCommonMainNavController().navigate(R.id.action_login_Fragment_to_dealership_homepageContainer_Fragment);
                 }
-                hideProgressBar();
+                mainFacade.hideProgressBar();
+                mainFacade.hideBackDrop();
             }
 
             @Override
             public void onFailure(int code, String message) {
                 if (code != -1)
                     mainFacade.makeToast(message, Toast.LENGTH_SHORT);
-                hideProgressBar();
+                mainFacade.hideProgressBar();
+                mainFacade.hideBackDrop();
             }
         };
 

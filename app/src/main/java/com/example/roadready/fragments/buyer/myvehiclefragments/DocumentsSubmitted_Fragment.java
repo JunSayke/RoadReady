@@ -42,6 +42,9 @@ public class DocumentsSubmitted_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         return root;
     }
 
@@ -89,12 +92,17 @@ public class DocumentsSubmitted_Fragment extends Fragment {
         binding = null;
     }
 
+
+
     private void initActions() {
 
     }
-    private void setApplicationCount() {
-        if (applicationCount == 0) {
-            binding.apTxtNoDocuments.setVisibility(View.VISIBLE);
+
+    public void setApplicationCount(){
+        if (binding != null) {
+            if(applicationCount <= 0){
+                binding.apTxtNoDocuments.setVisibility(View.VISIBLE);
+            }
         }
     }
 }

@@ -50,6 +50,9 @@ public class SelectingDealership_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         mainFacade.fetchLocation(location -> currentLocation = location);
 
         return root;
@@ -122,6 +125,8 @@ public class SelectingDealership_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initDealership(){
         Picasso.get().load(dealershipGson.getDealershipImageUrl()).into(binding.sgdLogoDealer);

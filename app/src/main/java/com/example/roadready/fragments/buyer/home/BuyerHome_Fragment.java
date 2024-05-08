@@ -70,6 +70,9 @@ public class BuyerHome_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         mainFacade.fetchLocation(location -> currentLocation = location);
 
         return root;
@@ -113,10 +116,11 @@ public class BuyerHome_Fragment extends Fragment {
                 updateListingScrollViewItems(listingList);
                 binding.bhSVItems.setLayoutManager(new LinearLayoutManager(mainFacade.getMainActivity().getApplicationContext()));
                 initFilterButton();
-                mainFacade.hideProgressBar();
-                binding.getRoot().setVisibility(View.VISIBLE);
+                if (binding != null)
+                    binding.getRoot().setVisibility(View.VISIBLE);
                 listingCount = response.getData().getListings().size();
                 setListingCount();
+                mainFacade.hideProgressBar();
             }
 
             @Override
@@ -125,17 +129,12 @@ public class BuyerHome_Fragment extends Fragment {
                     mainFacade.makeToast(message, Toast.LENGTH_SHORT);
                 setListingCount();
                 mainFacade.hideProgressBar();
-                binding.getRoot().setVisibility(View.VISIBLE);
+                if (binding != null)
+                    binding.getRoot().setVisibility(View.VISIBLE);
             }
         };
 
         mainFacade.getListings(listingResponseListener, null, null, null);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        mainFacade.hideProgressBar();
     }
 
     @Override
@@ -289,14 +288,18 @@ public class BuyerHome_Fragment extends Fragment {
     }
 
     public void setListingCount(){
-        if(listingCount <= 0){
-            binding.bhTxtListingCount.setVisibility(View.VISIBLE);
+        if (binding != null) {
+            if(listingCount <= 0){
+                binding.bhTxtListingCount.setVisibility(View.VISIBLE);
+            }
         }
     }
 
     public void setDealershipCount(){
-        if(dealershipCount <= 0){
-            binding.bhTxtDealershipCount.setVisibility(View.VISIBLE);
+        if (binding != null) {
+            if(dealershipCount <= 0){
+                binding.bhTxtDealershipCount.setVisibility(View.VISIBLE);
+            }
         }
     }
 }

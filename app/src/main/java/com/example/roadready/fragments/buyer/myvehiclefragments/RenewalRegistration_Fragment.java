@@ -45,6 +45,9 @@ public class RenewalRegistration_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         return root;
     }
 
@@ -60,6 +63,8 @@ public class RenewalRegistration_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.rorBtnSubmit.setOnClickListener(v -> {

@@ -48,6 +48,9 @@ public class InHouseForm_Fragment extends Fragment implements ImagePicker.OnImag
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         initImagePicker();
         return root;
     }
@@ -65,6 +68,8 @@ public class InHouseForm_Fragment extends Fragment implements ImagePicker.OnImag
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.ihBtnSubmit.setOnClickListener(v -> {

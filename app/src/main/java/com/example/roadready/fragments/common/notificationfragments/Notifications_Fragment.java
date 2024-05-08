@@ -38,6 +38,9 @@ public class Notifications_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         return root;
     }
 
@@ -85,6 +88,8 @@ public class Notifications_Fragment extends Fragment {
         binding = null;
     }
 
+
+
     private void deleteNotification(String itemId){
         mainFacade.showProgressBar();
         mainFacade.showBackDrop();
@@ -108,9 +113,11 @@ public class Notifications_Fragment extends Fragment {
         mainFacade.deleteNotification(responseListener, itemId);
     }
 
-    private void setNotificationCount() {
-        if(notificationCount <= 0){
-            binding.nTxtNotificationCount.setVisibility(View.VISIBLE);
+    public void setNotificationCount(){
+        if (binding != null) {
+            if(notificationCount <= 0){
+                binding.nTxtNotificationCount.setVisibility(View.VISIBLE);
+            }
         }
     }
 }

@@ -2,6 +2,7 @@ package com.example.roadready.activity;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -12,6 +13,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.roadready.R;
 import com.example.roadready.classes.general.MainFacade;
@@ -22,7 +24,9 @@ import com.example.roadready.classes.model.gson.response.SuccessGson;
 import com.example.roadready.databinding.ActivityCommonMainBinding;
 import com.google.gson.Gson;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -95,14 +99,21 @@ public class MainActivity extends AppCompatActivity {
         if (uri != null) {
             if (Objects.equals(uri.getHost(), "road-ready-black.vercel.app")) {
                 String apiAccessToken = uri.getQueryParameter("api_access_token");
+                String accessToken = uri.getQueryParameter("access_token");
 
                 if (apiAccessToken != null) {
                     DecodedJWT jwt = JWT.decode(apiAccessToken);
 
-                    String payload = jwt.getClaims().toString();
-                    UserGson userGson = new Gson().fromJson(payload, UserGson.class);
+                    Map<String, Claim> claims = jwt.getClaims();
+                    Map<String, Object> claimValues = new HashMap<>();
+                    for (Map.Entry<String, Claim> entry : claims.entrySet()) {
+                        claimValues.put(entry.getKey(), entry.getValue().as(Object.class));
+                    }
+
+                    UserGson userGson = new Gson().fromJson(new Gson().toJson(claimValues), UserGson.class);
                     Set<String> cookies = new HashSet<>();
                     cookies.add("api_access_token=" + apiAccessToken);
+                    cookies.add("access_token=" + accessToken);
                     mainFacade.getServer().addCookies(cookies);
                     mainFacade.startLoginSession(userGson);
                     mainFacade.getUserGsonViewModel().setUserGsonLiveData(userGson);

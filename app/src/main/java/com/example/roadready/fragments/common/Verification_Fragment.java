@@ -36,6 +36,9 @@ public class Verification_Fragment extends Fragment {
             throw new RuntimeException(e);
         }
 
+        mainFacade.hideProgressBar();
+        mainFacade.hideBackDrop();
+
         return root;
     }
 
@@ -55,6 +58,8 @@ public class Verification_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void initActions() {
         binding.vrfTextResendCode.setOnClickListener(v -> {

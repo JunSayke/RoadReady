@@ -50,4 +50,6 @@ public class ApplicationContainer_Fragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 }
