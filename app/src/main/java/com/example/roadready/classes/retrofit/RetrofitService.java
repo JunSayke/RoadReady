@@ -143,4 +143,10 @@ public interface RetrofitService {
     Call<SuccessGson<GsonData>> deleteNotification(
             @Field("notification_id") String notificationId
     );
+
+    @FormUrlEncoded
+    @POST("agent/register")
+    Call<SuccessGson<UserDataGson>> registerAgent(
+            @FieldMap Map<String, String> fields
+    );
 }

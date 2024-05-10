@@ -45,4 +45,9 @@
         android:name="com.example.roadready.fragments.buyer.mainnav.NotificationContainer_Fragment"
         android:label="fragment_notification_container"
         tools:layout="@layout/fragment_common_notification_container" />
+    <fragment
+        android:id="@+id/navAddAgent"
+        android:name="com.example.roadready.fragments.dealership.mainnav.Dealership_AddAgentContainer_Fragment"
+        android:label="fragment_dealership_add_agent_container"
+        tools:layout="@layout/fragment_dealership_add_agent_container" />
 </navigation>

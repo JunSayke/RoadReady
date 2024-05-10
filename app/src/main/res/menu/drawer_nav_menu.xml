@@ -12,11 +12,14 @@
                     android:id="@+id/navForApproval"
                     android:icon="@drawable/sb_iv_vehicleapplicants"
                     android:title="@string/text_header_for_approval" />
+                <item
+                    android:id="@+id/navAddAgent"
+                    android:title="Add Agent" />
     </group>
 
-    <group
-        android:checkableBehavior="single"
-        android:id="@+id/grpVehicleApplicants">
+<!--    <group-->
+<!--        android:checkableBehavior="single"-->
+<!--        android:id="@+id/grpVehicleApplicants">-->
 
 <!--        <item-->
 <!--            android:id="@+id/navForApproval"-->
@@ -31,7 +34,7 @@
 <!--            android:title="@string/text_header_approved"-->
 <!--            android:visibility="gone"-->
 <!--            tools:visibility="gone"/>-->
-    </group>
+<!--    </group>-->
 
 <!--    <group-->
 <!--        android:checkableBehavior="single"-->

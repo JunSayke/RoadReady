@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dealership_add_agent_nav_graph"
+    app:startDestination="@id/dealership_AddAgent_Fragment">
+
+    <fragment
+        android:id="@+id/dealership_AddAgent_Fragment"
+        android:name="com.example.roadready.fragments.dealership.addagentfragments.Dealership_AddAgent_Fragment"
+        android:label="fragment_dealership_add_agent"
+        tools:layout="@layout/fragment_dealership_add_agent" />
+</navigation>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.dealership.addagentfragments.Dealership_AddAgent_Fragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/adagntTextAddAgent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:padding="10dp"
+            android:text="Add Agent"
+            android:textAlignment="center"
+            android:textColor="#332F2F"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/adagntInptFname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints="First Name"
+                android:background="@drawable/rounded_corner_rectangle20_solid"
+                android:ems="10"
+                android:hint="@string/placeholder_first_name"
+                android:inputType="text"
+                android:padding="10dp" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/adagntInptLname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autofillHints="Last Name"
+                android:background="@drawable/rounded_corner_rectangle20_solid"
+                android:ems="10"
+                android:hint="@string/placeholder_last_name"
+                android:inputType="text"
+                android:padding="10dp" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/adagntInptEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:autofillHints="Email Address"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
+            android:ems="10"
+            android:hint="@string/placeholder_email_address"
+            android:inputType="textEmailAddress"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/adagntInptPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:autofillHints="Phone Number"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
+            android:ems="10"
+            android:hint="@string/placeholder_phone_number"
+            android:inputType="phone"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/adagntInptAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp"
+            android:autofillHints="Current Address"
+            android:background="@drawable/rounded_corner_rectangle20_solid"
+            android:ems="10"
+            android:hint="@string/placeholder_current_address"
+            android:inputType="text"
+            android:padding="10dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="4dp">
+
+            <EditText
+                android:id="@+id/adagntInptPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Password"
+                android:background="@drawable/rounded_corner_rectangle20_solid"
+                android:ems="10"
+                android:hint="@string/placeholder_password"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/adagntChkTogglePassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/adagntInptPassword"
+                app:layout_constraintTop_toTopOf="@+id/adagntInptPassword" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/adagntLblSex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/text_sex"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:id="@+id/adagntRgSexOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/adagntRbMale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="male"
+                    android:hint="@string/text_male" />
+
+                <RadioButton
+                    android:id="@+id/adagntRbFemale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="female"
+                    android:hint="@string/text_female" />
+
+                <RadioButton
+                    android:id="@+id/adagntRadioOther"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="others"
+                    android:hint="@string/text_other" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/adagntLblAgentType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Agent Type"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:id="@+id/adagntRgAgentTypeOptions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/adagntRbDealershipAgent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="dealershipAgent"
+                    android:hint="Dealership Agent" />
+
+                <RadioButton
+                    android:id="@+id/adagntRbBankAgent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="bankAgent"
+                    android:hint="Bank Agent" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/adagntBankInputsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/adagntInptBankName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:autofillHints="Email Address"
+                android:background="@drawable/rounded_corner_rectangle20_solid"
+                android:ems="10"
+                android:hint="Bank Name"
+                android:inputType="text"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/adagntInptBankAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="4dp"
+                android:autofillHints="Email Address"
+                android:background="@drawable/rounded_corner_rectangle20_solid"
+                android:ems="10"
+                android:hint="Bank Address"
+                android:inputType="text"
+                android:padding="10dp" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/adagntBtnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#0EB2F8"
+            android:padding="10dp"
+            android:text="@string/text_btn_submit"
+            android:textColor="#332F2F"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.roadready.classes.general;
 
+import android.service.autofill.UserData;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -36,8 +37,8 @@ public class RoadReadyServer extends RetrofitFacade {
     private static final String TAG = "RoadReadyServer";
 
     public RoadReadyServer() {
-        super("https://road-ready-black.vercel.app");
-//        super("http://10.0.2.2:6969");
+//        super("https://road-ready-black.vercel.app");
+        super("http://10.0.2.2:6969");
     }
 
     public Call<SuccessGson<UserDataGson>> login(
@@ -473,6 +474,41 @@ public class RoadReadyServer extends RetrofitFacade {
         call.enqueue(callback);
         return call;
     }
+
+    public Call<SuccessGson<UserDataGson>> registerAgent(
+            final Callback<SuccessGson<UserDataGson>> callback,
+            final String email,
+            final String password,
+            final String firstName,
+            final String lastName,
+            final String phoneNumber,
+            final String address,
+            final String gender,
+            final String agentType,
+            @Nullable final String bank,
+            @Nullable final String bankAddress) {
+
+        Map<String, String> fields = new HashMap<>();
+
+        fields.put("email", email);
+        fields.put("password", password);
+        fields.put("firstName", firstName);
+        fields.put("lastName", lastName);
+        fields.put("phoneNumber", phoneNumber);
+        fields.put("address", address);
+        fields.put("gender",  gender);
+        fields.put("agentType", agentType);
+
+        if (bank != null)
+            fields.put("bank", bank);
+
+        if (bankAddress != null)
+            fields.put("bankAddress", bankAddress);
+
+        Call<SuccessGson<UserDataGson>> call = getRetrofitService().registerAgent(fields);
+        call.enqueue(callback);
+        return call;
+    };
 
     public void addCookies(Set<String> cookies) {
         RetrofitFacade.cookies.addAll(cookies);

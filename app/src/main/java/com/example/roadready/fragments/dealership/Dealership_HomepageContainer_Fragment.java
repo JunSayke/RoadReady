@@ -93,6 +93,9 @@ public class Dealership_HomepageContainer_Fragment extends Fragment {
                 case R.id.navForApproval:
                     headerText.setText(R.string.text_header_for_approval);
                     break;
+                case R.id.navAddAgent:
+                    headerText.setText("Add Agent");
+                    break;
                 case R.id.navApproved:
                     headerText.setText(R.string.text_header_approved);
                     break;

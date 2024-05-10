@@ -32,6 +32,7 @@ import java.io.File;
 import java.util.Set;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 
 public class MainFacade {
     private static final MainFacade mainFacade = new MainFacade(null);
@@ -617,6 +618,21 @@ public class MainFacade {
             final String notificationId
     ) {
         return server.deleteNotification(RoadReadyServer.getCallback(responseListener), notificationId);
+    }
+
+    public Call<SuccessGson<UserDataGson>> registerAgent(
+            final RoadReadyServer.ResponseListener<UserDataGson> responseListener,
+            final String email,
+            final String password,
+            final String firstName,
+            final String lastName,
+            final String phoneNumber,
+            final String address,
+            final String gender,
+            final String agentType,
+            @Nullable final String bank,
+            @Nullable final String bankAddress) {
+        return server.registerAgent(RoadReadyServer.getCallback(responseListener), email, password, firstName, lastName, phoneNumber, address, gender, agentType, bank, bankAddress);
     }
 
     // END_OF[Session & Server]
