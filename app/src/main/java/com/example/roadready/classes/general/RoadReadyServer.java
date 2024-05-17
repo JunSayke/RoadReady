@@ -37,8 +37,8 @@ public class RoadReadyServer extends RetrofitFacade {
     private static final String TAG = "RoadReadyServer";
 
     public RoadReadyServer() {
-//        super("https://road-ready-black.vercel.app");
-        super("http://10.0.2.2:6969");
+        super("https://road-ready-black.vercel.app");
+//        super("http://10.0.2.2:6969");
     }
 
     public Call<SuccessGson<UserDataGson>> login(

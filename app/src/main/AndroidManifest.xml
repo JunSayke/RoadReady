@@ -48,7 +48,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="road-ready-black.vercel.app"
+                    android:host="road-ready-frontend.vercel.app"
                     android:path="/dashboard"
                     android:scheme="https" />
             </intent-filter>

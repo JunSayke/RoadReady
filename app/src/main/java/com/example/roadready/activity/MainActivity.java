@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Uri uri = getIntent().getData();
         if (uri != null) {
-            if (Objects.equals(uri.getHost(), "road-ready-black.vercel.app")) {
+            if (Objects.equals(uri.getHost(), "road-ready-frontend.vercel.app")) {
                 String apiAccessToken = uri.getQueryParameter("api_access_token");
                 String accessToken = uri.getQueryParameter("access_token");
 
